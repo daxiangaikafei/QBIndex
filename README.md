@@ -1,2 +1,2 @@
-# QBII
-QBII frontEnd Project
+# QBIndex
+QBIndex frontEnd Project
