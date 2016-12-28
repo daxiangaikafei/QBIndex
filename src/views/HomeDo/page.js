@@ -1,27 +1,28 @@
 import React from 'react'
 import { connect } from 'dva'
 import './page.less'
+import { Link } from 'react-router'
 
-const App = ({fetch, count, loading}) => {
-    return (
-        <div  className="HomeDo">
-            {loading ? <div>loading...</div> : <div>{count}</div>}
-            <button onClick={() => fetch(count)}>no</button>
-        </div>
-    )
-};
-
-
-function mapStateToProps(state) {
-    return state.demo;
+const App = (model) => {
+  return (
+    <div className='HomeDo'>
+      {model.loading ? <div>loading...</div> : <div>{model.count}</div>}
+      <button onClick={() => model.fetch(model.count)}>add</button>
+      <Link to='/HomeDo'>跳转</Link>
+    </div>
+  )
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        fetch(count){
-            dispatch({type: 'demo/fetch', count});
-        }
+function mapStateToProps (state) {
+  return state.demo
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    fetch (count) {
+      dispatch({type: 'demo/fetch', count})
     }
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)
