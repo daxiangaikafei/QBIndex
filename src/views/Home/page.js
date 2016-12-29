@@ -8,7 +8,7 @@ const App = (model) => {
     <div className='Home'>
       {model.loading ? <div>loading...</div> : <div>{model.count}</div>}
       <button onClick={() => model.fetch(model.count)}>add</button>
-      <Link to='/HomeDo'>跳转</Link>
+      <Link to='/HomeDo'>跳转123</Link>
     </div>
   )
 }
