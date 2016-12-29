@@ -81,6 +81,7 @@
     "react-addons-css-transition-group": "^15.4.1",
     "react-dom": "^15.4.1",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
