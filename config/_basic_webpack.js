@@ -177,7 +177,7 @@ webpackConfig.module.loaders.push(
     { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
     { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
     { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
-    { test: /\.(png|jpg|gif)$/,    loader: 'url-loader?limit=10240' }
+    { test: /\.(png|jpg|gif)$/,    loader: 'url?limit=10240' }
 )
 
 // ------------------------------------

@@ -9,14 +9,14 @@ import { connect } from 'dva'
 import './page.less'
 import { Link } from 'react-router'
 
-const App = ({fetch, count, loading}) => {
-    return (
-        <div className="Home">
-            {loading ? <div>loading...</div> : <div>{count}</div>}
-            <button onClick={() => fetch(count)}>add</button>
-            <Link to="/HomeDo">跳转</Link>
-        </div>
-    )
+const App = () => {
+  return (
+    <main>
+      <div className="top-bg-container">
+        <div className="top-bg"></div>
+      </div>
+    </main>
+  )
 };
 
 
