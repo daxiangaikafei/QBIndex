@@ -1,9 +1,3 @@
-//import React, { PropTypes } from 'react'
-//import { connect } from 'react-redux'
-//import { bindActionCreators } from 'redux'
-//import * as homeActions from '../../redux/actions/home'
-//import './page.less'
-
 import React from 'react'
 import { connect } from 'dva'
 import './page.less'
