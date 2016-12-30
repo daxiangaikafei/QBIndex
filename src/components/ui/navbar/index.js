@@ -16,6 +16,7 @@ class NavBar extends React.Component {
   }
   constructor (props, context) {
     super(props, context)
+      debugger;
     this.state = { title: '' }
   }
 
@@ -47,8 +48,9 @@ class NavBar extends React.Component {
       <div>
         <div className='qbii-navbar-top'></div>
         <div className='qbii-navbar qbii-navbar-light'>
-          <div className='qbii-navbar-left' onClick={this._handleClick}>
-            <span className='left-icon'></span>
+          <div className='qbii-navbar-left' onClick={() => this._handleClick()}>
+            <span className='left-icon'>
+            </span>
           </div>
           <div className='qbii-navbar-title'>{this.state.title}</div>
           <div className='qbii-navbar-right'>

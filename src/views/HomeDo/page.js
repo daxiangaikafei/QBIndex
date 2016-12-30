@@ -13,16 +13,15 @@ const App = (model) => {
   )
 }
 
-//function mapStateToProps (state) {
-//  return state.demo
-//}
-//
-//function mapDispatchToProps (dispatch) {
-//  return {
-//    fetch (count) {
-//      dispatch({type: 'home/fetch', count})
-//    }
-//  }
-//}
-export default App
-//export default connect(mapStateToProps, mapDispatchToProps)(App)
+function mapStateToProps (state) {
+  return state.demo
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    fetch (count) {
+      dispatch({type: 'demo/fetch', count})
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)

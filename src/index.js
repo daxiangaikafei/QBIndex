@@ -2,7 +2,7 @@
  * Created by xiaolin on 16/12/26.
  */
 import dva from 'dva'
-import FastClick from 'fastclick';
+import FastClick from 'fastclick'
 import model from './model'
 import router from './routes'
 

@@ -7,4 +7,4 @@
  * @author sean on 16/12/29.
  */
 
-export { default as NavBar } from './navbar';
+export { default as NavBar } from './navbar'
