@@ -20,6 +20,9 @@ const webpackConfig = {
     target: 'web',
     resolve: {
         root: paths.base(config.dir_client),
+        alias: {
+            'ui': 'components/ui/index.js'
+        },
         extensions: ['', '.js', '.jsx']
     },
     module: {}
@@ -73,12 +76,16 @@ if (__DEV__) {
 }else if (__PROD__) {
     debug('Apply UglifyJS plugin.');
     webpackConfig.plugins.push(
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        })
+    )
+    webpackConfig.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 unused: true,
                 dead_code: true,
-                warnings: false,
-                NODE_ENV: process.env.NODE_ENV
+                warnings: false
             }
         })
     )

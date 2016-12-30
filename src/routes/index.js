@@ -7,10 +7,10 @@ import HomeDo from 'views/HomeDo/page'
 export default function (ref) {
   return (
     <Router history={ref.history}>
-      <Route path='/' component={CoreLayout}>
-        <IndexRoute component={Home} />
-        <Route path='/Home' component={Home} />
-        <Route path='/HomeDo' component={HomeDo} />
+      <Route path='/' component={CoreLayout} name="QBII">
+        <IndexRoute component={Home} name="QBII设置页面"/>
+        <Route path='/Home' component={Home} name="QBII设置"/>
+        <Route path='/HomeDo' component={HomeDo} name="QBII测试Title"/>
       </Route>
     </Router>
   )

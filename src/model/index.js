@@ -1,5 +1,5 @@
 export default {
-  namespace: 'demo',
+  namespace: 'home',
   state: {
     loading: false,
     count: 0
