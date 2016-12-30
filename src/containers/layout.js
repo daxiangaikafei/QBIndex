@@ -1,11 +1,16 @@
 import React, { PropTypes } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import '../static/style/main.mobile.less'
 import '../static/style/animate.less'
+import { NavBar } from 'ui'
 
 function CoreLayout ({ children, location }) {
-  // let transitionName = (location.action === 'POP') ? 'view-transition-rfr' : 'view-transition-sfr'
+    //this.state = {;
+
   return (
-    <ReactCSSTransitionGroup component='div'
+    <div>
+      <NavBar {...arguments[0]}/>
+      <ReactCSSTransitionGroup component='main'
       transitionName={{
         enter: 'default-enter',
         enterActive: 'fadeInLeft',
@@ -20,12 +25,13 @@ function CoreLayout ({ children, location }) {
       })
       }
     </ReactCSSTransitionGroup>
+  </div>
   )
 }
 
 CoreLayout.propTypes = {
-  children: PropTypes.element,
-  location: PropTypes.object
+    children: PropTypes.element,
+    location: PropTypes.object
 }
 
 export default CoreLayout
