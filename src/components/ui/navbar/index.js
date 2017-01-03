@@ -9,15 +9,16 @@
 
 import React, { PropTypes } from 'react'
 import './index.less'
+import {Router} from 'dva/router';
 
 class NavBar extends React.Component {
-  PropTypes = {
-    title: PropTypes.string
-  }
   constructor (props, context) {
     super(props, context)
-      debugger;
-    this.state = { title: '' }
+    this.state = {
+      title: '',
+      pathName: ''
+    }
+
   }
 
   _filter (pathname, route) {
@@ -28,6 +29,7 @@ class NavBar extends React.Component {
   _getTitle () {
     let { pathname } = this.props.location
     let { route } = this.props
+
     switch (route.path == pathname) {
       case true :
         this.state.title = route.name
@@ -36,10 +38,14 @@ class NavBar extends React.Component {
         this.state.title = this._filter(pathname, route)
         break
     }
+
+    this.state.pathName = pathname;
   }
 
+
   _handleClick () {
-    this.props.history.goBack()
+    this.state.pathName != '/' &&
+    this.context.router.goBack()
   }
 
   render () {
@@ -63,5 +69,8 @@ class NavBar extends React.Component {
     )
   }
 }
+NavBar.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 export default NavBar
 

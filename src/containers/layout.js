@@ -5,17 +5,16 @@ import '../static/style/animate.less'
 import { NavBar } from 'ui'
 
 function CoreLayout ({ children, location }) {
-    //this.state = {;
-
+    console.log(location.action);
   return (
     <div>
       <NavBar {...arguments[0]}/>
       <ReactCSSTransitionGroup component='main'
       transitionName={{
         enter: 'default-enter',
-        enterActive: 'fadeInLeft',
+        enterActive: location.action == 'PUSH'?'fadeInLeft':'fadeInRight',
         leave: 'default-leave',
-        leaveActive: 'fadeOutRight'
+        leaveActive: location.action == 'PUSH'?'fadeOutRight':'fadeOutLeft'
       }}
       transitionEnterTimeout={500}
       transitionLeaveTimeout={500}
