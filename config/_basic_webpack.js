@@ -18,6 +18,7 @@ debug(`apply webpack config for NODE_ENV "${config.env}"`)
 const webpackConfig = {
     name: 'client',
     target: 'web',
+    devtool:"eval-source-map",
     resolve: {
         root: paths.base(config.dir_client),
         alias: {

@@ -4,7 +4,8 @@ import CoreLayout from '../containers/layout'
 import Home from 'views/Home/page'
 import HomeDo from 'views/HomeDo/page'
 
-import AnDemo from "views/AnDemo/page"
+import AnDemo from "views/AnDemo/page";
+import Theme from "views/Theme/page";
 
 export default function (ref) {
   return (
@@ -14,6 +15,7 @@ export default function (ref) {
         <Route path='/Home' component={Home} name="QBII设置"/>
         <Route path='/HomeDo' component={HomeDo} name="QBII测试Title"/>
         <Route path='/AnDemo' component={AnDemo} name="QBII动画效果"/>
+        <Route path='/Theme' component={Theme} name="晒身份"/>
       </Route>
     </Router>
   )
