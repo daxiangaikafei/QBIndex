@@ -1,7 +1,8 @@
 export default {
-  namespace: 'demo',
+  namespace: 'home',
   state: {
     loading: false,
+    isShowCover: false,
     count: 0
   },
   effects: {

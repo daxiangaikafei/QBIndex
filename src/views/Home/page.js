@@ -2,8 +2,29 @@ import React,{ Component } from 'react'
 import { connect } from 'dva'
 import './page.less'
 import { Link } from 'react-router'
+import classNames from 'classnames'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowCover: true,
+    };
+  }
+
+  showCoverHandler = (e) => {
+    if (e) e.stopPropagation();
+    this.setState({
+      isShowCover: true,
+    });
+  };
+
+  hideCoverHandler = () => {
+    this.setState({
+      isShowCover: false,
+    });
+  };
+
   componentDidMount() {
     var renderGauge = this.renderGauge;
     setTimeout(function(){
@@ -11,11 +32,11 @@ class App extends Component {
     },0);
   }
   handleCoverShow() {
-    
+
   }
   render() {
     return (
-      <main>
+      <div>
         <div className="top-container">
           <div className="top-bg"></div>
           <canvas id="dash" width='240' height='210'></canvas>
@@ -26,7 +47,7 @@ class App extends Component {
             <p className="datetime">评估时间：<span>2016-12-12</span></p>
             <div className="btn-group">
               <span className="btn">晒身份</span>
-              <span className="btn">了解QBII</span>
+              <span className="btn" onClick={this.showCoverHandler}>了解QBII</span>
             </div>
           </div>
         </div>
@@ -40,14 +61,14 @@ class App extends Component {
             <h3>948,395.57</h3>
           </div>
         </div>
-        <div className="cover-container">
+        <div className={classNames("cover-container animated zoomIn",{"active":this.state.isShowCover})}>
           <p>钱宝 5.0 <br/>开启你的资本之路</p>
-          <div className="img"></div>
+          <div className="img animated fadeIn"></div>
           <p className="txt">当前认证等级</p>
           <h1>Pro</h1>
-          <span className="btn-join">即刻加入</span>
+          <span className="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
         </div>
-      </main>
+      </div>
     )
   }
   renderGauge(displayValue) {
@@ -114,14 +135,15 @@ class App extends Component {
 };
 
 function mapStateToProps(state) {
-    return state.demo;
+    return state.home;
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         fetch(count){
-            dispatch({type: 'demo/fetch', count});
+            dispatch({type: 'home/fetch', count});
         }
+
     }
 }
 
