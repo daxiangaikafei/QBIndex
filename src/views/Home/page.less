@@ -20,6 +20,13 @@ main{
 		overflow: hidden;
 		position: relative;
 		background: #000;
+    /** 头部仪表盘 **/
+    .dash {
+      display: block;
+      margin: 20px auto;
+      z-index: 2;
+      position: relative;
+    }
     .top-bg {
       background: #000 url('static/imgs/top-bg.png') no-repeat;
       background-size: cover;
@@ -164,13 +171,7 @@ main{
 
   }
 }
-/** 头部仪表盘 **/
-#dash {
-  display: block;
-  margin: 20px auto;
-  z-index: 2;
-  position: relative;
-}
+
 /***** ainimation *****/
 @-webkit-keyframes bg-ani {
   0%{-webkit-transform:  perspective(0px) rotateY(0deg) scaleX(1.1);}

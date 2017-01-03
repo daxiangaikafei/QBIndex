@@ -145,21 +145,44 @@ const cssLoader = !config.compiler_css_modules
     'localIdentName=[local]'
 ].join('&')
 
-webpackConfig.module.loaders.push({
+// CSS-Modules
+const cssModulesLoader = !config.compiler_css_modules
+    ? 'css?sourceMap'
+    : [
+    'css?modules',
+    'sourceMap',
+    'importLoaders=1',
+    'localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+].join('&')
+
+webpackConfig.module.loaders.push(
+  {
     test: /\.(less|css)$/,
     include: /(src|src\/static\/style)/,
-    exclude: /node_modules/,
+    exclude: /(node_modules|src\/views\/Home)/,
     loaders: [
         'style',
         cssLoader,
         'postcss',
         'less'
     ]
-})
+  },
+  {
+    test: /\.(less|css)$/,
+    include: /src\/views\/Home/,
+    exclude: /node_modules/,
+    loaders: [
+        'style',
+        cssModulesLoader,
+        'postcss',
+        'less'
+    ]
+  }
+)
 
-webpackConfig.lessLoader = {
-    includePaths: paths.base('styles')
-}
+// webpackConfig.lessLoader = {
+//     includePaths: paths.base('styles')
+// }
 
 webpackConfig.postcss = [
     cssnano({
