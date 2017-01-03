@@ -1,0 +1,9 @@
+.an-demo {
+  background-color: white;
+}
+.an-demo-1 {
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  border: 1px solid red;
+}
