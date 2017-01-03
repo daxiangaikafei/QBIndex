@@ -7,7 +7,6 @@ class Theme extends Component {
         super(props);
     }
     render() {
-       
         return (
             <div className='theme'>
                 <div className="header">
