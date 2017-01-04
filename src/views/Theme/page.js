@@ -1,62 +1,84 @@
 import React, { Component, PropTypes } from 'react';
 import "./page.less";
 
+import Ring from "./ring.js";
+
+
 
 class Theme extends Component {
     constructor(props) {
         super(props);
+        
+        this.state = {
+            chooseNum:this.getImgIndex()
+        };
+        this.handClick = this.handClick.bind(this);
+        this.renderUls = this.renderUls.bind(this);
+        this.saveClick = this.saveClick.bind(this);
+    }
+    getImgIndex(){
+        return window.localStorage.theme?Number(window.localStorage.theme):0;
+    }
+    saveImgIndex(index){
+        //console.log("sdssdds",index)
+        window.localStorage.theme = index;
+    }
+    handClick(e){
+        var self = this;
+
+       
+        let target = e.target;
+        if(target.tagName!=="LI"){
+            target = target.parentNode;
+        }
+        var lis = e.currentTarget.querySelectorAll("li");
+        for(var i = 0;i<lis.length;i++ ){
+            if(lis[i]===target){
+                break;
+            }
+        }
+        
+        //console.log("设置chooseNum",i)
+        i<6&&self.setState({
+            chooseNum:i
+        });
+
+    }
+    //保存主题
+    saveClick(){
+        this.saveImgIndex(this.state.chooseNum);
+    }
+    renderUls(){
+        let {data} = this.props,$lis=[],{chooseNum} = this.state;
+        for(let i=0;i<data.length;i++){
+            $lis.push(<li key={i}><span>{data[i].title}</span><span className={chooseNum===i?"layer":"layer hide"}></span></li>);
+        }
+        return (
+            <ul className="" onClick={this.handClick} >{$lis}</ul>
+        );
     }
     render() {
         return (
             <div className='theme'>
                 <div className="header">
                     <div className="theme-img"></div>
-                    <div className="ring">
-                        <div className="container-ring">
-                            <span className="outer-ring"></span>
-                            <span className="inner-ring"></span>
-                            <div className="content-ring">
-                                <span>QBII</span>
-                                <span>认证等级</span>
-                                <span>Pro</span>
-                            </div>
-                            
-                        </div>
-                        <div className="container-ring-hide">
-                            <span className="outer-ring"></span>
-                            <span className="inner-ring"></span>
-                        </div>
-                    </div>
+                    <Ring/>
                 </div>
                 <div className="content">
                     <div className="menu">
                         <h2>请选择您分享的主题</h2>
                         <div className="menu-box">
-                            <ul className="">
-                                <li><span>梦想家</span><span className="layer"></span></li>
-                                <li><span>实力派</span></li>
-                                <li><span>潜行者</span></li>
-                                <li><span>勇敢者</span></li>
-                                <li><span>领路人</span></li>
-                                <li><span>乐天派</span></li>
-                            </ul>
+                            {this.renderUls()}
                         </div>
                     </div>
                 </div>
-                <div className="footer">保存主题</div>
+                <div className="footer" onClick={this.saveClick}>保存主题</div>
             </div>
         )
     }
 }
-Theme.PropTypes = {
-    enterAnimation: {
-        duration: 2000,
-        animation: "slideDown"
-    },
-    leaveAnimation:{
-        duration: 2000,
-        animation:"slideUp"
-    }
+Theme.defaultProps = {
+    data:[{title:"梦想家",url:"static/imgs/theme/sun-header0.jpg"},{title:"实力派",url:"static/imgs/theme/sun-header1.jpg"},{title:"潜行者",url:"static/imgs/theme/sun-header2.jpg"},{title:"勇敢者",url:"static/imgs/theme/sun-header3.jpg"},{title:"领路人",url:"static/imgs/theme/sun-header4.jpg"},{title:"乐天派",url:"static/imgs/theme/sun-header5.jpg"}]
 }
 
 export default Theme;
