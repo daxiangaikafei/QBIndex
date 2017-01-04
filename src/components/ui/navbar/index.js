@@ -46,6 +46,10 @@ class NavBar extends React.Component {
   _handleClick () {
     this.state.pathName != '/' &&
     this.context.router.goBack()
+
+    this.state.pathName == '/' &&
+    QBaoJSBridge &&
+    QBaoJSBridge.QBIIClose()
   }
 
   render () {

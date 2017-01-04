@@ -9,7 +9,7 @@ import model from './model'
 import router from './routes'
 
 const app = dva({
-    history: browserHistory
+    history:browserHistory
 })
 
 app.model(model)

@@ -5,7 +5,6 @@ import '../static/style/animate.less'
 import { NavBar } from 'ui'
 
 function CoreLayout ({ children, location }) {
-    console.log(location.action);
   return (
     <div>
       <NavBar {...arguments[0]}/>

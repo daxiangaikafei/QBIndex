@@ -18,7 +18,6 @@ debug(`apply webpack config for NODE_ENV "${config.env}"`)
 const webpackConfig = {
     name: 'client',
     target: 'web',
-    devtool:"eval-source-map",
     resolve: {
         root: paths.base(config.dir_client),
         alias: {
@@ -130,10 +129,10 @@ webpackConfig.module.loaders = [{
             : ['es2015', 'react', 'stage-0']
     }
 },
-{
-    test: /\.json$/,
-    loader: 'json'
-}]
+    {
+        test: /\.json$/,
+        loader: 'json'
+    }]
 
 // Styles
 const cssLoader = !config.compiler_css_modules
@@ -185,7 +184,7 @@ webpackConfig.module.loaders.push(
     { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
     { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
     { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
-    { test: /\.(png|jpg|gif)$/,    loader: 'url?limit=10240' }
+    { test: /\.(png|jpg|gif)$/,    loader: 'url?limit=1024&name=images/[path][name].[ext]' }
 )
 
 // ------------------------------------

@@ -3,9 +3,6 @@ import "./page.less";
 
 import { VelocityComponent, VelocityTransitionGroup } from "velocity-react";
 
-require('velocity-animate');
-require('velocity-animate/velocity.ui');
-
 class AnDemo extends Component {
     constructor(props) {
         super(props);
