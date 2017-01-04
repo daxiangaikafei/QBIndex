@@ -4,12 +4,13 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
+import { getCookie, setCookie } from 'libs/util'
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShowCover: true,
+      isShowCover: !getCookie("isShowCover","storage"),
     };
   }
 
@@ -21,6 +22,7 @@ class App extends Component {
   };
 
   hideCoverHandler = () => {
+    setCookie("isShowCover","1","storage")
     this.setState({
       isShowCover: false,
     });
@@ -147,5 +149,14 @@ function mapDispatchToProps(dispatch) {
 
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(App,styles,{allowMultiple:true}));
+Home.PropTypes = {
+    enterAnimation: {
+        duration: 2000,
+        animation: "slideDown"
+    },
+    leaveAnimation:{
+        duration: 2000,
+        animation:"slideUp"
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Home,styles,{allowMultiple:true}));
