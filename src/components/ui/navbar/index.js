@@ -51,7 +51,7 @@ class NavBar extends React.Component {
   render () {
     this._getTitle()
     return (
-      <div>
+      <div className="qbii-navbar-container">
         <div className='qbii-navbar-top'></div>
         <div className='qbii-navbar qbii-navbar-light'>
           <div className='qbii-navbar-left' onClick={() => this._handleClick()}>
@@ -73,4 +73,3 @@ NavBar.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 export default NavBar
-
