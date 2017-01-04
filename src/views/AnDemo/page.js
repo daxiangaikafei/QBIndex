@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import "./page.less";
 
 import { VelocityComponent, VelocityTransitionGroup } from "velocity-react";
+import {withRouter} from "react-router";
 
-require('velocity-animate');
-require('velocity-animate/velocity.ui');
+// require('velocity-animate');
+// require('velocity-animate/velocity.ui');
 
 class AnDemo extends Component {
     constructor(props) {
@@ -62,7 +63,7 @@ class AnDemo extends Component {
         )
     }
 }
-AnDemo.PropTypes = {
+AnDemo.defaultProps = {
     enterAnimation: {
         duration: 2000,
         animation: "slideDown"
@@ -73,4 +74,4 @@ AnDemo.PropTypes = {
     }
 }
 
-export default AnDemo;
+export default withRouter(AnDemo);

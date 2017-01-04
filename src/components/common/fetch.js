@@ -4,7 +4,7 @@ import size from "lodash/size";
 import each from "lodash/each";
 import assignIn from "lodash/assignIn";
 
-export function fetchPosts(key, url, param, type = "POST", headers = {}, repType = "json") {
+export function fetchPosts( url, param, type = "POST", headers = {}, repType = "json") {
 
     if (type.toLocaleUpperCase() === "GET" && size(param) > 0) {
         url += "?" + toExcString(param)
@@ -27,14 +27,14 @@ export function fetchPosts(key, url, param, type = "POST", headers = {}, repType
         })
         .then((data) => {
             //console.log('收到data', data);
-            dispatch(fetchSuccess(key, data));
+            //dispatch(fetchSuccess(key, data));
             if (data && (data.code === 0 || data.resultCode === "0" || data.resultCode === 0 || data.code === "0")) {
-                dispatch(errorClear("common,login"));
+                //dispatch(errorClear("common,login"));
             } else {
                 //console.info("你的请求 内部出错了", data);
-                dispatch(errorSave("common", data));
+                //dispatch(errorSave("common", data));
                 if (data && (data.code === "200" || data.code === 200 || data.resultCode == "200" || data.resultCode == 200)) {
-                    dispatch(errorSave("login", data));
+                    //dispatch(errorSave("login", data));
                 }
             }
             return data;
