@@ -40,7 +40,6 @@ const config = {
     // Compiler Configuration
     // ----------------------------------
     compiler_vendor : [
-        'history',
         'react',
         'react-redux',
         'react-router',

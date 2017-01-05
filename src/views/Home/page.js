@@ -1,14 +1,16 @@
 import React,{ Component } from 'react'
 import { connect } from 'dva'
-import './page.less'
+import CSSModules from 'react-css-modules'
+import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
+import { getCookie, setCookie } from 'libs/util'
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShowCover: true,
+      isShowCover: !getCookie("isShowCover","storage"),
     };
   }
 
@@ -20,6 +22,7 @@ class App extends Component {
   };
 
   hideCoverHandler = () => {
+    setCookie("isShowCover","1","storage")
     this.setState({
       isShowCover: false,
     });
@@ -37,36 +40,36 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="top-container">
-          <div className="top-bg"></div>
-          <canvas id="dash" width='240' height='210'></canvas>
-          <div className="content">
+        <div styleName="top-container">
+          <div styleName="top-bg"></div>
+          <canvas id="dash" styleName="dash" width='240' height='210'></canvas>
+          <div styleName="content">
             <h5>QBII</h5>
             <h3>认证等级</h3>
             <h1>A</h1>
-            <p className="datetime">评估时间：<span>2016-12-12</span></p>
-            <div className="btn-group">
-              <span className="btn">晒身份</span>
-              <span className="btn" onClick={this.showCoverHandler}>了解QBII</span>
+            <p>评估时间：<span>2016-12-12</span></p>
+            <div styleName="btn-group">
+              <span styleName="btn"><Link to='/Theme'>晒身份</Link></span>
+              <span styleName="btn"><Link to='/Home'>了解QBII</Link></span>
             </div>
           </div>
         </div>
-        <div className="asset-container">
-          <div className="item">
+        <div styleName="asset-container">
+          <div styleName="item">
             <span>投入资产(元)</span>
             <h3>1,395,345.29</h3>
           </div>
-          <div className="item">
+          <div styleName="item">
             <span>累计收益(元)</span>
             <h3>948,395.57</h3>
           </div>
         </div>
-        <div className={classNames("cover-container animated zoomIn",{"active":this.state.isShowCover})}>
+        <div className="animated zoomIn" styleName={classNames("cover-container",{"active":this.state.isShowCover})}>
           <p>钱宝 5.0 <br/>开启你的资本之路</p>
-          <div className="img animated fadeIn"></div>
-          <p className="txt">当前认证等级</p>
+          <div className="animated fadeIn" styleName="img"></div>
+          <p styleName="txt">当前认证等级</p>
           <h1>Pro</h1>
-          <span className="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
+          <span styleName="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
         </div>
       </div>
     )
@@ -146,5 +149,14 @@ function mapDispatchToProps(dispatch) {
 
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+Home.PropTypes = {
+    enterAnimation: {
+        duration: 2000,
+        animation: "slideDown"
+    },
+    leaveAnimation:{
+        duration: 2000,
+        animation:"slideUp"
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Home,styles,{allowMultiple:true}));

@@ -23,7 +23,7 @@ const webpackConfig = {
         alias: {
             'ui': 'components/ui/index.js'
         },
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json']
     },
     module: {}
 }
@@ -123,7 +123,7 @@ webpackConfig.module.loaders = [{
     loader: 'babel',
     query: {
         cacheDirectory: true,
-        plugins: ['transform-runtime', "add-module-exports"],
+        plugins: ['transform-runtime', "add-module-exports","transform-object-assign"],
         presets: __DEV__
             ? ['es2015', 'react', 'stage-0', 'react-hmre']
             : ['es2015', 'react', 'stage-0']
