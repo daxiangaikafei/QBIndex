@@ -159,7 +159,7 @@ webpackConfig.module.loaders.push(
   {
     test: /\.(less|css)$/,
     include: /(src|src\/static\/style)/,
-    exclude: /(node_modules|src\/views\/Home)/,
+    exclude: /(node_modules|src\/views\/Home\/)/,
     loaders: [
         'style',
         cssLoader,
@@ -169,7 +169,7 @@ webpackConfig.module.loaders.push(
   },
   {
     test: /\.(less|css)$/,
-    include: /src\/views\/Home/,
+    include: /src\/views\/Home\//,
     exclude: /node_modules/,
     loaders: [
         'style',
