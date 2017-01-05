@@ -4,11 +4,14 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { getCookie, setCookie } from 'libs/util'
+import { getCookie, setCookie, priceFormat } from 'libs/util'
 
 class Home extends Component {
+  levelOption = {"无":0,"C":25,"B":50,"A":75,"PRO":100}
   constructor(props) {
     super(props);
+    props.getLevel();
+    props.getUserInfo();
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
     };
@@ -29,14 +32,15 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    var renderGauge = this.renderGauge;
-    setTimeout(function(){
-      renderGauge(70);
-    },0);
-  }
-  handleCoverShow() {
 
   }
+  componentDidUpdate() {
+    if(this.props.isRenderGauge) {
+      this.renderGauge(this.levelOption[this.props.userInfo.level.toUpperCase()]);
+      this.props.isRenderGauge = false;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -46,8 +50,8 @@ class Home extends Component {
           <div styleName="content">
             <h5>QBII</h5>
             <h3>认证等级</h3>
-            <h1>A</h1>
-            <p>评估时间：<span>2016-12-12</span></p>
+            <h1>{this.props.userInfo.level}</h1>
+            <p>等级越高，可投项目越多</p>
             <div styleName="btn-group">
               <span styleName="btn"><Link to='/Theme'>晒身份</Link></span>
               <span styleName="btn"><Link to='/Home'>了解QBII</Link></span>
@@ -57,18 +61,18 @@ class Home extends Component {
         <div styleName="asset-container">
           <div styleName="item">
             <span>投入资产(元)</span>
-            <h3>1,395,345.29</h3>
+            <h3>{priceFormat(this.props.userInfo.assets/100)}</h3>
           </div>
           <div styleName="item">
             <span>累计收益(元)</span>
-            <h3>948,395.57</h3>
+            <h3>{priceFormat(this.props.userInfo.profit/100)}</h3>
           </div>
         </div>
         <div className="animated zoomIn" styleName={classNames("cover-container",{"active":this.state.isShowCover})}>
           <p>钱宝 5.0 <br/>开启你的资本之路</p>
           <div className="animated fadeIn" styleName="img"></div>
           <p styleName="txt">当前认证等级</p>
-          <h1>Pro</h1>
+          <h1>{this.props.levelInfo.level}</h1>
           <span styleName="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
         </div>
       </div>
@@ -143,9 +147,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetch(count){
-            dispatch({type: 'home/fetch', count});
-        }
+      getLevel(levelInfo){
+          dispatch({type: 'home/getLevel', levelInfo});
+      },
+      getUserInfo(userInfo){
+          dispatch({type: 'home/getUserInfo', userInfo});
+      }
 
     }
 }
