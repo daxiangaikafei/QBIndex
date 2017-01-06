@@ -33,7 +33,7 @@ class OrderConfirm extends Component {
 
                
 
-                <Area className="area-margin area-bottom" title="特色亮点" hasIcon={true} hasLine={true}>
+                <Area className="area-margin" title="特色亮点" hasIcon={true} hasLine={true}>
                     <ul className="area-rows">
                         <li><span>目标规模</span><span>3000万</span></li>
                         <li><span>目标规模</span><span>3000万</span></li>

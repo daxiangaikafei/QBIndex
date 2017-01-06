@@ -8,6 +8,11 @@ import "./index.less";
 class OrderConfirm extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            showData:{
+                
+            }
+        }
     }
     
     render() {
