@@ -65,3 +65,7 @@ export function priceFormat(price, n) {
       return t.split("").reverse().join("") + "." + r;
   }
 }
+
+export function tagStrFormat(str, num) {
+  return /(\d+)(\D)/ig.exec(str)[num]
+}
