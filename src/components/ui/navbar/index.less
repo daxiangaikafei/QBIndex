@@ -22,7 +22,7 @@
   -ms-flex: 1;
   flex: 1;
   -ms-flex-align: center;
-  height: 100%;
+  height: 44px;
   display: flex;
 }
 .qbii-navbar-container {
@@ -42,7 +42,13 @@
   .qbii-navbar-left {
     .navbar-flex-item;
     font-size: 15px;
-    margin-left: 15px;
+    align-items: center;
+
+    .left{
+      display: inline-block;
+      width: 15px;
+      height: 100%;
+    }
     .left-icon{
       margin-right: 5px;
       width: 10px;
@@ -64,17 +70,22 @@
 
     .navbar-flex-item;
     font-size: 15px;
-    margin-right: 15px;
     -webkit-box-pack: end;
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;
     justify-content: flex-end;
+    align-items: center;
 
     .right-icon{
       width: 20px;
       height: 18px;
       background:  url('static/imgs/nav/point.png') no-repeat center;
       background-size: 20px auto;
+    }
+    .right{
+      display: inline-block;
+      width: 15px;
+      height: 100%;
     }
   }
 }

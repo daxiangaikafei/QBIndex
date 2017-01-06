@@ -71,8 +71,8 @@ class Home extends Component {
             <h1>{this.props.userInfo.level}</h1>
             <p>等级越高，可投项目越多</p>
             <div styleName="btn-group">
-              <span styleName="btn">晒身份</span>
-              <span styleName="btn">了解QBII</span>
+              <span styleName="btn"><Link to='/Theme'>晒身份</Link></span>
+              <span styleName="btn"><Link to='/HomeDo'>了解QBII</Link></span>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ class Home extends Component {
             <h3>{priceFormat(this.props.userInfo.profit/100)||0.00}</h3>
           </div>
         </div>
-        <div styleName="list-container" className={classNames({"hide":!this.props.projInfo.projectInfo.projectId})}>
+        <div styleName="list-container" className={classNames({"hide":!this.props.projInfo.projectInfo.projectId})} onClick={()=>QBFK.Business.go('/OrderInfo')}>
           <div styleName="item">
             <div styleName="banner">
               <img src={this.props.projInfo.pics} alt=""/>

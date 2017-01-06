@@ -1,91 +1,133 @@
 import React, { Component, PropTypes } from 'react';
 import { VelocityComponent }  from "velocity-react";
 
+import isArray from "lodash/isArray";
+
+console.log("isArray",isArray);
+
 
 class Ring extends Component {
     constructor(props) {
         super(props);
-
-        let anAfter = this.getAn(props);
+        this.draw = this.draw.bind(this);
         this.state = {
-            "doAn":false,
-            "anBefore":{
-                duration:500,
-                animation:{
-                    height:"70px",
-                    rotateZ:0
-                },
-            },
-            "anAfter":{
-                duration:500,
-                animation:anAfter
-            }
+            images:false
         }
-
-        this.handClick = this.handClick.bind(this);
-
     }
-    getAn(props){
-        let {level,totalLevel} = props;
-        //level = level-1;
-        let sunLevel = Number(totalLevel);
-        let rz = (180/sunLevel)*level||0;
-        //let endHeight = rz>135?50:70;
-        let endHeight = (70-50)/sunLevel*level;
-        endHeight = 70 -endHeight;
 
-        console.log("动画 ",{
-            height:endHeight,
-            rotateZ:rz
+    componentWillMount(){
+        var self = this;
+        require.ensure([],function(a,b,c,d){
+            let arr = [];
+            for(let i=0;i<6;i++){
+                arr.push(require("static/imgs/theme/sun-header"+i+".jpg"))
+            }
+            self.setState({
+                images:arr
+            })
         });
-        return {
-            height:endHeight,
-            rotateZ:rz
+    }
+
+    componentWillUpdate(nextProps,nextState){
+        
+        if(nextState.images&&isArray(nextState.images)&&(nextProps.showNum!==this.props.showNum)||this.state.images == false){
+            //console.error("--------------");
+            this.draw(70,nextState.images[nextProps.showNum],nextProps.levelName);
         }
     }
     
     componentDidMount(){
-        var self = this;
-        self.setState({
-            doAn:true
-        });
+        // var self = this;
         
+        // setTimeout(function(){
+        //     self.draw(70,"static/imgs/theme/sun-header0.jpg","Pro");
+        // },1000)
+
     }
-    handClick(){
-        var self = this;
-            console.log("ppppppppp")
-            self.setState({
-                doAn:!self.state.doAn
-            })
+    getAngle(value) {
+  		var min=2.72,max=6.65;
+  		return (max - min) / 100 * value + min;
+  	}
+    draw(displayValue,url,level){
+        	var angle = 0.14, innerAngle = angle;
+            var displayAngle = this.getAngle(displayValue), innerDisplayAngle = displayAngle;
+            var radius = 60, innerRadius = radius - 8, iconRadius = radius - 16;
+            
+            var startX, startY, x, y, length = 88;
+            var img = document.createElement("img");
+            img.src = url;
+            img.crossOrigin = "*";
+            img.addEventListener("load",function(){
+                    //let ring = document.getElementById("ring");
+                    var canvas = document.getElementById("canvas");
+                    let width = canvas.offsetWidth;
+                    let height = canvas.offsetHeight;
+                    
+                    let wi = img.width,hi = img.height;
+                    let per = (height)/hi;
+
+                    canvas.width = wi*per;
+                    canvas.height = canvas.offsetHeight;
+
+                    var w = canvas.width/2;
+                    var h = 100;
+                    canvas.style.width = wi*per+"px";
+
+
+                    var ctx = canvas.getContext("2d");
+                    ctx.drawImage(img,0,0, wi*per, hi*per);
+                    ctx.restore();
+
+                    ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+                    ctx.beginPath();
+                    ctx.arc(w, h, radius, (1 - angle) * Math.PI, (2 + angle) * Math.PI, false);
+                    ctx.lineWidth = 1;
+                    ctx.lineCap = "round";
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(w, h, innerRadius, (1 - angle) * Math.PI, (2 + angle) * Math.PI, false);
+                    ctx.setLineDash([1,4])
+                    ctx.stroke();
+
+                    ctx.strokeStyle = "rgb(255, 255, 255)";
+                    ctx.beginPath();
+                    ctx.setLineDash([0]);
+                    ctx.arc(w, h, radius, (1 - angle) * Math.PI, displayAngle, false);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.setLineDash([1,3]);
+                    ctx.arc(w, h, innerRadius, (1 - innerAngle) * Math.PI, innerDisplayAngle, false);
+                    ctx.stroke();
+
+                    ctx.font="12px Helvetica";
+                    ctx.textAlign = "center";
+                    ctx.fillStyle = "white";
+                    ctx.fillText("QBII",116,70);
+                    ctx.fillText("认证等级",116,84);
+
+                    ctx.font="40px Helvetica";
+                    ctx.fillText(level,116,126);
+                    
+                    var strDataURI = canvas.toDataURL("image/jpeg");
+                    console.log(strDataURI)
+
+            },false);       
+
+           
     }
     render() {
         let {levelName} = this.props;
-        let anProps = this.state.doAn===false?this.state.anBefore:this.state.anAfter;
         return (
-            <div className="ring" onClick={this.handClick}>
-                <div className="container-ring">
-                    <span className="outer-ring"></span>
-                    <span className="inner-ring"></span>
-                    <div className="content-ring">
-                        <span>QBII</span>
-                        <span>认证等级</span>
-                        <span>{levelName}</span>
-                    </div>
-
-                </div>
-                <VelocityComponent  {...anProps}>
-                    <div className="container-ring-hide">
-                        <span className="outer-ring"></span>
-                        <span className="inner-ring"></span>
-                    </div>
-                </VelocityComponent>
-            </div>
-
+                <canvas id="canvas" className="ring"></canvas>
+           
         )
     }
 }
 Ring.defaultProps = {
-    level: 5,
+    level: 0,
+    showNum:false,
     levelName:"Pro",
     totalLevel:5
 }

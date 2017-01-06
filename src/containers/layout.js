@@ -5,25 +5,28 @@ import '../static/style/animate.less'
 import { NavBar } from 'ui'
 
 function CoreLayout ({ children, location }) {
-    console.log(location.action);
+  var viewHeight = window.innerHeight - 44 ;
   return (
     <div>
-      <NavBar {...arguments[0]}/>
-      <ReactCSSTransitionGroup component='main'
-      transitionName={{
-        enter: 'default-enter',
-        enterActive: location.action == 'PUSH'?'fadeInLeft':'fadeInRight',
-        leave: 'default-leave',
-        leaveActive: location.action == 'PUSH'?'fadeOutRight':'fadeOutLeft'
-      }}
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={500}
-      >
-      {React.cloneElement(children, {
-        key: location.pathname
-      })
-      }
-    </ReactCSSTransitionGroup>
+        <NavBar {...arguments[0]}/>
+        <main style={{height:viewHeight,overflow: 'hidden'}}>
+        <ReactCSSTransitionGroup component='div'
+         transitionName={{
+            enter: 'default-enter',
+            enterActive: location.action == 'PUSH'?'fadeInLeft':'fadeInRight',
+            leave: 'default-leave',
+            leaveActive: location.action == 'PUSH'?'fadeOutRight':'fadeOutLeft'
+          }}
+         style={{overflowY: 'scroll',height: '100%'}}
+         transitionEnterTimeout={500}
+         transitionLeaveTimeout={500}
+        >
+        {React.cloneElement(children, {
+            key: location.pathname
+        })
+        }
+        </ReactCSSTransitionGroup>
+        </main>
   </div>
   )
 }
