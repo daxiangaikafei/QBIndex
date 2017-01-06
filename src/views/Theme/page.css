@@ -22,10 +22,12 @@
 .header {
   display: flex;
   width: 100%;
-  height: 60%;
+  height: 29rem;
   background: #e5e5e5;
   align-items: center;
   justify-content: center;
+  position: relative;
+  margin-top: 20px;
 }
 .header img {
   width: 65%;
@@ -99,9 +101,9 @@
 .ring {
   position: absolute;
   overflow: hidden;
-  width: 120px;
-  height: 70px;
-  top: 46px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 .container-ring,
 .container-ring-hide {
