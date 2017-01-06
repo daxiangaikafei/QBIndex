@@ -44,6 +44,7 @@ class NavBar extends React.Component {
   componentDidMount(){
     var self = this
     QBFK.Business.clientGoBack = () => self._handleClick()
+    QBFK.Business.go = (url) => self.context.router.push(url)
   }
 
 

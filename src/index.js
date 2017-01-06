@@ -9,11 +9,14 @@ import FastClick from 'fastclick'
 import router from './routes'
 import utilss from './libs/util'
 
+import business from './model/business'
 import model from './model'
 
 const app = dva()
 
+app.model(business)
 app.model(model)
+
 
 // 3. Router
 app.router(router)

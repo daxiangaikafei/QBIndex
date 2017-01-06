@@ -69,7 +69,7 @@ class OrderConfirm extends Component {
                 <div className="step-end" >
                     <button><span className="step-heart"></span></button>
                     <button><span className="step-download"></span></button>
-                    <button className="step-btn-end">我有意向</button>
+                    <button className="step-btn-end" onClick={()=>QBFK.Business.go('/OrderConfirm')}>我有意向</button>
                 </div>
 
 

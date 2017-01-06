@@ -5,35 +5,39 @@ import React, { PropTypes } from 'react'
 import './index.less'
 
 class Dialog extends React.Component {
-    constructor (props, context) {
+    constructor(props, context) {
         super(props, context)
-        this.state = {
-            show: true,
-            type: 'error'
-        }
     }
-    render () {
+
+
+    render() {
+        if(!this.props.show)return(<div></div>)
+
         return (
-            <div className='sweet-alert showSweetAlert visible block'
-                 data-has-cancel-button='false'
-                 data-has-confirm-button='true'
-                 data-animation='pop'>
+            <div className='sweet-mask'>
+                <div className='sweet-alert showSweetAlert visible block'
+                     data-has-cancel-button='false'
+                     data-has-confirm-button='true'
+                     data-animation='pop'>
 
-                <Header type='success'/>
+                    <Header type={this.props.type}/>
 
-                <div className='sa-icon sa-custom'></div>
-                <p style={{display: 'block','paddingBottom': '20px'}}>您已成功开通会员</p>
-                <p style={{display: 'block'}} ></p>
-                <fieldset>
-                    <input type='text' tabIndex='3' placeholder=''/>
-                    <div className='sa-input-error'></div>
-                </fieldset>
-                <div className='sa-error-container'>
-                    <div className='icon'>!</div>
-                    <p>Not valid!</p>
-                </div>
-                <div className='sa-button-container'>
-                    <button className='confirm' tabIndex='1' style={{display: 'inline-block', 'boxShadow': 'rgba(174, 222, 244, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset','backgroundColor':'#427CF3'}}>确认</button>
+                    <fieldset>
+                        <input type='text' tabIndex='3' placeholder='请输入你的姓名' value={this.props.data.name}/>
+                        <div className='sa-input-error'></div>
+                    </fieldset>
+                    <fieldset>
+                        <input type='text' tabIndex='3' placeholder='请输入你的电话' value={this.props.data.phone}/>
+                        <div className='sa-input-error'></div>
+                    </fieldset>
+
+                    <div className={this.props.errorShow?'sa-error-container':'sa-error-container hide'}>
+                        <div className='icon'>!</div>
+                        <p>Not valid!</p>
+                    </div>
+                    <div className='sa-button-container'>
+                        <button className='confirm' tabIndex='1' onClick={this.props.buttonConfirm}>好的</button>
+                    </div>
                 </div>
             </div>)
     }
@@ -42,32 +46,49 @@ class Dialog extends React.Component {
 
 const Header = ({type}) => {
     return (
-        <div className={type == 'success'?'sa-icon sa-'+type+' animate block':'sa-icon sa-'+type+' block'}>
+        <div>
             {
                 [type].map(function (name) {
                     if (name == 'error') {
-                        return (<span class="sa-x-mark" key={name}> 
+                        return (<div className={type == 'success'?'sa-icon sa-'+type+' animate block':'sa-icon sa-'+type+' block'}>
+                                <span class="sa-x-mark" key={name}> 
                                     <span className="sa-line sa-left"></span> 
                                     <span className="sa-line sa-right"></span> 
-                                </span>)
+                                </span></div>)
                     }
                     else if (name == 'info') {
-                        var doms = [];
-                        doms.push(<span className='sa-body' key={name}></span>)
-                        doms.push(<span className='sa-dot'></span>)
-                        return (doms)
+                        return (<div className={type == 'success'?'sa-icon sa-'+type+' animate block':'sa-icon sa-'+type+' block'}>
+                                    <span className='sa-body' key={name}></span>
+                                    <span className='sa-dot'></span>
+                                </div>)
                     }
                     else if (name == 'success')
-                        return (
-                            <div className='sa-icon sa-success animate block' key={name}>
-                                <span className='sa-line sa-tip animateSuccessTip'></span>
-                                <span className='sa-line sa-long animateSuccessLong'></span>
-                                <div className='sa-placeholder'></div>
-                                <div className='sa-fix'></div>
-                            </div>)
+                        var domT = []
+                        domT.push(<div className="sa-title">预约成功</div>)
+                        domT.push(<div className={type == 'success'?'sa-icon sa-'+type+' animate block':'sa-icon sa-'+type+' block'}>
+                                        <div className='sa-icon sa-success animate block' key={name}>
+                                        <span className='sa-line sa-tip animateSuccessTip'></span>
+                                        <span className='sa-line sa-long animateSuccessLong'></span>
+                                        <div className='sa-placeholder'></div>
+                                        <div className='sa-fix'></div>
+                                    </div></div>)
+                        domT.push(<p className="sa-fileds">我们将在10分钟内给您回电</p>)
+                        domT.push(<p style={{display: 'block'}} ></p>)
+                        return (domT)
                 })
             }
         </div>)
+}
+
+Dialog.defaultProps = {
+    type: 'success',
+    buttonConfirm: function () {
+    },
+    errorShow: false,
+    data: {
+        name: '',
+        phone: 0
+    }
 }
 
 
