@@ -3,6 +3,7 @@ import { Route, IndexRoute, Router } from 'dva/router'
 import CoreLayout from '../containers/layout'
 import Home from 'views/Home/page'
 import HomeDo from 'views/HomeDo/page'
+import About from 'views/About/page'
 
 import AnDemo from "views/AnDemo/page";
 import Theme from "views/Theme/page";
@@ -21,8 +22,8 @@ export default function (ref) {
         <Route path='/Theme' component={Theme} name="晒身份"/>
         <Route path='/OrderConfirm' component={OrderConfirm} name="订单确认"/>
         <Route path='/OrderInfo' component={OrderInfo} name="XXX详情"/>
+        <Route path='/About' component={About} name="了解QBII"/>
       </Route>
     </Router>
   )
 }
-
