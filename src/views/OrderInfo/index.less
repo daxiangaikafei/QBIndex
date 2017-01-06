@@ -85,10 +85,12 @@
     .area-rows{
          span{
             display: block;
-            float: right;
+            //float: right;
             line-height: 18px;
+            color:#757575;
             &:first-child{
-                float: left;
+                //float: left;
+                color: rgb(0,0,0);
             }
          }
         li{
@@ -99,10 +101,25 @@
             }
             padding: 16px 15px;
             border-bottom: 1px solid #ececec;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
             &:last-child{
                 border-bottom-width: 0;
             }
         }
+    }
+    .area-p{
+        color: #757575;
+        font-size: 13px;
+        line-height: 15px;
+        letter-spacing: 2px;
+        width: 100%;
+        padding: 5px 0;
+        // p{
+        //     margin: 10px 0;
+        // }
+
     }
     
     
@@ -388,6 +405,9 @@
         .bgimage("heart.png",contain);
         height: 18px;
         
+    }
+    .heart-line{
+        .bgimage("heart-line.png",contain);
     }
     .step-download{
          .bgimage("down.png",contain);

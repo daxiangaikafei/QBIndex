@@ -10,7 +10,7 @@ class Area extends Component {
     constructor(props) {
         super(props);
         this.state={
-            shrink:false,
+            shrink:props.isClose,
             "anBefore":{
                 duration:300,
                 animation:{
@@ -59,6 +59,7 @@ Area.defaultProps = {
     className:"area-margin",
     hasIcon:true,
     hasLine:false,
+    isClose:false,
     enterAnimation: {
         duration: 300,
         animation: "slideDown"

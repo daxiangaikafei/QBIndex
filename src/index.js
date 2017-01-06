@@ -8,11 +8,14 @@ import FastClick from 'fastclick'
 import model from './model'
 import router from './routes'
 
+import modelOrderInfo from './model/orderInfo';
+
 const app = dva({
     history: browserHistory
 })
 
-app.model(model)
+app.model(model);
+app.model(modelOrderInfo)
 
 // 3. Router
 app.router(router)
