@@ -23,11 +23,11 @@ class Dialog extends React.Component {
                     <Header type={this.props.type}/>
 
                     <fieldset>
-                        <input type='text' tabIndex='3' placeholder='请输入你的姓名' value={this.props.data.name}/>
+                        <input type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
                         <div className='sa-input-error'></div>
                     </fieldset>
                     <fieldset>
-                        <input type='text' tabIndex='3' placeholder='请输入你的电话' value={this.props.data.phone}/>
+                        <input type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
                         <div className='sa-input-error'></div>
                     </fieldset>
 
