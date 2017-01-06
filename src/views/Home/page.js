@@ -86,7 +86,7 @@ class Home extends Component {
             <h3>{priceFormat(this.props.userInfo.profit/100)||0.00}</h3>
           </div>
         </div>
-        <div styleName="list-container" className={classNames({"hide":!this.props.projInfo.projectInfo.projectId})} onClick={()=>QBFK.Business.go('/OrderInfo')}>
+        <div styleName="list-container" className={classNames({"hide":!this.props.projInfo.projectInfo.projectId})}>
           <div styleName="item">
             <div styleName="banner">
               <img src={this.props.projInfo.pics} alt=""/>
@@ -144,7 +144,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <div styleName="more">查看详情</div>
+            <div styleName="more" onClick={()=>QBFK.Business.go('/OrderInfo')}>查看详情</div>
           </div>
         </div>
         <div styleName="news-container">
