@@ -4,11 +4,15 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { getCookie, setCookie } from 'libs/util'
+import { getCookie, setCookie, priceFormat } from 'libs/util'
 
 class Home extends Component {
+  levelOption = {"无":0,"C":25,"B":50,"A":75,"PRO":100}
+  levelShow = ["无","C","B","A","Pro"]
   constructor(props) {
     super(props);
+    props.getLevel();
+    props.getUserInfo();
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
     };
@@ -29,14 +33,16 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    var renderGauge = this.renderGauge;
-    setTimeout(function(){
-      renderGauge(70);
-    },0);
-  }
-  handleCoverShow() {
 
   }
+  componentDidUpdate() {
+    if(this.props.isRenderGauge) {
+      this.renderGauge(this.levelOption[this.props.userInfo.level.toUpperCase()]);
+      // this.renderGauge(this.levelOption[this.props.userInfo.level]);
+      this.props.isRenderGauge = false;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -46,8 +52,8 @@ class Home extends Component {
           <div styleName="content">
             <h5>QBII</h5>
             <h3>认证等级</h3>
-            <h1>A</h1>
-            <p>评估时间：<span>2016-12-12</span></p>
+            <h1>{this.props.userInfo.level}</h1>
+            <p>等级越高，可投项目越多</p>
             <div styleName="btn-group">
               <span styleName="btn">晒身份</span>
               <span styleName="btn" onClick={this.showCoverHandler}>了解QBII</span>
@@ -57,18 +63,81 @@ class Home extends Component {
         <div styleName="asset-container">
           <div styleName="item">
             <span>投入资产(元)</span>
-            <h3>1,395,345.29</h3>
+            <h3>{priceFormat(this.props.userInfo.assets/100)}</h3>
           </div>
           <div styleName="item">
             <span>累计收益(元)</span>
-            <h3>948,395.57</h3>
+            <h3>{priceFormat(this.props.userInfo.profit/100)}</h3>
           </div>
+        </div>
+        <div styleName="list-container">
+          <div styleName="item">
+            <div styleName="banner">
+              <img src={require("static/imgs/home/banner.png")} alt=""/>
+            </div>
+            <div styleName="title">
+              冰穹互娱股权出让
+              <small>
+                <i styleName="icon icon-item"></i>
+                <span>游戏 / 应用市场</span>
+              </small>
+              <i styleName="icon icon-arrow active"></i>
+            </div>
+            <div styleName="tag">
+              <div styleName="tag-item">
+                <div styleName="tag-name">近一年增值</div>
+                <div styleName="tag-value"><span styleName="increase">+14.67%</span></div>
+              </div>
+              <div styleName="tag-item">
+                <div styleName="tag-name">游戏市场</div>
+                <div styleName="tag-value"><span styleName="count">529</span>款</div>
+              </div>
+              <div styleName="tag-item">
+                <div styleName="tag-name">在线应用</div>
+                <div styleName="tag-value"><span styleName="count">74</span>个</div>
+              </div>
+            </div>
+            <div className="animated slideDown" styleName="info">
+              <span styleName="pointer"></span>
+            </div>
+            <div styleName="more">查看详情</div>
+          </div>
+        </div>
+        <div styleName="news-container">
+          <div styleName="title">
+            <div styleName="name">最新资讯</div>
+            <div styleName="more">
+              查看更多
+              <i styleName="icon icon-arrow"></i>
+            </div>
+          </div>
+          <div styleName="item">
+            <div styleName="img">
+              <img src={require("static/imgs/home/theme1.png")} alt=""/>
+            </div>
+            <div styleName="item-title">
+              公布QBII入围标准与权利
+              <small>6年蜕变，4年变局，帷幕徐启</small>
+            </div>
+          </div>
+          <div styleName="item">
+            <div styleName="img">
+              <img src={require("static/imgs/home/theme2.png")} alt=""/>
+            </div>
+            <div styleName="item-title">
+              成为一名钱宝5.0时代的QBII
+              <small>6年蜕变，4年变局，帷幕徐启</small>
+            </div>
+          </div>
+        </div>
+        <div styleName="bottom-container">
+          更多项目，敬请期待
         </div>
         <div className="animated zoomIn" styleName={classNames("cover-container",{"active":this.state.isShowCover})}>
           <p>钱宝 5.0 <br/>开启你的资本之路</p>
           <div className="animated fadeIn" styleName="img"></div>
           <p styleName="txt">当前认证等级</p>
-          <h1>Pro</h1>
+          <h1>{this.props.levelInfo.level}</h1>
           <span styleName="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
         </div>
       </div>
@@ -118,7 +187,7 @@ class Home extends Component {
 
   	var startX, startY, x, y, length = 88;
   	var img = document.createElement("img");
-  	img.src = require("static/imgs/pointer.png");
+  	img.src = require("static/imgs/home/pointer.png");
   	img.addEventListener("load",function(){
   		startX = Math.round(w + 5 * Math.cos(displayAngle - Math.PI / 2))
   		startY = Math.round(h + 7.25 * Math.sin(displayAngle - Math.PI / 2));
@@ -143,9 +212,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetch(count){
-            dispatch({type: 'home/fetch', count});
-        }
+      getLevel(levelInfo){
+          dispatch({type: 'home/getLevel', levelInfo});
+      },
+      getUserInfo(userInfo){
+          dispatch({type: 'home/getUserInfo', userInfo});
+      }
 
     }
 }

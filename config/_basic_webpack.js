@@ -152,14 +152,14 @@ const cssModulesLoader = !config.compiler_css_modules
     'css?modules',
     'sourceMap',
     'importLoaders=1',
-    'localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+    'localIdentName=[path]___[name]__[local]___[hash:base64:5]'
 ].join('&')
 
 webpackConfig.module.loaders.push(
   {
     test: /\.(less|css)$/,
     include: /(src|src\/static\/style)/,
-    exclude: /(node_modules|src\/views\/Home)/,
+    exclude: /(node_modules|src\/views\/Home\/)/,
     loaders: [
         'style',
         cssLoader,
@@ -169,7 +169,7 @@ webpackConfig.module.loaders.push(
   },
   {
     test: /\.(less|css)$/,
-    include: /src\/views\/Home/,
+    include: /src\/views\/Home\//,
     exclude: /node_modules/,
     loaders: [
         'style',
