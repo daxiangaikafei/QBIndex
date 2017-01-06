@@ -18,13 +18,12 @@ debug(`apply webpack config for NODE_ENV "${config.env}"`)
 const webpackConfig = {
     name: 'client',
     target: 'web',
-    devtool:"eval-source-map",
     resolve: {
         root: paths.base(config.dir_client),
         alias: {
             'ui': 'components/ui/index.js'
         },
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json']
     },
     module: {}
 }
@@ -61,7 +60,7 @@ webpackConfig.plugins = [
         hash: false,
         //favicon: paths.client('static/favicon.ico'),
         filename: 'index.html',
-        inject: 'body',
+        inject: 'html',
         minify: {
             collapseWhitespace: true
         }
@@ -124,7 +123,7 @@ webpackConfig.module.loaders = [{
     loader: 'babel',
     query: {
         cacheDirectory: true,
-        plugins: ['transform-runtime', "add-module-exports"],
+        plugins: ['transform-runtime', "add-module-exports","transform-object-assign"],
         presets: __DEV__
             ? ['es2015', 'react', 'stage-0', 'react-hmre']
             : ['es2015', 'react', 'stage-0']
@@ -180,9 +179,9 @@ webpackConfig.module.loaders.push(
   }
 )
 
-// webpackConfig.lessLoader = {
-//     includePaths: paths.base('styles')
-// }
+//webpackConfig.lessLoader = {
+//    includePaths: paths.base('styles')
+//}
 
 webpackConfig.postcss = [
     cssnano({
@@ -208,7 +207,7 @@ webpackConfig.module.loaders.push(
     { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
     { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
     { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
-    { test: /\.(png|jpg|gif)$/,    loader: 'url?limit=10240' }
+    { test: /\.(png|jpg|gif)$/,    loader: 'url?limit=1024&name=images/[path][name].[ext]' }
 )
 
 // ------------------------------------

@@ -1,27 +1,40 @@
 import React from 'react'
-import { connect } from 'dva'
 import './page.less'
 import { Link } from 'react-router'
+import { Dialog } from 'ui'
 
-const App = (model) => {
-  return (
-    <div className='HomeDo'>
-      {model.loading ? <div>loading...</div> : <div>{model.count}</div>}
-      <button onClick={() => model.fetch(model.count)}>add</button>
-      <Link to='/Home'>跳转</Link>
-    </div>
-  )
-}
-
-function mapStateToProps (state) {
-  return state.demo
-}
-
-function mapDispatchToProps (dispatch) {
-  return {
-    fetch (count) {
-      dispatch({type: 'demo/fetch', count})
+class AppS extends React.Component {
+    constructor(props, context) {
+        super(props, context)
+        this.state = {
+            errorShow: true,
+            show: false,
+            data: {
+                name: 'xiaolin',
+                phone: 13391257557
+            }
+        }
     }
-  }
+
+    operate() {
+        if (this.state.show) {
+            this.setState({
+                show:false
+            });
+        }
+        else if (!this.state.show) {
+            this.setState({
+                show:true
+            });
+        }
+    }
+
+    render() {
+        return (<div className='HomeDo'>
+            <button onClick={()=>this.operate()}>弹窗</button>
+            <Dialog buttonConfirm={()=>this.operate()} show={this.state.show}  data={this.state.data}></Dialog>
+        </div>)
+    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default AppS

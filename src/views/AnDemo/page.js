@@ -4,8 +4,6 @@ import "./page.less";
 import { VelocityComponent, VelocityTransitionGroup } from "velocity-react";
 import {withRouter} from "react-router";
 
-// require('velocity-animate');
-// require('velocity-animate/velocity.ui');
 
 class AnDemo extends Component {
     constructor(props) {

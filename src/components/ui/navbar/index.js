@@ -18,7 +18,6 @@ class NavBar extends React.Component {
       title: '',
       pathName: ''
     }
-
   }
 
   _filter (pathname, route) {
@@ -39,31 +38,40 @@ class NavBar extends React.Component {
         break
     }
 
-    this.state.pathName = pathname;
+    this.state.pathName = pathname
+  }
+
+  componentDidMount(){
+    var self = this
+    QBFK.Business.clientGoBack = () => self._handleClick()
+    QBFK.Business.go = (url) => self.context.router.push(url)
   }
 
 
   _handleClick () {
+
     this.state.pathName != '/' &&
     this.context.router.goBack()
+
+    this.state.pathName == '/' &&
+    typeof  QBaoJSBridge != 'undefined' &&
+    QBaoJSBridge.QBIIClose()
   }
 
   render () {
     this._getTitle()
     return (
       <div className="qbii-navbar-container">
-        <div className='qbii-navbar-top'></div>
         <div className='qbii-navbar qbii-navbar-light'>
           <div className='qbii-navbar-left' onClick={() => this._handleClick()}>
-            <span className='left-icon'>
-            </span>
+            <span className='left'></span>
+            <span className='left-icon'></span>
           </div>
           <div className='qbii-navbar-title'>{this.state.title}</div>
           <div className='qbii-navbar-right'>
             <span className='right-icon'></span>
+            <span className='right'></span>
           </div>
-        </div>
-        <div className='qbii-navbar-bottom'>
         </div>
       </div>
     )

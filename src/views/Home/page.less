@@ -15,7 +15,23 @@ html, body {
   background: @bodyBGColor;
   height: 100%;
 }
-
+:global {
+  .extend {
+    position: relative;
+  }
+  .extend:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    z-index: 10;
+  }
+  .hide {
+    display: none;
+  }
+}
 main{
   /** 首页头部 **/
   .top-container {
@@ -74,11 +90,12 @@ main{
         font-size: 10px;
         font-weight: 200;
         opacity: .5;
+        line-height: 2;
       }
 
       .btn-group {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 12px;
         .btn {
           display: inline-block;
           width: 100px;
@@ -88,6 +105,9 @@ main{
           font-size: 13px;
           line-height: 30px;
           margin: 0 10px;
+          a{
+            color: @txtColor;
+          }
         }
       }
     }
@@ -133,7 +153,7 @@ main{
     background: #fff;
     .item {
       .banner {
-        height: 150px;
+        height: auto;
       }
       .title {
         font-size: 16px;
@@ -176,9 +196,38 @@ main{
         height: 70px;
         padding-left: 20px;
         box-sizing: border-box;
+        -webkit-align-items: center;
+        align-items: center;
         .tag-item {
           -webkit-flex:1;
           flex: auto;
+          position: relative;
+          .pointer {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent @listBdColor transparent;
+            position: absolute;
+            bottom: -11px;
+            left: 0;
+            z-index: 1;
+            visibility: hidden;
+            &.active {
+              visibility: visible;
+            }
+            &:before {
+              content:"";
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 0 10px 10px 10px;
+              border-color: transparent transparent #fff transparent;
+              position: absolute;;
+              top: 1px;
+              left: -10px;
+            }
+          }
           .tag-name {
             font-size: 12px;
           }
@@ -199,34 +248,44 @@ main{
       .info {
         height: 0px;
         visibility: hidden;;
+        overflow: hidden;
         border-top: 1px solid @listBdColor;
         position: relative;
         transition: height .5s,visibility .5s;
         &.active {
           visibility: visible;
-          height: 250px;
+          height: 260px;
+        }
+        :global {
+          .recharts-wrapper {
+            margin: 0 auto;
+          }
         }
 
-        .pointer {
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 0 10px 10px 10px;
-          border-color: transparent transparent @listBdColor transparent;
-          position: absolute;
-          top: -10px;
-          left: 20px;
-          &:before {
-            content:"";
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 10px 10px 10px;
-            border-color: transparent transparent #fff transparent;
-            position: absolute;;
-            top: 1px;
-            left: -10px;
+        .info-title {
+          color: @subTxtColor;
+          font-size: 12px;
+          margin-top: 10px;
+          text-align: center;
+        }
+        .info-progress {
+          display: -webkit-flex;
+          display: -ms-flex;
+          display: flex;
+          padding: 0 20px;
+          box-sizing: border-box;
+          justify-content: space-around;
+          .count {
+            font-size: 14px;
+            line-height: 20px;
+            span {
+              display: inline-block;
+            }
           }
+          .progress-container {
+            text-align: right;
+          }
+
         }
       }
       .more {
@@ -324,12 +383,20 @@ main{
     text-align: center;
     margin-top: 10px;
     background: url("static/imgs/home/bottom-bg.png") no-repeat center;
-    background-size: contain;
+    background-size: cover;
     height: 67px;
     color: #b2b2b2;
     padding-top: 32px;
     box-sizing: border-box;
     font-weight: 200;
+    position: relative;
+    span {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
   }
 
   /** 了解QBII弹层 **/
