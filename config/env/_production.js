@@ -10,5 +10,6 @@ export default config => ({
         chunkModules : true,
         colors : true
     }
-    ,compiler_public_path: `http://${config.server_host}/`
+    ,compiler_public_path: `../../public/`
+    //,compiler_public_path: `//${config.server_host}/mqbii/`
 })

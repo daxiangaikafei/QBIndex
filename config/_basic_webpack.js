@@ -60,7 +60,7 @@ webpackConfig.plugins = [
         hash: false,
         //favicon: paths.client('static/favicon.ico'),
         filename: 'index.html',
-        inject: 'body',
+        inject: 'html',
         minify: {
             collapseWhitespace: true
         }
@@ -134,7 +134,7 @@ webpackConfig.module.loaders = [{
         loader: 'json'
     }]
 
-// Styles
+    // Styles
 const cssLoader = !config.compiler_css_modules
     ? 'css?sourceMap'
     : [
@@ -144,21 +144,44 @@ const cssLoader = !config.compiler_css_modules
     'localIdentName=[local]'
 ].join('&')
 
-webpackConfig.module.loaders.push({
-    test: /\.(less|css)$/,
-    include: /(src|src\/static\/style)/,
-    exclude: /node_modules/,
-    loaders: [
-        'style',
-        cssLoader,
-        'postcss',
-        'less'
-    ]
-})
+// CSS-Modules
+const cssModulesLoader = !config.compiler_css_modules
+    ? 'css?sourceMap'
+    : [
+    'css?modules',
+    'sourceMap',
+    'importLoaders=1',
+    'localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+].join('&')
 
-webpackConfig.lessLoader = {
-    includePaths: paths.base('styles')
-}
+webpackConfig.module.loaders.push(
+    {
+        test: /\.(less|css)$/,
+        include: /(src|src\/static\/style)/,
+        exclude: /(node_modules|src\/views\/Home\/)/,
+        loaders: [
+            'style',
+            cssLoader,
+            'postcss',
+            'less'
+        ]
+    },
+    {
+        test: /\.(less|css)$/,
+        include: /src\/views\/Home\//,
+        exclude: /node_modules/,
+        loaders: [
+            'style',
+            cssModulesLoader,
+            'postcss',
+            'less'
+        ]
+    }
+)
+
+//webpackConfig.lessLoader = {
+//    includePaths: paths.base('styles')
+//}
 
 webpackConfig.postcss = [
     cssnano({

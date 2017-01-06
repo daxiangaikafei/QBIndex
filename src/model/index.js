@@ -31,10 +31,14 @@ export default {
       yield put({type: 'request', loading: true})
 
       let levelInfo = yield call(() => {
-        return fetch("/api/user/level",{},"GET")
-          .then(res => res.json())
-          .then(data => data.data)
-          .catch(err => ({ err }))
+        // return fetch("/api/user/level",{},"GET")
+        //   .then(res => res.json())
+        //   .then(data => data.data)
+        //   .catch(err => ({ err }))
+        return {
+      		"userId" : 11231,
+      		"level" : "Pro"
+        }
       }, action.levelInfo)
 
       yield put({
@@ -47,10 +51,16 @@ export default {
       yield put({type: 'request', loading: true})
 
       let userInfo = yield call(() => {
-        return fetch("/api/user/userInfo",{},"GET")
-          .then(res => res.json())
-          .then(data => data.data.user)
-          .catch(err => ({ err }))
+        // return fetch("/api/user/userInfo",{},"GET")
+        //   .then(res => res.json())
+        //   .then(data => data.data.user)
+        //   .catch(err => ({ err }))
+        return  {
+    			"id": 11231,
+    			"level": "Pro",
+    			"assets": 139534529,
+    			"profit": 94839557
+    		}
       }, action.userInfo)
 
       yield put({

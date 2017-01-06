@@ -5,9 +5,11 @@ import dva from 'dva'
 import { browserHistory } from 'dva/router';
 
 import FastClick from 'fastclick'
-import model from './model'
+
 import router from './routes'
 import utilss from './libs/util'
+
+import model from './model'
 
 const app = dva()
 
