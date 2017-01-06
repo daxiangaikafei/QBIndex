@@ -4,10 +4,19 @@ export default {
   namespace: 'home',
   state: {
     loading: false,
-    isShowCover: false,
-    isRenderGauge: false,
     levelInfo: {},
-    userInfo: {}
+    userInfo: {},
+    projInfo: {
+      projectAssets: {},
+      projectInfo: {
+        assetsRatio:[
+          {name: '--', value: 1},
+          {name: '--', value: 1},
+          {name: '--', value: 1}
+        ]
+      }
+    },
+    progressInfo: {}
   },
   effects: {
     // *'fetch' (action, {put, call}) {
@@ -28,55 +37,136 @@ export default {
     //   })
     // },
     *getLevel (action, {put, call}) {
-      yield put({type: 'request', loading: true})
+      yield put({type: 'levelReq', loading: true})
 
       let levelInfo = yield call(() => {
-        // return fetch("/api/user/level",{},"GET")
-        //   .then(res => res.json())
-        //   .then(data => data.data)
-        //   .catch(err => ({ err }))
-        return {
-      		"userId" : 11231,
-      		"level" : "Pro"
-        }
+        return fetch("/api/user/level",{},"GET")
+          .then(res => res.json())
+          .then(data => data.data)
+          .catch(err => ({
+        		"userId" : 111111,
+        		"level" : "D"
+           }))
       }, action.levelInfo)
 
       yield put({
-        type: 'response',
+        type: 'levelRes',
         loading: false,
         levelInfo
       })
     },
     *getUserInfo (action, {put, call}) {
-      yield put({type: 'request', loading: true})
+      yield put({type: 'userInfoReq', loading: true})
 
       let userInfo = yield call(() => {
-        // return fetch("/api/user/userInfo",{},"GET")
-        //   .then(res => res.json())
-        //   .then(data => data.data.user)
-        //   .catch(err => ({ err }))
-        return  {
-    			"id": 11231,
-    			"level": "Pro",
-    			"assets": 139534529,
-    			"profit": 94839557
-    		}
+        return fetch("/api/user/userInfo",{},"GET")
+          .then(res => res.json())
+          .then(data => data.data.user)
+          .catch(err => ({
+            "id": 111111,
+      			"level": "D",
+      			"assets": 0,
+      			"profit": 0
+          }))
       }, action.userInfo)
 
       yield put({
-        type: 'response',
+        type: 'userInfoRes',
         loading: false,
-        isRenderGauge:true,
         userInfo
+      })
+    },
+    *getProjInfo (action, {put, call}) {
+      yield put({type: 'projInfoReq', loading: true})
+
+      let projInfo = yield call(() => {
+        return fetch("/api/project/1",{},"GET")
+          .then(res => res.json())
+          .then(data => data.data.project)
+          .catch(err => ({
+            "assetsId": 1,
+            "id": 1,
+            "name": "--",
+            "pics": "",
+            "tag": "--",
+            "watched": 0,
+            "projectAssets": {},
+            "projectInfo": {
+                "assetsRatio": [
+                    {
+                        "name": "--",
+                        "value": 1
+                    },
+                    {
+                        "name": "--",
+                        "value": 1
+                    },
+                    {
+                        "name": "--",
+                        "value": 1
+                    }
+                ],
+                "id": 2,
+                "projectId": 1,
+                "tag1": "+0%",
+                "tag2": "0款",
+                "tag3": "0个",
+            },
+
+        }))
+      }, action.projInfo)
+
+      yield put({
+        type: 'projInfoRes',
+        loading: false,
+        projInfo
+      })
+    },
+    *getProgressInfo (action, {put, call}) {
+      yield put({type: 'progressInfoReq', loading: true})
+
+      let progressInfo = yield call(() => {
+        return fetch("/api/project/progress",{},"GET")
+          .then(res => res.json())
+          .then(data => data.data)
+          .catch(err => ({
+            "amount": 0,
+            "target": 0,
+            "user_count": 0
+          }))
+      }, action.progressInfo)
+
+      yield put({
+        type: 'progressInfoRes',
+        loading: false,
+        progressInfo
       })
     }
 
   },
   reducers: {
-    request (state, payload) {
+    levelReq (state, payload) {
       return {...state, ...payload}
     },
-    response (state, payload) {
+    levelRes (state, payload) {
+      return {...state, ...payload}
+    },
+    userInfoReq (state, payload) {
+      return {...state, ...payload}
+    },
+    userInfoRes (state, payload) {
+      return {...state, ...payload}
+    },
+    projInfoReq (state, payload) {
+      return {...state, ...payload}
+    },
+    projInfoRes (state, payload) {
+      return {...state, ...payload}
+    },
+    progressInfoReq (state, payload) {
+      return {...state, ...payload}
+    },
+    progressInfoRes (state, payload) {
       return {...state, ...payload}
     }
   }

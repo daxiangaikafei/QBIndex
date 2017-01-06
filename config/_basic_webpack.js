@@ -129,12 +129,12 @@ webpackConfig.module.loaders = [{
             : ['es2015', 'react', 'stage-0']
     }
 },
-    {
-        test: /\.json$/,
-        loader: 'json'
-    }]
+{
+    test: /\.json$/,
+    loader: 'json'
+}]
 
-    // Styles
+// Styles
 const cssLoader = !config.compiler_css_modules
     ? 'css?sourceMap'
     : [
@@ -155,28 +155,28 @@ const cssModulesLoader = !config.compiler_css_modules
 ].join('&')
 
 webpackConfig.module.loaders.push(
-    {
-        test: /\.(less|css)$/,
-        include: /(src|src\/static\/style)/,
-        exclude: /(node_modules|src\/views\/Home\/)/,
-        loaders: [
-            'style',
-            cssLoader,
-            'postcss',
-            'less'
-        ]
-    },
-    {
-        test: /\.(less|css)$/,
-        include: /src\/views\/Home\//,
-        exclude: /node_modules/,
-        loaders: [
-            'style',
-            cssModulesLoader,
-            'postcss',
-            'less'
-        ]
-    }
+  {
+    test: /\.(less|css)$/,
+    include: /(src|src\/static\/style)/,
+    exclude: /(node_modules|src\/views\/Home\/)/,
+    loaders: [
+        'style',
+        cssLoader,
+        'postcss',
+        'less'
+    ]
+  },
+  {
+    test: /\.(less|css)$/,
+    include: /src\/views\/Home\//,
+    exclude: /node_modules/,
+    loaders: [
+        'style',
+        cssModulesLoader,
+        'postcss',
+        'less'
+    ]
+  }
 )
 
 //webpackConfig.lessLoader = {
