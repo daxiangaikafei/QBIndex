@@ -1,0 +1,189 @@
+
+
+
+.order-confirm{
+    position: absolute;
+    left: 0;
+    top:44px;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    background-color: #ebebeb;
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        //border: 1px solid red;
+    }
+}
+
+
+.order-join{
+    position: relative;
+    width: 100%;
+    height: 14rem;
+    background-color: rgb(0,0,0);
+    text-align: center;
+    .join-top{
+        text-align: center;
+        font-size: 20px;
+        height: 50px;
+        width: 80px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 30px;
+        color: #b3884f;
+        font-weight: 300;
+        margin: -60px 0 0 -40px; 
+       
+    }
+    span{
+        display: block;
+        &:first-child{
+            color: rgb(203, 203, 203);
+            font-size: 13px;
+            line-height: 15px;
+            
+        }
+        &:nth-child(2){
+            color: #b3884f;
+            border-bottom: 1px solid rgb(203, 203, 203);
+            padding: 10px 0 7px 0;
+            line-height: 30px;
+            //line-height: 34px;
+            //height: 80px;
+            //float: left;
+        }
+        
+    }
+}
+
+
+
+.order-estimate{
+    
+    width: 100%;
+    position: relative;
+    padding: 15px 0;
+    text-align: center;
+    background-color: white;
+    // border: 1px solid red;
+    // *{
+    //     border: 1px solid red;
+    // }
+    .order-estimate-one{
+        width: 50%;
+        display: inline-block;
+    
+        border-right: 1px solid rgb(219, 219, 219);
+
+        padding: 15px 0 0 0;
+        font-size: 12px;
+        span{
+            display: block;
+            padding: 12px 0;
+        }
+        .estimate-money{
+            color: #ff5d5d;
+            font-size: 22px;
+            line-height: 22px;
+            padding: 0 0;
+        }
+        i{
+            display: block;
+            width: 21px;
+            height: 21px;
+            margin: 0 auto;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url("static/imgs/order-confirm-bell.png")
+        }
+        
+    }
+    .estimate-bank{
+        border-right-width: 0;
+        .estimate-money{
+            color: #5da676;
+        }
+        i{
+            background-image: url("static/imgs/order-confirm-safe-deposit-box.png")
+        }
+    }
+}
+
+
+
+.order-clause{
+    font-size: 14px;
+    padding-left: 15px;
+    background-color: white;
+    margin:10px 0 ;
+    // *{
+    //     border: 1px solid red;
+    // }
+    li{
+       //height: 50px;
+        &:after{
+            clear: both;
+            display: block;
+            content: "";
+        }
+        padding: 16px 15px;
+        border-bottom: 1px solid #ececec;
+        &:last-child{
+            border-bottom-width: 0;
+        }
+    }
+    span{
+        display: block;
+        float: left;
+        line-height: 18px;
+    }
+    i{
+        width: 10px;
+        height: 18px;
+        display: block;
+        background-image: url("static/imgs/arrow-right.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        float: right;
+    }
+    //line-height: 14px;
+}
+   
+
+
+.order-sure{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    //border: 1px solid red;
+    height: 50px;
+    font-size: 0;
+    background-color: white;
+    
+    P{
+        display: inline-block;
+        width: 60%;
+        font-size: 14px;
+        padding-left: 44px;
+        line-height: 50px;
+        
+
+        span{
+            color: #d80818;
+        }
+    }
+    button{
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+        background-color: #aa8a72;
+        height: 50px;
+        border-width: 0;
+        color: white;
+        font-size: 16px;
+    }
+}

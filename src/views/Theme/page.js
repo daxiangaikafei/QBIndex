@@ -61,8 +61,8 @@ class Theme extends Component {
         return (
             <div className='theme'>
                 <div className="header">
-                    <div className="theme-img"></div>
-                    <Ring/>
+                    
+                    <Ring showNum={this.state.chooseNum}/>
                 </div>
                 <div className="content">
                     <div className="menu">
@@ -82,3 +82,5 @@ Theme.defaultProps = {
 }
 
 export default Theme;
+
+//<div className="theme-img"></div>
