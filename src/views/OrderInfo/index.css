@@ -17,7 +17,7 @@
   height: 100%;
   background-image: url("static/imgs/party/logo.png");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 45%;
   background-position: center;
   background-color: rgba(0, 0, 0, 0.7);
 }
@@ -64,15 +64,18 @@
 }
 .area-info .area-rows span {
   display: block;
-  float: right;
   line-height: 18px;
+  color: #757575;
 }
 .area-info .area-rows span:first-child {
-  float: left;
+  color: #000000;
 }
 .area-info .area-rows li {
   padding: 16px 15px;
   border-bottom: 1px solid #ececec;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .area-info .area-rows li:after {
   clear: both;
@@ -81,6 +84,14 @@
 }
 .area-info .area-rows li:last-child {
   border-bottom-width: 0;
+}
+.area-info .area-p {
+  color: #757575;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 2px;
+  width: 100%;
+  padding: 5px 0;
 }
 .area-margin {
   margin: 10px 0;
@@ -333,6 +344,11 @@
   background-repeat: no-repeat;
   background-size: contain;
   height: 18px;
+}
+.step-end .heart-line {
+  background-image: url("static/imgs/party/heart-line.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .step-end .step-download {
   background-image: url("static/imgs/party/down.png");
