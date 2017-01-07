@@ -12,29 +12,31 @@ import utilss from './libs/util'
 import business from './model/business'
 import model from './model'
 
-
 const app = dva()
 
 app.model(business)
 app.model(model)
 
-
 // 3. Router
 app.router(router)
-
-app.start('.page-container')
 
 //login
 if(navigator.userAgent.match(/Android/i)) {
     if (typeof QBaoJSBridge != 'undefined') {
         QBaoJSBridge.login("mqbii.qbao.com", String());
     }
+    app.start('.page-container')
 }
 else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
     if (typeof ioswebview != 'undefined') {
         ioswebview.showLoginViewAnd("mqbii.qbao.com", "");
     }
+    app.start('.page-container')
 }
+else {
+    app.start('.page-container')
+}
+
 //fast click
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function () {
