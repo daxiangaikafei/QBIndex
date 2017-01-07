@@ -144,7 +144,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <div styleName="more" onClick={()=>QBFK.Business.go('/OrderInfo')}>查看详情</div>
+            <div styleName="more" onClick={()=>QBFK.Business.go('/OrderInfo/1')}>查看详情</div>
           </div>
         </div>
         <div styleName="news-container">
