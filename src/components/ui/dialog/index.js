@@ -9,6 +9,14 @@ class Dialog extends React.Component {
         super(props, context)
     }
 
+    _buttonConfirm(){
+
+        var _name = React.findDOM(this.refs.nameInput);
+        var _phone = React.findDOM(this.refs.phoneInput);
+
+        this.props.buttonConfirm({name:_name.value,phone:_phone.value});
+    }
+
 
     render() {
         if(!this.props.show)return(<div></div>)
@@ -23,11 +31,11 @@ class Dialog extends React.Component {
                     <Header type={this.props.type}/>
 
                     <fieldset>
-                        <input type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
+                        <input refs='nameInput' type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
                         <div className='sa-input-error'></div>
                     </fieldset>
                     <fieldset>
-                        <input type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
+                        <input refs='phoneInput' type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
                         <div className='sa-input-error'></div>
                     </fieldset>
 
@@ -36,7 +44,7 @@ class Dialog extends React.Component {
                         <p>Not valid!</p>
                     </div>
                     <div className='sa-button-container'>
-                        <button className='confirm' tabIndex='1' onClick={this.props.buttonConfirm}>好的</button>
+                        <button className='confirm' tabIndex='1' onClick={()=>this._buttonConfirm()}>好的</button>
                     </div>
                 </div>
             </div>)
