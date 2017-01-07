@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 
 import { connect } from 'dva';
 import {withRouter} from "react-router";
-var moment = require('moment');
+//var moment = require('moment');
 
 import {fetchPosts} from "components/common/fetch";
 
@@ -42,8 +42,8 @@ class OrderInfo extends Component {
                 managementFee:["",""],//管理费
                 trusteeFee:["",""],//托管费
                 profit:"",//收益分配
-                startDate:moment().format("MM-DD"),
-                endDate:moment().add(1, 'days').format("MM-DD")
+                startDate:this.formate(),
+                endDate:this.formate(1),
             }
         }
         this.getData = this.getData.bind(this);
@@ -53,10 +53,10 @@ class OrderInfo extends Component {
     componentWillMount(){
         this.getData();
     }
-    formate(date,num){
+    formate(num){
         var today = new Date();
         if(num){
-            today.setDate(today)
+            today.setDate(today.getDate()+1);
         }
         return Number(today.getMonth()+1)+"-"+today.getDate();
     }
@@ -175,7 +175,7 @@ class OrderInfo extends Component {
     renderArrayInfo(param){
         let re = [];
         for(let i =0;i<param.length;i++){
-            re.push(<p>{param[i]}</p>)
+            re.push(<p key={i}>{param[i]}</p>)
         }
         return (
             <div className="area-p">
