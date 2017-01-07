@@ -1,5 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
+
 import { connect } from 'dva';
 import {withRouter} from "react-router";
 var moment = require('moment');
@@ -8,6 +9,8 @@ import {fetchPosts} from "components/common/fetch";
 
 import isObject from "lodash/isObject";
 import isArray from "lodash/isArray";
+
+
 
 import "./index.less";
 
