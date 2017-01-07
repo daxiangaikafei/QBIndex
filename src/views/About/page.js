@@ -9,19 +9,20 @@ class About extends Component {
     this.state = {
       activeIndex : 0
     }
-
   }
+
   slideUpHandler = () => {
-    console.log(this.state.activeIndex)
     this.setState({
       activeIndex:++this.state.activeIndex
     })
   }
+
   slideChangeHandler = (index,next) => {
     this.setState({
       activeIndex:index
     })
   }
+  
   render() {
     const slide = {
       height: '100%',
