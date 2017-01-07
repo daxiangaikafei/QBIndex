@@ -1,4 +1,5 @@
 import {fetchPosts} from "components/common/fetch"
+import { setCookie } from 'libs/util'
 
 export default {
   namespace: 'home',
@@ -49,6 +50,9 @@ export default {
            }))
       }, action.levelInfo)
 
+      yield call(() => {
+        setCookie("level",levelInfo.level,"storage");
+      })
       yield put({
         type: 'levelRes',
         loading: false,
