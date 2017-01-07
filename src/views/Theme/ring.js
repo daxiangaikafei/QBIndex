@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { VelocityComponent }  from "velocity-react";
+import ReactDom from "react-dom";
 
 import isArray from "lodash/isArray";
 
-console.log("isArray",isArray);
 
+
+let isFirstLoad = false; 
 
 class Ring extends Component {
     constructor(props) {
@@ -17,26 +19,43 @@ class Ring extends Component {
 
     componentWillMount(){
         var self = this;
+        
+    }
+
+    componentWillUpdate(nextProps,nextState){
+        var self =this;
+        if(nextState.images&&isArray(nextState.images)&&(nextProps.showNum!==this.props.showNum)||this.state.images == false){
+            console.error("--------------");
+            let img = new Image();
+            //debugger
+            img.src = nextState.images[nextProps.showNum];
+            // img.addEventListener("load",function(){
+            //     //debugger;
+            //     self.draw(70,nextState.images[nextProps.showNum],nextProps.levelName);
+            // })
+            //window.onload = function(){
+                
+            //}
+            
+        }
+        setTimeout(function(){
+            self.draw(70,nextState.images[nextProps.showNum],nextProps.levelName);
+        },500)
+    }
+    
+    componentDidMount(){
+        var self = this;
+        console.error("-------777777777777-------");
         require.ensure([],function(a,b,c,d){
             let arr = [];
             for(let i=0;i<6;i++){
                 arr.push(require("static/imgs/theme/sun-header"+i+".jpg"))
             }
+            console.error("-----111---");
             self.setState({
                 images:arr
             })
         });
-    }
-
-    componentWillUpdate(nextProps,nextState){
-        
-        if(nextState.images&&isArray(nextState.images)&&(nextProps.showNum!==this.props.showNum)||this.state.images == false){
-            //console.error("--------------");
-            this.draw(70,nextState.images[nextProps.showNum],nextProps.levelName);
-        }
-    }
-    
-    componentDidMount(){
         // var self = this;
         
         // setTimeout(function(){
@@ -49,6 +68,7 @@ class Ring extends Component {
   		return (max - min) / 100 * value + min;
   	}
     draw(displayValue,url,level){
+            var self = this;
         	var angle = 0.14, innerAngle = angle;
             var displayAngle = this.getAngle(displayValue), innerDisplayAngle = displayAngle;
             var radius = 60, innerRadius = radius - 8, iconRadius = radius - 16;
@@ -56,10 +76,12 @@ class Ring extends Component {
             var startX, startY, x, y, length = 88;
             var img = document.createElement("img");
             img.src = url;
+            console.error(url);
             img.crossOrigin = "*";
             img.addEventListener("load",function(){
                     //let ring = document.getElementById("ring");
-                    var canvas = document.getElementById("canvas");
+                    //var canvas = document.getElementById("canvas");
+                    var canvas = ReactDom.findDOMNode(self.refs.canvas);
                     let width = canvas.offsetWidth;
                     let height = canvas.offsetHeight;
                     
@@ -71,6 +93,7 @@ class Ring extends Component {
 
                     var w = canvas.width/2;
                     var h = 100;
+                    //debugger;
                     canvas.style.width = wi*per+"px";
 
 
@@ -120,7 +143,7 @@ class Ring extends Component {
     render() {
         let {levelName} = this.props;
         return (
-                <canvas id="canvas" className="ring"></canvas>
+                <canvas id="canvas" ref="canvas" className="ring"></canvas>
            
         )
     }

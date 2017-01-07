@@ -20,9 +20,10 @@ export default function (ref) {
         <Route path='/HomeDo' component={HomeDo} name="QBII测试Title"/>
         <Route path='/AnDemo' component={AnDemo} name="QBII动画效果"/>
         <Route path='/Theme' component={Theme} name="晒身份"/>
-        <Route path='/OrderConfirm' component={OrderConfirm} name="订单确认"/>
-        <Route path='/OrderInfo' component={OrderInfo} name="XXX详情"/>
         <Route path='/About' component={About} name="了解QBII"/>
+
+        <Route path='/OrderConfirm/:projectId' component={OrderConfirm} name="订单确认"/>
+        <Route path='/OrderInfo/:projectId' component={OrderInfo} name="XXX详情"/>
       </Route>
     </Router>
   )

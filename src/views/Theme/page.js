@@ -57,6 +57,9 @@ class Theme extends Component {
             <ul className="" onClick={this.handClick} >{$lis}</ul>
         );
     }
+     componentDidMount(){
+         console.error("父级加载")
+     }
     render() {
         return (
             <div className='theme'>

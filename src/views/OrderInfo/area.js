@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import ReactDom from "react-dom";
 
-import { VelocityComponent }  from "velocity-react";
+import { VelocityComponent,VelocityTransitionGroup }  from "velocity-react";
 
 
 
@@ -10,17 +10,17 @@ class Area extends Component {
     constructor(props) {
         super(props);
         this.state={
-            shrink:false,
+            shrink:props.isClose,
             "anBefore":{
-                duration:500,
+                duration:300,
                 animation:{
                     rotateZ:0
                 },
             },
             "anAfter":{
-                duration:500,
+                duration:300,
                 animation:{
-                    rotateZ:120
+                    rotateZ:90
                 },
             }
         }
@@ -36,16 +36,20 @@ class Area extends Component {
         })
     }
     render() {
-       let anProps = this.state.shrink===false?this.state.anBefore:this.state.anAfter;
+        let {enterAnimation,leaveAnimation} = this.props;
+        let anProps = this.state.shrink===false?this.state.anBefore:this.state.anAfter;
         let {title,className,hasIcon,hasLine} = this.props;
         return (
             <div className={"area-info "+className}>
                 <div onClick={this.handClick} className={"area-info-title"+(hasLine?" bottom-line":"")}>
-                    <span>{title}</span><i  className={hasIcon?"":"hide"}></i>
+                    <span>{title}</span>
+                    <VelocityComponent {...anProps}>
+                        <i  className={hasIcon?"":"hide"}></i>
+                    </VelocityComponent>
                 </div>
-                <VelocityComponent  {...anProps}>
-                {this.props.children}
-                </VelocityComponent>
+                <VelocityTransitionGroup enter={enterAnimation} leave={leaveAnimation}>
+                { this.state.shrink===false?this.props.children:null}
+                </VelocityTransitionGroup>
             </div> 
         )
     }
@@ -54,7 +58,16 @@ Area.defaultProps = {
     title:"",
     className:"area-margin",
     hasIcon:true,
-    hasLine:false
+    hasLine:false,
+    isClose:false,
+    enterAnimation: {
+        duration: 300,
+        animation: "slideDown"
+    },
+    leaveAnimation:{
+        duration: 300,
+        animation:"slideUp"
+    }
 }
 
 export default Area;
