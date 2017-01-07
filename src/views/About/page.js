@@ -22,7 +22,7 @@ class About extends Component {
       activeIndex:index
     })
   }
-  
+
   render() {
     const slide = {
       height: '100%',
@@ -63,6 +63,7 @@ class About extends Component {
               <p> <span>QBII-A</span> <span>29万</span> </p>
               <p> <span>QBII-B</span> <span>15万</span> </p>
               <p> <span>QBII-C</span> <span>8万</span> </p>
+              <p> <span>QBII-D</span> <span> > 0</span> </p>
             </div>
             <p>QBII必备要素：<br/>有投资能力并具有契约精神、有坚定的信仰、有健全的人格、有完整科学的知识体系和对这个知识体系学习和知识更新能力或者是有意愿成为这样的投资人的钱宝用户。</p>
           </div>
