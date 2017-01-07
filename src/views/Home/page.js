@@ -72,7 +72,7 @@ class Home extends Component {
             <p>等级越高，可投项目越多</p>
             <div styleName="btn-group">
               <span styleName="btn"><Link to='/Theme'>晒身份</Link></span>
-              <span styleName="btn"><Link to='/HomeDo'>了解QBII</Link></span>
+              <span styleName="btn"><Link to='/About'>了解QBII</Link></span>
             </div>
           </div>
         </div>
