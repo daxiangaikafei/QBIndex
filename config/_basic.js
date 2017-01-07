@@ -47,7 +47,8 @@ const config = {
         'redux-actions',
         'redux-simple-router',
         'dva',
-        'fastclick'
+        'fastclick',
+        'recharts'
     ]
 }
 
