@@ -52,7 +52,8 @@ class Theme extends Component {
     //保存主题
     saveClick(){
         this.saveImgIndex(this.state.chooseNum);
-        console.log(".....",this.urlImage)
+        typeof QBaoJSBridge!= 'undefined' &&
+        QBaoJSBridge.saveImg(this.urlImage)
 
     }
     renderUls(){
