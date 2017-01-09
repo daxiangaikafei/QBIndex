@@ -2,17 +2,20 @@
  * Created by xiaolin on 17/1/4.
  */
 import React, { PropTypes } from 'react'
+import ReactDom from "react-dom";
+
 import './index.less'
 
 class Dialog extends React.Component {
     constructor(props, context) {
-        super(props, context)
+        super(props, context);
+        this._buttonConfirm = this._buttonConfirm.bind(this)
     }
 
     _buttonConfirm(){
 
-        var _name = React.findDOM(this.refs.nameInput);
-        var _phone = React.findDOM(this.refs.phoneInput);
+        var _name = ReactDom.findDOMNode(this.refs.nameInput);
+        var _phone = ReactDom.findDOMNode(this.refs.phoneInput);
 
         this.props.buttonConfirm({name:_name.value,phone:_phone.value});
     }
@@ -31,11 +34,11 @@ class Dialog extends React.Component {
                     <Header type={this.props.type}/>
 
                     <fieldset>
-                        <input refs='nameInput' type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
+                        <input ref='nameInput' type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
                         <div className='sa-input-error'></div>
                     </fieldset>
                     <fieldset>
-                        <input refs='phoneInput' type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
+                        <input ref='phoneInput' type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
                         <div className='sa-input-error'></div>
                     </fieldset>
 

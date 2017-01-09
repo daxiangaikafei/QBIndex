@@ -42,10 +42,13 @@ class OrderInfo extends Component {
                 managementFee:["",""],//管理费
                 trusteeFee:["",""],//托管费
                 profit:"",//收益分配
-                startDate:this.formate(),
-                endDate:this.formate(1),
-            }
+                
+            },
+            startDate:this.formate(),
+            endDate:this.formate(1),
         }
+
+        
         this.getData = this.getData.bind(this);
         this.handThink = this.handThink.bind(this);
         this.handHeart = this.handHeart.bind(this);
@@ -58,6 +61,7 @@ class OrderInfo extends Component {
         if(num){
             today.setDate(today.getDate()+1);
         }
+        //debugger
         return Number(today.getMonth()+1)+"-"+today.getDate();
     }
     getData(){
@@ -103,7 +107,7 @@ class OrderInfo extends Component {
         });
     }
     render() {
-        var {data,heart} = this.state;
+        var {data,heart,startDate,endDate} = this.state;
         return (
             <div className="party-info">
 
@@ -122,7 +126,7 @@ class OrderInfo extends Component {
                 </Area>
                 <Chart projectId={this.props.routeParams.projectId}/>
                 <Area className="area-margin" title="特色亮点" hasIcon={true} hasLine={true} isClose={true}>
-                   <div  className="area-p" dangerouslySetInnerHTML={{__html:data.des}}>
+                   <div  className="area-p area-duan" dangerouslySetInnerHTML={{__html:data.des}}>
                         
                    </div>
                 </Area>
@@ -136,8 +140,8 @@ class OrderInfo extends Component {
                          <div className="step-row step-arrow">
                         </div>
                         <div className="step-row">
-                            <span>{data.startDate}</span>
-                            <span>{data.endDate}</span>
+                            <span>{startDate}</span>
+                            <span>{endDate}</span>
                             <span>持有中</span>
                         </div>
                     </div>
@@ -165,7 +169,7 @@ class OrderInfo extends Component {
                 </Area>
 
                 <div className="step-end" >
-                    <button><span className={"step-heart"+(heart===false?" heart-line":"")} onClick={this.handHeart}></span></button>
+                    <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
                     <button><span className="step-download"></span></button>
                     <button className="step-btn-end" onClick={this.handThink} >我有意向</button>
                 </div>

@@ -139,13 +139,13 @@
   float: right;
 }
 .order-sure {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
   left: 0;
   right: 0;
   height: 50px;
   font-size: 0;
   background-color: white;
+  bottom: 0;
 }
 .order-sure P {
   display: inline-block;

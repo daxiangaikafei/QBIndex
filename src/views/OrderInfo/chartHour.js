@@ -4,6 +4,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDom from "react-dom";
 import random from "lodash/random";
+import isEqual from "lodash/isEqual";
 
 import { LineChart,XAxis,YAxis,CartesianGrid, Tooltip,Legend,Line}  from "recharts";
 
@@ -14,22 +15,37 @@ class CharInfo extends Component {
         super(props);
         this.createData = this.createData.bind(this);
         this.state={
-            data:false
+            data:[]
         }
     }
     componentWillMount(){
-        this.createData();
+        this.createData(this.props);
     }
-    createData(){
-        let data = [],xTicks=[];
-        for(let i = 0,j = 5;i<j;i++){
-            let newDate = this.formateYMD(i); //formateYMD .formateDate
-            data.push({pv:random(-1.9,3),uv:random(-1.9,3),data:newDate});
-            xTicks.push(newDate);
+    componentWillUpdate(nextProps,nextState){
+        if(!isEqual(nextProps,this.props)){
+            this.createData(nextProps);
         }
+    }
+    createData(props){
+        let data = [],xTicks=[];
+        // for(let i = 0,j = 5;i<j;i++){
+        //     let newDate = this.formateYMD(i); //formateYMD .formateDate
+        //     data.push({pv:random(-1.9,3),uv:random(-1.9,3),data:newDate});
+        //     xTicks.push(newDate);
+        // }
+        let length = props.data.length;
+        for(let i=(length>5?5:(length-1)),j=0;i>=j;i--){
+            
+            if(!props.data[i]){
+                continue;
+            }
+            data.push(props.data[i]);
+            xTicks.push(props.data[i].hour);
+        }
+        //debugger
         this.setState({
-            data,
-            xTicks
+            data:data,
+            xTicks:xTicks
         })
     }
     //r日期增加一天 。并格式化为ymd
@@ -52,20 +68,23 @@ class CharInfo extends Component {
         return (
             <div className={"chart-main "+className}>
                 <LineChart width={width} height={height} data={data} >
-                    <XAxis tickCount={5} dataKey="data" tickFormatter={(data)=>{return data.substr(4)}} />
+                    <XAxis tickCount={5} dataKey="hour" tickFormatter={(data)=>{return data+":00"}} />
                     <YAxis axisLine={false} tickCount={5} />
                     <CartesianGrid strokeDasharray="3 3" />
-                    <Line labeel={true} type="monotone" dataKey="pv" stroke="#a88872" dot={false} />
-                    <Line  type="monotone" dataKey="uv" stroke="#808291" dot={false}/>
+                    <Line labeel={true} type="monotone" dataKey="fudongbaifenbi" stroke="#a88872" dot={false} />
+                   
                 </LineChart>
             </div>
         )
     }
 }
+// <Line  type="monotone" dataKey="other" stroke="#808291" dot={false}/>
 CharInfo.defaultProps = {
     width:false,
     height:false,
-    className:""
+    className:"",
+    data:[]
 }
+//return data.substr(4)}
 
 export default CharInfo;

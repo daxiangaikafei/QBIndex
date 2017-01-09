@@ -174,14 +174,19 @@
 
 
 .order-sure{
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    
     left: 0;
     right: 0;
     //border: 1px solid red;
     height: 50px;
     font-size: 0;
     background-color: white;
+    //top: inherit;
+    bottom: 0;
+
+    // backface-visibility: hidden; 
+    // transform: translateZ(0);
     
     P{
         display: inline-block;

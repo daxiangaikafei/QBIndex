@@ -16,7 +16,7 @@ class CharInfo extends Component {
         this.createData = this.createData.bind(this);
 
         this.state={
-            data:false,
+            data:[],
             xTicks:[]
         }
     }
@@ -32,15 +32,23 @@ class CharInfo extends Component {
     
     createData(props){
 
+        // let data = [];
+        // for(let i = 0,j = random(30,365);i<j;i++){
+        //     let newDate = this.formateYMD(i); //formateYMD .formateDate
+        //     data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
+        // }
+        let {xTicks,showTick} = this.jisuanDate(props.space);
         let data = [];
-        for(let i = 0,j = random(30,365);i<j;i++){
-            let newDate = this.formateYMD(i); //formateYMD .formateDate
-            data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
+        for(let i=0,j=props.data.length;i<j;i++){
+            let temp = props.data[i];
+            if(temp.date>=xTicks[0]&&temp.date<=xTicks[2]){
+                data.push(temp);
+                console.log(temp.date);
+            }
         }
-        let xTicks = this.jisuanDate(props.space);
         this.setState({
             data,
-            xTicks
+            xTicks:showTick
         })
     }
     //r日期增加一天 。并格式化为ymd
@@ -83,23 +91,48 @@ class CharInfo extends Component {
     //计算日期的 月间隔
     jisuanDate(space=1){
         let now  = new Date();
-        now.setMonth(now.getMonth()+3);
+        //now.setMonth(now.getMonth()+3);
+        space = Number(space);
+        let xTicks = [],showTick=[];
+        // re.push(this.jisuanMonth(now,-space));
+        // re.push(this.jisuanMonth(now));
+        // re.push(this.jisuanMonth(now,space));
+        xTicks.push(this.jisuanMonth(now,-space*3));
+        xTicks.push(this.jisuanMonth(now,-space));
+        xTicks.push(this.jisuanMonth(now));
 
-        let re = [];
-        re.push(this.jisuanMonth(now,-space));
-        re.push(this.jisuanMonth(now));
-        re.push(this.jisuanMonth(now,space));
+        let num = parseInt(30*3*space/4);
+        showTick.push(this.jisuanMonth(now,-space*3,num));
+        showTick.push(this.jisuanMonth(now,-space*3,num*2));
+        showTick.push(this.jisuanMonth(now,-space*3,num*3));
 
-        console.log("jisuan",re);
-        return re;
+        console.log("num",num)
+        console.log("jisuan",xTicks);
+        console.log("jisuan",showTick);
+        return {
+            xTicks,
+            showTick
+        };
+    }
+    jisuanXdate(){
+
     }
     //月份相加
-    jisuanMonth(date,num=0){
+    jisuanMonth(date,num=0,dayNum=false){
         let newDate = new Date(date) ;
-        newDate.setMonth(newDate.getMonth()+num);
-        let month = Number(newDate.getMonth()+1);
+        //debugger;
+        newDate.setMonth(Number(newDate.getMonth())+num);
+        
+        if(dayNum!==false){
+            //debugger;
+            newDate.setDate(Number(newDate.getDate())+dayNum)
+        }
+        let month = Number(newDate.getMonth())+1;
+        //newDate.setDate(Number(newDate.getDate())-10)
         let day = newDate.getDate();
+        
         console.log("jisuan",num,month,day);
+        
         
         return newDate.getFullYear()+"-"+(month<10?("0"+month):month)+"-"+(day<10?("0"+day):day);
         //return date;
