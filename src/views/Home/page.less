@@ -125,12 +125,15 @@ main{
     text-align: center;
     padding: 12px;
     .item {
-      -webkit-flex:1;
-      flex: 1;
+      -webkit-flex:auto;
+      flex: auto;
       display: -webkit-flex;
       display: -ms-flex;
       display: flex;
+      -webkit-flex-direction: column;
+      -webkit-justify-content: center;
       flex-direction: column;
+      justify-content: center;
       &:first-child {
         border-right: 1px solid @bdColor;
       }
@@ -138,7 +141,6 @@ main{
       span {
         color: @assetTitleColor;
         font-weight: 200;
-        padding-top: 18px;
         font-size: 14px;
       }
       h3 {
@@ -200,7 +202,7 @@ main{
         -webkit-align-items: center;
         align-items: center;
         .tag-item {
-          -webkit-flex:1;
+          -webkit-flex:auto;
           flex: auto;
           position: relative;
           .pointer {
@@ -274,6 +276,7 @@ main{
           display: -ms-flex;
           display: flex;
           box-sizing: border-box;
+          -webkit-justify-content: space-around;
           justify-content: space-around;
           .count {
             font-size: 14px;
@@ -328,6 +331,7 @@ main{
         display: -webkit-flex;
         display: -ms-flex;
         display: flex;
+        -webkit-align-items: center;
         align-items: center;
         .icon {
           &.icon-arrow {
