@@ -34,19 +34,22 @@ class Video extends Component {
     }
     render() {
         let markCss = this.state.play?"vedio-mark-hide":"vedio-mark";
+        let {src,bgUrl} = this.props;
         return (
             <div className="party-video">
-                <div className={markCss} onClick={this.handPause}>
+                <div className={markCss} onClick={this.handPause} style={{backgroundImage:("url("+bgUrl+")")}}>
                     <div onClick={this.handPlay} className="vedio-mark-play">
                         <span></span>
                     </div>
                 </div>
-                <video ref="vedio" className="" src="http://7qn8hl.com1.z0.glb.clouddn.com/xuancp480.mp4"></video>
+                <video ref="vedio" className="" src={src}></video>
             </div> 
         )
     }
 }
 Video.defaultProps = {
+    src:"http://7qn8hl.com1.z0.glb.clouddn.com/xuancp480.mp4",
+    bgUrl:""
 }
 
 export default Video;

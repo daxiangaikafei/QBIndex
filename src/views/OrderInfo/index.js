@@ -42,7 +42,8 @@ class OrderInfo extends Component {
                 managementFee:["",""],//管理费
                 trusteeFee:["",""],//托管费
                 profit:"",//收益分配
-                
+                pics:["","",""],
+                video:""
             },
             startDate:this.formate(),
             endDate:this.formate(1),
@@ -111,8 +112,8 @@ class OrderInfo extends Component {
         return (
             <div className="party-info">
 
-                <div className="party-head">
-                    <div className="party-logo"></div>
+                <div className="party-head" style={{backgroundImage:("url("+data.pics[0]+")")}}>
+                    <div className="party-logo" style={{backgroundImage:("url("+data.pics[1]+")")}} ></div>
                 </div>
                 <Area className="" title="冰穹互娱股权投资一期资管计划" hasIcon={false}>
                     <ul className="party-plan">
@@ -122,7 +123,7 @@ class OrderInfo extends Component {
                     </ul>
                 </Area>
                 <Area className="area-margin area-bottom" title="项目解析" hasIcon={false}>
-                    <Vedio/>
+                    <Vedio bgUrl={data.pics[2]} src={data.video}/>
                 </Area>
                 <Chart projectId={this.props.routeParams.projectId}/>
                 <Area className="area-margin" title="特色亮点" hasIcon={true} hasLine={true} isClose={true}>
