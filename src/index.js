@@ -20,18 +20,24 @@ app.model(model)
 // 3. Router
 app.router(router)
 
+function loginH5(_app) {
+    if (app)
+        _app.start('.page-container')
+    else
+        app.start('.page-container')
+}
 //login
 if(navigator.userAgent.match(/Android/i)) {
     if (typeof QBaoJSBridge != 'undefined') {
-        QBaoJSBridge.login("mqbii.qbao.com", String());
+        QBaoJSBridge.login("mqbii.qbao.com", String(loginH5(app)));
     }
-    app.start('.page-container')
+    //app.start('.page-container')
 }
 else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
     if (typeof ioswebview != 'undefined') {
-        ioswebview.showLoginViewAnd("mqbii.qbao.com", "");
+        ioswebview.showLoginViewAnd("mqbii.qbao.com", "loginH5(app);");
     }
-    app.start('.page-container')
+    //app.start('.page-container')
 }
 else {
     app.start('.page-container')
