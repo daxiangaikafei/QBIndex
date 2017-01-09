@@ -182,14 +182,15 @@ webpackConfig.module.loaders.push(
 //webpackConfig.lessLoader = {
 //    includePaths: paths.base('styles')
 //}
-
+//webpackConfig.postcss = function () {
+//    return [require('autoprefixer'), require('precss')];
+//}
 webpackConfig.postcss = [
     cssnano({
         sourcemap: true,
         autoprefixer: {
             add: true,
-            remove: true,
-            browsers: ['last 2 versions']
+            remove: true
         },
         safe: true,
         discardComments: {
