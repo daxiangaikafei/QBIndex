@@ -77,7 +77,7 @@ class Ring extends Component {
             var img = document.createElement("img");
             img.src = url;
             console.error(url);
-            img.crossOrigin = "*";
+            img.crossOrigin = "anonymous";
             img.addEventListener("load",function(){
                     //let ring = document.getElementById("ring");
                     //var canvas = document.getElementById("canvas");
@@ -134,7 +134,12 @@ class Ring extends Component {
                     ctx.fillText(level,116,126);
                     
                     var strDataURI = canvas.toDataURL("image/jpeg");
-                    console.log(strDataURI)
+                    
+                    self.props.buildImage(strDataURI);
+                    // this.setState({
+                    //     dataUrl:strDataURI
+                    // })
+                    //console.log(strDataURI)
 
             },false);       
 
@@ -152,7 +157,8 @@ Ring.defaultProps = {
     level: 0,
     showNum:false,
     levelName:"Pro",
-    totalLevel:5
+    totalLevel:5,
+    buildImage:()=>{}
 }
 
 export default Ring;

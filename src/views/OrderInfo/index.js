@@ -120,7 +120,7 @@ class OrderInfo extends Component {
                 <Area className="area-margin area-bottom" title="项目解析" hasIcon={false}>
                     <Vedio/>
                 </Area>
-                <Chart/>
+                <Chart projectId={this.props.routeParams.projectId}/>
                 <Area className="area-margin" title="特色亮点" hasIcon={true} hasLine={true} isClose={true}>
                    <div  className="area-p" dangerouslySetInnerHTML={{__html:data.des}}>
                         

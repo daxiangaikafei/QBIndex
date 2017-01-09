@@ -15,6 +15,8 @@ class Theme extends Component {
         this.handClick = this.handClick.bind(this);
         this.renderUls = this.renderUls.bind(this);
         this.saveClick = this.saveClick.bind(this);
+
+        this.buildImage = this.buildImage.bind(this);
     }
     getImgIndex(){
         return window.localStorage.theme?Number(window.localStorage.theme):0;
@@ -22,6 +24,8 @@ class Theme extends Component {
     saveImgIndex(index){
         //console.log("sdssdds",index)
         window.localStorage.theme = index;
+        //保存图片 。this.urlImage 
+
     }
     handClick(e){
         var self = this;
@@ -47,6 +51,8 @@ class Theme extends Component {
     //保存主题
     saveClick(){
         this.saveImgIndex(this.state.chooseNum);
+        console.log(".....",this.urlImage)
+
     }
     renderUls(){
         let {data} = this.props,$lis=[],{chooseNum} = this.state;
@@ -60,12 +66,17 @@ class Theme extends Component {
      componentDidMount(){
          //console.error("父级加载")
      }
+
+     buildImage(data){
+         this.urlImage = data; 
+         
+     }
     render() {
         return (
             <div className='theme'>
                 <div className="header">
                     
-                    <Ring showNum={this.state.chooseNum}/>
+                    <Ring buildImage={this.buildImage}  showNum={this.state.chooseNum}/>
                 </div>
                 <div className="content">
                     <div className="menu">

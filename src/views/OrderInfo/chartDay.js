@@ -4,6 +4,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDom from "react-dom";
 import random from "lodash/random";
+import isEqual from "lodash/isEqual";
 
 import { LineChart,XAxis,YAxis,CartesianGrid, Tooltip,Legend,Line}  from "recharts";
 
@@ -20,17 +21,23 @@ class CharInfo extends Component {
         }
     }
     componentWillMount(){
-        this.createData();
+       // this.createData();
+    }
+    componentWillUpdate(nextProps,nextState){
+        if(!isEqual(nextProps,this.props)){
+            this.createData(nextProps);
+        }
     }
     
-    createData(){
+    
+    createData(props){
 
         let data = [];
         for(let i = 0,j = random(30,365);i<j;i++){
             let newDate = this.formateYMD(i); //formateYMD .formateDate
-            data.push({pv:random(-1.9,3),uv:random(-1.9,3),data:newDate});
+            data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
         }
-        let xTicks = this.jisuanDate(this.props.space);
+        let xTicks = this.jisuanDate(props.space);
         this.setState({
             data,
             xTicks
@@ -92,6 +99,8 @@ class CharInfo extends Component {
         newDate.setMonth(newDate.getMonth()+num);
         let month = Number(newDate.getMonth()+1);
         let day = newDate.getDate();
+        console.log("jisuan",num,month,day);
+        
         return newDate.getFullYear()+"-"+(month<10?("0"+month):month)+"-"+(day<10?("0"+day):day);
         //return date;
     }
@@ -104,11 +113,11 @@ class CharInfo extends Component {
         return (
             <div className={"chart-main "+className}>
                 <LineChart width={width} height={height} data={data} >
-                    <XAxis dataKey="data" ticks={xTicks} tickFormatter={(data)=>{return data.substr(4)}} />
+                    <XAxis dataKey="date" ticks={xTicks} tickFormatter={(data)=>{return data.substr(4)}} />
                     <YAxis axisLine={false} tickCount={3} />
                     <CartesianGrid strokeDasharray="3 3" />
-                    <Line labeel={true} type="monotone" dataKey="pv" stroke="#a88872" dot={false} />
-                    <Line  type="monotone" dataKey="uv" stroke="#808291" dot={false}/>
+                    <Line labeel={true} type="monotone" dataKey="self" stroke="#a88872" dot={false} />
+                    <Line  type="monotone" dataKey="other" stroke="#808291" dot={false}/>
                 </LineChart>
             </div>
         )

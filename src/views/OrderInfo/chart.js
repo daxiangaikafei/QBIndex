@@ -28,6 +28,9 @@ class Chart extends Component {
         this.setStyle = this.setStyle.bind(this);
 
         this.handChangeSpace = this.handChangeSpace.bind(this);
+
+        this.getFirst = this.getFirst.bind(this);
+        this.getSecond = this.getSecond.bind(this);
     }
     componentWillMount(){
         this.setStyle();
@@ -40,9 +43,11 @@ class Chart extends Component {
     }
     getFirst(){
         var self = this;
-        let {projectId} = this.props.routeParams;
+        // debugger
+        let {projectId} = this.props;
+       
         self.setState({dataFirst:false});
-        fetchPosts("/api/project/"+projectId+"evaluate",{},"GET").then((data)=>{
+        fetchPosts("/api/project/"+projectId+"/profitability",{},"GET").then((data)=>{
             self.setState({
                 dataFirst:data
             });
@@ -50,9 +55,9 @@ class Chart extends Component {
     }
     getSecond(){
         var self = this;
-        let {projectId} = this.props.routeParams;
+        let {projectId} = this.props;
         self.setState({dataSecond:false});
-        fetchPosts("/api/project/"+projectId+"profitability",{},"GET").then((data)=>{
+        fetchPosts("/api/project/"+projectId+"/evaluate",{},"GET").then((data)=>{
             self.setState({
                 dataSecond:data
             });
