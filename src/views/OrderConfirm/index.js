@@ -72,13 +72,15 @@ class OrderConfirm extends Component {
         var self = this;
         let {projectId} = this.props.routeParams;
         let amount = this.state.showData.investmentNum;
-        
+        //debugger;
         fetchPosts("/api/project/"+projectId+"/apply",{amount},"POST").then((data)=>{
-            
+            //debugger;
+            data = data.data;
             self.setState({
                 modelData:{
-                    name:data.user.name,
-                    phone:data.user.phone
+                    name:data.user.realName,
+                    phone:data.user.phoneNo,
+                    orderId:data.orderId
                 },
                 disabled:false,
                 show:true
@@ -87,16 +89,16 @@ class OrderConfirm extends Component {
             //modelData
         }).catch(()=>{
             //alert("系统繁忙，请稍后再试！");
-            let data = {user:{name:"呵呵",phone:"11111111111"}}
-            self.setState({
-                modelData:{
-                    name:data.user.name,
-                    phone:data.user.phone,
-                    orderId:data.orderId
-                },
-                disabled:false,
-                show:true
-            })
+            // let data = {user:{name:"呵呵",phone:"11111111111"}}
+            // self.setState({
+            //     modelData:{
+            //         name:data.user.name,
+            //         phone:data.user.phone,
+            //         orderId:data.orderId
+            //     },
+            //     disabled:false,
+            //     show:true
+            // })
         })
         //this.props.router.push({pathname:"/home"})
         //
@@ -120,6 +122,7 @@ class OrderConfirm extends Component {
         this.setState({
             show:false
         });
+       
         //api/order/{orderId}/update
         fetchPosts("/api/order/"+this.state.modelData.orderId+"/update",data,"POST").then((data)=>{
             self.setState({

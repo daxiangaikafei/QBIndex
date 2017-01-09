@@ -1,5 +1,4 @@
 .party-info {
-  position: relative;
   padding-bottom: 50px;
   background-color: #e0e0e0;
 }
@@ -93,6 +92,10 @@
   letter-spacing: 2px;
   width: 100%;
   padding: 5px 0;
+}
+.area-info .area-duan {
+  padding: 5px 15px;
+  letter-spacing: 2px;
 }
 .area-margin {
   margin: 10px 0;
@@ -211,6 +214,9 @@
 .party-chart .bottom-title {
   padding: 10px 0;
 }
+.party-chart .bottom-title:first-child {
+  color: #808291;
+}
 .party-chart .chart-low-line {
   height: 1px;
   background-color: #000000;
@@ -225,6 +231,9 @@
   font-size: 12px;
   color: #46b04b;
   padding: 0 6px;
+}
+.party-chart .chart-rose {
+  color: red;
 }
 .party-chart .part-chart-bottom {
   padding: 0 0 15px 0;
