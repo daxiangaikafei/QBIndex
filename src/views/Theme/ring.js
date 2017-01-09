@@ -6,6 +6,7 @@ import isArray from "lodash/isArray";
 
 
 
+
 let isFirstLoad = false; 
 
 class Ring extends Component {
@@ -39,7 +40,7 @@ class Ring extends Component {
             
         }
         setTimeout(function(){
-            self.draw(70,nextState.images[nextProps.showNum],nextProps.levelName);
+            self.draw(nextProps.level,nextState.images[nextProps.showNum],nextProps.levelName);
         },500)
     }
     
@@ -95,6 +96,8 @@ class Ring extends Component {
                     var h = 100;
                     //debugger;
                     canvas.style.width = wi*per+"px";
+                    //canvas.style.marginLeft = -wi*per/2+"px";
+                    //margin-left
 
 
                     var ctx = canvas.getContext("2d");

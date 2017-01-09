@@ -169,7 +169,7 @@ class OrderInfo extends Component {
                 </Area>
 
                 <div className="step-end" >
-                    <button><span className={"step-heart"+(heart===false?" heart-line":"")} onClick={this.handHeart}></span></button>
+                    <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
                     <button><span className="step-download"></span></button>
                     <button className="step-btn-end" onClick={this.handThink} >我有意向</button>
                 </div>

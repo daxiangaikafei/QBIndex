@@ -27,15 +27,25 @@ class CharInfo extends Component {
         }
     }
     createData(props){
-        // let data = [],xTicks=[];
+        let data = [],xTicks=[];
         // for(let i = 0,j = 5;i<j;i++){
         //     let newDate = this.formateYMD(i); //formateYMD .formateDate
         //     data.push({pv:random(-1.9,3),uv:random(-1.9,3),data:newDate});
         //     xTicks.push(newDate);
         // }
+        let length = props.data.length;
+        for(let i=(length>5?5:(length-1)),j=0;i>=j;i--){
+            
+            if(!props.data[i]){
+                continue;
+            }
+            data.push(props.data[i]);
+            xTicks.push(props.data[i].hour);
+        }
+        //debugger
         this.setState({
-            data:props.data,
-            xTicks:props.xTicks
+            data:data,
+            xTicks:xTicks
         })
     }
     //r日期增加一天 。并格式化为ymd
@@ -58,10 +68,10 @@ class CharInfo extends Component {
         return (
             <div className={"chart-main "+className}>
                 <LineChart width={width} height={height} data={data} >
-                    <XAxis tickCount={5} dataKey="date" tickFormatter={(data)=>{return data.substr(4)}} />
+                    <XAxis tickCount={5} dataKey="hour" tickFormatter={(data)=>{return data+":00"}} />
                     <YAxis axisLine={false} tickCount={5} />
                     <CartesianGrid strokeDasharray="3 3" />
-                    <Line labeel={true} type="monotone" dataKey="self" stroke="#a88872" dot={false} />
+                    <Line labeel={true} type="monotone" dataKey="fudongbaifenbi" stroke="#a88872" dot={false} />
                    
                 </LineChart>
             </div>
@@ -73,8 +83,8 @@ CharInfo.defaultProps = {
     width:false,
     height:false,
     className:"",
-    data:[],
-    xTicks:[]
+    data:[]
 }
+//return data.substr(4)}
 
 export default CharInfo;

@@ -25,7 +25,10 @@ class Chart extends Component {
                 width:false,
                 height:false
             },
-            rose:0
+            rose:0,//较昨日涨跌幅
+            roseSecond:0,
+            roseJing:0,//估算净值
+            roseAbout:0,//估算收益
         }
         this.handClick = this.handClick.bind(this);
         this.handClickSecond = this.handClickSecond.bind(this);
@@ -44,21 +47,22 @@ class Chart extends Component {
     }
     componentDidMount(){
         var self = this;
-        setTimeout(function(){
-            // self.getFirst();
-            // self.getSecond();
-            self.creatFDate();
-            self.creatHDate();
+        self.getFirst();
+        self.getSecond();
+        // setTimeout(function(){
+            
+        //     //self.creatFDate();
+        //     //self.creatHDate();
 
             
-        },1500);
+        // },1500);
     }
-    creatFDate(){
-        let data = [];
-        for(let i = 0,j = 400;i<=j;i++){
-            let newDate = this.formateYMD(i-400); //formateYMD .formateDate
-            data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
-        }
+    creatFDate(data = []){
+        //let data = [];
+        // for(let i = 0,j = 400;i<=j;i++){
+        //     let newDate = this.formateYMD(i-400); //formateYMD .formateDate
+        //     data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
+        // }
 
 
         let nowDate = this.formateYMD(-1);
@@ -78,20 +82,24 @@ class Chart extends Component {
         
         this.setState({
             dataFirst:data,
-            rose
+            rose:(rose||"暂无")
         })
     }
     
-    creatHDate(){
-        let data = [],xTicks=[];
-        for(let i = 0,j = 5;i<j;i++){
-            let newDate = this.formateYMD(i); //formateYMD .formateDate
-            data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
-            xTicks.push(newDate);
-        }
+    creatHDate(data=[],rose){
+        // let xTicks=[];
+        // for(let i = 0,j = 5;i<j;i++){
+        //     let newDate = this.formateYMD(i); //formateYMD .formateDate
+        //     data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
+        //     xTicks.push(newDate);
+        // }
+        //debugger;
         this.setState({
-            xTicksSecond:xTicks,
-            dataSecond:data
+            //xTicksSecond:xTicks,
+            dataSecond:data,
+            roseSecond:rose,
+            roseJing:data[data.length-1].shishijingzhi,
+            roseAbout:data[data.length-1].shishishouyi,
         })
     }
      //r日期增加一天 。并格式化为ymd
@@ -111,9 +119,10 @@ class Chart extends Component {
        
         self.setState({dataFirst:false});
         fetchPosts("/api/project/"+projectId+"/profitability",{},"GET").then((data)=>{
-            self.setState({
-                dataFirst:data
-            });
+            self.creatFDate(data.data);
+            // self.setState({
+            //     dataFirst:data
+            // });
         })
     }
     getSecond(){
@@ -121,9 +130,10 @@ class Chart extends Component {
         let {projectId} = this.props;
         self.setState({dataSecond:false});
         fetchPosts("/api/project/"+projectId+"/evaluate",{},"GET").then((data)=>{
-            self.setState({
-                dataSecond:data
-            });
+            self.creatHDate(data.data.value,data.data.zuorizhangfu);
+            // self.setState({
+            //     dataSecond:data
+            // });
         })
     }
     handClick(){
@@ -163,7 +173,7 @@ class Chart extends Component {
         })
     }
     render() {
-        let {firstCss,secondCss,showFirst,dataFirst,dataSecond,xTicksSecond,style,space,showSpace,rose} = this.state;
+        let {firstCss,secondCss,showFirst,dataFirst,dataSecond,xTicksSecond,style,space,showSpace,rose,roseSecond,roseJing,roseAbout} = this.state;
         return (
              <div className="party-chart ">
                     <div className="chart-top">
@@ -173,19 +183,19 @@ class Chart extends Component {
                         <div className="part-chart-top">
                             <span className="chart-low-line"></span>
                             <span className="chart-title">{showFirst?"较昨日涨跌幅":"较昨日涨跌幅"}</span>
-                            <span className={"chart-num"+(rose>=0?" chart-rose":"")}>{rose}%</span>
+                            <span className={"chart-num"+(rose>=0?" chart-rose":"")}>{showFirst?rose:roseSecond}%</span>
                             <span className="chart-low-line"></span>
                         </div>
                         <div className="chart-main">
                             <ChartDay space={space} width={style.width} height={style.height} className={showFirst?"":"hide"} data={dataFirst}/>
-                            <ChartHour width={style.width} height={style.height} className={showFirst?"hide":""} data={dataSecond} xTicks={xTicksSecond}/>
+                            <ChartHour width={style.width} height={style.height} className={showFirst?"hide":""} data={dataSecond} />
                         </div>
                         <div  className={showFirst?"hide":"part-chart-bottom"}>
                             <div className="bottom-title">
                                 <span className="chart-title ">估算净值:</span>
-                                <span className={"chart-num"+(rose>=0?" chart-rose":"")}>{rose}</span>
+                                <span className={"chart-num"+(rose>=0?" chart-rose":"")}>{roseJing}</span>
                                 <span className="chart-title ">估算收益:</span>
-                                <span className={"chart-num"+(rose>=0?" chart-rose":"")}>{rose}%</span>
+                                <span className={"chart-num"+(rose>=0?" chart-rose":"")}>{roseAbout}%</span>
                             </div>
                             <p className="chart-remark">
                                 <i>i</i>估算值仅供参考，实际涨幅以最新净值为准

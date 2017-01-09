@@ -119,10 +119,18 @@ class OrderConfirm extends Component {
     operate(data){
         console.log("data",data);
         var self = this;
+        
+        //debugger
+        if(!/^1(3|4|5|7|8)\d{9}$/.test(data.phone)){
+            this.setState({
+                errorShow:true
+            })
+            return false;
+        }
         this.setState({
-            show:false
+            show:false,
+            errorShow:false
         });
-       
         //api/order/{orderId}/update
         fetchPosts("/api/order/"+this.state.modelData.orderId+"/update",data,"POST").then((data)=>{
             self.setState({
