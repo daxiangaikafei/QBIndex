@@ -130,7 +130,7 @@ export default {
       yield put({type: 'progressInfoReq', loading: true})
 
       let progressInfo = yield call(() => {
-        return fetch("/api/project/progress",{},"GET")
+        return fetch("/api/project/1/progress",{},"GET")
           .then(res => res.json())
           .then(data => data.data)
           .catch(err => ({
