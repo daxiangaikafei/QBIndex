@@ -1,6 +1,7 @@
 .party-info {
   position: relative;
   padding-bottom: 50px;
+  background-color: #e0e0e0;
 }
 .party-info * {
   box-sizing: border-box;
@@ -193,7 +194,6 @@
   border-bottom: 2px solid #a88872;
 }
 .party-chart .chart-info {
-  height: 310px;
   position: relative;
 }
 .party-chart .part-chart-top,
@@ -207,6 +207,9 @@
 .party-chart .part-chart-top span,
 .party-chart .bottom-title span {
   display: block;
+}
+.party-chart .bottom-title {
+  padding: 10px 0;
 }
 .party-chart .chart-low-line {
   height: 1px;
@@ -224,11 +227,7 @@
   padding: 0 6px;
 }
 .party-chart .part-chart-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 15px 0;
+  padding: 0 0 15px 0;
 }
 .party-chart .part-chart-bottom span {
   display: block;
@@ -251,6 +250,14 @@
   text-align: center;
   line-height: 14px;
   margin-right: 15px;
+}
+.party-chart .chart-main {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.party-chart .chart-main .recharts-wrapper {
+  left: -32px;
 }
 .party-chart .select {
   background-color: #a88872;

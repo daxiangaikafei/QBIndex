@@ -15,6 +15,7 @@
 .party-info{
     position: relative;
     padding-bottom: 50px;
+    background-color: #e0e0e0;
     *{
         box-sizing: border-box;
     }
@@ -233,7 +234,7 @@
         }
     }
     .chart-info{
-        height: 310px;
+        //height: 310px;
         position: relative;
     }
 
@@ -248,6 +249,9 @@
             display: block;
         }
         
+    }
+    .bottom-title{
+        padding: 10px 0;
     }
     .chart-low-line{
         height: 1px;
@@ -267,11 +271,11 @@
     }
 
     .part-chart-bottom{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 15px 0;
+        // position: absolute;
+        // bottom: 0;
+        // left: 0;
+        // right: 0;
+        padding: 0 0 15px 0;
         span{
             display: block;
             &:nth-child{
@@ -298,6 +302,17 @@
 
         
     }
+
+    .chart-main{
+            position: relative;
+            
+            width: 100%;
+            overflow: hidden;
+            .recharts-wrapper{
+                left: -32px;
+            }
+    }
+
     .select{
         background-color: @mainColor;
         color: white;

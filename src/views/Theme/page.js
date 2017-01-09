@@ -58,7 +58,7 @@ class Theme extends Component {
         );
     }
      componentDidMount(){
-         console.error("父级加载")
+         //console.error("父级加载")
      }
     render() {
         return (

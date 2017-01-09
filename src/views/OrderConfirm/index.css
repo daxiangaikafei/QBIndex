@@ -46,6 +46,24 @@
   padding: 10px 0 7px 0;
   line-height: 30px;
 }
+.order-join input {
+  color: #b3884f;
+  padding: 10px 0 7px 0;
+  line-height: 30px;
+  width: 80px;
+  background-color: #000000;
+  border-width: 0;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom: 1px solid #cbcbcb;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 400;
+}
+.order-join input:focus {
+  outline: none;
+}
 .order-estimate {
   width: 100%;
   position: relative;

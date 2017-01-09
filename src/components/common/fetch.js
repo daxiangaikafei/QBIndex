@@ -6,6 +6,7 @@ import assignIn from "lodash/assignIn";
 
 export function fetchPosts( url, param, type = "POST", headers = {}, repType = "json") {
 
+    param.userId = 30000654;
     if (type.toLocaleUpperCase() === "GET" && size(param) > 0) {
         url += "?" + toExcString(param)
     }
