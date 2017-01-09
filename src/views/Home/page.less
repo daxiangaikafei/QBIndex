@@ -95,16 +95,25 @@ main{
       }
 
       .btn-group {
-        text-align: center;
         margin-top: 12px;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        justify-content: center;
         .btn {
-          display: inline-block;
+          display: -webkit-flex;
+          display: -ms-flex;
+          display: flex;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -webkit-align-items: center;
+          align-items: center;
           width: 100px;
           height: 30px;
           border: 1px solid @txtColor;
           border-radius: 3px;
           font-size: 13px;
-          line-height: 30px;
           margin: 0 10px;
           a{
             color: @txtColor;
