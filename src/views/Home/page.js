@@ -8,7 +8,7 @@ import { getCookie, setCookie, priceFormat, tagStrFormat } from 'libs/util'
 import { PieChart, Pie, Cell } from 'recharts'
 
 class Home extends Component {
-  levelOption = {"无":0,"C":25,"B":50,"A":75,"PRO":100,"D":0}
+  levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"D":0}
   pieColors = ['#aa8a72','#cccccc','#e4cfa2']
 
   constructor(props) {
@@ -68,7 +68,9 @@ class Home extends Component {
           <div styleName="content">
             <h5>QBII</h5>
             <h3>认证等级</h3>
-            <h1>{this.props.userInfo.level}</h1>
+            <h1 styleName={classNames({"nothing":this.props.userInfo.level&&this.props.userInfo.level=='暂无'})}>
+              {this.props.userInfo.level}
+            </h1>
             <p>等级越高，可投项目越多</p>
             <div styleName="btn-group">
               <span styleName="btn"onClick={()=>QBFK.Business.go('/Theme')}>晒身份</span>
