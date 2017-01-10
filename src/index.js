@@ -14,46 +14,54 @@ import model from './model'
 
 const html5ForStartApp = dva()
 
+html5ForStartApp.model(business)
+html5ForStartApp.model(model)
 
-function html5ForLogin(_app) {
-    if (_app) {
+// 3. Router
+html5ForStartApp.router(router)
 
-        _app.model(business)
-        _app.model(model)
+html5ForStartApp.start('.page-container')
 
-        // 3. Router
-        _app.router(router)
 
-        _app.start('.page-container')
-    }
-    else
-    {
-        html5ForStartApp.model(business)
-        html5ForStartApp.model(model)
-
-        // 3. Router
-        html5ForStartApp.router(router)
-
-        html5ForStartApp.start('.page-container')
-    }
-
-}
-//login
-if(navigator.userAgent.match(/Android/i)) {
-    if (typeof QBaoJSBridge != 'undefined') {
-        QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
-    }
-    //app.start('.page-container')
-}
-else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-    if (typeof ioswebview != 'undefined') {
-        ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
-    }
-    //app.start('.page-container')
-}
-else {
-    app.start('.page-container')
-}
+//function html5ForLogin(_app) {
+//    if (_app) {
+//
+//        _app.model(business)
+//        _app.model(model)
+//
+//        // 3. Router
+//        _app.router(router)
+//
+//        _app.start('.page-container')
+//    }
+//    else
+//    {
+//        html5ForStartApp.model(business)
+//        html5ForStartApp.model(model)
+//
+//        // 3. Router
+//        html5ForStartApp.router(router)
+//
+//        html5ForStartApp.start('.page-container')
+//    }
+//
+//}
+////login
+//if(navigator.userAgent.match(/Android/i)) {
+//    if (typeof QBaoJSBridge != 'undefined') {
+//        QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
+//    }
+//    //app.start('.page-container')
+//}
+//else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+//    if (typeof ioswebview != 'undefined') {
+//        ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
+//    }
+//    //app.start('.page-container')
+//}
+//else {
+//    app.start('.page-container')
+//}
 
 //fast click
 if ('addEventListener' in document) {
