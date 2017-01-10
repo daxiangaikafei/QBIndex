@@ -6,14 +6,15 @@ import assignIn from "lodash/assignIn";
 
 export function fetchPosts( url, param, type = "POST", headers = {}, repType = "json") {
 
-    param.userId = 30000654;
-    if (type.toLocaleUpperCase() === "GET" && size(param) > 0) {
+    //param.userId = 30000654;
+    if (type.toLocaleUpperCase() === "GET" && size(param) > 0 && url.indexOf("?")<0) {
         url += "?" + toExcString(param)
     }
     headers = assignIn({}, {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS"
+        "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS",
+        "Response-Content-Type":'application/json'
     });
 
     return fetch(url, {
@@ -29,15 +30,18 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
         .then((data) => {
             //console.log('收到data', data);
             //dispatch(fetchSuccess(key, data));
-            if (data && (data.code === 0 || data.resultCode === "0" || data.resultCode === 0 || data.code === "0")) {
+            if (data && (data.returnCode === -100 || data.returnCode === "-100")) {
+                QBFK.Business.login()
+                return fetchPosts(url,param,type,headers,repType);
                 //dispatch(errorClear("common,login"));
-            } else {
-                //console.info("你的请求 内部出错了", data);
-                //dispatch(errorSave("common", data));
-                if (data && (data.code === "200" || data.code === 200 || data.resultCode == "200" || data.resultCode == 200)) {
-                    //dispatch(errorSave("login", data));
-                }
-            }
+            } 
+            // else {
+            //     //console.info("你的请求 内部出错了", data);
+            //     //dispatch(errorSave("common", data));
+            //     if (data && (data.code === "200" || data.code === 200 || data.resultCode == "200" || data.resultCode == 200)) {
+            //         //dispatch(errorSave("login", data));
+            //     }
+            // }
             return data;
         })
 
