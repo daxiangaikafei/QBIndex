@@ -46,7 +46,7 @@ export default {
           .then(data => data.data)
           .catch(err => ({
         		"userId" : 111111,
-        		"level" : "D"
+        		"level" : "暂无"
            }))
       }, action.levelInfo)
 
@@ -68,7 +68,7 @@ export default {
           .then(data => data.data.user)
           .catch(err => ({
             "id": 111111,
-      			"level": "D",
+      			"level": "暂无",
       			"assets": 0,
       			"profit": 0
           }))
