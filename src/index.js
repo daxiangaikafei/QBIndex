@@ -14,17 +14,29 @@ import model from './model'
 
 const html5ForStartApp = dva()
 
-html5ForStartApp.model(business)
-html5ForStartApp.model(model)
-
-// 3. Router
-html5ForStartApp.router(router)
 
 function html5ForLogin(_app) {
-    if (_app)
+    if (_app) {
+
+        _app.model(business)
+        _app.model(model)
+
+        // 3. Router
+        _app.router(router)
+
         _app.start('.page-container')
+    }
     else
+    {
+        html5ForStartApp.model(business)
+        html5ForStartApp.model(model)
+
+        // 3. Router
+        html5ForStartApp.router(router)
+
         html5ForStartApp.start('.page-container')
+    }
+
 }
 //login
 if(navigator.userAgent.match(/Android/i)) {
