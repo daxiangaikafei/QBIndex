@@ -45,9 +45,9 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
                     return fetchPosts(url,param,type,headers,repType,fetchNum+1);
                 })
 
-                
+
                 //dispatch(errorClear("common,login"));
-            } 
+            }
             // else {
             //     //console.info("你的请求 内部出错了", data);
             //     //dispatch(errorSave("common", data));
