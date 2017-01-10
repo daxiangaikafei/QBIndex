@@ -6,6 +6,8 @@ import { Link } from 'react-router'
 import classNames from 'classnames'
 import { getCookie, setCookie, priceFormat, tagStrFormat } from 'libs/util'
 import { PieChart, Pie, Cell } from 'recharts'
+import {fetchPosts} from "components/common/fetch"
+
 
 class Home extends Component {
   levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"D":0}
@@ -13,10 +15,14 @@ class Home extends Component {
 
   constructor(props) {
     super(props)
-    props.getLevel()
-    // props.getUserInfo()
-    // props.getProjInfo()
-    // props.getProgressInfo()
+    fetchPosts("/api/user/userId",{},"GET")
+      .then(data => {
+        props.getLevel()
+        props.getUserInfo()
+        props.getProjInfo()
+        props.getProgressInfo()
+      })
+    
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
       isShowPie: false,

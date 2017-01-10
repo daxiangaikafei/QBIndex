@@ -66,85 +66,109 @@ export default {
     //     count
     //   })
     // },
+    // *getUserId (action, {put, call}) {
+    //   yield put({type: 'levelReq', loading: true})
+
+    //   yield call(() => {
+    //     return fetchPosts("/api/user/userId",{},"GET")
+    //       .then(data => data.data)
+    //       .then(data => {
+
+    //         let levelInfo =  call(() => {
+    //           return fetchPosts("/api/user/level",{},"GET")
+    //             .then(data => data.data)
+    //             .catch(err => ({
+    //           		"userId" : 111111,
+    //           		"level" : "暂无"
+    //              }))
+    //         }, action.levelInfo)
+
+    //         let userInfo =  call(() => {
+    //           return fetchPosts("/api/user/userInfo",{},"GET")
+    //             .then(data => data.data.user)
+    //             .catch(err => ({
+    //               "id": 111111,
+    //         			"level": "暂无",
+    //         			"assets": 0,
+    //         			"profit": 0
+    //             }))
+    //         }, action.userInfo)
+
+    //         let projInfo =  call(() => {
+    //           return fetchPosts("/api/project/1",{},"GET")
+    //             .then(data => data.data.project)
+    //             .catch(err => ({
+    //               "assetsId": 1,
+    //               "id": 1,
+    //               "name": "--",
+    //               "pics": "",
+    //               "tag": "--",
+    //               "watched": 0,
+    //               "projectAssets": {},
+    //               "projectInfo": {
+    //                   "assetsRatio": [
+    //                       {
+    //                           "name": "--",
+    //                           "value": 1
+    //                       },
+    //                       {
+    //                           "name": "--",
+    //                           "value": 1
+    //                       },
+    //                       {
+    //                           "name": "--",
+    //                           "value": 1
+    //                       }
+    //                   ],
+    //                   "id": 2,
+    //                   "projectId": 1,
+    //                   "tag1": "+0%",
+    //                   "tag2": "0款",
+    //                   "tag3": "0个",
+    //               },
+    //           }))
+    //         }, action.projInfo)
+
+    //         let progressInfo =  call(() => {
+    //           return fetchPosts("/api/project/1/progress",{},"GET")
+    //             .then(data => data.data)
+    //             .catch(err => ({
+    //               "amount": 0,
+    //               "target": 0,
+    //               "user_count": 0
+    //             }))
+    //         }, action.progressInfo)
+
+    //       })
+    //       .catch(err => {
+    //         console.log(err);
+    //       })
+    //   })
+
+
+    //   yield call(() => {
+    //     setCookie("level",levelInfo.level,"storage");
+    //   })
+    //   yield put({
+    //     type: 'levelRes',
+    //     loading: false,
+    //     levelInfo,
+    //     userInfo,
+    //     projInfo,
+    //     progressInfo
+    //   })
+    // },
     *getLevel (action, {put, call}) {
       yield put({type: 'levelReq', loading: true})
 
-      yield call(() => {
-        return fetchPosts("/api/user/userId",{},"GET")
+      let levelInfo = yield call(() => {
+        return fetchPosts("/api/user/level",{},"GET")
           .then(data => data.data)
-          .then(data => {
-
-            let levelInfo =  call(() => {
-              return fetchPosts("/api/user/level",{},"GET")
-                .then(data => data.data)
-                .catch(err => ({
-              		"userId" : 111111,
-              		"level" : "暂无"
-                 }))
-            }, action.levelInfo)
-
-            let userInfo =  call(() => {
-              return fetchPosts("/api/user/userInfo",{},"GET")
-                .then(data => data.data.user)
-                .catch(err => ({
-                  "id": 111111,
-            			"level": "暂无",
-            			"assets": 0,
-            			"profit": 0
-                }))
-            }, action.userInfo)
-
-            let projInfo =  call(() => {
-              return fetchPosts("/api/project/1",{},"GET")
-                .then(data => data.data.project)
-                .catch(err => ({
-                  "assetsId": 1,
-                  "id": 1,
-                  "name": "--",
-                  "pics": "",
-                  "tag": "--",
-                  "watched": 0,
-                  "projectAssets": {},
-                  "projectInfo": {
-                      "assetsRatio": [
-                          {
-                              "name": "--",
-                              "value": 1
-                          },
-                          {
-                              "name": "--",
-                              "value": 1
-                          },
-                          {
-                              "name": "--",
-                              "value": 1
-                          }
-                      ],
-                      "id": 2,
-                      "projectId": 1,
-                      "tag1": "+0%",
-                      "tag2": "0款",
-                      "tag3": "0个",
-                  },
-              }))
-            }, action.projInfo)
-
-            let progressInfo =  call(() => {
-              return fetchPosts("/api/project/1/progress",{},"GET")
-                .then(data => data.data)
-                .catch(err => ({
-                  "amount": 0,
-                  "target": 0,
-                  "user_count": 0
-                }))
-            }, action.progressInfo)
-
-          })
-          .catch(err => {
-            console.log(err);
-          })
-      })
-
+          .catch(err => ({
+            "userId" : 111111,
+            "level" : "暂无"
+            }))
+      }, action.levelInfo)
 
       yield call(() => {
         setCookie("level",levelInfo.level,"storage");
