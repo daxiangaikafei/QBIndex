@@ -1,5 +1,6 @@
 .theme {
   position: relative;
+  padding-bottom: 38px;
 }
 .theme * {
   margin-top: 0;
@@ -94,6 +95,10 @@
   margin: 0 1.875rem;
 }
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   font-size: 16px;
   line-height: 18px;
   display: flex;
