@@ -89,7 +89,7 @@ class Home extends Component {
         <div styleName="list-container" className={classNames({"hide":!this.props.projInfo.projectInfo.projectId})}>
           <div styleName="item">
             <div styleName="banner">
-              <img src={this.props.projInfo.pics} alt=""/>
+              <img src={this.props.projInfo.pics} alt="" onError={(e)=>{e.target.style.display='none'}}/>
             </div>
             <div styleName="title">
               {this.props.projInfo.name}
