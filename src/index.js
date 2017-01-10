@@ -12,30 +12,30 @@ import utilss from './libs/util'
 import business from './model/business'
 import model from './model'
 
-const app = dva()
+const html5ForStartApp = dva()
 
-app.model(business)
-app.model(model)
+html5ForStartApp.model(business)
+html5ForStartApp.model(model)
 
 // 3. Router
-app.router(router)
+html5ForStartApp.router(router)
 
-function loginH5(_app) {
-    if (app)
+function html5ForLogin(_app) {
+    if (_app)
         _app.start('.page-container')
     else
-        app.start('.page-container')
+        html5ForStartApp.start('.page-container')
 }
 //login
 if(navigator.userAgent.match(/Android/i)) {
     if (typeof QBaoJSBridge != 'undefined') {
-        QBaoJSBridge.login("mqbii.qbao.com", String(loginH5(app)));
+        QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
     }
     //app.start('.page-container')
 }
 else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
     if (typeof ioswebview != 'undefined') {
-        ioswebview.showLoginViewAnd("mqbii.qbao.com", "loginH5(app);");
+        ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
     }
     //app.start('.page-container')
 }
