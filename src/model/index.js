@@ -176,10 +176,7 @@ export default {
       yield put({
         type: 'levelRes',
         loading: false,
-        levelInfo,
-        userInfo,
-        projInfo,
-        progressInfo
+        levelInfo
       })
     },
     *getUserInfo (action, {put, call}) {
