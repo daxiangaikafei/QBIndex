@@ -41,7 +41,7 @@ export default {
       yield put({type: 'levelReq', loading: true})
 
       let levelInfo = yield call(() => {
-        return fetch("/api/user/level",{},"GET")
+        return fetchPosts("/api/user/level",{},"GET")
           .then(res => res.json())
           .then(data => data.data)
           .catch(err => ({
@@ -63,7 +63,7 @@ export default {
       yield put({type: 'userInfoReq', loading: true})
 
       let userInfo = yield call(() => {
-        return fetch("/api/user/userInfo",{},"GET")
+        return fetchPosts("/api/user/userInfo",{},"GET")
           .then(res => res.json())
           .then(data => data.data.user)
           .catch(err => ({
@@ -84,7 +84,7 @@ export default {
       yield put({type: 'projInfoReq', loading: true})
 
       let projInfo = yield call(() => {
-        return fetch("/api/project/1",{},"GET")
+        return fetchPosts("/api/project/1",{},"GET")
           .then(res => res.json())
           .then(data => data.data.project)
           .catch(err => ({
@@ -130,7 +130,7 @@ export default {
       yield put({type: 'progressInfoReq', loading: true})
 
       let progressInfo = yield call(() => {
-        return fetch("/api/project/1/progress",{},"GET")
+        return fetchPosts("/api/project/1/progress",{},"GET")
           .then(res => res.json())
           .then(data => data.data)
           .catch(err => ({
