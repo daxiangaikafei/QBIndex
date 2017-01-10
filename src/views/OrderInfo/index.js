@@ -171,7 +171,6 @@ class OrderInfo extends Component {
 
                 <div className="step-end" >
                     <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
-                    <button><span className="step-download"></span></button>
                     <button className="step-btn-end" onClick={this.handThink} >我有意向</button>
                 </div>
             </div>
@@ -194,4 +193,4 @@ OrderInfo.defaultProps = {
 
 export default withRouter(OrderInfo);
 
-//<div className="theme-img"></div>
+//<div className="theme-img"></div>  <button><span className="step-download"></span></button>

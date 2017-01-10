@@ -4,7 +4,7 @@ import "./page.less";
 import Ring from "./ring.js";
 import {getCookie} from 'libs/util';
 
-const Level={"无":0,"C":25,"B":50,"A":75,"PRO":100,"D":0};
+const Level={"无":0,"C":25,"B":50,"A":75,"PRO":100,"无":0};
 
 class Theme extends Component {
     constructor(props) {
@@ -75,6 +75,7 @@ class Theme extends Component {
      }
     render() {
         let levelName = getCookie("level","storage")||"无";
+        //debugger;
         let level = Level[levelName];
         //level = 20;
         //debugger;
