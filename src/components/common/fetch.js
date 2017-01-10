@@ -22,6 +22,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
     return fetch(url, {
             method: type.toLocaleUpperCase(),
             headers: headers,
+            credentials: 'same-origin',
             //credentials: 'same-origin',
             body: type.toLocaleUpperCase() === "GET" ? undefined : (repType == "json" ? JSON.stringify(param) : param)
         })
