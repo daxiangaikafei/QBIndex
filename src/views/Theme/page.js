@@ -4,7 +4,7 @@ import "./page.less";
 import Ring from "./ring.js";
 import {getCookie} from 'libs/util';
 
-const Level={"无":0,"C":25,"B":50,"A":75,"PRO":100,"无":0};
+const Level={"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"暂无":0};
 
 class Theme extends Component {
     constructor(props) {
