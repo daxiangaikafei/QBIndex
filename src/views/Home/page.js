@@ -14,9 +14,9 @@ class Home extends Component {
   constructor(props) {
     super(props)
     props.getLevel()
-    props.getUserInfo()
-    props.getProjInfo()
-    props.getProgressInfo()
+    // props.getUserInfo()
+    // props.getProjInfo()
+    // props.getProgressInfo()
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
       isShowPie: false,
