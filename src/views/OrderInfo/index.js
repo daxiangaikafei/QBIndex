@@ -30,14 +30,14 @@ class OrderInfo extends Component {
                 duration:"",//存续期限
                 direction:"",//投资方向 1股权
                 minPrice:"",//认购起点
-                des:"<div>似懂非懂是多少的水分水淀粉 水淀粉说的奋斗史</div>",//特色亮点,
+                des:"",//特色亮点,
                 target:"",//目标规模
                 organization:"",//管理机构
                 // direction //投资方向
                 assetsType:"",// type//资本类型 1-本土
                 organizationType:"",//组织形式  1-有限合伙制
                 structured:"",//结构化 . 1-是，2-否
-                exit:["uuuuu","nnnnnn"],//退出形式
+                exit:["",""],//退出形式
                 trusteeFee:["",""],//认购费 . 
                 managementFee:["",""],//管理费
                 trusteeFee:["",""],//托管费

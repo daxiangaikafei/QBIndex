@@ -151,8 +151,8 @@ class Home extends Component {
           <div styleName="title">
             <div styleName="name">最新资讯</div>
             <div styleName="more">
-              查看更多
-              <i styleName="icon icon-arrow"></i>
+              {/* 查看更多
+              <i styleName="icon icon-arrow"></i> */}
             </div>
           </div>
           <div styleName="item">
