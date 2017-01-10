@@ -87,6 +87,9 @@ if (__DEV__) {
                 dead_code: true,
                 warnings: false
             }
+            ,mangle: {
+                except: ['html5ForLogin','html5ForStartApp']
+            }
         })
     )
 }
