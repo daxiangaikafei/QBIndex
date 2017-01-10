@@ -4,7 +4,7 @@ import size from "lodash/size";
 import each from "lodash/each";
 import assignIn from "lodash/assignIn";
 
-export function fetchPosts( url, param, type = "POST", headers = {}, repType = "json") {
+export function fetchPosts( url, param, type = "POST", headers = {}, repType = "json",fetchNum = 1) {
 
     //debugger;
     //param.userId = 30000654;
@@ -27,18 +27,22 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             body: type.toLocaleUpperCase() === "GET" ? undefined : (repType == "json" ? JSON.stringify(param) : param)
         })
         .then((res) => {
-            //debugger;
-            //console.log(res.status);
-            return res.json();
+            var result;
+            try{
+                result = res.json();
+            }catch(errorMsg){
+                return fetchError(errorMsg);
+            }
+            return result;
         })
         .then((data) => {
             //console.log('收到data', data);
             //dispatch(fetchSuccess(key, data));
             //debugger;
-            if (data && (data.returnCode === -100 || data.returnCode === "-100")) {
+            if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {
                 QBFK.Business.login();
                 return fetchSetTimeout().then(()=>{
-                    return fetchPosts(url,param,type,headers,repType);
+                    return fetchPosts(url,param,type,headers,repType,fetchNum+1);
                 })
 
                 
@@ -64,6 +68,14 @@ var fetchSetTimeout = function(){
             //console.log('执行完成');
             resolve('随便什么数据');
         }, 100);
+    });
+    return fetchSetTimeout;
+}
+
+var fetchError = function(error){
+    var fetchSetTimeout = new Promise(function(resolve, reject){
+            //console.log('执行完成');
+            reject(error);
     });
     return fetchSetTimeout;
 }
