@@ -6,6 +6,7 @@ import assignIn from "lodash/assignIn";
 
 export function fetchPosts( url, param, type = "POST", headers = {}, repType = "json") {
 
+    //debugger;
     //param.userId = 30000654;
     if (type.toLocaleUpperCase() === "GET" && size(param) > 0 && url.indexOf("?")<0) {
         url += "?" + toExcString(param)
@@ -16,6 +17,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
         "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS",
         "Response-Content-Type":'application/json'
     });
+   // debugger;
 
     return fetch(url, {
             method: type.toLocaleUpperCase(),
@@ -24,12 +26,14 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             body: type.toLocaleUpperCase() === "GET" ? undefined : (repType == "json" ? JSON.stringify(param) : param)
         })
         .then((res) => {
+            //debugger;
             //console.log(res.status);
             return res.json();
         })
         .then((data) => {
             //console.log('收到data', data);
             //dispatch(fetchSuccess(key, data));
+            //debugger;
             if (data && (data.returnCode === -100 || data.returnCode === "-100")) {
                 QBFK.Business.login()
                 return fetchPosts(url,param,type,headers,repType);
