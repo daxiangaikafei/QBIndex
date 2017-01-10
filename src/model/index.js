@@ -5,19 +5,48 @@ export default {
   namespace: 'home',
   state: {
     loading: false,
-    levelInfo: {},
-    userInfo: {},
+    levelInfo: {
+      "level" : "暂无"
+    },
+    userInfo: {
+      "level": "暂无",
+      "assets": 0,
+      "profit": 0
+    },
     projInfo: {
+      "assetsId": 1,
+      "id": 1,
+      "name": "--",
+      "pics": "",
+      "tag": "--",
       projectAssets: {},
       projectInfo: {
-        assetsRatio:[
-          {name: '--', value: 1},
-          {name: '--', value: 1},
-          {name: '--', value: 1}
-        ]
+        assetsRatio: [
+            {
+                name: "--",
+                value: 1
+            },
+            {
+                name: "--",
+                value: 1
+            },
+            {
+                name: "--",
+                value: 1
+            }
+        ],
+        "id": 2,
+        "projectId": 1,
+        "tag1": "+0%",
+        "tag2": "0款",
+        "tag3": "0个",
       }
     },
-    progressInfo: {}
+    progressInfo: {
+      "amount": 0,
+      "target": 0,
+      "user_count": 0
+    }
   },
   effects: {
     // *'fetch' (action, {put, call}) {
@@ -40,15 +69,82 @@ export default {
     *getLevel (action, {put, call}) {
       yield put({type: 'levelReq', loading: true})
 
-      let levelInfo = yield call(() => {
-        return fetchPosts("/api/user/level",{},"GET")
-          .then(res => res.json())
+      yield call(() => {
+        return fetchPosts("/api/user/userId",{},"GET")
           .then(data => data.data)
-          .catch(err => ({
-        		"userId" : 111111,
-        		"level" : "D"
-           }))
-      }, action.levelInfo)
+          .then(data => {
+
+            let levelInfo =  call(() => {
+              return fetchPosts("/api/user/level",{},"GET")
+                .then(data => data.data)
+                .catch(err => ({
+              		"userId" : 111111,
+              		"level" : "暂无"
+                 }))
+            }, action.levelInfo)
+
+            let userInfo =  call(() => {
+              return fetchPosts("/api/user/userInfo",{},"GET")
+                .then(data => data.data.user)
+                .catch(err => ({
+                  "id": 111111,
+            			"level": "暂无",
+            			"assets": 0,
+            			"profit": 0
+                }))
+            }, action.userInfo)
+
+            let projInfo =  call(() => {
+              return fetchPosts("/api/project/1",{},"GET")
+                .then(data => data.data.project)
+                .catch(err => ({
+                  "assetsId": 1,
+                  "id": 1,
+                  "name": "--",
+                  "pics": "",
+                  "tag": "--",
+                  "watched": 0,
+                  "projectAssets": {},
+                  "projectInfo": {
+                      "assetsRatio": [
+                          {
+                              "name": "--",
+                              "value": 1
+                          },
+                          {
+                              "name": "--",
+                              "value": 1
+                          },
+                          {
+                              "name": "--",
+                              "value": 1
+                          }
+                      ],
+                      "id": 2,
+                      "projectId": 1,
+                      "tag1": "+0%",
+                      "tag2": "0款",
+                      "tag3": "0个",
+                  },
+              }))
+            }, action.projInfo)
+
+            let progressInfo =  call(() => {
+              return fetchPosts("/api/project/1/progress",{},"GET")
+                .then(data => data.data)
+                .catch(err => ({
+                  "amount": 0,
+                  "target": 0,
+                  "user_count": 0
+                }))
+            }, action.progressInfo)
+
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      })
+
 
       yield call(() => {
         setCookie("level",levelInfo.level,"storage");
@@ -56,7 +152,10 @@ export default {
       yield put({
         type: 'levelRes',
         loading: false,
-        levelInfo
+        levelInfo,
+        userInfo,
+        projInfo,
+        progressInfo
       })
     },
     *getUserInfo (action, {put, call}) {
@@ -68,7 +167,7 @@ export default {
           .then(data => data.data.user)
           .catch(err => ({
             "id": 111111,
-      			"level": "D",
+      			"level": "暂无",
       			"assets": 0,
       			"profit": 0
           }))
