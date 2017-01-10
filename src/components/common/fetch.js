@@ -36,8 +36,12 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             //dispatch(fetchSuccess(key, data));
             //debugger;
             if (data && (data.returnCode === -100 || data.returnCode === "-100")) {
-                QBFK.Business.login()
-                return fetchPosts(url,param,type,headers,repType);
+                QBFK.Business.login();
+                return fetchSetTimeout().then(()=>{
+                    return fetchPosts(url,param,type,headers,repType);
+                })
+
+                
                 //dispatch(errorClear("common,login"));
             } 
             // else {
@@ -51,6 +55,21 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
         })
 
 }
+
+//可配的
+var fetchSetTimeout = function(){
+    var fetchSetTimeout = new Promise(function(resolve, reject){
+        //做一些异步操作
+        setTimeout(function(){
+            //console.log('执行完成');
+            resolve('随便什么数据');
+        }, 100);
+    });
+    return fetchSetTimeout;
+}
+
+
+
 
 
 
