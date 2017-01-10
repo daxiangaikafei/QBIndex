@@ -88,6 +88,9 @@ class OrderConfirm extends Component {
             consoel.log("niya . sha b ",data);
             //modelData
         }).catch(()=>{
+            self.setState({
+                disabled:false
+            })
             //alert("系统繁忙，请稍后再试！");
             // let data = {user:{name:"呵呵",phone:"11111111111"}}
             // self.setState({
