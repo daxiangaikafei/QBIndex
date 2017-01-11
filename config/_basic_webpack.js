@@ -25,6 +25,7 @@ const webpackConfig = {
         },
         extensions: ['', '.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json']
     },
+    devtool: 'eval',
     module: {}
 }
 
@@ -87,6 +88,7 @@ if (__DEV__) {
                 dead_code: true,
                 warnings: false
             }
+            ,sourceMap:true
             ,mangle: {
                 except: ['html5ForLogin','html5ForStartApp']
             }
