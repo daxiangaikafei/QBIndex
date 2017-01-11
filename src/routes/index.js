@@ -23,7 +23,7 @@ export default function (ref) {
         <Route path='/About' component={About} name="了解QBII"/>
 
         <Route path='/OrderConfirm/:projectId' component={OrderConfirm} name="订单确认"/>
-        <Route path='/OrderInfo/:projectId' component={OrderInfo} name="XXX详情"/>
+        <Route path='/OrderInfo/:projectId' component={OrderInfo} name="项目详情"/>
       </Route>
     </Router>
   )
