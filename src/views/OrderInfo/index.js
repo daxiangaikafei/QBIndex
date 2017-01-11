@@ -70,15 +70,20 @@ class OrderInfo extends Component {
         let {projectId} = this.props.routeParams;
         fetchPosts("/api/project/"+projectId,{},"GET").then((data)=>{
             
-            let newData = this.formateData(data,this.state.data);
-            newData.assetsType = newData.assetsType===1?"本土":"";
-            newData.organizationType = newData.organizationType===1?"有限合伙制":"";
-            newData.structured = newData.structured===1?"是":"否";//
+            try{
+                let newData = this.formateData(data,this.state.data);
+                newData.assetsType = newData.assetsType===1?"本土":"";
+                newData.organizationType = newData.organizationType===1?"有限合伙制":"";
+                newData.structured = newData.structured===1?"是":"否";//
+                
+                console.log("data",newData);
+                self.setState({
+                    data:newData
+                });
+            }catch(errorMsg){
+                consoel.log(errorMsg);
+            }
             
-            console.log("data",newData);
-            self.setState({
-                data:newData
-            });
             
         })
     }
