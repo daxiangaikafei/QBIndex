@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import "./index.less";
+import "./page.less";
 
 import {fetchPosts} from "components/common/fetch";
 import {withRouter} from "react-router";

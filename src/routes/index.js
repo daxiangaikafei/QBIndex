@@ -8,8 +8,8 @@ import About from 'views/About/page'
 import AnDemo from "views/AnDemo/page";
 import Theme from "views/Theme/page";
 
-import OrderConfirm from "views/OrderConfirm/index";
-import OrderInfo from "views/OrderInfo/index";
+import OrderConfirm from "views/OrderConfirm/page";
+import OrderInfo from "views/OrderInfo/page";
 
 export default function (ref) {
   return (

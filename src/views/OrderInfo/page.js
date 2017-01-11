@@ -15,7 +15,7 @@ import {fetchPosts} from "components/common/fetch";
 import {getCookie} from 'libs/util';
 
 
-import "./index.less";
+import "./page.less";
 
 
 
