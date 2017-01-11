@@ -20,7 +20,7 @@ class NavBar extends React.Component {
     }
   }
 
-  _filter (pathname, route) {debugger;
+  _filter (pathname, route) {
     let _result = route.childRoutes.filter(item => item.path == pathname)
     return _result.length ? _result[0].name : route.indexRoute.name
   }
