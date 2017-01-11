@@ -10,7 +10,7 @@ import { LineChart,XAxis,YAxis,CartesianGrid, Tooltip,Legend,Line}  from "rechar
 
 
 
-class CharInfo extends Component {
+class CharHour extends Component {
     constructor(props) {
         super(props);
         this.createData = this.createData.bind(this);
@@ -79,7 +79,7 @@ class CharInfo extends Component {
     }
 }
 // <Line  type="monotone" dataKey="other" stroke="#808291" dot={false}/>
-CharInfo.defaultProps = {
+CharHour.defaultProps = {
     width:false,
     height:false,
     className:"",
@@ -87,4 +87,4 @@ CharInfo.defaultProps = {
 }
 //return data.substr(4)}
 
-export default CharInfo;
+export default CharHour;

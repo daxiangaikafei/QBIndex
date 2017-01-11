@@ -131,7 +131,6 @@ class OrderConfirm extends Component {
             return false;
         }
         this.setState({
-            show:false,
             errorShow:false
         });
         //api/order/{orderId}/update

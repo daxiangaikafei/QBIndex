@@ -10,7 +10,7 @@ import { LineChart,XAxis,YAxis,CartesianGrid, Tooltip,Legend,Line}  from "rechar
 
 
 
-class CharInfo extends Component {
+class ChartDay extends Component {
     constructor(props) {
         super(props);
         this.createData = this.createData.bind(this);
@@ -163,4 +163,4 @@ CharInfo.defaultProps = {
     space:1
 }
 
-export default CharInfo;
+export default ChartDay;
