@@ -156,7 +156,7 @@ class ChartDay extends Component {
         )
     }
 }
-CharInfo.defaultProps = {
+ChartDay.defaultProps = {
     width:false,
     height:false,
     className:"",
