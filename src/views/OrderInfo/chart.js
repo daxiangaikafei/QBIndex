@@ -119,6 +119,11 @@ class Chart extends Component {
        
         self.setState({dataFirst:false});
         fetchPosts("/api/project/"+projectId+"/profitability",{},"GET").then((data)=>{
+            try{
+                self.creatHDate(data.data.value,data.data.zuorizhangfu);
+            }catch(errorMsg){
+
+            }
             self.creatFDate(data.data);
             // self.setState({
             //     dataFirst:data
@@ -130,7 +135,13 @@ class Chart extends Component {
         let {projectId} = this.props;
         self.setState({dataSecond:false});
         fetchPosts("/api/project/"+projectId+"/evaluate",{},"GET").then((data)=>{
-            self.creatHDate(data.data.value,data.data.zuorizhangfu);
+            
+            try{
+                self.creatHDate(data.data.value,data.data.zuorizhangfu);
+            }catch(errorMsg){
+
+            }
+            
             // self.setState({
             //     dataSecond:data
             // });
