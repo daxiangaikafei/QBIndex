@@ -13,7 +13,7 @@ import business from './model/business'
 import model from './model'
 
 const html5ForStartApp = dva()
-html5ForLogin(html5ForStartApp);
+//html5ForLogin(html5ForStartApp);
 
 function html5ForLogin(_app) {
     if (_app) {
@@ -39,21 +39,21 @@ function html5ForLogin(_app) {
 
 }
 //login
-// if(navigator.userAgent.match(/Android/i)) {
-//     if (typeof QBaoJSBridge != 'undefined') {
-//         QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
-//     }
-//     //app.start('.page-container')
-// }
-// else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-//     if (typeof ioswebview != 'undefined') {
-//         ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
-//     }
-//     //app.start('.page-container')
-// }
-// else {
-//     app.start('.page-container')
-// }
+if(navigator.userAgent.match(/Android/i)) {
+    if (typeof QBaoJSBridge != 'undefined') {
+        QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
+    }
+    //app.start('.page-container')
+}
+else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+    if (typeof ioswebview != 'undefined') {
+        ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
+    }
+    //app.start('.page-container')
+}
+else {
+    app.start('.page-container')
+}
 
 //fast click
 if ('addEventListener' in document) {
