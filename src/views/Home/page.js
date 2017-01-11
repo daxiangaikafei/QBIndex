@@ -22,7 +22,7 @@ class Home extends Component {
         props.getProjInfo()
         props.getProgressInfo()
       })
-      
+
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
       isShowPie: false,
@@ -97,7 +97,7 @@ class Home extends Component {
         <div styleName="list-container" className={classNames({"hide":!this.props.projInfo.projectInfo.projectId})}>
           <div styleName="item">
             <div styleName="banner">
-              <img src={this.props.projInfo.pics} alt="" onError={(e)=>{e.target.style.display='none'}}/>
+              <img src={this.props.projInfo.pics[0]} alt="" onError={(e)=>{e.target.style.display='none'}}/>
             </div>
             <div styleName="title">
               {this.props.projInfo.name}

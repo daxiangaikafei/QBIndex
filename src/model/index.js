@@ -17,7 +17,7 @@ export default {
       "assetsId": 1,
       "id": 1,
       "name": "--",
-      "pics": "",
+      "pics": [''],
       "tag": "--",
       projectAssets: {},
       projectInfo: {
@@ -209,7 +209,7 @@ export default {
             "assetsId": 1,
             "id": 1,
             "name": "--",
-            "pics": "",
+            "pics": [""],
             "tag": "--",
             "watched": 0,
             "projectAssets": {},
