@@ -3,13 +3,16 @@ import React, { Component, PropTypes } from 'react';
 
 import { connect } from 'dva';
 import {withRouter} from "react-router";
-//var moment = require('moment');
-
-import {fetchPosts} from "components/common/fetch";
 
 import isObject from "lodash/isObject";
 import isArray from "lodash/isArray";
 
+//var moment = require('moment');
+
+import {fetchPosts} from "components/common/fetch";
+
+
+import {getCookie} from 'libs/util';
 
 
 import "./index.less";
@@ -47,14 +50,23 @@ class OrderInfo extends Component {
             },
             startDate:this.formate(),
             endDate:this.formate(1),
+            disabled:true
         }
 
-        
         this.getData = this.getData.bind(this);
         this.handThink = this.handThink.bind(this);
         this.handHeart = this.handHeart.bind(this);
     }
     componentWillMount(){
+        let levelName = getCookie("level","storage")||"暂无";
+        //debugger
+        if(levelName!=="暂无"){
+            this.setState({
+                disabled:true
+            })
+        }
+
+        // const Level={"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"暂无":0};
         this.getData();
     }
     formate(num){
@@ -105,6 +117,9 @@ class OrderInfo extends Component {
     }
     
     handThink(){
+        if(this.state.disabled===true){
+            return false;
+        }
         let {projectId} = this.props.routeParams;
         this.props.router.push({pathname:"/orderconfirm/"+projectId})
     }
@@ -168,7 +183,7 @@ class OrderInfo extends Component {
                 </Area>
                  <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
                     <ul className="area-rows">
-        <li><span>认购费</span><span>{(data.trusteeFee[1]+"%")||""}</span></li>
+                        <li><span>认购费</span><span>{(data.trusteeFee[1]+"%")||""}</span></li>
                         <li><span>管理费</span><span>{(data.managementFee[1]+"%/年")||""}</span></li>
                         <li><span>托管费</span><span>{(data.trusteeFee[1]+"%/年")||""}</span></li>
                         <li><span>收益分配</span><span>{data.profit||""}</span></li>
@@ -177,7 +192,7 @@ class OrderInfo extends Component {
 
                 <div className="step-end" >
                     <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
-                    <button className="step-btn-end" onClick={this.handThink} >我有意向</button>
+                    <button disabled={this.state.disabled} className="step-btn-end" onClick={this.handThink} >我有意向</button>
                 </div>
             </div>
         )
