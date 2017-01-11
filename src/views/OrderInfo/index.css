@@ -67,18 +67,17 @@
 }
 .area-info .area-rows span {
   display: block;
+  float: right;
   line-height: 18px;
   color: #757575;
 }
 .area-info .area-rows span:first-child {
+  float: left;
   color: #000000;
 }
 .area-info .area-rows li {
   padding: 16px 15px;
   border-bottom: 1px solid #ececec;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 .area-info .area-rows li:after {
   clear: both;
@@ -95,6 +94,7 @@
   letter-spacing: 2px;
   width: 100%;
   padding: 5px 0;
+  float: left;
 }
 .area-info .area-duan {
   padding: 5px 15px;

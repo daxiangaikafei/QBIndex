@@ -75,6 +75,7 @@ class OrderInfo extends Component {
                 newData.assetsType = newData.assetsType===1?"本土":"";
                 newData.organizationType = newData.organizationType===1?"有限合伙制":"";
                 newData.structured = newData.structured===1?"是":"否";//
+                newData.direction = newData.direction===1?"股权":"";//direction
                 
                 console.log("data",newData);
                 self.setState({
@@ -123,8 +124,8 @@ class OrderInfo extends Component {
                 <Area className="" title="冰穹互娱股权投资一期资管计划" hasIcon={false}>
                     <ul className="party-plan">
                         <li><span>{data.direction}</span><span>投资方向</span></li>
-                        <li><span>{data.direction}</span><span>存续期限</span></li>
-                        <li><span>{data.direction}万</span><span>认购起点</span></li>
+                        <li><span>{data.duration}</span><span>存续期限</span></li>
+                        <li><span>{data.minPrice}万</span><span>认购起点</span></li>
                     </ul>
                 </Area>
                 <Area className="area-margin area-bottom" title="项目解析" hasIcon={false}>
@@ -156,7 +157,7 @@ class OrderInfo extends Component {
 
                 <Area className="area-margin" title="产品明细" hasIcon={true} hasLine={true}>
                     <ul className="area-rows">
-                        <li><span>目标规模</span><span>{data.target}</span></li>
+                        <li><span>目标规模</span><span></span><span>{data.target}</span></li>
                         <li><span>管理机构</span><span>{data.organization}</span></li>
                         <li><span>投资方向</span><span>{data.direction}</span></li>
                         <li><span>资本类型</span><span>{data.assetsType}</span></li>
@@ -167,9 +168,9 @@ class OrderInfo extends Component {
                 </Area>
                  <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
                     <ul className="area-rows">
-                        <li><span>认购费</span><span>{data.trusteeFee[1]||""}</span></li>
-                        <li><span>管理费</span><span>{data.managementFee[1]||""}</span></li>
-                        <li><span>托管费</span><span>{data.trusteeFee[1]||""}</span></li>
+        <li><span>认购费</span><span>{(data.trusteeFee[1]+"%")||""}</span></li>
+                        <li><span>管理费</span><span>{(data.managementFee[1]+"%/年")||""}</span></li>
+                        <li><span>托管费</span><span>{(data.trusteeFee[1]+"%/年")||""}</span></li>
                         <li><span>收益分配</span><span>{data.profit||""}</span></li>
                     </ul>
                 </Area>
