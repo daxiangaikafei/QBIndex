@@ -6,10 +6,10 @@ export default {
   state: {
     loading: false,
     levelInfo: {
-      "level" : "暂无"
+      "level" : ""
     },
     userInfo: {
-      "level": "暂无",
+      "level": "",
       "assets": 0,
       "profit": 0
     },
@@ -184,7 +184,6 @@ export default {
 
       let userInfo = yield call(() => {
         return fetchPosts("/api/user/userInfo",{},"GET")
-          .then(res => res.json())
           .then(data => data.data.user)
           .catch(err => ({
             "id": 111111,
@@ -205,7 +204,6 @@ export default {
 
       let projInfo = yield call(() => {
         return fetchPosts("/api/project/1",{},"GET")
-          .then(res => res.json())
           .then(data => data.data.project)
           .catch(err => ({
             "assetsId": 1,
@@ -251,7 +249,6 @@ export default {
 
       let progressInfo = yield call(() => {
         return fetchPosts("/api/project/1/progress",{},"GET")
-          .then(res => res.json())
           .then(data => data.data)
           .catch(err => ({
             "amount": 0,

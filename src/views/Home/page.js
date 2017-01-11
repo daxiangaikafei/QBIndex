@@ -10,7 +10,7 @@ import {fetchPosts} from "components/common/fetch"
 
 
 class Home extends Component {
-  levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"D":0}
+  levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"":0}
   pieColors = ['#aa8a72','#cccccc','#e4cfa2']
 
   constructor(props) {
@@ -22,7 +22,7 @@ class Home extends Component {
         props.getProjInfo()
         props.getProgressInfo()
       })
-    
+      
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
       isShowPie: false,
