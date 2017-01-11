@@ -21,7 +21,7 @@ class NavBar extends React.Component {
   }
 
   _filter (pathname, route) {
-    let _result = route.childRoutes.filter(item => item.path == pathname)
+    let _result = route.childRoutes.filter(item => item.path == pathname || pathname.match(item.path.replace(':projectId', '\\\d+')))
     return _result.length ? _result[0].name : route.indexRoute.name
   }
 
