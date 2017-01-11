@@ -62,7 +62,7 @@ class OrderInfo extends Component {
         //debugger
         if(levelName!=="暂无"){
             this.setState({
-                disabled:true
+                disabled:false
             })
         }
 
