@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './page.less'
-import SwipeableViews from 'react-swipeable-views'
+import Swipe from "components/swipe/swipe";
 
 class About extends Component {
   constructor(props) {
@@ -28,9 +28,18 @@ class About extends Component {
       height: '100%',
       position: 'relative'
     }
+    let itemHeight = window.innerHeight-44
+    let swipeProps = {
+        min: -itemHeight*3,
+        max: 0,
+        step: itemHeight,
+        property: "translateY",
+        findScroller: ".slide-item",
+        vertical:true
+    }
     return (
-      <SwipeableViews styleName="about-container" axis="y" index={this.state.activeIndex} onChangeIndex={this.slideChangeHandler} >
-        <div style={slide}>
+      <Swipe styleName="about-container"  {...swipeProps}>
+        <div style={slide} className="slide-item">
           <div styleName="about-title"></div>
           <div styleName="about-content">
             <p>QBII(Qualified Qbao Institutional Investors) <br/>合格的钱宝投资者</p>
@@ -42,7 +51,7 @@ class About extends Component {
             <i styleName="arrow" className="extend" onClick={this.slideUpHandler}></i>
           </div>
         </div>
-        <div style={slide}>
+        <div style={slide} className="slide-item">
           <div styleName="about-title"></div>
           <div styleName="about-content">
             <p>QBII背景：<br/>基于钱旺信控强大的资本现金流，依托钱宝网1.6亿注册用户的巨大流量，以“互联网＋”武装思维，深度发掘覆盖各个领域的新兴业务，通过生态圈内互联网的融合，迅速孵化出同时具备商业和社会价值的投资标的。</p>
@@ -53,7 +62,7 @@ class About extends Component {
             <i styleName="arrow" className="extend" onClick={this.slideUpHandler}></i>
           </div>
         </div>
-        <div style={slide}>
+        <div style={slide} className="slide-item">
           <div styleName="about-title"></div>
           <div styleName="about-content">
             <p>QBII主要标准：</p>
@@ -72,7 +81,7 @@ class About extends Component {
             <i styleName="arrow" className="extend" onClick={this.slideUpHandler}></i>
           </div>
         </div>
-        <div style={slide}>
+        <div style={slide} className="slide-item">
           <div styleName="about-title"></div>
           <div styleName="about-content">
             <p>孵化对象：<br/>1.钱旺信息产业控股集团旗下所有被孵化公司<br/>（如上海商肃网络科技有限公司、上海定菱网络科技有限公司、上海雷悦文化发展有限公司、上海酷雅智能科技有限公司、四川雷神空天科技有限公司、上海友繁智能科技有限公司等等）。</p>
@@ -82,7 +91,7 @@ class About extends Component {
             <span styleName="page">4/4</span>
           </div>
         </div>
-      </SwipeableViews>
+      </Swipe>
     )
   }
 
