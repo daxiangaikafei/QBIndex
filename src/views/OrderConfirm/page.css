@@ -112,31 +112,8 @@
   background-color: white;
   margin: 10px 0 ;
 }
-.order-clause li {
-  padding: 16px 15px;
+.order-clause .virtual-input {
   border-bottom: 1px solid #ececec;
-}
-.order-clause li:after {
-  clear: both;
-  display: block;
-  content: "";
-}
-.order-clause li:last-child {
-  border-bottom-width: 0;
-}
-.order-clause span {
-  display: block;
-  float: left;
-  line-height: 18px;
-}
-.order-clause i {
-  width: 10px;
-  height: 18px;
-  display: block;
-  background-image: url("static/imgs/arrow-right.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  float: right;
 }
 .order-sure {
   position: fixed;
@@ -156,6 +133,8 @@
 }
 .order-sure P span {
   color: #d80818;
+  padding-left: 6px;
+  letter-spacing: 1px;
 }
 .order-sure button {
   display: inline-block;

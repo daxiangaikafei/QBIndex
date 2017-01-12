@@ -98,7 +98,7 @@ class Theme extends Component {
     }
 }
 Theme.defaultProps = {
-    data:[{title:"梦想家",url:"static/imgs/theme/sun-header0.jpg"},{title:"实力派",url:"static/imgs/theme/sun-header1.jpg"},{title:"潜行者",url:"static/imgs/theme/sun-header2.jpg"},{title:"勇敢者",url:"static/imgs/theme/sun-header3.jpg"},{title:"领路人",url:"static/imgs/theme/sun-header4.jpg"},{title:"乐天派",url:"static/imgs/theme/sun-header5.jpg"}]
+    data:[{title:"守望者",url:"static/imgs/theme/sun-header0.jpg"},{title:"实力派",url:"static/imgs/theme/sun-header1.jpg"},{title:"潜行者",url:"static/imgs/theme/sun-header2.jpg"},{title:"勇敢者",url:"static/imgs/theme/sun-header3.jpg"},{title:"领路人",url:"static/imgs/theme/sun-header4.jpg"},{title:"梦想家",url:"static/imgs/theme/sun-header5.jpg"}]
 }
 
 export default Theme;

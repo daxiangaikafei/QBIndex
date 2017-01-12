@@ -293,6 +293,7 @@
   border-radius: 25px;
 }
 .party-step {
+  color: #b2b2b2;
   padding: 12px 0;
 }
 .party-step .step-arrow {
@@ -301,6 +302,12 @@
   background-size: contain;
   margin: 0 30px;
   height: 16px;
+}
+.party-step p {
+  padding: 5px 15px 5px 15px;
+}
+.party-step .date {
+  color: #a88872;
 }
 .step-row {
   height: 20px;

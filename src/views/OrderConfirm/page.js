@@ -6,8 +6,12 @@ import {fetchPosts} from "components/common/fetch";
 import {withRouter} from "react-router";
 
 import isNumber from "lodash/isNumber";
+import each from "lodash/each";
+import size from "lodash/size";
 
-import { Dialog } from 'ui'
+import { Dialog } from 'ui';
+
+import Input from "./input.js";
 
 class OrderConfirm extends Component {
     constructor(props) {
@@ -29,23 +33,43 @@ class OrderConfirm extends Component {
             },
             disabled:false,
             show:false,
-            errorShow:false
+            errorShow:false,
+            values:{},
+            errorMsgs:{},
+            minPrice:10
         }
         this.moneyCalculate = this.moneyCalculate.bind(this);
         this.handOk = this.handOk.bind(this);
         this.operate = this.operate.bind(this);
         this.handChange = this.handChange.bind(this);
         this.handBlur = this.handBlur.bind(this);
+
+        this.hangInChange = this.hangInChange.bind(this);
     }
 
     componentWillMount(){
+        //if() minPrice
+        debugger
+        let minPrice = 100;
+        let {showData} = this.state;
+        showData.investmentNum = minPrice;
         this.setState({
-            showData:Object.assign({},this.state.showData,this.moneyCalculate(this.state.showData))
+            minPrice,
+            showData:Object.assign({},showData,this.moneyCalculate(showData))
         });
     }
 
     handBlur(){
+        //&&value>=this.state.minPrice
+        if(this.state.showData.investmentNum< this.state.minPrice){
+            this.setState({
+                disabled:true
+            })
+            alert("起投金额不能小于"+this.state.minPrice+"万");
+            return ;
+        }
         this.setState({
+            disabled:false,
             showData:Object.assign({},this.state.showData,this.moneyCalculate(this.state.showData))
         });
     }
@@ -63,17 +87,26 @@ class OrderConfirm extends Component {
     }   
     handOk(){
         //0debugger;
-        if(this.state.disabled===true){
+        let vaResult = true;
+         let {values,errorMsgs,showData} = this.state;
+        each(errorMsgs,function(one){
+            if(one!==true){
+                vaResult = false;
+            }
+        })
+        debugger
+        if(this.state.disabled===true||vaResult===false||size(errorMsgs)!=2){
             return;
         }
+        
         this.setState({
             disabled:true
         })
         var self = this;
         let {projectId} = this.props.routeParams;
-        let amount = this.state.showData.investmentNum;
+        values.amount = showData.investmentNum;
         //debugger;
-        fetchPosts("/api/project/"+projectId+"/apply",{amount},"POST").then((data)=>{
+        fetchPosts("/api/project/"+projectId+"/apply",values,"POST").then((data)=>{
             //debugger;
             data = data.data;
             self.setState({
@@ -85,7 +118,7 @@ class OrderConfirm extends Component {
                 disabled:false,
                 show:true
             })
-            consoel.log("niya . sha b ",data);
+            //consoel.log("niya . sha b ",data);
             //modelData
         }).catch(()=>{
             self.setState({
@@ -120,30 +153,57 @@ class OrderConfirm extends Component {
         
     }
     operate(data){
-        console.log("data",data);
-        var self = this;
+        // console.log("data",data);
+        // var self = this;
         
-        //debugger
-        if(!/^1(3|4|5|7|8)\d{9}$/.test(data.phone)){
-            this.setState({
-                errorShow:true
-            })
-            return false;
+        // //debugger
+        // if(!/^1(3|4|5|7|8)\d{9}$/.test(data.phone)){
+        //     this.setState({
+        //         errorShow:true
+        //     })
+        //     return false;
+        // }
+        // this.setState({
+        //     errorShow:false
+        // });
+        // //api/order/{orderId}/update
+        // fetchPosts("/api/order/"+this.state.modelData.orderId+"/update",data,"POST").then((data)=>{
+        //     self.setState({
+        //         show:false
+        //     });
+        //     self.props.router.push({pathname:"/home"})
+        // })
+        self.props.router.push({pathname:"/home"});
+    }
+
+    hangInChange(name,value){
+
+        let errorMsg = true,newState={};
+        if(!value){
+            errorMsg = (name==='name'?"姓名":"联系电话")+"不能为空";
+        }else if(name ==="phone" && !/^1(3|4|5|7|8)\d{9}$/.test(value)){
+            errorMsg = "手机号码错误";
         }
-        this.setState({
-            errorShow:false
-        });
-        //api/order/{orderId}/update
-        fetchPosts("/api/order/"+this.state.modelData.orderId+"/update",data,"POST").then((data)=>{
-            self.setState({
-                show:false
-            });
-            self.props.router.push({pathname:"/home"})
-        })
+
+         let newValue = {},newMsg = {};
+         newValue[name] = value;
+         newMsg[name] = errorMsg;
+
+
+        if(errorMsg===true){
+            newState.values = Object.assign({},this.state.values,newValue);
+            newState.errorMsgs = Object.assign({},this.state.errorMsgs,newMsg);
+        }else{
+            newState.errorMsgs = Object.assign({},this.state.errorMsgs,newMsg);
+            alert(errorMsg);
+        }
+        
+        this.setState(newState);
     }
 
 
     render() {
+        let {inputProps} = this.props;
         let {investmentNum,estimateMoney,bankMoney,totalNum} = this.state.showData;
         return (
             <div className="order-confirm">
@@ -168,14 +228,19 @@ class OrderConfirm extends Component {
                     </li>
                 </ul>
 
-
-                <ul className="order-clause">
-                    <li><span>历史报告</span><i></i></li>
-                    <li><span>产品合同</span><i></i></li>
-                </ul>
+                <div className="order-clause">
+                    <Input {...inputProps.name} onChange={this.hangInChange}  />
+                    <Input {...inputProps.phone} onChange={this.hangInChange} />
+                </div>
+                {/*<ul className="order-clause">
+                    <li><Input title={"姓名"}  /></li>
+                    <li><Input title={"联系电话"}  /></li>
+                    <li><span>姓名</span><i></i><input type="text" /></li>
+                    <li><span>联系电话</span><i></i><input type="text" /></li>
+                </ul>*/}
 
                 <div className="order-sure">
-                    <p>合计:<span>¥{totalNum}</span></p>
+                    <p>合计:<span>¥{totalNum/10000}万</span></p>
                     <button onClick={this.handOk}>确认</button>
                 </div>
                 <Dialog errorShow={this.state.errorShow} buttonConfirm={(data)=>this.operate(data)} show={this.state.show}  data={this.state.modelData}></Dialog>
@@ -184,7 +249,25 @@ class OrderConfirm extends Component {
     }
 }
 OrderConfirm.defaultProps = {
+    inputProps:{
+        name:{
+            title:"姓名",
+            name:"name",
+            maxLength:10
+        },
+        phone:{
+            title:"联系电话",
+            name:"phone",
+            maxLength:11,
+            type:"text"
+        }
+        
+    }
 }
+
+OrderConfirm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default withRouter(OrderConfirm);
 
