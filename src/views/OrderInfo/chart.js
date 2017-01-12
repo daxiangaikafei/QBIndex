@@ -78,7 +78,10 @@ class Chart extends Component {
             }
         }
         //debugger
-        let rose = (nowData-yesterdayData).toFixed(2);
+        let rose = "没有前后两天的数据";
+        if(nowData&&yesterdayData){
+            rose = (nowData-yesterdayData).toFixed(2);
+        }
         
         this.setState({
             dataFirst:data,
