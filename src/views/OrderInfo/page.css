@@ -1,0 +1,382 @@
+.party-info {
+  padding-bottom: 50px;
+  background-color: #e0e0e0;
+}
+.party-info * {
+  box-sizing: border-box;
+}
+.party-info button:focus {
+  outline: none;
+}
+.party-head {
+  width: 100%;
+  height: 13rem;
+  background-image: url("static/imgs/party/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.party-head .party-logo {
+  width: 100%;
+  height: 100%;
+  background-image: url("static/imgs/party/logo.png");
+  background-repeat: no-repeat;
+  background-size: 45%;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.area-info {
+  width: 100%;
+  position: relative;
+  background-color: white;
+}
+.area-info * {
+  box-sizing: border-box;
+}
+.area-info .area-info-title {
+  width: 100%;
+  padding: 16px 15px;
+}
+.area-info .area-info-title:after {
+  clear: both;
+  display: block;
+  content: "";
+}
+.area-info .area-info-title:last-child {
+  border-bottom-width: 0;
+}
+.area-info .area-info-title span {
+  display: block;
+  float: left;
+  line-height: 18px;
+}
+.area-info .area-info-title i {
+  width: 10px;
+  height: 18px;
+  display: block;
+  background-image: url("static/imgs/arrow-right.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: right;
+}
+.area-info .bottom-line {
+  border-bottom: 1px solid #ececec;
+}
+.area-info .area-rows {
+  font-size: 14px;
+  background-color: white;
+}
+.area-info .area-rows span {
+  display: block;
+  float: right;
+  line-height: 18px;
+  color: #757575;
+}
+.area-info .area-rows span:first-child {
+  float: left;
+  color: #000000;
+}
+.area-info .area-rows li {
+  padding: 16px 15px;
+  border-bottom: 1px solid #ececec;
+}
+.area-info .area-rows li:after {
+  clear: both;
+  display: block;
+  content: "";
+}
+.area-info .area-rows li:last-child {
+  border-bottom-width: 0;
+}
+.area-info .area-p {
+  color: #757575;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 2px;
+  width: 100%;
+  padding: 5px 0;
+  float: left;
+}
+.area-info .area-duan {
+  padding: 5px 15px;
+  letter-spacing: 2px;
+  float: none;
+}
+.area-margin {
+  margin: 10px 0;
+}
+.area-bottom {
+  padding-bottom: 20px;
+}
+.party-plan {
+  font-size: 0;
+  padding: 0 15px;
+}
+.party-plan li {
+  width: 20%;
+  display: inline-block;
+  margin-left: 20%;
+  padding: 12px 0;
+}
+.party-plan li:first-child {
+  margin-left: 0;
+}
+.party-plan span {
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  display: block;
+  padding: 4px 0;
+}
+.party-plan span:first-child {
+  font-size: 16px;
+  color: #b49885;
+}
+.party-video {
+  position: relative;
+}
+.party-video video {
+  width: 100%;
+}
+.party-video .vedio-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("static/imgs/party/vedio-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.party-video .vedio-mark-hide {
+  background-image: none;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+.party-video .vedio-mark-hide .vedio-mark-play {
+  visibility: hidden;
+}
+.party-video .vedio-mark-play {
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.party-video .vedio-mark-play span {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-left: 20px solid #fff;
+  border-bottom: 20px solid transparent;
+}
+.party-chart {
+  background-color: white;
+}
+.party-chart .chart-top {
+  height: 45px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+  padding-top: 15px;
+  border-bottom: 1px solid #d1d2d3;
+}
+.party-chart .chart-top span {
+  padding: 0 15px;
+  line-height: 18px;
+}
+.party-chart .chart-top .chart-select {
+  color: #a88872;
+  border-bottom: 2px solid #a88872;
+}
+.party-chart .chart-info {
+  position: relative;
+}
+.party-chart .part-chart-top,
+.party-chart .bottom-title {
+  width: 100%;
+  display: flex;
+  padding: 18px 0;
+  justify-content: center;
+  align-items: center;
+}
+.party-chart .part-chart-top span,
+.party-chart .bottom-title span {
+  display: block;
+}
+.party-chart .bottom-title {
+  padding: 10px 0;
+}
+.party-chart .bottom-title:first-child {
+  color: #808291;
+}
+.party-chart .chart-low-line {
+  height: 1px;
+  background-color: #000000;
+  width: 20px;
+  padding: 0 6px;
+}
+.party-chart .chart-title {
+  font-size: 12px;
+  padding: 0 6px;
+}
+.party-chart .chart-num {
+  font-size: 12px;
+  color: #46b04b;
+  padding: 0 6px;
+}
+.party-chart .chart-rose {
+  color: red;
+}
+.party-chart .part-chart-bottom {
+  padding: 0 0 15px 0;
+}
+.party-chart .part-chart-bottom span {
+  display: block;
+}
+.party-chart .part-chart-bottom span:nth-child {
+  margin-right: 20px;
+}
+.party-chart .chart-remark {
+  font-size: 12px;
+  display: flex;
+  padding: 0 30px;
+}
+.party-chart .chart-remark i {
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  border: 1px solid #000000;
+  display: block;
+  color: #000000;
+  text-align: center;
+  line-height: 14px;
+  margin-right: 15px;
+}
+.party-chart .chart-main {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.party-chart .chart-main .recharts-wrapper {
+  left: -32px;
+}
+.party-chart .select {
+  background-color: #a88872;
+  color: white;
+  border-color: #a88872;
+}
+.party-chart .select-ex {
+  background-color: white;
+  color: #a88872;
+}
+.party-chart .chart-todo {
+  display: flex;
+  justify-content: space-around;
+}
+.party-chart .chart-todo span {
+  padding: 0.75rem 1.875rem;
+  font-size: 12px;
+  line-height: 0.875rem;
+  border: 1px solid #979797;
+  border-radius: 25px;
+}
+.party-step {
+  padding: 12px 0;
+}
+.party-step .step-arrow {
+  background-image: url("static/imgs/party/arrow-step.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 30px;
+  height: 16px;
+}
+.step-row {
+  height: 20px;
+  line-height: 20px;
+}
+.step-row span {
+  display: block;
+  position: absolute;
+  width: 70px;
+}
+.step-row span:first-child {
+  left: 15px;
+}
+.step-row span:nth-child(2) {
+  left: 50%;
+  text-align: center;
+  margin-left: -35px;
+}
+.step-row span:last-child {
+  right: 15px;
+}
+.step-end {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #000000;
+  font-size: 0;
+}
+.step-end button {
+  width: 30%;
+  height: 46px;
+  margin-top: 2px;
+  float: left;
+  border-width: 0;
+  background-color: #000000;
+  color: #a88872;
+  font-size: 16px;
+  border-right: 1px solid #a88872;
+}
+.step-end button:disabled {
+  color: gray;
+}
+.step-end .step-btn-end {
+  width: 70%;
+  border-right-width: 0;
+}
+.step-end:after {
+  content: "";
+  display: block;
+  clear: both;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.step-end span {
+  width: 100%;
+  height: 36px;
+  display: block;
+  background-position: center;
+}
+.step-end .step-heart {
+  background-image: url("static/imgs/party/heart.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 18px;
+}
+.step-end .heart-line {
+  background-image: url("static/imgs/party/heart-line.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.step-end .step-download {
+  background-image: url("static/imgs/party/down.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 20px;
+}

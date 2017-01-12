@@ -6,10 +6,12 @@ import HomeDo from 'views/HomeDo/page'
 import About from 'views/About/page'
 
 import AnDemo from "views/AnDemo/page";
+import DemoSwipe from "views/DemoSwipe/page";
+
 import Theme from "views/Theme/page";
 
-import OrderConfirm from "views/OrderConfirm/index";
-import OrderInfo from "views/OrderInfo/index";
+import OrderConfirm from "views/OrderConfirm/page";
+import OrderInfo from "views/OrderInfo/page";
 
 export default function (ref) {
   return (
@@ -19,6 +21,7 @@ export default function (ref) {
         <Route path='/Home' component={Home} name="QBII设置"/>
         <Route path='/HomeDo' component={HomeDo} name="QBII测试Title"/>
         <Route path='/AnDemo' component={AnDemo} name="QBII动画效果"/>
+        <Route path='/swipe' component={DemoSwipe} name="QBII动画效果"/>
         <Route path='/Theme' component={Theme} name="晒身份"/>
         <Route path='/About' component={About} name="了解QBII"/>
 
