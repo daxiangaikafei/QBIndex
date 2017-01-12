@@ -91,12 +91,12 @@ class Chart extends Component {
     
     creatHDate(data=[],rose){
         // let xTicks=[];
-        // data = [];
-        // for(let i = 0,j = 16;i<j;i++){
-        //     let newDate = i<10?(0+""+i):i; //formateYMD .formateDate
-        //     data.push({shishijingzhi:random(-1.9,3).toFixed(2),shishishouyi:random(-1.9,3).toFixed(2),hour:newDate,fudongbaifenbi:Number(random(-1.9,3).toFixed(2))});
-        //     //xTicks.push(newDate);Number
-        // }
+        data = [];
+        for(let i = 0,j = 16;i<j;i++){
+            let newDate = i<10?(0+""+i):i; //formateYMD .formateDate
+            data.push({shishijingzhi:random(-1.9,3).toFixed(2),shishishouyi:random(-1.9,3).toFixed(2),hour:newDate,fudongbaifenbi:Number(random(-1.9,3).toFixed(2))});
+            //xTicks.push(newDate);Number
+        }
         // debugger;
         this.setState({
             //xTicksSecond:xTicks,

@@ -69,7 +69,7 @@ class CharHour extends Component {
         return (
             <div className={"chart-main "+className}>
                 <LineChart width={width} height={height} data={data} >
-                    <XAxis tickCount={3}  dataKey="hour" tickFormatter={(data)=>{return data+":00"}} />
+                    <XAxis padding={{left:10,right:10}} tickCount={3}  dataKey="hour" tickFormatter={(data)=>{return data+":00"}} />
                     <YAxis axisLine={false} tickCount={5} />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Line label={true} type="monotone" dataKey="fudongbaifenbi" stroke="#a88872" dot={false} />

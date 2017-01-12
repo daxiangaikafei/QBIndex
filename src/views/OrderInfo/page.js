@@ -135,8 +135,8 @@ class OrderInfo extends Component {
             return false;
         }
         let {projectId} = this.props.routeParams;
-        this.props.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice},query: { modal: true }});
-
+        //this.props.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice},query: { modal: true }});
+        this.context.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice/10000}});
         //query: { modal: true },state: { fromDashboard: true }
     }
     handHeart(){
@@ -232,7 +232,8 @@ OrderInfo.defaultProps = {
 OrderInfo.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
+export default OrderInfo;
 
-export default withRouter(OrderInfo);
+//export default withRouter(OrderInfo);
 
 //<div className="theme-img"></div>  <button><span className="step-download"></span></button>

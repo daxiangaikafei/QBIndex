@@ -37,7 +37,7 @@ class OrderConfirm extends Component {
             values:{},
             errorMsgs:{},
             minPrice:10,
-            maxPrice:1000
+            //maxPrice:1000
         }
         this.moneyCalculate = this.moneyCalculate.bind(this);
         this.handOk = this.handOk.bind(this);
@@ -50,14 +50,17 @@ class OrderConfirm extends Component {
 
     componentWillMount(){
         //if() minPrice
-        debugger
-        let minPrice = 100;
-        let maxPrice = 1000;
+        //debugger
+        let {minPrice} = this.props.location&&this.props.location.state;
+        if(!minPrice){
+           this.context.router.push({pathname:"/"})
+        }
+        //let maxPrice = 1000;
         let {showData} = this.state;
         showData.investmentNum = minPrice;
         this.setState({
             minPrice,
-            maxPrice,
+            //maxPrice,
             showData:Object.assign({},showData,this.moneyCalculate(showData))
         });
     }
@@ -70,10 +73,11 @@ class OrderConfirm extends Component {
             })
             alert("起投金额不能小于"+this.state.minPrice+"万");
             return ;
-        }else if(this.state.showData.investmentNum>this.state.maxPrice){
-            alert("起投金额不能大于"+this.state.maxPrice+"万");
-            return ;
         }
+        // else if(this.state.showData.investmentNum>this.state.maxPrice){
+        //     alert("起投金额不能大于"+this.state.maxPrice+"万");
+        //     return ;
+        // }
         this.setState({
             disabled:false,
             showData:Object.assign({},this.state.showData,this.moneyCalculate(this.state.showData))
@@ -85,7 +89,7 @@ class OrderConfirm extends Component {
         let {investmentNum,estimatePer,bankPer,cycleYear} = data;
         newState.estimateMoney = this.calculate(investmentNum,estimatePer,cycleYear);
         newState.bankMoney = this.calculate(investmentNum,bankPer,cycleYear);
-        newState.totalNum = investmentNum*10000;
+        newState.totalNum = investmentNum;
         return newState;
     }
     calculate(money,per,cycle){
@@ -127,7 +131,6 @@ class OrderConfirm extends Component {
                 })
             }else{
                 alert(data.message);
-
                 self.setState({
                     disabled:false,
                     show:true
@@ -176,7 +179,7 @@ class OrderConfirm extends Component {
     operate(data){
         let {projectId} = this.props.routeParams;
         //this.props.router.push({pathname:"/orderinfo/"+projectId});
-        this.props.router.push({pathname:"/"});
+        this.props.history.push({pathname:"/"});
     }
 
     hangInChange(name,value){
@@ -243,7 +246,7 @@ class OrderConfirm extends Component {
                 </ul>*/}
 
                 <div className="order-sure">
-                    <p>合计:<span>¥{totalNum/10000}万</span></p>
+                    <p>合计:<span>¥{totalNum}万</span></p>
                     <button onClick={this.handOk}>确认</button>
                 </div>
                 <Dialog errorShow={this.state.errorShow} buttonConfirm={(data)=>this.operate(data)} show={this.state.show}  data={this.state.modelData}></Dialog>
@@ -272,7 +275,7 @@ OrderConfirm.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default withRouter(OrderConfirm);
+export default OrderConfirm;
 
 /**
  * 
