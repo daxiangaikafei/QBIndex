@@ -94,34 +94,41 @@
           height: 17px;
           background: url("static/imgs/nav/array.png") no-repeat center;
           background-size: contain;
+          -webkit-transform: rotateZ(90deg);
           transform: rotateZ(90deg);
           -webkit-animation: arrow-up 1.5s ease-in-out infinite;
           animation: arrow-up 1.5s ease-in-out infinite;
         }
         @-webkit-keyframes arrow-up {
           0% {
+            -webkit-transform: translateY(10px) rotateZ(90deg);
             transform: translateY(10px) rotateZ(90deg);
             opacity: 0;
           }
           50% {
+            -webkit-transform: translateY(-5px) rotateZ(90deg);
             transform: translateY(-5px) rotateZ(90deg);
             opacity: 1;
           }
           100% {
+            -webkit-transform: translateY(-20px) rotateZ(90deg) scale(2);
             transform: translateY(-20px) rotateZ(90deg) scale(2);
             opacity: 0;
           }
         }
         @keyframes arrow-up {
           0% {
+            -webkit-transform: translateY(10px) rotateZ(90deg);
             transform: translateY(10px) rotateZ(90deg);
             opacity: 0;
           }
           50% {
+            -webkit-transform: translateY(-5px) rotateZ(90deg);
             transform: translateY(-5px) rotateZ(90deg);
             opacity: 1;
           }
           100% {
+            -webkit-transform: translateY(-20px) rotateZ(90deg) scale(2);
             transform: translateY(-20px) rotateZ(90deg) scale(2);
             opacity: 0;
           }
