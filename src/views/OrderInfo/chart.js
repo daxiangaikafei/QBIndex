@@ -91,12 +91,13 @@ class Chart extends Component {
     
     creatHDate(data=[],rose){
         // let xTicks=[];
-        // for(let i = 0,j = 5;i<j;i++){
-        //     let newDate = this.formateYMD(i); //formateYMD .formateDate
-        //     data.push({self:random(-1.9,3),other:random(-1.9,3),date:newDate});
-        //     xTicks.push(newDate);
+        // data = [];
+        // for(let i = 0,j = 16;i<j;i++){
+        //     let newDate = i<10?(0+""+i):i; //formateYMD .formateDate
+        //     data.push({shishijingzhi:random(-1.9,3).toFixed(2),shishishouyi:random(-1.9,3).toFixed(2),hour:newDate,fudongbaifenbi:Number(random(-1.9,3).toFixed(2))});
+        //     //xTicks.push(newDate);Number
         // }
-        //debugger;
+        // debugger;
         this.setState({
             //xTicksSecond:xTicks,
             dataSecond:data,
@@ -226,7 +227,7 @@ class Chart extends Component {
                                 <span data-space={1} data-key={"threeMonth"} className={showSpace==="threeMonth"?"select":""}>3月</span>
                                 <span data-space={2} data-key={"sixMonth"} className={showSpace==="sixMonth"?"select":""}>6月</span>
                                 <span data-space={4} data-key={"year"} className={showSpace==="year"?"select":""}>1年</span>
-                                <span data-space={4} data-key={"now"} className={showSpace==="now"?"select":""}>至今</span>
+                                <span data-space={100} data-key={"now"} className={showSpace==="now"?"select":""}>至今</span>
                             </div>
                         </div>
                     </div>

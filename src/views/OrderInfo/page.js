@@ -46,11 +46,13 @@ class OrderInfo extends Component {
                 trusteeFee:["",""],//托管费
                 profit:"",//收益分配
                 pics:["","",""],
-                video:""
+                video:"",
+                applyFee:["",""]
             },
             startDate:this.formate(),
             endDate:this.formate(2),
-            disabled:true
+            disabled:true,
+            now:false
         }
 
         this.getData = this.getData.bind(this);
@@ -104,9 +106,13 @@ class OrderInfo extends Component {
             }catch(errorMsg){
                 consoel.log(errorMsg);
             }
-            
-            
-        })
+        });
+
+        // fetchPosts("/api/serverTime",{},"GET").then((data)=>{
+        //     self.setState({
+        //         now:new Date()
+        //     })
+        // })
     }
     formateData(data,oldData){
         let newState = {};

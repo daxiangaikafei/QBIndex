@@ -36,7 +36,8 @@ class OrderConfirm extends Component {
             errorShow:false,
             values:{},
             errorMsgs:{},
-            minPrice:10
+            minPrice:10,
+            maxPrice:1000
         }
         this.moneyCalculate = this.moneyCalculate.bind(this);
         this.handOk = this.handOk.bind(this);
@@ -51,10 +52,12 @@ class OrderConfirm extends Component {
         //if() minPrice
         debugger
         let minPrice = 100;
+        let maxPrice = 1000;
         let {showData} = this.state;
         showData.investmentNum = minPrice;
         this.setState({
             minPrice,
+            maxPrice,
             showData:Object.assign({},showData,this.moneyCalculate(showData))
         });
     }
@@ -66,6 +69,9 @@ class OrderConfirm extends Component {
                 disabled:true
             })
             alert("起投金额不能小于"+this.state.minPrice+"万");
+            return ;
+        }else if(this.state.showData.investmentNum>this.state.maxPrice){
+            alert("起投金额不能大于"+this.state.maxPrice+"万");
             return ;
         }
         this.setState({
@@ -88,13 +94,13 @@ class OrderConfirm extends Component {
     handOk(){
         //0debugger;
         let vaResult = true;
-         let {values,errorMsgs,showData} = this.state;
+        let {values,errorMsgs,showData} = this.state;
         each(errorMsgs,function(one){
             if(one!==true){
                 vaResult = false;
             }
         })
-        debugger
+        //debugger
         if(this.state.disabled===true||vaResult===false||size(errorMsgs)!=2){
             return;
         }
@@ -108,16 +114,31 @@ class OrderConfirm extends Component {
         //debugger;
         fetchPosts("/api/project/"+projectId+"/apply",values,"POST").then((data)=>{
             //debugger;
-            data = data.data;
-            self.setState({
-                modelData:{
-                    name:data.user.realName,
-                    phone:data.user.phoneNo,
-                    orderId:data.orderId
-                },
-                disabled:false,
-                show:true
-            })
+            if(data.returnCode===0){
+                data = data.data;
+                self.setState({
+                    modelData:{
+                        name:data.user.realName,
+                        phone:data.user.phoneNo,
+                        orderId:data.orderId
+                    },
+                    disabled:false,
+                    show:true
+                })
+            }else{
+                alert(data.message);
+
+                self.setState({
+                    disabled:false,
+                    show:true
+                })
+               
+                // self.props.router.push({pathname:"/orderinfo/"+projectId});
+
+                //self.props.router.push({pathname:"/"});
+
+            }
+            
             //consoel.log("niya . sha b ",data);
             //modelData
         }).catch(()=>{
@@ -144,7 +165,7 @@ class OrderConfirm extends Component {
         let value = event.target.value.substr(0, 140);
         value = Number(value);
         //debugger
-        if(isNumber(value)&&value<10000){
+        if(isNumber(value)&&value<=10000){
             this.setState({
                 showData:Object.assign({},this.state.showData,{investmentNum:value})
             });
@@ -153,27 +174,9 @@ class OrderConfirm extends Component {
         
     }
     operate(data){
-        // console.log("data",data);
-        // var self = this;
-        
-        // //debugger
-        // if(!/^1(3|4|5|7|8)\d{9}$/.test(data.phone)){
-        //     this.setState({
-        //         errorShow:true
-        //     })
-        //     return false;
-        // }
-        // this.setState({
-        //     errorShow:false
-        // });
-        // //api/order/{orderId}/update
-        // fetchPosts("/api/order/"+this.state.modelData.orderId+"/update",data,"POST").then((data)=>{
-        //     self.setState({
-        //         show:false
-        //     });
-        //     self.props.router.push({pathname:"/home"})
-        // })
-        self.props.router.push({pathname:"/home"});
+        let {projectId} = this.props.routeParams;
+        //this.props.router.push({pathname:"/orderinfo/"+projectId});
+        this.props.router.push({pathname:"/"});
     }
 
     hangInChange(name,value){

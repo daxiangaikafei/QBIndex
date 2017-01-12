@@ -17,7 +17,7 @@ class Dialog extends React.Component {
         var _name = ReactDom.findDOMNode(this.refs.nameInput);
         var _phone = ReactDom.findDOMNode(this.refs.phoneInput);
 
-        this.props.buttonConfirm({name:_name.value,phone:_phone.value});
+        this.props.buttonConfirm(); //{name:_name.value,phone:_phone.value}
     }
 
 
@@ -32,16 +32,6 @@ class Dialog extends React.Component {
                      data-animation='pop'>
 
                     <Header type={this.props.type}/>
-
-                    <fieldset>
-                        <input ref='nameInput' type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
-                        <div className='sa-input-error'></div>
-                    </fieldset>
-                    <fieldset>
-                        <input ref='phoneInput' type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
-                        <div className='sa-input-error'></div>
-                    </fieldset>
-
                     <div className={this.props.errorShow?'sa-error-container':'sa-error-container hide'}>
                         <div className='icon'>!</div>
                         <p>Not valid!</p>
@@ -53,6 +43,15 @@ class Dialog extends React.Component {
             </div>)
     }
 }
+
+// <fieldset>
+//     <input ref='nameInput' type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
+//     <div className='sa-input-error'></div>
+// </fieldset>
+// <fieldset>
+//     <input ref='phoneInput' type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
+//     <div className='sa-input-error'></div>
+// </fieldset>
 
 
 const Header = ({type}) => {
