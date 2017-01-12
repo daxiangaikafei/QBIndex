@@ -147,9 +147,13 @@
   background-image: url("static/imgs/party/vedio-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
-  justify-content: center;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   z-index: 2;
 }
 .party-video .vedio-mark-hide {
@@ -171,9 +175,13 @@
   height: 63px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.6);
-  justify-content: center;
-  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 .party-video .vedio-mark-play span {
   width: 0;
@@ -207,10 +215,14 @@
 .party-chart .part-chart-top,
 .party-chart .bottom-title {
   width: 100%;
-  display: flex;
   padding: 18px 0;
-  justify-content: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 .party-chart .part-chart-top span,
 .party-chart .bottom-title span {
@@ -283,7 +295,10 @@
   color: #a88872;
 }
 .party-chart .chart-todo {
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
+  -webkit-justify-content: space-around;
   justify-content: space-around;
 }
 .party-chart .chart-todo span {

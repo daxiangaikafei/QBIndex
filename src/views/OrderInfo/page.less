@@ -189,9 +189,13 @@
         right:0;
         bottom:0;
         .bgimage("vedio-bg.png",cover);
+        display: -webkit-flex;
+        display: -ms-flex;
         display: flex;
-        justify-content: center;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         z-index: 2;
     }
     .vedio-mark-hide{
@@ -213,9 +217,16 @@
         height: 63px;
         border-radius: 50%;
         background-color: rgba(255,255,255,.6);
-        justify-content: center;
-        align-items: center;
+        // justify-content: center;
+        // align-items: center;
+        // display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
         display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         span{
             width: 0;
             height: 0;
@@ -256,11 +267,19 @@
 
     .part-chart-top,.bottom-title{
         width: 100%;
-        display: flex;
+        //display: flex;
         padding: 18px 0;
         //border: 1px solid red;
-        justify-content: center;
+        // justify-content: center;
+        // align-items: center;
+
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         span{
             display: block;
         }
@@ -348,6 +367,12 @@
 
     .chart-todo{
         display: flex;
+        justify-content: space-around;
+
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -webkit-justify-content: space-around;
         justify-content: space-around;
         span{
             padding: 0.75rem 1.875rem;

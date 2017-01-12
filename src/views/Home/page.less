@@ -14,6 +14,7 @@ html, body {
   font-family: "PingFang SC","STHeitiSC-Light","Helvetica Neue","Helvetica","Arial",sans-serif,"Mircosoft YaHei";
   background: @bodyBGColor;
   height: 100%;
+  font-weight: 200;
 }
 :global {
   .extend {
@@ -166,8 +167,12 @@ main{
   /** 首页列表 **/
   .list-container {
     margin-top: 10px;
-    background: #fff;
+    background: @bodyBGColor;
     .item {
+      background: #fff;
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
       .banner {
         height: auto;
       }
@@ -270,7 +275,7 @@ main{
         transition: height .5s,visibility .5s;
         &.active {
           visibility: visible;
-          height: 260px;
+          height: 280px;
         }
         :global {
           .recharts-wrapper {
@@ -279,20 +284,22 @@ main{
         }
 
         .info-title {
-          color: @subTxtColor;
+          color: #737373;
           font-size: 12px;
-          margin-top: 10px;
+          margin-top: 20px;
           text-align: center;
+          font-weight: 200;
         }
         .info-progress {
           display: -webkit-flex;
           display: -ms-flex;
           display: flex;
           box-sizing: border-box;
+          -webkit-box-pack: center;
           -webkit-justify-content: space-around;
           justify-content: space-around;
           .count {
-            font-size: 14px;
+            font-size: 12px;
             line-height: 20px;
             span {
               display: inline-block;
@@ -305,11 +312,17 @@ main{
         }
       }
       .more {
-        font-size: 16px;
+        font-size: 14px;
         color: @listTxtColor;
         height: 50px;
-        line-height: 50px;
-        text-align: center;
+        // line-height: 50px;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         border-top: 1px solid @listBdColor;
       }
     }

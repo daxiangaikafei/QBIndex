@@ -97,6 +97,13 @@ class ChartDay extends Component {
         // re.push(this.jisuanMonth(now,-space));
         // re.push(this.jisuanMonth(now));
         // re.push(this.jisuanMonth(now,space));
+        if(space==100){
+            //debugger
+            return {
+                xTicks:["1970-01-01","1970-01-02",this.jisuanMonth(now)],
+                showTick:[]
+            }
+        }
         xTicks.push(this.jisuanMonth(now,-space*3));
         xTicks.push(this.jisuanMonth(now,-space));
         xTicks.push(this.jisuanMonth(now));
@@ -146,7 +153,7 @@ class ChartDay extends Component {
         return (
             <div className={"chart-main "+className}>
                 <LineChart width={width} height={height} data={data} >
-                    <XAxis dataKey="date" ticks={xTicks} tickFormatter={(data)=>{return data.substr(4)}} />
+                    <XAxis dataKey="date" ticks={xTicks} tickFormatter={(data)=>{return data.substr(5)}} />
                     <YAxis axisLine={false} tickCount={3} />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Line labeel={true} type="monotone" dataKey="self" stroke="#a88872" dot={false} />

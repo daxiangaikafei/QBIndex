@@ -46,11 +46,13 @@ class OrderInfo extends Component {
                 trusteeFee:["",""],//托管费
                 profit:"",//收益分配
                 pics:["","",""],
-                video:""
+                video:"",
+                applyFee:["",""]
             },
             startDate:this.formate(),
             endDate:this.formate(2),
-            disabled:true
+            disabled:true,
+            now:false
         }
 
         this.getData = this.getData.bind(this);
@@ -104,9 +106,13 @@ class OrderInfo extends Component {
             }catch(errorMsg){
                 consoel.log(errorMsg);
             }
-            
-            
-        })
+        });
+
+        // fetchPosts("/api/serverTime",{},"GET").then((data)=>{
+        //     self.setState({
+        //         now:new Date()
+        //     })
+        // })
     }
     formateData(data,oldData){
         let newState = {};
@@ -129,8 +135,8 @@ class OrderInfo extends Component {
             return false;
         }
         let {projectId} = this.props.routeParams;
-        this.props.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice},query: { modal: true }});
-
+        //this.props.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice},query: { modal: true }});
+        this.context.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice/10000}});
         //query: { modal: true },state: { fromDashboard: true }
     }
     handHeart(){
@@ -226,7 +232,8 @@ OrderInfo.defaultProps = {
 OrderInfo.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
+export default OrderInfo;
 
-export default withRouter(OrderInfo);
+//export default withRouter(OrderInfo);
 
 //<div className="theme-img"></div>  <button><span className="step-download"></span></button>

@@ -15,7 +15,8 @@ class CharHour extends Component {
         super(props);
         this.createData = this.createData.bind(this);
         this.state={
-            data:[]
+            data:[],
+            xTicks:["04","08","12","16","20"]
         }
     }
     componentWillMount(){
@@ -33,19 +34,19 @@ class CharHour extends Component {
         //     data.push({pv:random(-1.9,3),uv:random(-1.9,3),data:newDate});
         //     xTicks.push(newDate);
         // }
-        let length = props.data.length;
-        for(let i=(length>5?5:(length-1)),j=0;i>=j;i--){
+        // let length = props.data.length;
+        // for(let i=(length>5?5:(length-1)),j=0;i>=j;i--){
             
-            if(!props.data[i]){
-                continue;
-            }
-            data.push(props.data[i]);
-            xTicks.push(props.data[i].hour);
-        }
+        //     if(!props.data[i]){
+        //         continue;
+        //     }
+        //     data.push(props.data[i]);
+        //     xTicks.push(props.data[i].hour);
+        // }
         //debugger
         this.setState({
-            data:data,
-            xTicks:xTicks
+            data:props.data===false?[]:props.data,
+            //xTicks:xTicks
         })
     }
     //r日期增加一天 。并格式化为ymd
@@ -68,10 +69,10 @@ class CharHour extends Component {
         return (
             <div className={"chart-main "+className}>
                 <LineChart width={width} height={height} data={data} >
-                    <XAxis tickCount={5} dataKey="hour" tickFormatter={(data)=>{return data+":00"}} />
+                    <XAxis padding={{left:10,right:10}} tickCount={3}  dataKey="hour" tickFormatter={(data)=>{return data+":00"}} />
                     <YAxis axisLine={false} tickCount={5} />
                     <CartesianGrid strokeDasharray="3 3" />
-                    <Line labeel={true} type="monotone" dataKey="fudongbaifenbi" stroke="#a88872" dot={false} />
+                    <Line label={true} type="monotone" dataKey="fudongbaifenbi" stroke="#a88872" dot={false} />
                    
                 </LineChart>
             </div>
