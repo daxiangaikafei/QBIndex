@@ -33,19 +33,6 @@ class Dialog extends React.Component {
 
                     <Header type={this.props.type}/>
 
-                    <fieldset>
-                        <input ref='nameInput' type='text' tabIndex='3' placeholder='请输入你的姓名' defaultValue={this.props.data.name}/>
-                        <div className='sa-input-error'></div>
-                    </fieldset>
-                    <fieldset>
-                        <input ref='phoneInput' type='text' tabIndex='3' placeholder='请输入你的电话' defaultValue={this.props.data.phone}/>
-                        <div className='sa-input-error'></div>
-                    </fieldset>
-
-                    <div className={this.props.errorShow?'sa-error-container':'sa-error-container hide'}>
-                        <div className='icon'>!</div>
-                        <p>Not valid!</p>
-                    </div>
                     <div className='sa-button-container'>
                         <button className='confirm' tabIndex='1' onClick={()=>this._buttonConfirm()}>好的</button>
                     </div>
