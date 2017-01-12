@@ -13,39 +13,52 @@ export default {
       "assets": 0,
       "profit": 0
     },
-    projInfo: {
-      "assetsId": 1,
-      "id": 1,
-      "name": "--",
-      "pics": [''],
-      "tag": "--",
-      projectAssets: {},
-      projectInfo: {
-        assetsRatio: [
-            {
-                name: "--",
-                value: 1
-            },
-            {
-                name: "--",
-                value: 1
-            },
-            {
-                name: "--",
-                value: 1
-            }
-        ],
-        "id": 2,
-        "projectId": 1,
-        "tag1": "+0%",
-        "tag2": "0款",
-        "tag3": "0个",
+    projList: [
+      {
+        "assetsId": 1,
+        "id": 1,
+        "name": "--",
+        "pics": [''],
+        "tag": "--",
+        projectAssets: {},
+        projectInfo: {
+          assetsRatio: [
+              {
+                  name: "--",
+                  value: 1
+              },
+              {
+                  name: "--",
+                  value: 1
+              },
+              {
+                  name: "--",
+                  value: 1
+              }
+          ],
+          "id": 2,
+          "projectId": 1,
+          "tag1": {
+            name: "-",
+            value: "+0%"
+          },
+          "tag2": {
+            name: "-",
+            value: "0 "
+          },
+          "tag3": {
+            name: "-",
+            value: "0 "
+          },
+        }
       }
-    },
+    ],
     progressInfo: {
-      "amount": 0,
-      "target": 0,
-      "user_count": 0
+      1:{
+        "amount": 0,
+        "target": 0,
+        "user_count": 0
+      }
     }
   },
   effects: {
@@ -94,7 +107,7 @@ export default {
     //             }))
     //         }, action.userInfo)
 
-    //         let projInfo =  call(() => {
+    //         let projList =  call(() => {
     //           return fetchPosts("/api/project/1",{},"GET")
     //             .then(data => data.data.project)
     //             .catch(err => ({
@@ -127,7 +140,7 @@ export default {
     //                   "tag3": "0个",
     //               },
     //           }))
-    //         }, action.projInfo)
+    //         }, action.projList)
 
     //         let progressInfo =  call(() => {
     //           return fetchPosts("/api/project/1/progress",{},"GET")
@@ -154,7 +167,7 @@ export default {
     //     loading: false,
     //     levelInfo,
     //     userInfo,
-    //     projInfo,
+    //     projList,
     //     progressInfo
     //   })
     // },
@@ -199,12 +212,12 @@ export default {
         userInfo
       })
     },
-    *getProjInfo (action, {put, call}) {
-      yield put({type: 'projInfoReq', loading: true})
+    *getProjList (action, {put, call}) {
+      yield put({type: 'projListReq', loading: true})
 
-      let projInfo = yield call(() => {
-        return fetchPosts("/api/project/1",{},"GET")
-          .then(data => data.data.project)
+      let projList = yield call(() => {
+        return fetchPosts("/api/project/list",{},"GET")
+          .then(data => data.data.products)
           .catch(err => ({
             "assetsId": 1,
             "id": 1,
@@ -236,19 +249,20 @@ export default {
             },
 
         }))
-      }, action.projInfo)
+      }, action.projList)
 
       yield put({
-        type: 'projInfoRes',
+        type: 'projListRes',
         loading: false,
-        projInfo
+        projList
       })
     },
     *getProgressInfo (action, {put, call}) {
       yield put({type: 'progressInfoReq', loading: true})
-
-      let progressInfo = yield call(() => {
-        return fetchPosts("/api/project/1/progress",{},"GET")
+      let id = action.progressInfo,
+          progressInfo = {}
+      progressInfo[id] = yield call(() => {
+        return fetchPosts("/api/project/"+id+"/progress",{},"GET")
           .then(data => data.data)
           .catch(err => ({
             "amount": 0,
@@ -256,7 +270,6 @@ export default {
             "user_count": 0
           }))
       }, action.progressInfo)
-
       yield put({
         type: 'progressInfoRes',
         loading: false,
@@ -278,16 +291,17 @@ export default {
     userInfoRes (state, payload) {
       return {...state, ...payload}
     },
-    projInfoReq (state, payload) {
+    projListReq (state, payload) {
       return {...state, ...payload}
     },
-    projInfoRes (state, payload) {
+    projListRes (state, payload) {
       return {...state, ...payload}
     },
     progressInfoReq (state, payload) {
       return {...state, ...payload}
     },
     progressInfoRes (state, payload) {
+      payload.progressInfo = Object.assign(state.progressInfo, payload.progressInfo)
       return {...state, ...payload}
     }
   }

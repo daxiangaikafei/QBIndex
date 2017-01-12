@@ -4,14 +4,14 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { getCookie, setCookie, priceFormat, tagStrFormat } from 'libs/util'
-import { PieChart, Pie, Cell } from 'recharts'
-import {fetchPosts} from "components/common/fetch"
+import { getCookie, setCookie, priceFormat } from 'libs/util'
+import { fetchPosts } from "components/common/fetch"
+
+import ProjectItem from "./ProjectItem.js"
 
 
 class Home extends Component {
   levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"":0}
-  pieColors = ['#aa8a72','#cccccc','#e4cfa2']
 
   constructor(props) {
     super(props)
@@ -19,13 +19,11 @@ class Home extends Component {
       .then(data => {
         props.getLevel()
         props.getUserInfo()
-        props.getProjInfo()
-        props.getProgressInfo()
+        props.getProjList()
       })
 
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
-      isShowPie: false,
       isGaugeRendered: false,
     }
   }
@@ -35,20 +33,16 @@ class Home extends Component {
     this.setState({
       isShowCover: true
     });
-  };
+  }
 
   hideCoverHandler = () => {
     setCookie("isShowCover","1","storage")
     this.setState({
       isShowCover: false
     });
-  };
+  }
 
-  togglePieShowHandler = () => {
-    this.setState({
-      isShowPie: !this.state.isShowPie
-    });
-  };
+
 
   componentDidMount() {
 
@@ -65,7 +59,9 @@ class Home extends Component {
   }
 
 
+
   render() {
+    let projItems = this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />)
     return (
       <div>
         <div styleName="top-container">
@@ -94,66 +90,8 @@ class Home extends Component {
             <h3>{priceFormat(this.props.userInfo.profit/100)||0.00}</h3>
           </div>
         </div>
-        <div styleName="list-container" className={classNames({"hide":!this.props.projInfo.projectInfo.projectId})}>
-          <div styleName="item">
-            <div styleName="banner">
-              <img src={this.props.projInfo.pics[0]} alt="" onError={(e)=>{e.target.style.display='none'}}/>
-            </div>
-            <div styleName="title">
-              {this.props.projInfo.name}
-              <small>
-                <i styleName="icon icon-item"></i>
-                <span>{this.props.projInfo.tag}</span>
-              </small>
-              <i className="extend" styleName={classNames("icon","icon-arrow",{"active":this.state.isShowPie})} onClick={this.togglePieShowHandler}></i>
-            </div>
-            <div styleName="tag">
-              <div styleName="tag-item">
-                <div styleName="tag-name">近一年增值</div>
-                <div styleName="tag-value"><span styleName="increase">{this.props.projInfo.projectInfo.tag1}</span></div>
-                <span styleName={classNames("pointer",{"active":this.state.isShowPie})}></span>
-              </div>
-              <div styleName="tag-item">
-                <div styleName="tag-name">游戏市场</div>
-                <div styleName="tag-value"><span styleName="count">{tagStrFormat(this.props.projInfo.projectInfo.tag2||"0款",1)}</span>{tagStrFormat(this.props.projInfo.projectInfo.tag2||"0款",2)}</div>
-              </div>
-              <div styleName="tag-item">
-                <div styleName="tag-name">在线应用</div>
-                <div styleName="tag-value"><span styleName="count">{tagStrFormat(this.props.projInfo.projectInfo.tag3||"0个",1)}</span>{tagStrFormat(this.props.projInfo.projectInfo.tag3||"0款",2)}</div>
-              </div>
-            </div>
-            <div styleName={classNames("info",{"active":this.state.isShowPie})}>
-              <div styleName="info-title">假如你有100万元闲钱，与同期相比</div>
-              <PieChart width={320} height={200}>
-                <Pie data={this.props.projInfo.projectInfo.assetsRatio} cx="50%" cy="50%"
-                  innerRadius={30} outerRadius={55} fill="#82ca9d"
-                  label={this.renderLabel}
-                  isAnimationActive={false}>
-                  {
-                  	this.props.projInfo.projectInfo.assetsRatio.map((entry, index) => <Cell key={index} fill={this.pieColors[index % this.pieColors.length]}/>)
-                  }
-                </Pie>
-              </PieChart>
-              <div styleName="info-progress">
-                <div styleName="count">
-                  预约人数 <span>{this.props.progressInfo.user_count}</span>人
-                </div>
-                <div styleName="progress-container">
-                  <svg className="progressBar" width="200" height="10" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="gradient" >
-                        <stop offset="0%" style={{stopColor: '#aa8a72'}} />
-                        <stop offset="100%" style={{stopColor: '#e4cfa2'}}/>
-                      </linearGradient>
-                    </defs>
-                    <path strokeWidth="9" stroke="#cccccc" strokeLinejoin="round" strokeLinecap="round" fill="none" d="M10 5 h 0 180"></path>
-                    <path strokeWidth="9" stroke="#aa8a72" strokeLinejoin="round" strokeLinecap="round" style={{fill:'url(#gradient)'}} d={`M10 5 h 0 ${((this.props.progressInfo.amount /this.props.progressInfo.target )*180) || 0}`}></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div styleName="more" onClick={()=>QBFK.Business.go('/OrderInfo/1')}>查看详情</div>
-          </div>
+        <div styleName="list-container" className={classNames({"hide":this.props.projList.length==0})}>
+          {projItems}
         </div>
         <div styleName="news-container">
           <div styleName="title">
@@ -258,31 +196,6 @@ class Home extends Component {
   	}
   }
 
-  renderLabel = (props) => {
-    const RADIAN = Math.PI / 180;
-    const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-      fill, payload, percent, value } = props;
-    const sin = Math.sin(-RADIAN * midAngle);
-    const cos = Math.cos(-RADIAN * midAngle);
-    const sx = cx + (outerRadius + 5) * cos;
-    const sy = cy + (outerRadius + 5) * sin;
-    const mx = cx + (outerRadius + 20) * cos;
-    const my = cy + (outerRadius + 20) * sin;
-    const ex = mx + (cos >= 0 ? 1 : -1) * 15;
-    const ey = my;
-    const textAnchor = cos >= 0 ? 'start' : 'end';
-
-    return (
-      <g>
-        <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
-        <circle cx={ex} cy={ey} r={3} fill={fill} stroke="none"/>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#acacac" style={{fontSize:'12px',fontWeight:200}}>{payload.name}</text>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#aa8a72" style={{fontSize:'16px',fontWeight:200}}>
-          {`${(percent * 100).toFixed(2)}%`}
-        </text>
-      </g>
-    );
-  };
 
 };
 
@@ -298,8 +211,8 @@ function mapDispatchToProps(dispatch) {
       getUserInfo(userInfo){
           dispatch({type: 'home/getUserInfo', userInfo});
       },
-      getProjInfo(projInfo){
-          dispatch({type: 'home/getProjInfo', projInfo});
+      getProjList(projList){
+          dispatch({type: 'home/getProjList', projList});
       },
       getProgressInfo(progressInfo){
           dispatch({type: 'home/getProgressInfo', progressInfo});
@@ -316,4 +229,5 @@ Home.PropTypes = {
         animation:"slideUp"
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Home,styles,{allowMultiple:true}));
