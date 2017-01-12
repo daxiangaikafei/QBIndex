@@ -49,7 +49,7 @@ class OrderInfo extends Component {
                 video:""
             },
             startDate:this.formate(),
-            endDate:this.formate(1),
+            endDate:this.formate(2),
             disabled:true
         }
 
@@ -70,12 +70,20 @@ class OrderInfo extends Component {
         this.getData();
     }
     formate(num){
+        // var today = new Date();
+        // if(num){
+        //     today.setDate(today.getDate()+1);
+        // }
+        // //debugger
+        // return Number(today.getMonth()+1)+"-"+today.getDate();
+
         var today = new Date();
         if(num){
-            today.setDate(today.getDate()+1);
+            today.setDate(today.getDate()+num);
         }
-        //debugger
-        return Number(today.getMonth()+1)+"-"+today.getDate();
+        let month = Number(today.getMonth()+1);
+        let date = today.getDate();
+        return (month<10?("0"+month):month)+"-"+(date<10?("0"+date):date);
     }
     getData(){
         var self = this;
@@ -121,7 +129,9 @@ class OrderInfo extends Component {
             return false;
         }
         let {projectId} = this.props.routeParams;
-        this.props.router.push({pathname:"/orderconfirm/"+projectId})
+        this.props.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice},query: { modal: true }});
+
+        //query: { modal: true },state: { fromDashboard: true }
     }
     handHeart(){
         this.setState({
@@ -166,6 +176,7 @@ class OrderInfo extends Component {
                             <span>{endDate}</span>
                             <span>持有中</span>
                         </div>
+                        <p>现在申购，<span className="date">{endDate.replace("-","月")+"日"}</span>确认份额后产生收益</p>
                     </div>
                  </Area>
                
@@ -211,6 +222,10 @@ class OrderInfo extends Component {
 }
 OrderInfo.defaultProps = {
 }
+
+OrderInfo.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default withRouter(OrderInfo);
 

@@ -132,44 +132,62 @@
 }
 
 
-
 .order-clause{
     font-size: 14px;
     padding-left: 15px;
     background-color: white;
     margin:10px 0 ;
-    // *{
-    //     border: 1px solid red;
-    // }
-    li{
-       //height: 50px;
-        &:after{
-            clear: both;
-            display: block;
-            content: "";
-        }
-        padding: 16px 15px;
+
+    .virtual-input{
         border-bottom: 1px solid #ececec;
-        &:last-child{
-            border-bottom-width: 0;
-        }
     }
-    span{
-        display: block;
-        float: left;
-        line-height: 18px;
-    }
-    i{
-        width: 10px;
-        height: 18px;
-        display: block;
-        background-image: url("static/imgs/arrow-right.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        float: right;
-    }
-    //line-height: 14px;
 }
+
+
+// .order-clause{
+//     font-size: 14px;
+//     padding-left: 15px;
+//     background-color: white;
+//     margin:10px 0 ;
+//     // *{
+//     //     border: 1px solid red;
+//     // }
+//     li{
+//        //height: 50px;
+//         &:after{
+//             clear: both;
+//             display: block;
+//             content: "";
+//         }
+//         padding: 16px 15px;
+//         border-bottom: 1px solid #ececec;
+//         &:last-child{
+//             border-bottom-width: 0;
+//         }
+//     }
+//     span{
+//         display: block;
+//         float: left;
+//         line-height: 18px;
+//     }
+//     i{
+//         width: 10px;
+//         height: 18px;
+//         display: block;
+//         background-image: url("static/imgs/arrow-right.png");
+//         background-repeat: no-repeat;
+//         background-size: cover;
+//         float: right;
+//     }
+//     input{
+//         float: right;
+//         text-align: right;
+//         &:focus{
+//             outline: none;
+//         }
+//     }
+//     //line-height: 14px;
+// }
    
 
 
@@ -198,6 +216,8 @@
 
         span{
             color: #d80818;
+            padding-left: 6px;
+            letter-spacing: 1px;
         }
     }
     button{

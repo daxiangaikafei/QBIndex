@@ -48,7 +48,7 @@ class Video extends Component {
     }
 }
 Video.defaultProps = {
-    src:"http://7qn8hl.com1.z0.glb.clouddn.com/xuancp480.mp4",
+    src:"",
     bgUrl:""
 }
 
