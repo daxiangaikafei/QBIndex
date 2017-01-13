@@ -35,7 +35,10 @@ class OrderConfirm extends Component {
             show:false,
             errorShow:false,
             values:{},
-            errorMsgs:{},
+            errorMsgs:{
+                name:"姓名不能为空！",
+                phone:"联系电话不能为空！"
+            },
             minPrice:10,
             maxPrice:100
         }
@@ -100,15 +103,20 @@ class OrderConfirm extends Component {
     }   
     handOk(){
         //0debugger;
-        let vaResult = true;
+        let vaResult = true,errorMsg = "";
         let {values,errorMsgs,showData} = this.state;
-        each(errorMsgs,function(one){
+
+        each(errorMsgs,function(one,key){
             if(one!==true){
                 vaResult = false;
+                errorMsg = one;
+                return false;
             }
+           
         })
         //debugger
         if(this.state.disabled===true||vaResult===false||size(errorMsgs)!=2){
+            alert(errorMsg);
             return;
         }
         
@@ -188,6 +196,7 @@ class OrderConfirm extends Component {
         //ReactDom.findDOMNode(this.refs.temp).focus();
 
         let errorMsg = true,newState={};
+        debugger
         if(!value){
             errorMsg = (name==='name'?"姓名":"联系电话")+"不能为空";
             //ReactDom.findDOMNode(this.refs.temp).focus();
@@ -205,9 +214,9 @@ class OrderConfirm extends Component {
             newState.errorMsgs = Object.assign({},this.state.errorMsgs,newMsg);
         }else{
             newState.errorMsgs = Object.assign({},this.state.errorMsgs,newMsg);
-            alert(errorMsg);
+            //alert(errorMsg);
             //ReactDom.findDOMNode(this.refs.temp).focus();
-            return ;
+            //return ;
         }
         
         this.setState(newState);
