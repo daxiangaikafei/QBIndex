@@ -1,0 +1,104 @@
+.navbar-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  font-size: 18px;
+  background: #000;
+  color: #fff;
+  line-height: 18px;
+}
+.navbar-flex-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -ms-flex-align: center;
+  height: 44px;
+  display: flex;
+}
+.qbii-navbar-container {
+  background: #000;
+}
+.qbii-navbar-top,
+.qbii-navbar-bottom {
+  background: #000;
+  color: #fff;
+  height: 13px;
+}
+.qbii-navbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  font-size: 18px;
+  background: #000;
+  color: #fff;
+  line-height: 18px;
+}
+.qbii-navbar .qbii-navbar-left {
+  display: -webkit-flex;
+  display: -ms-flex;
+  -webkit-align-items: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -ms-flex-align: center;
+  height: 44px;
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+}
+.qbii-navbar .qbii-navbar-left .left {
+  display: inline-block;
+  width: 15px;
+  height: 100%;
+}
+.qbii-navbar .qbii-navbar-left .left-icon {
+  margin-right: 5px;
+  width: 10px;
+  height: 18px;
+  background: url('static/imgs/nav/array.png') no-repeat;
+  background-size: 10px auto;
+  display: inline-block;
+}
+.qbii-navbar .qbii-navbar-title {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.qbii-navbar .qbii-navbar-right {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -ms-flex-align: center;
+  height: 44px;
+  display: flex;
+  font-size: 15px;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  align-items: center;
+}
+.qbii-navbar .qbii-navbar-right .right-icon {
+  width: 20px;
+  height: 18px;
+  background: url('static/imgs/nav/point.png') no-repeat center;
+  background-size: 20px auto;
+}
+.qbii-navbar .qbii-navbar-right .right {
+  display: inline-block;
+  width: 15px;
+  height: 100%;
+}

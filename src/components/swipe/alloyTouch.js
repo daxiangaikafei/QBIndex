@@ -3,7 +3,7 @@
  * Github: https://github.com/AlloyTeam/AlloyTouch
  * MIT Licensed.
  */
-﻿/*; (function () {*/
+/*; (function () {*/
 
 //import * as _ from './../util/underscore';
 //import {$}  from 'zepto';
@@ -114,10 +114,12 @@ var AlloyTouch = function (option) {
 
 AlloyTouch.prototype = {
     _start: function (evt) {
-        setTimeout(function(){
+       // setTimeout(function(){
             this.isTouchStart = true;
             this._firstTouchMove = true;
             this._preventMoveDefault = true;
+
+            console.log("触发 。----------------------------start")
 
             if(evt.touches.length>1){
                 return false
@@ -167,10 +169,10 @@ AlloyTouch.prototype = {
             /* 改写  end */
 
 
-        }.bind(this),0)
+       // }.bind(this),0)
     },
     _move: function (evt) {
-        setTimeout(function(){
+        //setTimeout(function(){
             if (this.isTouchStart) {
                 if (this._firstTouchMove) {
                     var dDis=Math.abs(evt.touches[0].pageX - this._startX) - Math.abs(evt.touches[0].pageY - this._startY);
@@ -219,11 +221,12 @@ AlloyTouch.prototype = {
                     evt.preventDefault();
                 }
             }
-        }.bind(this),0)
+       // }.bind(this),0)
 
     },
     _end: function (evt) {
 
+        console.info("触发 。----------------------------end--------------")
        /* //console.log("zuihou ",this.scroller[this.property]);
         if(this.reverse===false&&this.scroller[this.property]===0){
             return false;
@@ -306,7 +309,7 @@ AlloyTouch.prototype = {
         }
     },
     to: function (el, property, value, time, ease, onChange, onEnd) {
-        setTimeout(function(){
+        //setTimeout(function(){
             var current = el[property];
             var dv = value - current;
             var beginTime = new Date();
@@ -326,7 +329,7 @@ AlloyTouch.prototype = {
                 onChange && onChange(el[property]);
             }
             toTick();
-        }.bind(this),0)
+        //}.bind(this),0)
 
     },
     correction: function (el, property) {

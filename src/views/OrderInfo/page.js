@@ -53,7 +53,7 @@ class OrderInfo extends Component {
             },
             startDate:this.formate(),
             endDate:this.formate(2),
-            disabled:false,
+            disabled:true,
             now:false
         }
 

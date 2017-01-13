@@ -108,6 +108,7 @@
   background: #aa8a72;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .ring {
   overflow: hidden;
