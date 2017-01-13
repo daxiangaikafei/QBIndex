@@ -246,3 +246,11 @@
 .menu-box ul li:nth-of-type(6) {
   background-image: url('static/imgs/theme/bg-6.png');
 }
+.header-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 2;
+}

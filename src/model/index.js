@@ -13,53 +13,8 @@ export default {
       "assets": 0,
       "profit": 0
     },
-    projList: [
-      {
-        "assetsId": 1,
-        "id": 1,
-        "name": "--",
-        "pics": [''],
-        "tag": "--",
-        projectAssets: {},
-        projectInfo: {
-          assetsRatio: [
-              {
-                  name: "--",
-                  value: 1
-              },
-              {
-                  name: "--",
-                  value: 1
-              },
-              {
-                  name: "--",
-                  value: 1
-              }
-          ],
-          "id": 2,
-          "projectId": 1,
-          "tag1": {
-            name: "-",
-            value: "+0%"
-          },
-          "tag2": {
-            name: "-",
-            value: "0 "
-          },
-          "tag3": {
-            name: "-",
-            value: "0 "
-          },
-        }
-      }
-    ],
-    progressInfo: {
-      1:{
-        "amount": 0,
-        "target": 0,
-        "user_count": 0
-      }
-    }
+    projList: [],
+    progressInfo: {}
   },
   effects: {
     // *'fetch' (action, {put, call}) {

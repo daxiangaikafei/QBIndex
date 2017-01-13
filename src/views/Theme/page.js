@@ -82,6 +82,7 @@ class Theme extends Component {
         return (
             <div className='theme'>
                 <div className="header">
+                    <div className="header-layer"></div>
                     <Ring buildImage={this.buildImage}  showNum={this.state.chooseNum} levelName={levelName} level={level}/>
                 </div>
                 <div className="content">

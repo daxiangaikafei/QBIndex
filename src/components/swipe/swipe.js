@@ -49,6 +49,10 @@ class Swipe extends Component {
             })
         }
     }
+    componentWillUnmount(){
+        debugger
+        this.alloyTouch&&this.alloyTouch.destory();
+    }
     scrollInit(){
         let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
          let target = ReactDOM.findDOMNode(this.refs.swipe);
@@ -63,7 +67,7 @@ class Swipe extends Component {
         // }
 
         //console.log("dom",dom);
-        new this.AlloyTouch({
+        this.alloyTouch = new this.AlloyTouch({
             touch: dom,//反馈触摸的dom
             target:target,
             vertical: vertical,//不必需，默认是true代表监听竖直方向touch

@@ -61,7 +61,7 @@ class Home extends Component {
 
 
   render() {
-    let projItems = this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />)
+    let projItems = this.props.projList.length>0 ? this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />) : ""
     return (
       <div>
         <div styleName="top-container">
@@ -75,8 +75,8 @@ class Home extends Component {
             </h1>
             <p>等级越高，可投项目越多</p>
             <div styleName="btn-group">
-              <span styleName="btn"onClick={()=>QBFK.Business.go('/Theme')}>晒身份</span>
-              <span styleName="btn"onClick={()=>QBFK.Business.go('/About')}>了解QBII</span>
+              <span styleName="btn" onClick={()=>QBFK.Business.go('/Theme')}>晒身份</span>
+              <span styleName="btn" onClick={()=>QBFK.Business.go('/About')}>了解QBII</span>
             </div>
           </div>
         </div>

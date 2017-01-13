@@ -38,6 +38,11 @@ import Transform from './transform';
 function bind(element, type, callback) {
     element.addEventListener(type, callback, false);
 }
+function removeBind(element, type, callback){
+    //element.removeEventListener()
+    //debugger;
+    element.removeEventListener(type, callback, false);
+}
 
 function iosEase(x) {
     return Math.sqrt(1 - Math.pow(x - 1, 2));
@@ -102,9 +107,14 @@ var AlloyTouch = function (option) {
     if (this.hasMax && this.hasMin) {
         this.currentPage = Math.round((this.max - this.scroller[this.property]) / this.step);
     }
+
+    this.move = this._move.bind(this);
+    this.end = this._end.bind(this);
     bind(this.element, "touchstart", this._start.bind(this));
-    bind(window, "touchmove", this._move.bind(this));
-    bind(window, "touchend", this._end.bind(this));
+    bind(window, "touchmove", this.move);
+    bind(window, "touchend", this.end);
+
+    this.destory = this.destory.bind(this);
 
     if(!this.findScroller){
        // //console.log("this.element",this.scroller)
@@ -113,6 +123,11 @@ var AlloyTouch = function (option) {
 }
 
 AlloyTouch.prototype = {
+    destory:function(){
+        //removeBind(this.element, "touchstart", this._start);
+        removeBind(window, "touchmove", this.move);
+        removeBind(window, "touchend", this.end);
+    },
     _start: function (evt) {
        // setTimeout(function(){
             this.isTouchStart = true;
@@ -221,6 +236,7 @@ AlloyTouch.prototype = {
                     evt.preventDefault();
                 }
             }
+            console.info("触发 。----------------------------move--------------")
        // }.bind(this),0)
 
     },
