@@ -53,7 +53,7 @@ class OrderInfo extends Component {
             },
             startDate:this.formate(),
             endDate:this.formate(2),
-            disabled:true,
+            disabled:false,
             now:false
         }
 
@@ -214,7 +214,7 @@ class OrderInfo extends Component {
 
                 <div className="step-end" >
                     <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
-                    <button disabled={this.state.disabled} className="step-btn-end" onClick={this.handThink} >我有意向</button>
+                    <button  className="step-btn-end" onClick={this.handThink} >我有意向</button>
                 </div>
             </div>
         )

@@ -56,7 +56,7 @@ class OrderConfirm extends Component {
         //debugger
         let {minPrice,maxPrice} = this.props.location&&this.props.location.state;
         if(!minPrice){
-           this.context.router.push({pathname:"/"})
+           //this.context.router.push({pathname:"/"})
         }
         //let maxPrice = 1000;
         let {showData} = this.state;
