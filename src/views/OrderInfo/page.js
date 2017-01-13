@@ -40,7 +40,7 @@ class OrderInfo extends Component {
                 assetsType:"",// type//资本类型 1-本土
                 organizationType:"",//组织形式  1-有限合伙制
                 structured:"",//结构化 . 1-是，2-否
-                exit:["",""],//退出形式
+                exitWay:["",""],//退出形式
                 trusteeFee:["",""],//认购费 . 
                 managementFee:["",""],//管理费
                 trusteeFee:["",""],//托管费
@@ -195,7 +195,7 @@ class OrderInfo extends Component {
                         <li><span>资本类型</span><span>{data.assetsType}</span></li>
                         <li><span>组织形式</span><span>{data.organizationType}</span></li>
                         <li><span>结构化</span><span>{data.structured}</span></li>
-                        <li><span>退出方式</span>{this.renderArrayInfo(data.exit)}</li>
+                        <li><span>退出方式</span>{this.renderArrayInfo(data.exitWay)}</li>
                     </ul>
                 </Area>
                  <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
