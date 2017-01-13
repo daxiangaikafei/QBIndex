@@ -204,9 +204,12 @@ main{
         position: absolute;
         top: 26px;
         right: 15px;
+        -webkit-transform: rotateX(180deg);
+        transition: -webkit-transform .5s;
         transform: rotateX(180deg);
         transition: transform .5s;
         &.active {
+          -webkit-transform: rotateX(0deg);
           transform: rotateX(0deg);
         }
       }
@@ -295,6 +298,7 @@ main{
           display: -ms-flex;
           display: flex;
           box-sizing: border-box;
+          -webkit-box-pack: center;
           -webkit-justify-content: space-around;
           justify-content: space-around;
           .count {

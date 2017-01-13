@@ -217,7 +217,7 @@ export default {
 
       let projList = yield call(() => {
         return fetchPosts("/api/project/list",{},"GET")
-          .then(data => data.data.products)
+          .then(data => data.data.projects)
           .catch(err => ({
             "assetsId": 1,
             "id": 1,
