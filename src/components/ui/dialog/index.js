@@ -13,11 +13,11 @@ class Dialog extends React.Component {
     }
 
     _buttonConfirm(){
+        //
+        //var _name = ReactDom.findDOMNode(this.refs.nameInput);
+        //var _phone = ReactDom.findDOMNode(this.refs.phoneInput);
 
-        var _name = ReactDom.findDOMNode(this.refs.nameInput);
-        var _phone = ReactDom.findDOMNode(this.refs.phoneInput);
-
-        this.props.buttonConfirm({name:_name.value,phone:_phone.value});
+        this.props.buttonConfirm();
     }
 
 

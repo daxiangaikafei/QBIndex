@@ -21,7 +21,7 @@ class NavBar extends React.Component {
   }
 
   _filter (pathname, route) {
-    let _result = route.childRoutes.filter(item => item.path == pathname || pathname.match(item.path.replace(':projectId', '\\\d+')))
+    let _result = route.childRoutes.filter(item => item.path.toLowerCase() == pathname.toLowerCase() || pathname.toLowerCase().match(item.path.toLowerCase().replace(':projectid', '\\\d+')))
     return _result.length ? _result[0].name : route.indexRoute.name
   }
 
@@ -69,8 +69,8 @@ class NavBar extends React.Component {
           </div>
           <div className='qbii-navbar-title'>{this.state.title}</div>
           <div className='qbii-navbar-right'>
-            <span className='right-icon'></span>
-            <span className='right'></span>
+            <span className='right-icon hide'></span>
+            <span className='right hide'></span>
           </div>
         </div>
       </div>

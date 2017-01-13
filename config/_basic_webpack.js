@@ -188,20 +188,20 @@ webpackConfig.module.loaders.push(
 //    includePaths: paths.base('styles')
 //}
 //webpackConfig.postcss = function () {
-//    return [require('autoprefixer'), require('precss')];
+//    return [ require('precss')];
 //}
 webpackConfig.postcss = [
-    cssnano({
-        sourcemap: true,
-        autoprefixer: {
-            add: true,
-            remove: true
-        },
-        safe: true,
-        discardComments: {
-            removeAll: true
-        }
-    })
+    //cssnano({
+    //    //sourcemap: true,
+    //    //autoprefixer: {
+    //    //    add: true,
+    //    //    //remove: true
+    //    //},
+    //    //safe: true,
+    //    //discardComments: {
+    //    //    //removeAll: true
+    //    //}
+    //})
 ]
 
 // File loaders
