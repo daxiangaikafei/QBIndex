@@ -66,7 +66,9 @@ class Home extends Component {
       <div>
         <div styleName="top-container">
           <div styleName="top-bg"></div>
-          <canvas id="dash" styleName="dash" width='240' height='210'></canvas>
+          <div styleName="dash-container">
+            <canvas id="dash" styleName="dash" width='240' height='210'></canvas>
+          </div>
           <div styleName="content">
             <h5>QBII</h5>
             <h3>认证等级</h3>
