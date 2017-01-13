@@ -18,8 +18,8 @@ function CoreLayout ({ children, location }) {
             leaveActive: location.action == 'PUSH'?'fadeOutRight':'fadeOutLeft'
           }}
          style={{overflowY: 'scroll',height: '100%'}}
-         transitionEnterTimeout={500}
-         transitionLeaveTimeout={500}
+         transitionEnterTimeout={300}
+         transitionLeaveTimeout={300}
         >
         {React.cloneElement(children, {
             key: location.pathname
