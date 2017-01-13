@@ -117,7 +117,7 @@ class OrderConfirm extends Component {
         })
         var self = this;
         let {projectId} = this.props.routeParams;
-        values.amount = showData.investmentNum;
+        values.amount = Number(showData.investmentNum)*10000;
         //debugger;
         fetchPosts("/api/project/"+projectId+"/apply",values,"POST").then((data)=>{
             //debugger;
@@ -135,8 +135,7 @@ class OrderConfirm extends Component {
             }else{
                 alert(data.message);
                 self.setState({
-                    disabled:false,
-                    show:true
+                    disabled:false
                 })
                
                 // self.props.router.push({pathname:"/orderinfo/"+projectId});
