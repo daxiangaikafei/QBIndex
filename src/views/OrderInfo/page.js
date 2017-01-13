@@ -104,7 +104,7 @@ class OrderInfo extends Component {
                     data:newData
                 });
             }catch(errorMsg){
-                consoel.log(errorMsg);
+                console.log(errorMsg);
             }
         });
 
@@ -136,7 +136,7 @@ class OrderInfo extends Component {
         }
         let {projectId} = this.props.routeParams;
         //this.props.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice},query: { modal: true }});
-        this.context.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice/10000}});
+        this.context.router.push({pathname:"/orderconfirm/"+projectId,state:{minPrice:this.state.data.minPrice/10000,maxPrice:this.state.data.target/10000}});
         //query: { modal: true },state: { fromDashboard: true }
     }
     handHeart(){
@@ -215,6 +215,9 @@ class OrderInfo extends Component {
         )
     }
     renderArrayInfo(param){
+        if(!param){
+            retunr (<div className="area-p"></div>)
+        }
         let re = [];
         for(let i =0;i<param.length;i++){
             re.push(<p key={i}>{param[i]}</p>)

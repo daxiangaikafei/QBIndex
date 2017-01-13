@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import ReactDom from "react-dom";
 import "./page.less";
 
 import {fetchPosts} from "components/common/fetch";
@@ -37,7 +37,7 @@ class OrderConfirm extends Component {
             values:{},
             errorMsgs:{},
             minPrice:10,
-            //maxPrice:1000
+            maxPrice:100
         }
         this.moneyCalculate = this.moneyCalculate.bind(this);
         this.handOk = this.handOk.bind(this);
@@ -51,7 +51,7 @@ class OrderConfirm extends Component {
     componentWillMount(){
         //if() minPrice
         //debugger
-        let {minPrice} = this.props.location&&this.props.location.state;
+        let {minPrice,maxPrice} = this.props.location&&this.props.location.state;
         if(!minPrice){
            this.context.router.push({pathname:"/"})
         }
@@ -60,28 +60,31 @@ class OrderConfirm extends Component {
         showData.investmentNum = minPrice;
         this.setState({
             minPrice,
-            //maxPrice,
+            maxPrice,
             showData:Object.assign({},showData,this.moneyCalculate(showData))
         });
     }
 
     handBlur(){
         //&&value>=this.state.minPrice
+        //debugger;
+        //ReactDom.findDOMNode(this.refs.temp).focus();
         if(this.state.showData.investmentNum< this.state.minPrice){
             this.setState({
                 disabled:true
             })
             alert("起投金额不能小于"+this.state.minPrice+"万");
-            return ;
+            //return ;
+        }else if(this.state.showData.investmentNum>this.state.maxPrice){
+            alert("起投金额不能大于"+this.state.maxPrice+"万");
+           // return ;
+        }else{
+            this.setState({
+                disabled:false,
+                showData:Object.assign({},this.state.showData,this.moneyCalculate(this.state.showData))
+            });
         }
-        // else if(this.state.showData.investmentNum>this.state.maxPrice){
-        //     alert("起投金额不能大于"+this.state.maxPrice+"万");
-        //     return ;
-        // }
-        this.setState({
-            disabled:false,
-            showData:Object.assign({},this.state.showData,this.moneyCalculate(this.state.showData))
-        });
+        
     }
 
     moneyCalculate(data){
@@ -183,10 +186,12 @@ class OrderConfirm extends Component {
     }
 
     hangInChange(name,value){
+        //ReactDom.findDOMNode(this.refs.temp).focus();
 
         let errorMsg = true,newState={};
         if(!value){
             errorMsg = (name==='name'?"姓名":"联系电话")+"不能为空";
+            //ReactDom.findDOMNode(this.refs.temp).focus();
         }else if(name ==="phone" && !/^1(3|4|5|7|8)\d{9}$/.test(value)){
             errorMsg = "手机号码错误";
         }
@@ -202,6 +207,8 @@ class OrderConfirm extends Component {
         }else{
             newState.errorMsgs = Object.assign({},this.state.errorMsgs,newMsg);
             alert(errorMsg);
+            //ReactDom.findDOMNode(this.refs.temp).focus();
+            return ;
         }
         
         this.setState(newState);
@@ -212,7 +219,8 @@ class OrderConfirm extends Component {
         let {inputProps} = this.props;
         let {investmentNum,estimateMoney,bankMoney,totalNum} = this.state.showData;
         return (
-            <div className="order-confirm">
+            <div className="order-confirm" >
+            <input type="hidden" ref="temp"/>
                 <div className="order-join">
                     <div className="join-top">
                         <span>我要投(万元)</span>
@@ -237,6 +245,7 @@ class OrderConfirm extends Component {
                 <div className="order-clause">
                     <Input {...inputProps.name} onChange={this.hangInChange}  />
                     <Input {...inputProps.phone} onChange={this.hangInChange} />
+                    
                 </div>
                 {/*<ul className="order-clause">
                     <li><Input title={"姓名"}  /></li>
