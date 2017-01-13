@@ -23,7 +23,7 @@ import "./page.less";
 
 import Vedio from "./vedio";
 import Area from "./area.js";
-import Chart from "./chart.js";
+//import Chart from "./chart.js";
 
 class OrderInfo extends Component {
     constructor(props) {
