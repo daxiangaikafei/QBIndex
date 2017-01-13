@@ -67,7 +67,7 @@ var fetchSetTimeout = function(){
         setTimeout(function(){
             //console.log('执行完成');
             resolve('随便什么数据');
-        }, 300);
+        }, 500);
     });
     return fetchSetTimeout;
 }
