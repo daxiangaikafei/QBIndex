@@ -61,7 +61,7 @@ class Home extends Component {
 
 
   render() {
-    let projItems = this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />)
+    let projItems = this.props.projList.length>0 ? this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />) : ""
     return (
       <div>
         <div styleName="top-container">
