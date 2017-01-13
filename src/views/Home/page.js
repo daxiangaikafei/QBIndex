@@ -75,8 +75,8 @@ class Home extends Component {
             </h1>
             <p>等级越高，可投项目越多</p>
             <div styleName="btn-group">
-              <span styleName="btn"onClick={()=>QBFK.Business.go('/Theme')}>晒身份</span>
-              <span styleName="btn"onClick={()=>QBFK.Business.go('/About')}>了解QBII</span>
+              <span styleName="btn" onClick={()=>QBFK.Business.go('/Theme')}>晒身份</span>
+              <span styleName="btn" onClick={()=>QBFK.Business.go('/About')}>了解QBII</span>
             </div>
           </div>
         </div>
