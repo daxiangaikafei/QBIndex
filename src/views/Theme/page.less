@@ -60,6 +60,7 @@
     margin-top: 20px;
 
     text-align: center;
+    overflow-x: hidden;
 }
 .header img
 {
@@ -196,6 +197,7 @@
     width: 100%;
     height: 100%;
     background-color: white;
+    z-index: 1;
     //margin: 0 auto;
     //left: 50%;
     //top:46px;
@@ -408,3 +410,13 @@
 }
 
 //nth-of-type(3n+0)
+
+.header-layer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(0,0,0,0);
+    z-index: 2;
+
+}
