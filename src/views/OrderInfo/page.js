@@ -162,8 +162,8 @@ class OrderInfo extends Component {
                 <Area className="area-margin area-bottom" title="项目解析" hasIcon={false}>
                     <Vedio bgUrl={data.pics[2]} src={data.video}/>
                 </Area>
-                <Chart projectId={this.props.routeParams.projectId}/>
-                <Area className="area-margin" title="特色亮点" hasIcon={true} hasLine={true} isClose={true}>
+                
+                <Area className="area-margin" title="项目优势" hasIcon={true} hasLine={true} isClose={true}>
                    <div  className="area-p area-duan" dangerouslySetInnerHTML={{__html:data.des}}>
                         
                    </div>
@@ -203,7 +203,11 @@ class OrderInfo extends Component {
                         <li><span>认购费</span><span>{(data.applyFee&&data.applyFee[1]+"%")||""}</span></li>
                         <li><span>管理费</span><span>{(data.managementFee[1]+"%/年")||""}</span></li>
                         <li><span>托管费</span><span>{(data.trusteeFee[1]+"%/年")||""}</span></li>
-                        <li><span>收益分配</span><span>{data.profit||""}</span></li>
+                        <li><span>收益分配</span>
+                            <div className="area-p">
+                                {data.profit||""}
+                            </div>
+                        </li>
                     </ul>
                 </Area>
 
@@ -229,6 +233,9 @@ class OrderInfo extends Component {
         );
     }
 }
+/*
+<Chart projectId={this.props.routeParams.projectId}/>
+ */
 OrderInfo.defaultProps = {
 }
 

@@ -94,6 +94,8 @@
   letter-spacing: 2px;
   width: 100%;
   padding: 5px 0;
+  word-wrap: break-word;
+  word-break: normal;
   float: left;
 }
 .area-info .area-duan {
@@ -352,6 +354,7 @@
   right: 0;
   height: 50px;
   background-color: #000000;
+  z-index: 150;
   font-size: 0;
 }
 .step-end button {
