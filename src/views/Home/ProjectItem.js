@@ -16,7 +16,7 @@ class ProjectItem extends Component {
     props.getProgressInfo(props.projInfo.projectInfo.projectId)
 
     this.state = {
-      isShowPie: true,
+      isShowPie: false,
     }
   }
   togglePieShowHandler = () => {
