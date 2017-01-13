@@ -14,6 +14,8 @@ import {fetchPosts} from "components/common/fetch";
 
 import {getCookie} from 'libs/util';
 
+import Info from "./info.js";
+
 
 import "./page.less";
 
@@ -165,7 +167,6 @@ class OrderInfo extends Component {
                 
                 <Area className="area-margin" title="项目优势" hasIcon={true} hasLine={true} isClose={true}>
                    <div  className="area-p area-duan" dangerouslySetInnerHTML={{__html:data.des}}>
-                        
                    </div>
                 </Area>
 
