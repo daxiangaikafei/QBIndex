@@ -25,7 +25,7 @@ class About extends Component {
 
   render() {
     const slide = {
-      height: '100%',
+      // height: '25%',
       position: 'relative'
     }
     let itemHeight = window.innerHeight-44
@@ -35,7 +35,8 @@ class About extends Component {
         step: itemHeight,
         property: "translateY",
         findScroller: ".slide-item",
-        vertical:true
+        vertical:true,
+        sensitivity:0.5
     }
     return (
       <Swipe styleName="about-container"  {...swipeProps}>
