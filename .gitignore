@@ -9,4 +9,4 @@
 *.DS_Store
 .gitignore
 .DS_Store
-
+/src/index.js
