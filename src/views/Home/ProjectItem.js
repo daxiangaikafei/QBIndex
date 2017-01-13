@@ -16,7 +16,7 @@ class ProjectItem extends Component {
     props.getProgressInfo(props.projInfo.projectInfo.projectId)
 
     this.state = {
-      isShowPie: false,
+      isShowPie: true,
     }
   }
   togglePieShowHandler = () => {
@@ -54,8 +54,8 @@ class ProjectItem extends Component {
           </div>
         </div>
         <div styleName={classNames("info",{"active":this.state.isShowPie})}>
-          <div styleName="info-title">资产配置如下：</div>
-          <PieChart width={320} height={210}>
+          <div styleName="info-title">收益配置如下：</div>
+          <PieChart width={window.innerWidth} height={210}>
             <Pie data={this.props.projInfo.projectInfo.assetsRatio} cx="50%" cy="50%"
               innerRadius={30} outerRadius={55} fill="#82ca9d"
               label={this.renderLabel}
@@ -105,8 +105,8 @@ class ProjectItem extends Component {
       <g>
         <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none"/>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#acacac" style={{fontSize:'12px',fontWeight:200}}>{payload.name}</text>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#aa8a72" style={{fontSize:'12px',fontWeight:200}}>
+        <text x={ex + (cos >= 0 ? 1 : -1) * 10} y={ey} textAnchor={textAnchor} fill="#acacac" style={{fontSize:'10px',fontWeight:200}}>{payload.name}</text>
+        <text x={ex + (cos >= 0 ? 1 : -1) * 10} y={ey} dy={10} textAnchor={textAnchor} fill="#aa8a72" style={{fontSize:'10px',fontWeight:200}}>
           {`${(percent * 100).toFixed(2)}%`}
         </text>
       </g>
