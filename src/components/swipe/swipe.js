@@ -50,7 +50,7 @@ class Swipe extends Component {
         }
     }
     componentWillUnmount(){
-        debugger
+        //debugger
         this.alloyTouch&&this.alloyTouch.destory();
     }
     scrollInit(){
