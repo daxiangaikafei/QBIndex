@@ -103,22 +103,22 @@ class Home extends Component {
               <i styleName="icon icon-arrow"></i> */}
             </div>
           </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/1')}>
-            <div styleName="img">
-              <img src={require("static/imgs/home/theme1.png")} alt=""/>
-            </div>
-            <div styleName="item-title">
-              长风一起，雾霾皆散
-              <small>QBII钱宝5.0巡回宣讲会郑州站（一）</small>
-            </div>
-          </div>
           <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/2')}>
             <div styleName="img">
               <img src={require("static/imgs/home/theme2.png")} alt=""/>
             </div>
             <div styleName="item-title">
-              我们的世界，平凡的世界
-              <small>QBII钱宝5.0巡回宣讲会郑州站（二）</small>
+              全新身份QBII
+              <small>钱宝5.0时代身具跨时代新标识</small>
+            </div>
+          </div>
+          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/1')}>
+            <div styleName="img">
+              <img src={require("static/imgs/home/theme1.png")} alt=""/>
+            </div>
+            <div styleName="item-title">
+              To Be QBII PRO
+              <small>钱宝5.0新时代QBII PRO首批签约仪式</small>
             </div>
           </div>
         </div>
