@@ -156,10 +156,11 @@ class Home extends Component {
   	ctx.arc(w, h, innerRadius, (1 - angle) * Math.PI, (2 + angle) * Math.PI, false);
     ctx.setLineDash([1,4])
     ctx.stroke();
+    ctx.restore();
 
   	ctx.strokeStyle = "#ae8e72";
     ctx.beginPath();
-  	ctx.setLineDash([0]);
+  	ctx.setLineDash([]);
     ctx.arc(w, h, radius, (1 - angle) * Math.PI, displayAngle, false);
     ctx.stroke();
 
