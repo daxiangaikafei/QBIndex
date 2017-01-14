@@ -236,20 +236,6 @@ class OrderConfirm extends Component {
                     </div>
                     <div className="join-slide hide"></div>
                 </div>
-
-                <ul className="order-estimate">
-                    <li className="order-estimate-one">
-                        <i></i>
-                        <span>预计到期可赚(万元)</span>
-                        <span className="estimate-money">{estimateMoney}</span>
-                    </li>
-                    <li className="order-estimate-one estimate-bank">
-                        <i></i>
-                        <span>银行同期可赚(万元)</span>
-                        <span className="estimate-money">{bankMoney}</span>
-                    </li>
-                </ul>
-
                 <div className="order-clause">
                     <p className="order-clause-new">个人信息</p>
                     <Input {...inputProps.name} onChange={this.hangInChange}  />
@@ -302,5 +288,23 @@ export default OrderConfirm;
     buttonConfirm: function () {
     },
     errorShow: false,
+
+
+
+    <ul className="order-estimate">
+                    <li className="order-estimate-one">
+                        <i></i>
+                        <span>预计到期可赚(万元)</span>
+                        <span className="estimate-money">{estimateMoney}</span>
+                    </li>
+                    <li className="order-estimate-one estimate-bank">
+                        <i></i>
+                        <span>银行同期可赚(万元)</span>
+                        <span className="estimate-money">{bankMoney}</span>
+                    </li>
+                </ul>
+
+
+
  */
 //<div className="theme-img"></div>
