@@ -150,68 +150,68 @@ class OrderInfo extends Component {
         var {data,heart,startDate,endDate} = this.state;
         return (
             <div className="party-info">
-
-                <div className="party-head" style={{backgroundImage:("url("+data.pics[0]+")")}}>
-                    <div className="party-logo" style={{backgroundImage:("url("+data.pics[1]+")")}} ></div>
-                </div>
-                <Area className="" title={data.name} hasIcon={false}>
-                    <ul className="party-plan">
-                        <li><span>{data.direction}</span><span>投资方向</span></li>
-                        <li><span>{data.duration}</span><span>存续期限</span></li>
-                        <li><span>{data.minPrice/10000}万</span><span>认购起点</span></li>
-                    </ul>
-                </Area>
-                <Area className="area-margin area-bottom" title="项目解析" hasIcon={false}>
-                    <Vedio bgUrl={data.pics[2]} src={data.video}/>
-                </Area>
-                
-                <Area className="area-margin" title="项目优势" hasIcon={true} hasLine={true} isClose={true}>
-                   <div  className="area-p area-duan" dangerouslySetInnerHTML={{__html:data.des}}>
-                   </div>
-                </Area>
-
-                 <Area className="area-margin" title="募集说明" hasIcon={false}>
-                    <div className="party-step">
-                        <div className="step-row">
-                            <span>申购</span>
-                            <span>确认份额</span>
-                        </div>
-                         <div className="step-row step-arrow">
-                        </div>
-                        <div className="step-row">
-                            <span>{startDate}</span>
-                            <span>{endDate}</span>
-                            <span>持有中</span>
-                        </div>
-                        <p>现在申购，<span className="date">{endDate.replace("-","月")+"日"}</span>确认份额后产生收益</p>
+                <div className="party-temp">
+                    <div className="party-head" style={{backgroundImage:("url("+data.pics[0]+")")}}>
+                        <div className="party-logo" style={{backgroundImage:("url("+data.pics[1]+")")}} ></div>
                     </div>
-                 </Area>
-               
+                    <Area className="" title={data.name} hasIcon={false}>
+                        <ul className="party-plan">
+                            <li><span>{data.direction}</span><span>投资方向</span></li>
+                            <li><span>{data.duration}</span><span>存续期限</span></li>
+                            <li><span>{data.minPrice/10000}万</span><span>认购起点</span></li>
+                        </ul>
+                    </Area>
+                    <Area className="area-margin area-bottom" title="项目解析" hasIcon={false}>
+                        <Vedio bgUrl={data.pics[2]} src={data.video}/>
+                    </Area>
+                    
+                    <Area className="area-margin" title="项目优势" hasIcon={true} hasLine={true} isClose={true}>
+                    <div  className="area-p area-duan" dangerouslySetInnerHTML={{__html:data.des}}>
+                    </div>
+                    </Area>
 
-                <Area className="area-margin" title="产品明细" hasIcon={true} hasLine={true}>
-                    <ul className="area-rows">
-                        <li><span>目标规模</span><span></span><span>{data.target/10000+"万"}</span></li>
-                        <li><span>管理机构</span><span>{data.organization}</span></li>
-                        <li><span>投资方向</span><span>{data.direction}</span></li>
-                        <li><span>资本类型</span><span>{data.assetsType}</span></li>
-                        <li><span>组织形式</span><span>{data.organizationType}</span></li>
-                        <li><span>结构化</span><span>{data.structured}</span></li>
-                        <li><span>退出方式</span>{this.renderArrayInfo(data.exitWay)}</li>
-                    </ul>
-                </Area>
-                 <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
-                    <ul className="area-rows">
-                        <li><span>认购费</span><span>{(data.applyFee&&data.applyFee[1]+"%")||""}</span></li>
-                        <li><span>管理费</span><span>{(data.managementFee[1]+"%/年")||""}</span></li>
-                        <li><span>托管费</span><span>{(data.trusteeFee[1]+"%/年")||""}</span></li>
-                        <li><span>收益分配</span>
-                            <div className="area-p">
-                                {data.profit||""}
+                    <Area className="area-margin" title="募集说明" hasIcon={false}>
+                        <div className="party-step">
+                            <div className="step-row">
+                                <span>申购</span>
+                                <span>确认份额</span>
                             </div>
-                        </li>
-                    </ul>
-                </Area>
-
+                            <div className="step-row step-arrow">
+                            </div>
+                            <div className="step-row">
+                                <span>{startDate}</span>
+                                <span>{endDate}</span>
+                                <span>持有中</span>
+                            </div>
+                            <p>现在申购，<span className="date">{endDate.replace("-","月")+"日"}</span>确认份额后产生收益</p>
+                        </div>
+                    </Area>
+                    
+                    <Area className="area-margin" title="产品明细" hasIcon={true} hasLine={true}>
+                        <ul className="area-rows">
+                            <li><span>目标规模</span><span></span><span>{data.target/10000+"万"}</span></li>
+                            <li><span>管理机构</span><span>{data.organization}</span></li>
+                            <li><span>投资方向</span><span>{data.direction}</span></li>
+                            <li><span>资本类型</span><span>{data.assetsType}</span></li>
+                            <li><span>组织形式</span><span>{data.organizationType}</span></li>
+                            <li><span>结构化</span><span>{data.structured}</span></li>
+                            <li><span>犹豫期</span><span>7天</span></li>
+                            <li><span>退出方式</span>{this.renderArrayInfo(data.exitWay)}</li>
+                        </ul>
+                    </Area>
+                    <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
+                        <ul className="area-rows">
+                            <li><span>认购费</span><span>{(data.applyFee&&data.applyFee[1]+"%")||""}</span></li>
+                            <li><span>管理费</span><span>{(data.managementFee[1]+"%/年")||""}</span></li>
+                            <li><span>托管费</span><span>{(data.trusteeFee[1]+"%/年")||""}</span></li>
+                            <li><span>收益分配</span>
+                                <div className="area-p">
+                                    {data.profit||""}
+                                </div>
+                            </li>
+                        </ul>
+                    </Area>
+                </div>
                 <div className="step-end" >
                     <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
                     <button disabled={this.state.disabled}  className="step-btn-end" onClick={this.handThink} >我有意向</button>

@@ -1,4 +1,9 @@
 .party-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 44px;
+  bottom: 0;
   padding-bottom: 50px;
   background-color: #e0e0e0;
 }
@@ -7,6 +12,14 @@
 }
 .party-info button:focus {
   outline: none;
+}
+.party-temp {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 50px;
+  overflow-y: scroll;
 }
 .party-head {
   width: 100%;
@@ -348,7 +361,7 @@
   right: 15px;
 }
 .step-end {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
