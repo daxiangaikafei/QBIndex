@@ -385,7 +385,7 @@
   color: gray;
 }
 .step-end .step-btn-end {
-  width: 70%;
+  width: 100%;
   border-right-width: 0;
 }
 .step-end:after {

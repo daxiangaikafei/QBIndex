@@ -202,7 +202,7 @@ class OrderInfo extends Component {
                     
                 </div>
                 <div className="step-end" >
-                    <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
+                    
                     <button disabled={this.state.disabled}  className="step-btn-end" onClick={this.handThink} >我有意向</button>
                 </div>
             </div>
@@ -235,7 +235,10 @@ OrderInfo.contextTypes = {
 export default OrderInfo;
 
 /**
- * 
+ * <div className="step-end" >
+                    <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
+                    <button disabled={this.state.disabled}  className="step-btn-end" onClick={this.handThink} >我有意向</button>
+                </div>
  * <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
                         <ul className="area-rows">
                             <li><span>认购费</span><span>{(data.applyFee&&data.applyFee[1]+"%")||""}</span></li>

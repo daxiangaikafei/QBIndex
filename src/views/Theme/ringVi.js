@@ -72,7 +72,7 @@ class RingVi extends Component {
             var self = this;
         	var angle = 0.14, innerAngle = angle;
             var displayAngle = this.getAngle(displayValue), innerDisplayAngle = displayAngle;
-            var radius = 60, innerRadius = radius - 8, iconRadius = radius - 16;
+            var radius = 80, innerRadius = radius - 8, iconRadius = radius - 16;
             
             var startX, startY, x, y, length = 88;
             var img = document.createElement("img");
