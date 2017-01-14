@@ -56,7 +56,7 @@ class OrderConfirm extends Component {
         //debugger
         let {minPrice,maxPrice} = this.props.location&&this.props.location.state;
         if(!minPrice){
-           //this.context.router.push({pathname:"/"})
+           this.context.router.push({pathname:"/"})
         }
         //let maxPrice = 1000;
         let {showData} = this.state;
@@ -196,7 +196,7 @@ class OrderConfirm extends Component {
         //ReactDom.findDOMNode(this.refs.temp).focus();
 
         let errorMsg = true,newState={};
-        debugger
+        //debugger
         if(!value){
             errorMsg = (name==='name'?"姓名":"联系电话")+"不能为空";
             //ReactDom.findDOMNode(this.refs.temp).focus();
@@ -251,6 +251,7 @@ class OrderConfirm extends Component {
                 </ul>
 
                 <div className="order-clause">
+                    <p className="order-clause-new">个人信息</p>
                     <Input {...inputProps.name} onChange={this.hangInChange}  />
                     <Input {...inputProps.phone} onChange={this.hangInChange} />
                     
