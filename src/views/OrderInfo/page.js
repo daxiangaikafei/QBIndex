@@ -199,18 +199,7 @@ class OrderInfo extends Component {
                             <li><span>退出方式</span>{this.renderArrayInfo(data.exitWay)}</li>
                         </ul>
                     </Area>
-                    <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
-                        <ul className="area-rows">
-                            <li><span>认购费</span><span>{(data.applyFee&&data.applyFee[1]+"%")||""}</span></li>
-                            <li><span>管理费</span><span>{(data.managementFee[1]+"%/年")||""}</span></li>
-                            <li><span>托管费</span><span>{(data.trusteeFee[1]+"%/年")||""}</span></li>
-                            <li><span>收益分配</span>
-                                <div className="area-p">
-                                    {data.profit||""}
-                                </div>
-                            </li>
-                        </ul>
-                    </Area>
+                    
                 </div>
                 <div className="step-end" >
                     <button onClick={this.handHeart}><span className={"step-heart"+(heart===false?" heart-line":"")} ></span></button>
@@ -244,6 +233,22 @@ OrderInfo.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 export default OrderInfo;
+
+/**
+ * 
+ * <Area className="area-margin" title="交易须知" hasIcon={true} hasLine={true}>
+                        <ul className="area-rows">
+                            <li><span>认购费</span><span>{(data.applyFee&&data.applyFee[1]+"%")||""}</span></li>
+                            <li><span>管理费</span><span>{(data.managementFee[1]+"%/年")||""}</span></li>
+                            <li><span>托管费</span><span>{(data.trusteeFee[1]+"%/年")||""}</span></li>
+                            <li><span>收益分配</span>
+                                <div className="area-p">
+                                    {data.profit||""}
+                                </div>
+                            </li>
+                        </ul>
+                    </Area>
+ */
 
 //export default withRouter(OrderInfo);
 
