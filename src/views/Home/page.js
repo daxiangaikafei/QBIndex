@@ -188,6 +188,7 @@ class Home extends Component {
   			ctx.rotate(displayAngle + Math.PI / 2);
   			ctx.drawImage(img, 0, -length, 10, 14.5);
   			ctx.restore();
+        canvas.style.zIndex="2";
     },false);
 
   	function getAngle(value) {
