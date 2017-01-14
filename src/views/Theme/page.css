@@ -115,8 +115,32 @@
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0);
   z-index: 1;
+}
+.ring-vi {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.ring-show {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.ring-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .container-ring,
 .container-ring-hide {
@@ -256,5 +280,5 @@
   bottom: 0;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0);
-  z-index: 2;
+  z-index: 10;
 }

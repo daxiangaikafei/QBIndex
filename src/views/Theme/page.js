@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import "./page.less";
 
 import Ring from "./ring.js";
+import RingVi from "./ringVi.js";
 import {getCookie} from 'libs/util';
 
 const Level={"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"暂无":0};
@@ -83,7 +84,8 @@ class Theme extends Component {
             <div className='theme'>
                 <div className="header">
                     <div className="header-layer"></div>
-                    <Ring buildImage={this.buildImage}  showNum={this.state.chooseNum} levelName={levelName} level={level}/>
+                    <Ring   showNum={this.state.chooseNum} levelName={levelName} level={level}/>
+                    <RingVi buildImage={this.buildImage}  showNum={this.state.chooseNum} levelName={levelName} level={level}/>
                 </div>
                 <div className="content">
                     <div className="menu">
@@ -103,5 +105,5 @@ Theme.defaultProps = {
 }
 
 export default Theme;
-
+//<Ring buildImage={this.buildImage}  showNum={this.state.chooseNum} levelName={levelName} level={level}/>
 //<div className="theme-img"></div>

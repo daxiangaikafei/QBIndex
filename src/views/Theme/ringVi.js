@@ -9,13 +9,12 @@ import isArray from "lodash/isArray";
 
 let isFirstLoad = false; 
 
-class Ring extends Component {
+class RingVi extends Component {
     constructor(props) {
         super(props);
         this.draw = this.draw.bind(this);
         this.state = {
-            images:false,
-            src:""
+            images:false
         }
     }
 
@@ -31,10 +30,6 @@ class Ring extends Component {
             let img = new Image();
             //debugger
             img.src = nextState.images[nextProps.showNum];
-
-            self.setState({
-                src:nextState.images[nextProps.showNum]
-            })
             // img.addEventListener("load",function(){
             //     //debugger;
             //     self.draw(70,nextState.images[nextProps.showNum],nextProps.levelName);
@@ -85,11 +80,12 @@ class Ring extends Component {
             console.error(url);
             img.crossOrigin = "anonymous";
             img.addEventListener("load",function(){
-                    //let ring = document.getElementById("ring");
+                    //let RingVi = document.getElementById("RingVi");
                     //var canvas = document.getElementById("canvas");
-                    var canvas = ReactDom.findDOMNode(self.refs.canvas);
-                    let width = canvas.offsetWidth;
-                    let height = canvas.offsetHeight;
+                    var canvas = ReactDom.findDOMNode(self.refs["canvas-vi"]);
+
+                    let width = window.innerWidth;
+                    let height = window.innerHeight;
                     
                     let wi = img.width,hi = img.height;
                     let per = (height)/hi;
@@ -97,8 +93,8 @@ class Ring extends Component {
                     canvas.width = wi*per;
                     canvas.height = canvas.offsetHeight;
 
-                    var w = canvas.width/2;
-                    var h = 100;
+                    var w = width/2;
+                    var h = height*0.3;
                     //debugger;
                     canvas.style.width = wi*per+"px";
                     //canvas.style.marginLeft = -wi*per/2+"px";
@@ -106,8 +102,8 @@ class Ring extends Component {
 
 
                     var ctx = canvas.getContext("2d");
-                    // ctx.drawImage(img,0,0, wi*per, hi*per);
-                    // ctx.restore();
+                    ctx.drawImage(img,0,0, width, height);
+                    ctx.restore();
 
                     ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
                     ctx.beginPath();
@@ -135,15 +131,15 @@ class Ring extends Component {
                     ctx.font="12px Helvetica";
                     ctx.textAlign = "center";
                     ctx.fillStyle = "white";
-                    ctx.fillText("QBII",116,70);
-                    ctx.fillText("认证等级",116,84);
+                    ctx.fillText("QBII",w,h-30);
+                    ctx.fillText("认证等级",w,h-16);
 
                     ctx.font="40px Helvetica";
-                    ctx.fillText(level,116,126);
+                    ctx.fillText(level,w,h+26);
                     
-                   // var strDataURI = canvas.toDataURL("image/jpeg");
+                    var strDataURI = canvas.toDataURL("image/jpeg");
                     
-                   // self.props.buildImage(strDataURI);
+                    self.props.buildImage(strDataURI);
                     // this.setState({
                     //     dataUrl:strDataURI
                     // })
@@ -155,15 +151,13 @@ class Ring extends Component {
     }
     render() {
         let {levelName} = this.props;
-        let {src} = this.state;
         return (
-                    <div className="ring-bg" style={{backgroundImage:"url("+src+")"}}>
-                        <canvas id="canvas" ref="canvas" className="ring"></canvas>
-                    </div>
+                <canvas id="canvas-vi" ref="canvas-vi" className="ring-vi"></canvas>
+           
         )
     }
 }
-Ring.defaultProps = {
+RingVi.defaultProps = {
     level: 0,
     showNum:false,
     levelName:"Pro",
@@ -171,4 +165,4 @@ Ring.defaultProps = {
     buildImage:()=>{}
 }
 
-export default Ring;
+export default RingVi;
