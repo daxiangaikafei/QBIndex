@@ -67,5 +67,5 @@ export function priceFormat(price, n) {
 }
 
 export function tagStrFormat(str, num) {
-  return /(\d+)(\D)/ig.exec(str)[num]
+  return /(\d+)(\D+)/ig.exec(str)[num]
 }
