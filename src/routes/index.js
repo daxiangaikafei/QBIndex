@@ -13,6 +13,8 @@ import Theme from "views/Theme/page";
 import OrderConfirm from "views/OrderConfirm/page";
 import OrderInfo from "views/OrderInfo/page";
 
+import NewsDetail from "views/NewsDetail/page";
+
 export default function (ref) {
   return (
     <Router history={ref.history}>
@@ -27,6 +29,8 @@ export default function (ref) {
 
         <Route path='/OrderConfirm/:projectId' component={OrderConfirm} name="订单确认"/>
         <Route path='/OrderInfo/:projectId' component={OrderInfo} name="项目详情"/>
+
+        <Route path='/NewsDetail/:projectId' component={NewsDetail} name="最新资讯"/>
       </Route>
     </Router>
   )
