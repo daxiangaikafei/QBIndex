@@ -66,9 +66,7 @@ class Home extends Component {
       <div>
         <div styleName="top-container">
           <div styleName="top-bg"></div>
-          <div styleName="dash-container">
-            <canvas id="dash" styleName="dash" width='240' height='210'></canvas>
-          </div>
+          <canvas id="dash" styleName="dash" width='240' height='210'></canvas>
           <div styleName="content">
             <h5>QBII</h5>
             <h3>认证等级</h3>
@@ -103,24 +101,24 @@ class Home extends Component {
               <i styleName="icon icon-arrow"></i> */}
             </div>
           </div>
-          <div styleName="item">
+          <a href="http://mp.weixin.qq.com/s?__biz=MzA4MDIyOTAyMQ==&mid=2658629410&idx=1&sn=7b4ac28802619c3867ab8694e6f3393f&chksm=8424b0d0b35339c65771effb1f5779c797bc1de0155c2651960454766f3ceaa406a08fca7031&mpshare=1&scene=1&srcid=0114ZZv5lKCVEcKBKUCkWh8b#rd" styleName="item" target="_blank">
             <div styleName="img">
               <img src={require("static/imgs/home/theme1.png")} alt=""/>
             </div>
             <div styleName="item-title">
-              公布QBII入围标准与权利
-              <small>6年蜕变，4年变局，帷幕徐启</small>
+              长风一起，雾霾皆散
+              <small>QBII钱宝5.0巡回宣讲会郑州站（一）</small>
             </div>
-          </div>
-          <div styleName="item">
+          </a>
+          <a href="http://mp.weixin.qq.com/s?__biz=MzA4MDIyOTAyMQ==&mid=2658629422&idx=2&sn=b4b87846ff77b0827fc5eb89619600a5&chksm=8424b0dcb35339cad6d46268d653a4bb27f38302849c421f4692df4c1a9c8d6ef11c85702cef&mpshare=1&scene=1&srcid=0114NcETJ6o9o3C4xQlKW5z6#rd" styleName="item" target="_blank">
             <div styleName="img">
               <img src={require("static/imgs/home/theme2.png")} alt=""/>
             </div>
             <div styleName="item-title">
-              成为一名钱宝5.0时代的QBII
-              <small>6年蜕变，4年变局，帷幕徐启</small>
+              我们的世界，平凡的世界
+              <small>QBII钱宝5.0巡回宣讲会郑州站（二）</small>
             </div>
-          </div>
+          </a>
         </div>
         <div styleName="bottom-container">
           <span>更多项目，敬请期待</span>
