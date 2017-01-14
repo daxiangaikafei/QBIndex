@@ -100,7 +100,7 @@ class OrderInfo extends Component {
                 newData.organizationType = newData.organizationType===1?"有限合伙制":"";
                 newData.structured = newData.structured===1?"是":"否";//
                 newData.direction = newData.direction===1?"股权":"";//direction
-                
+                newData.name = data.data.project.name;
                 console.log("data",newData);
                 self.setState({
                     data:newData
