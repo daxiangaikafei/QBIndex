@@ -39,6 +39,7 @@ class OrderConfirm extends Component {
                 name:"姓名不能为空！",
                 phone:"联系电话不能为空！"
             },
+            eMsg:"",
             minPrice:10,
             maxPrice:100
         }
@@ -74,11 +75,16 @@ class OrderConfirm extends Component {
         //ReactDom.findDOMNode(this.refs.temp).focus();
         if(this.state.showData.investmentNum< this.state.minPrice){
             this.setState({
-                disabled:true
+                disabled:true,
+                eMsg:"起投金额不能小于"+this.state.minPrice+"万"
             })
             alert("起投金额不能小于"+this.state.minPrice+"万");
             //return ;
         }else if(this.state.showData.investmentNum>this.state.maxPrice){
+            this.setState({
+                disabled:true,
+                eMsg:"起投金额不能大于"+this.state.maxPrice+"万"
+            })
             alert("起投金额不能大于"+this.state.maxPrice+"万");
            // return ;
         }else{
@@ -103,9 +109,8 @@ class OrderConfirm extends Component {
     }   
     handOk(){
         //0debugger;
-        let vaResult = true,errorMsg = "";
+        let vaResult = true,errorMsg = this.state.eMsg;
         let {values,errorMsgs,showData} = this.state;
-
         each(errorMsgs,function(one,key){
             if(one!==true){
                 vaResult = false;
