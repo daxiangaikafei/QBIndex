@@ -143,7 +143,7 @@ class RingVi extends Component {
                     // this.setState({
                     //     dataUrl:strDataURI
                     // })
-                    //console.log(strDataURI)
+                    console.log(strDataURI)
 
             },false);       
 

@@ -78,6 +78,7 @@ class Theme extends Component {
         let levelName = getCookie("level","storage")||"无";
         //debugger;
         let level = Level[levelName];
+        
         //level = 20;
         //debugger;
         return (
