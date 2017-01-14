@@ -94,7 +94,7 @@ class RingVi extends Component {
                     canvas.height = canvas.offsetHeight;
 
                     var w = width/2;
-                    var h = height*0.3;
+                    var h = height*0.24;
                     //debugger;
                     canvas.style.width = wi*per+"px";
                     //canvas.style.marginLeft = -wi*per/2+"px";
@@ -116,7 +116,7 @@ class RingVi extends Component {
                     ctx.arc(w, h, innerRadius, (1 - angle) * Math.PI, (2 + angle) * Math.PI, false);
                     ctx.setLineDash([1,4])
                     ctx.stroke();
-
+                    
                     ctx.strokeStyle = "rgb(255, 255, 255)";
                     ctx.beginPath();
                     ctx.setLineDash([0]);
