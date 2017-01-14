@@ -94,7 +94,7 @@ class RingVi extends Component {
                     canvas.height = canvas.offsetHeight;
 
                     var w = width/2;
-                    var h = height*0.3;
+                    var h = height*0.24;
                     //debugger;
                     canvas.style.width = wi*per+"px";
                     //canvas.style.marginLeft = -wi*per/2+"px";
@@ -116,7 +116,7 @@ class RingVi extends Component {
                     ctx.arc(w, h, innerRadius, (1 - angle) * Math.PI, (2 + angle) * Math.PI, false);
                     ctx.setLineDash([1,4])
                     ctx.stroke();
-
+                    
                     ctx.strokeStyle = "rgb(255, 255, 255)";
                     ctx.beginPath();
                     ctx.setLineDash([0]);
@@ -134,7 +134,7 @@ class RingVi extends Component {
                     ctx.fillText("QBII",w,h-30);
                     ctx.fillText("认证等级",w,h-16);
 
-                    ctx.font="40px Helvetica";
+                    ctx.font="36px Helvetica";
                     ctx.fillText(level,w,h+26);
                     
                     var strDataURI = canvas.toDataURL("image/jpeg");
@@ -143,7 +143,7 @@ class RingVi extends Component {
                     // this.setState({
                     //     dataUrl:strDataURI
                     // })
-                    //console.log(strDataURI)
+                    console.log(strDataURI)
 
             },false);       
 
