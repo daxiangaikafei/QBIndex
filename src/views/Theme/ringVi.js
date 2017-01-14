@@ -134,7 +134,7 @@ class RingVi extends Component {
                     ctx.fillText("QBII",w,h-30);
                     ctx.fillText("认证等级",w,h-16);
 
-                    ctx.font="40px Helvetica";
+                    ctx.font="36px Helvetica";
                     ctx.fillText(level,w,h+26);
                     
                     var strDataURI = canvas.toDataURL("image/jpeg");
