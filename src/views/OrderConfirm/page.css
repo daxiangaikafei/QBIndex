@@ -1,9 +1,6 @@
 .order-confirm {
-  position: absolute;
-  left: 0;
-  top: 44px;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  padding-bottom: 50px;
   box-sizing: border-box;
   background-color: #ebebeb;
 }
@@ -108,15 +105,21 @@
 }
 .order-clause {
   font-size: 14px;
-  padding-left: 15px;
   background-color: white;
   margin: 10px 0 ;
 }
 .order-clause .virtual-input {
   border-bottom: 1px solid #ececec;
+  margin-left: 15px;
+}
+.order-clause p {
+  padding: 6px 10px;
+  color: #666666;
+  font-size: 12px;
+  background-color: #ebebeb;
 }
 .order-sure {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   height: 50px;

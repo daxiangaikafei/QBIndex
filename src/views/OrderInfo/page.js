@@ -154,7 +154,7 @@ class OrderInfo extends Component {
                 <div className="party-head" style={{backgroundImage:("url("+data.pics[0]+")")}}>
                     <div className="party-logo" style={{backgroundImage:("url("+data.pics[1]+")")}} ></div>
                 </div>
-                <Area className="" title="冰穹互娱股权投资一期资管计划" hasIcon={false}>
+                <Area className="" title={data.name} hasIcon={false}>
                     <ul className="party-plan">
                         <li><span>{data.direction}</span><span>投资方向</span></li>
                         <li><span>{data.duration}</span><span>存续期限</span></li>
