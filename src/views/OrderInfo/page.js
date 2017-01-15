@@ -166,7 +166,8 @@ class OrderInfo extends Component {
                     </Area>
                     
                     <Area className="area-margin" title="项目优势" hasIcon={true} hasLine={true} isClose={true}>
-                    <div  className="area-p area-duan" dangerouslySetInnerHTML={{__html:data.des}}>
+                    <div  className="area-p area-duan">
+                        <img src={require("static/imgs/detail/detail-1.png")} alt=""/>
                     </div>
                     </Area>
 
