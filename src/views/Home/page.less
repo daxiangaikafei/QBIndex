@@ -33,6 +33,50 @@ html, body {
     display: none;
   }
 }
+/***** Mixin *****/
+.flex {
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+}
+.flex-justify {
+  -webkit-box-pack:justify;
+  -webkit-justify-content:space-between;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+}
+.flex-vertical {
+  -webkit-box-orient:vertical;
+  -webkit-flex-direction:column;
+  -ms-flex-direction:column;
+  flex-direction:column;
+}
+.flex-item-auto {
+  -webkit-box-flex:auto;
+  -webkit-flex:auto;
+  -ms-flex:auto;
+  flex:auto;
+}
+.flex-item-none {
+  -webkit-box-flex:none;
+  -webkit-flex:none;
+  -ms-flex:none;
+  flex:none;
+}
+.flex-align-center {
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  -ms-flex-align:center;
+  align-items:center;
+}
+.flex-center {
+  -webkit-box-pack:center;
+  -webkit-justify-content:center;
+  -ms-flex-pack:center;
+  justify-content:center;
+}
+
 main{
   /** 首页头部 **/
   .top-container {
@@ -396,6 +440,7 @@ main{
         width: 100px;
         height: 63px;
         overflow: hidden;
+        .flex-item-none; 
         img {
           width: 100%;
         }
