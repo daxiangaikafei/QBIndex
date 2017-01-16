@@ -117,8 +117,8 @@ class Home extends Component {
               <img src={require("static/imgs/home/theme1.png")} alt=""/>
             </div>
             <div styleName="item-title">
-              To Be QBII PRO
-              <small>钱宝5.0新时代QBII PRO首批签约仪式</small>
+              QBII的深刻解读
+              <small>让商业回归本质，守住初心</small>
             </div>
           </div>
         </div>
