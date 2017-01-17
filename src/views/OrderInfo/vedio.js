@@ -42,7 +42,12 @@ class Video extends Component {
                         <span></span>
                     </div>
                 </div>
-                <video ref="vedio" className="" src={src}></video>
+                {(()=>{
+                    if(src!==""){
+                        <video ref="vedio" className="" src={src}></video>
+                    }
+                })()}
+                
             </div> 
         )
     }
