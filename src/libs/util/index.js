@@ -69,3 +69,27 @@ export function priceFormat(price, n) {
 export function tagStrFormat(str, num) {
   return /(\d+)(\D+)/ig.exec(str)[num]
 }
+
+export function createCORSRequest(method, url){
+  let cors_api_host = 'finiyang.com:8080'
+  let cors_api_url = 'http://' + cors_api_host + '/'
+  let slice = [].slice
+  let origin = window.location.protocol + '//' + window.location.host
+  let open = XMLHttpRequest.prototype.open
+  XMLHttpRequest.prototype.open = function() {
+    let args = slice.call(arguments)
+    let targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1])
+    if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
+        targetOrigin[1] !== cors_api_host) {
+        args[1] = cors_api_url + args[1]
+    }
+    return open.apply(this, args)
+  }
+  let xhr = new XMLHttpRequest()
+  if ("withCredentials" in xhr){
+      xhr.open(method, url, true)
+  } else {
+      xhr = null
+  }
+  return xhr
+}

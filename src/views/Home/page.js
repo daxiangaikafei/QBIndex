@@ -103,7 +103,7 @@ class Home extends Component {
               <i styleName="icon icon-arrow"></i> */}
             </div>
           </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/2')}>
+          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/1')}>
             <div styleName="img">
               <img src={require("static/imgs/home/theme2.png")} alt=""/>
             </div>
@@ -112,13 +112,22 @@ class Home extends Component {
               <small>钱宝5.0时代身具跨时代新标识</small>
             </div>
           </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/1')}>
+          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/3')}>
             <div styleName="img">
               <img src={require("static/imgs/home/theme1.png")} alt=""/>
             </div>
             <div styleName="item-title">
               QBII的深刻解读
               <small>让商业回归本质，守住初心</small>
+            </div>
+          </div>
+          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/2')}>
+            <div styleName="img">
+              <img src={require("static/imgs/home/theme3.png")} alt=""/>
+            </div>
+            <div styleName="item-title">
+              To Be QBII PRO
+              <small>QBII PRO首批签约仪式</small>
             </div>
           </div>
         </div>
