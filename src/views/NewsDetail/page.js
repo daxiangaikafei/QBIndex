@@ -35,7 +35,7 @@ class NewsDetail extends Component {
     // }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let { projectId } = this.props.routeParams
     require.ensure([], () => {
       let newsContents = require('static/article/news.js').newsContents
