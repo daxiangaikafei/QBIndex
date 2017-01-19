@@ -11,16 +11,7 @@ class NewsDetail extends Component {
       3: ""
     }
 
-    let { projectId } = props.routeParams
     super(props, context)
-    let _this = this
-    require.ensure([], () => {
-      let newsContents = require('static/article/news.js').newsContents
-      let content = 'data:text/html;charset=utf-8,' + newsContents[projectId].replace(/data-src/g, "src")
-      _this.setState({
-        content
-      })
-    })
 
     this.state = {
       content: ''
@@ -42,6 +33,17 @@ class NewsDetail extends Component {
     //   request.onerror = () => {}
     //   request.send()
     // }
+  }
+
+  componentDidMount() {
+    let { projectId } = this.props.routeParams
+    require.ensure([], () => {
+      let newsContents = require('static/article/news.js').newsContents
+      let content = 'data:text/html;charset=utf-8,' + newsContents[projectId].replace(/data-src/g, "src")
+      this.setState({
+        content
+      })
+    })
   }
 
   render() {
