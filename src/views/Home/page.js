@@ -121,7 +121,7 @@ class Home extends Component {
               <small>让商业回归本质，守住初心</small>
             </div>
           </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/2')}>
+          {/* <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/2')}>
             <div styleName="img">
               <img src={require("static/imgs/home/theme3.png")} alt=""/>
             </div>
@@ -129,7 +129,7 @@ class Home extends Component {
               To Be QBII PRO
               <small>QBII PRO首批签约仪式</small>
             </div>
-          </div>
+          </div> */}
         </div>
         <div styleName="bottom-container">
           <span>更多项目，敬请期待</span>
