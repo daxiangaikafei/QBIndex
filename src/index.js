@@ -49,7 +49,7 @@ function html5ForLogin(_app) {
 // ------------------------------------
 // Debug Here
 // ------------------------------------
-html5ForLogin(html5ForStartApp);
+//html5ForLogin(html5ForStartApp);
 
 // ------------------------------------
 // Client Login

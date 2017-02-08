@@ -26,7 +26,7 @@ function CoreLayout ({ children, location }) {
          transitionLeaveTimeout={1000}
         >
         {React.cloneElement(children, {
-            style:{position: 'absolute',top: 0,left: 0,width: '100%',height: '100%'},
+            style:{position: 'absolute',top: 0,left: 0,width: '100%'},
             key: location.pathname
         })
         }

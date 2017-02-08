@@ -96,7 +96,7 @@ class Theme extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="footer" onClick={this.saveClick}>保存主题</div>
+                <div className="footer" onClick={this.saveClick} style={{display:'flex'}}>保存主题</div>
             </div>
         )
     }
