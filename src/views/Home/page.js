@@ -103,7 +103,7 @@ class Home extends Component {
               <i styleName="icon icon-arrow"></i> */}
             </div>
           </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/5')}>
+          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/4')}>
             <div styleName="img">
               <img src={require("static/imgs/home/theme4.png")} alt=""/>
             </div>
