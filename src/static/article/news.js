@@ -1600,13 +1600,14 @@ this[e](t,r);
      		回顾 | QBII钱宝5.0的巡回之路，一路风尘一路歌
      </title>
      <meta name="keywords" content="回顾 | QBII钱宝5.0的巡回之路，一路风尘一路歌/">
-	 <meta name="description" content="回顾 | QBII钱宝5.0的巡回之路，一路风尘一路歌">
+	   <meta name="description" content="回顾 | QBII钱宝5.0的巡回之路，一路风尘一路歌">
      <meta charset="utf-8">
-     <meta http-equiv="cache-control" content="max-age=0">
-     <meta http-equiv="cache-control" content="no-cache">
-     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+     
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+     <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-status-bar-style" content="black">
      <meta name="format-detection" content="telephone=no">
-     <link href="https://cdn.dlingspace.com/resources/mobile/css/mobile.css?v=$version$" rel="stylesheet" type="text/css" />
      <style>
        img {
          width:100%;
