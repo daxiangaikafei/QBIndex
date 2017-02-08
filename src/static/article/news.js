@@ -1607,32 +1607,11 @@ this[e](t,r);
      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
      <meta name="format-detection" content="telephone=no">
      <link href="https://cdn.dlingspace.com/resources/mobile/css/mobile.css?v=$version$" rel="stylesheet" type="text/css" />
-     <link href="https://cdn.dlingspace.com/resources/mobile/css/topic.css?v=$version$" rel="stylesheet" type="text/css" />
-     <script type="text/javascript" src="https://cdn.dlingspace.com/resources/mobile/js/jquery.min.js?v=$version$"></script>
-     <script type="text/javascript" src="https://cdn.dlingspace.com/resources/mobile/js/common.js?v=$version$"></script>
-     <script type="text/javascript" src="https://cdn.dlingspace.com/resources/mobile/js/mobile.js?v=$version$"></script>
-     <script type="text/javascript" src="https://cdn.dlingspace.com/resources/mobile/js/topic.js?v=$version$"></script>
-     <script type="text/javascript" src="https://cdn.dlingspace.com/resources/front/js/webuploader.min.js?v=$version$"></script>
-     <script>
-		var nextPageHtml = '',
-	    scrollbarLocation = 0,
-	    parentIds = '',
-	    picList={},
-	    pageParams = {
-	        title:'回顾 | QBII钱宝5.0的巡回之路，一路风尘一路歌',
-			forumId : '3',
-		    topicId:'284430',
-		    posterId:'102654283',
-		    likeCount:4,
-		    postBody: '　　回顾，是为了让我们更好地走好之后的“路”，同时，也...',
-		    createDate:'2017-01-20 11:00',
-		    pageNumber : 1,
-			pageCount : 0,
-			floor : 1,
-			total: 0,
-			nickName :'管理-小林',
-		};
-	  </script>
+     <style>
+       img {
+         width:100%;
+       }
+     </style>
  </head>
 <body class="wraper indexpage indexpage1" style="transition: none;">
 	<div id="js_bar_wraper" style="background:#fff">
@@ -1644,7 +1623,7 @@ this[e](t,r);
 
 
 						<!-- start 帖子内容 -->
-						<div class="post-wrapper" id="detail_top_info">
+						<div class="post-wrapper" id="detail_top_info" style="padding:10px">
 							<div class="post-title js-detail-title allow-copy" style="margin:10px 0 20px;font-size:18px">
 								回顾 | QBII钱宝5.0的巡回之路，一路风尘一路歌
 							</div>
@@ -1660,45 +1639,7 @@ this[e](t,r);
 					</div>
 
 
-					<script type="text/javascript">
-						var listUrl = bbs_mobile.base + "/mobile/topic/getParentReplys.jhtml?";
-						var listParam =  qb$.topic.list.getParam(pageParams);
-						var site = listUrl + listParam;
-						$.ajax({
-						    url: site,
-						    type: "get",
-						    dataType: "json",
-						    cache: false,
-						    async: false,
-						    success: function (data) {
-						        if ($('#pageLoading').prevAll().length != 0) {
-						            $('#pageLoading').prevAll().remove();
-						        }
-						        if (data.pReplys && data.pReplys.length > 0) {
-						            /** 回复列表*/
-						            var pReplys = data.pReplys;
-						            pageParams.pageCount = data.page.totalPages;
-						            pageParams.total = data.page.total;
-						            qb$.topic.list.abPBox(pReplys);
-						            //$('#pageLoading').before(nextPageHtml);
-						            qb$.topic.list.abPageHtml(nextPageHtml)
-					                nextPageIndex = pageParams.pageNumber + 1;
-					                if (nextPageIndex > pageParams.pageCount) {
-					                    $('#pageLoading .loading').css('display', 'none');
-					                    $('#js_comment_loading').show();
-					                    $('#top_comment_wrapper').css('padding-bottom','0px');
-					                }
-						            qb$.ui.lazy.init('js_reply_list');
-						        } else {
-						        	 $('#pageLoading span').text('暂无评论...');
-						        	 $('#pageLoading img').remove();
-						        }
-						    },
-							complete : function() {
-							}
-						});
-						qb$.topic.list.childrenPage(pageParams.topicId,1,parentIds)
-					   </script>
+
 				</div>
 			</div>
 			<!-- end 帖子详情-->
