@@ -2,6 +2,7 @@
  * Created by xiaolin on 16/12/16.
  */
 require('babel-register')
+require('es6-promise').polyfill();
 
 const config = require('../config')
 const debug = require('debug')('app:bin:compile')

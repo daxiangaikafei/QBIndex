@@ -1,4 +1,5 @@
 require('babel-register')
+require('es6-promise').polyfill();
 
 const config = require('../config')
 const server = require('../server')

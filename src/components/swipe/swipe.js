@@ -90,7 +90,7 @@ class Swipe extends Component {
     }
     render() {
         return (
-            <div className={this.props.className} ref="touch">
+            <div className={this.props.className} ref="touch"  style={this.props.style}>
                 <div ref="swipe">
                     {this.props.children}
                 </div>

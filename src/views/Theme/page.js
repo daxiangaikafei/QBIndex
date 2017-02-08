@@ -82,7 +82,7 @@ class Theme extends Component {
         //level = 20;
         //debugger;
         return (
-            <div className='theme'>
+            <div className='theme'  style={this.props.style}>
                 <div className="header">
                     <div className="header-layer"></div>
                     <Ring   showNum={this.state.chooseNum} levelName={levelName} level={level}/>

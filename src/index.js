@@ -1,22 +1,27 @@
 /**
  * Created by xiaolin on 16/12/26.
  */
+
+// ------------------------------------
+// Android 4.4 Version Below
+// ------------------------------------
+require('es6-promise').polyfill();
+
+// ------------------------------------
+// Resource Import
+// ------------------------------------
 import dva from 'dva'
 import { browserHistory } from 'dva/router';
-
 import FastClick from 'fastclick'
-
 import router from './routes'
 import utilss from './libs/util'
-
 import business from './model/business'
 import model from './model'
 
+// ------------------------------------
+// App Starting
+// ------------------------------------
 const html5ForStartApp = dva()
-//html5ForLogin(html5ForStartApp);
-
-var Promise = require('es6-promise').Promise;
-
 function html5ForLogin(_app) {
     if (_app) {
 
@@ -40,24 +45,32 @@ function html5ForLogin(_app) {
     }
 
 }
-//login
+
+// ------------------------------------
+// Debug Here
+// ------------------------------------
+html5ForLogin(html5ForStartApp);
+
+// ------------------------------------
+// Client Login
+// ------------------------------------
 if(navigator.userAgent.match(/Android/i)) {
    if (typeof QBaoJSBridge != 'undefined') {
        QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
    }
-   //app.start('.page-container')
 }
 else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
    if (typeof ioswebview != 'undefined') {
        ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
    }
-   //app.start('.page-container')
 }
 else {
    html5ForLogin(html5ForStartApp);
 }
 
-//fast click
+// ------------------------------------
+// Fast Click Adding For System
+// ------------------------------------
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function () {
         FastClick.attach(document.body);

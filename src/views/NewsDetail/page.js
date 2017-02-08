@@ -49,8 +49,8 @@ class NewsDetail extends Component {
   render() {
 
     return (
-      <div className="frame-wrap">
-        <iframe src={this.state.content}  frameBorder="0"></iframe>
+      <div className="frame-wrap"  style={this.props.style}>
+        <iframe src={this.state.content}  frameBorder="0" style={{width: '100%',height: '150%'}}></iframe>
       </div>
     )
   }
