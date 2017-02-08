@@ -41,8 +41,8 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             //debugger;
             if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {
                 QBFK.Business.login();
-                return fetchSetTimeout().then(()=>{
-                    return fetchPosts(url,param,type,headers,repType,fetchNum+1);
+                return fetchSetTimeout().then(()=> {
+                    return fetchPosts(url, param, type, headers, repType, fetchNum + 1);
                 })
 
 

@@ -15,6 +15,8 @@ import model from './model'
 const html5ForStartApp = dva()
 //html5ForLogin(html5ForStartApp);
 
+var Promise = require('es6-promise').Promise;
+
 function html5ForLogin(_app) {
     if (_app) {
 

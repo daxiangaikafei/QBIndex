@@ -48,7 +48,8 @@ const config = {
         'redux-simple-router',
         'dva',
         'fastclick',
-        'recharts'
+        'recharts',
+        'es6-promise'
     ]
 }
 
