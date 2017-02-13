@@ -36,6 +36,11 @@ compiler.run(function (err, stats) {
     //    debug('No errors or warnings encountered.')
     //}
     //
+    var cat = '/Users/sean/work/qbii/branches/20170110/qbii/qbii-api/src/main/webapp/public/'
+    fs.remove(cat, function(err) {
+
+    })
+
     //debug('Copy static assets to dist folder.')
-    //fs.copySync(paths.client('style'), paths.dist())
+    //fs.copySync(paths.client('dist'), cat)
 })

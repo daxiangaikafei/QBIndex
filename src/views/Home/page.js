@@ -108,7 +108,7 @@ class Home extends Component {
               <img src={require("static/imgs/home/theme4.png")} alt=""/>
             </div>
             <div styleName="item-title">
-              QBII钱5.0全国巡回落幕
+              QBII钱宝5.0全国巡回落幕
               <small>一路相伴，一路前行</small>
             </div>
           </div>

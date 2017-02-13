@@ -32,13 +32,12 @@ const webpackConfig = {
 // ------------------------------------
 // Entry Points
 // ------------------------------------
-const APP_ENTRY_PATH = paths.base(config.dir_client) + '/index.js'
+const APP_ENTRY_PATH = paths.base(config.dir_client) + '/vendor.js'
 
 webpackConfig.entry = {
     app: __DEV__
         ? [APP_ENTRY_PATH, 'webpack-hot-middleware/client?path=/__webpack_hmr']
-        : [APP_ENTRY_PATH],
-    vendor: config.compiler_vendor
+        : [APP_ENTRY_PATH]
 }
 
 // ------------------------------------
@@ -98,9 +97,9 @@ if (__DEV__) {
 
 // Don't split bundles during testing, since we only want import one bundle
 if (!__TEST__) {
-    webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor']
-    }))
+    //webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    //    names: ['vendor']
+    //}))
 }
 
 

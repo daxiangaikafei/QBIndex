@@ -22,8 +22,8 @@ function CoreLayout ({ children, location }) {
           }}
          style={{overflowY: 'scroll',height: '100%',position: 'absolute',width:'100%' }}
 
-         transitionEnterTimeout={1000}
-         transitionLeaveTimeout={1000}
+         transitionEnterTimeout={500}
+         transitionLeaveTimeout={500}
         >
         {React.cloneElement(children, {
             style:{position: 'absolute',top: 0,left: 0,width: '100%'},
