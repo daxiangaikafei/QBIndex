@@ -19,9 +19,10 @@ class NewsDetail extends Component {
   componentWillMount() {
     let { projectId } = this.props.routeParams;
     let self = this;
-    fetchPosts("/api/news/getNewsDetail.html",{},"POST").then((data)=>{
-        console.log('返回结果为:',data.data.newsDetail);
-        //debugger;
+    console.log(projectId)
+    fetchPosts("/api/news/getNewsDetail.html",{newsId:projectId},"POST").then((data)=>{
+        //console.log('返回结果为:',data.data.newsDetail);
+        // //debugger;
         if(data.returnCode==0){
             self.setState({
                 detail:data.data.newsDetail
@@ -43,7 +44,7 @@ class NewsDetail extends Component {
         info = {};
     }else{
         newProps.dangerouslySetInnerHTML={__html:info.content};
-        console.log(info.content)
+        //console.log(info.content)
     }
 
     
@@ -55,8 +56,8 @@ class NewsDetail extends Component {
           <div className="newsDetail-head ">
               <h2>{info.title}</h2>
               <div className="newsDetail-auth-info">
+                  <em>{info.createTime&&info.createTime.substring(0,10)}</em>
                   <em>{info.author}</em>
-                  <em></em>
                   <em></em>
               </div>
           </div>
