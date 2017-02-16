@@ -10,6 +10,8 @@ import { fetchPosts } from "components/common/fetch"
 // import ProjectItem from "./ProjectItem.js"
 
 
+import News from "./news";
+
 class Home extends Component {
   levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"":0}
 
@@ -103,33 +105,7 @@ class Home extends Component {
               <i styleName="icon icon-arrow"></i> */}
             </div>
           </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/4')}>
-            <div styleName="img">
-              <img src={require("static/imgs/home/theme4.png")} alt=""/>
-            </div>
-            <div styleName="item-title">
-              QBII钱宝5.0全国巡回落幕
-              <small>一路相伴，一路前行</small>
-            </div>
-          </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/1')}>
-            <div styleName="img">
-              <img src={require("static/imgs/home/theme2.png")} alt=""/>
-            </div>
-            <div styleName="item-title">
-              全新身份QBII
-              <small>钱宝5.0时代身具跨时代新标识</small>
-            </div>
-          </div>
-          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/3')}>
-            <div styleName="img">
-              <img src={require("static/imgs/home/theme1.png")} alt=""/>
-            </div>
-            <div styleName="item-title">
-              QBII的深刻解读
-              <small>让商业回归本质，守住初心</small>
-            </div>
-          </div>
+          <News/>
 
         </div>
         <div styleName="bottom-container">
@@ -145,6 +121,8 @@ class Home extends Component {
       </div>
     )
   }
+
+
 
   renderGauge(displayValue) {
   	var angle = 0.14, innerAngle = angle;
@@ -213,6 +191,36 @@ class Home extends Component {
 
 };
 
+/* 
+
+   <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/4')}>
+            <div styleName="img">
+              <img src={require("static/imgs/home/theme4.png")} alt=""/>
+            </div>
+            <div styleName="item-title">
+              QBII钱宝5.0全国巡回落幕
+              <small>一路相伴，一路前行</small>
+            </div>
+          </div>
+          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/1')}>
+            <div styleName="img">
+              <img src={require("static/imgs/home/theme2.png")} alt=""/>
+            </div>
+            <div styleName="item-title">
+              全新身份QBII
+              <small>钱宝5.0时代身具跨时代新标识</small>
+            </div>
+          </div>
+          <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/3')}>
+            <div styleName="img">
+              <img src={require("static/imgs/home/theme1.png")} alt=""/>
+            </div>
+            <div styleName="item-title">
+              QBII的深刻解读
+              <small>让商业回归本质，守住初心</small>
+            </div>
+          </div>
+           */
 function mapStateToProps(state) {
     return state.home;
 }

@@ -1,56 +1,71 @@
 import React, { Component }from 'react'
 import './page.less'
 import { Link } from 'react-router'
+
+import {fetchPosts} from "components/common/fetch";
 // import { createCORSRequest } from 'libs/util'
+// 
+
+let viHtml = '<div><p></p><p></p><p></p><p></p><p></p></div>';
 
 class NewsDetail extends Component {
   constructor(props, context) {
-    const urls = {
-      1: "",
-      2: "",
-      3: ""
+    super(props, context);
+    this.state={
+      detail:false
     }
-
-    super(props, context)
-
-    this.state = {
-      content: ''
-    }
-
-    // let _this = this
-    // let request = createCORSRequest("get", this.state.url);
-    // if (request){
-    //   request.onload = function(e) {
-    //     if(this.status == 200||this.status == 304){
-    //       let content = this.responseText.replace(/data-src/g, "src")
-    //       content = 'data:text/html;charset=utf-8,' + content
-    //       _this.setState({
-    //         content
-    //       })
-    //     }
-    //   }
-    //   request.onreadystatechange = () => {}
-    //   request.onerror = () => {}
-    //   request.send()
-    // }
   }
 
   componentWillMount() {
-    let { projectId } = this.props.routeParams
-    require.ensure([], () => {
-      let newsContents = require('static/article/news.js').newsContents
-      let content = 'data:text/html;charset=utf-8,' + newsContents[projectId].replace(/data-src/g, "src")
-      this.setState({
-        content
-      })
+    let { projectId } = this.props.routeParams;
+    let self = this;
+    fetchPosts("/api/news/getNewsDetail.html",{},"POST").then((data)=>{
+        console.log('返回结果为:',data.data.newsDetail);
+        //debugger;
+        if(data.returnCode==0){
+            self.setState({
+                detail:data.data.newsDetail
+            })
+
+        }
     })
+    
   }
 
   render() {
+    let {detail} = this.state;
+    let className ="",info=detail;
+    let newProps = {};
 
+    if(detail===false){
+        className = " mask-loading mask-loading-vi";
+        newProps.dangerouslySetInnerHTML = {__html:viHtml}
+        info = {};
+    }else{
+        newProps.dangerouslySetInnerHTML={__html:info.content};
+        console.log(info.content)
+    }
+
+    
+
+    // let className = detail===false?" mask-loading mask-loading-vi":" ";
+    // let info = detail===false?{}:detail;
     return (
-      <div className="frame-wrap"  style={{position: 'absolute',top: 0,left: 0,width: '100%',height:'100%'}}>
-        <iframe src={this.state.content}  frameBorder="0" ></iframe>
+      <div className={"newsDetail-container"+className} >
+          <div className="newsDetail-head ">
+              <h2>{info.title}</h2>
+              <div className="newsDetail-auth-info">
+                  <em>{info.author}</em>
+                  <em></em>
+                  <em></em>
+              </div>
+          </div>
+          <div className="newsDetail-body"  {...newProps} >
+          </div>
+          <div className="newsDetail-footer">
+            <em>阅读</em>
+            <em>{info.watched}</em>  
+          </div>
       </div>
     )
   }
