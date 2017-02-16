@@ -20,7 +20,8 @@ class NewsDetail extends Component {
     let { projectId } = this.props.routeParams;
     let self = this;
     console.log(projectId)
-    fetchPosts("/api/news/getNewsDetail.html",{newsId:projectId},"POST").then((data)=>{
+    ///qbii-app/
+    fetchPosts("/api/news/getNewsDetail.html",{id:Number(projectId)},"GET").then((data)=>{
         //console.log('返回结果为:',data.data.newsDetail);
         // //debugger;
         if(data.returnCode==0){
@@ -43,7 +44,7 @@ class NewsDetail extends Component {
         newProps.dangerouslySetInnerHTML = {__html:viHtml}
         info = {};
     }else{
-        newProps.dangerouslySetInnerHTML={__html:info.content};
+        newProps.dangerouslySetInnerHTML={__html:decodeURIComponent(info.content)};
         //console.log(info.content)
     }
 

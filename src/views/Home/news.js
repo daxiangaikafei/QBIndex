@@ -22,6 +22,7 @@ class News extends Component {
     }
     componentWillMount(){
         let self = this;
+        ///qbii-app/
         fetchPosts("/api/news/getNewsList.html",{},"POST").then((data)=>{
             console.log('返回结果为:',data);
             //debugger;
