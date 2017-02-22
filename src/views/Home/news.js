@@ -52,7 +52,7 @@ class News extends Component {
                       <img src={item.image} alt=""/>
                     </div>
                     <div styleName="item-title">
-                      {item.title}
+                      <p>{item.title}</p>
                       <small>{item.des}</small>
                     </div>
                 </div>

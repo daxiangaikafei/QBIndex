@@ -461,11 +461,25 @@ main{
         flex-direction: column;
         justify-content: center;
         margin-left: 18px;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        p{
+          white-space:nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
         small {
           font-size: 12px;
           color: @listTxtColor;
           display: block;
           margin-top: 3px;
+
+          white-space:nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
       }
     }
