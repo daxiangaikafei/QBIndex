@@ -19,33 +19,41 @@ class NewsDetail extends Component {
   componentWillMount() {
     let { projectId } = this.props.routeParams;
     let self = this;
-    console.log(projectId)
+    //console.log(projectId)
     ///qbii-app/
+    let time = Date.now();
     fetchPosts("/api/news/getNewsDetail.html",{id:Number(projectId)},"GET").then((data)=>{
         //console.log('返回结果为:',data.data.newsDetail);
         // //debugger;
-        if(data.returnCode==0){
-            self.setState({
-                detail:data.data.newsDetail
-            })
+        let lTime = Date.now();
+        let timeout = (lTime-time<1000)?(1000-(lTime-time)):0;
+        //setTimeout(function(){
+            if(data.returnCode==0){
+                self.setState({
+                    detail:data.data.newsDetail
+                })
 
-        }
+            }
+        //},timeout)
+        
     })
     
   }
 
   render() {
     let {detail} = this.state;
-    let className ="",info=detail;
+    let className =" newsDetail-loading-hide",info=detail;
     let newProps = {};
 
     if(detail===false){
-        className = " ";//mask-loading mask-loading-vi
+        className = "";//mask-loading mask-loading-vi
         newProps.dangerouslySetInnerHTML = {__html:viHtml}
         info = {};
+        //return this.laoding(className);
     }else{
         newProps.dangerouslySetInnerHTML={__html:decodeURIComponent(info.content)};
         //console.log(info.content)
+        
     }
 
     
@@ -53,7 +61,7 @@ class NewsDetail extends Component {
     // let className = detail===false?" mask-loading mask-loading-vi":" ";
     // let info = detail===false?{}:detail;
     return (
-      <div className={"newsDetail-container"+className} >
+      <div className={"newsDetail-container"} >
           <div className="newsDetail-head ">
               <h2>{info.title}</h2>
               <div className="newsDetail-auth-info">
@@ -70,6 +78,27 @@ class NewsDetail extends Component {
           </div>
       </div>
     )
+  }
+  laoding(className){
+      return (
+        <div className={"newsDetail-container newsDetail-loading "+className}>
+                <div className="newsDetail-head ">
+                    <h2></h2>
+                    <div className="newsDetail-auth-info">
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </div>
+                </div>
+                <div className="newsDetail-body">
+                    <div><p></p><p></p><p></p><p></p><p></p></div>
+                </div>
+                <div className="newsDetail-footer">
+                    <em></em>
+                    <em></em>  
+                </div>
+          </div>
+      )
   }
 }
 
