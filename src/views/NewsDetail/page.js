@@ -40,7 +40,7 @@ class NewsDetail extends Component {
     let newProps = {};
 
     if(detail===false){
-        className = " mask-loading mask-loading-vi";
+        className = " ";//mask-loading mask-loading-vi
         newProps.dangerouslySetInnerHTML = {__html:viHtml}
         info = {};
     }else{
