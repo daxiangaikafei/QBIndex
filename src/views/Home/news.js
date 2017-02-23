@@ -41,13 +41,14 @@ class News extends Component {
 
         let {lists} = this.state;
         let length = lists.length;
-        let items = [];
+
+        let items = [],i=0;
         //onClick={()=>QBFK.Business.go('/NewsDetail/'+{item.id})}
-        while (length>0) {
-            length -= 1;
-            let item  =  lists[length];
+        while (i<length) {
+            let item  =  lists[i];
+            i += 1;
             items.push(
-                <div styleName="item" key={length} onClick={this.toDetail.bind(this,item.id)}>
+                <div styleName="item" key={i} onClick={this.toDetail.bind(this,item.id)}>
                     <div styleName="img">
                       <img src={item.image} alt=""/>
                     </div>
