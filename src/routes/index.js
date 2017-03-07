@@ -10,8 +10,9 @@ import About from 'views/About/page'
 
 import Theme from "views/Theme/page";
 
-// import OrderConfirm from "views/OrderConfirm/page";
+import OrderConfirm from "views/OrderConfirm/page";
 // import OrderInfo from "views/OrderInfo/page";
+import InfoTpl from "views/InfoTpl/page";
 
 import NewsDetail from "views/NewsDetail/page";
 
@@ -27,8 +28,9 @@ export default function (ref) {
         <Route path='/Theme' component={Theme} name="晒身份"/>
         <Route path='/About' component={About} name="了解QBII"/>
 
-        {/* <Route path='/OrderConfirm/:projectId' component={OrderConfirm} name="订单确认"/> */}
-        {/* <Route path='/OrderInfo/:projectId' component={OrderInfo} name="项目详情"/> */}
+         <Route path='/OrderConfirm/:projectId' component={OrderConfirm} name="订单确认"/> 
+         {/*<Route path='/OrderInfo/:projectId' component={OrderInfo} name="项目详情"/> */}
+          <Route path='/InfoTpl/:projectId' component={InfoTpl} name="项目详情"/> 
 
         <Route path='/NewsDetail/:projectId' component={NewsDetail} name="最新资讯"/>
       </Route>

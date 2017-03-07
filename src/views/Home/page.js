@@ -7,9 +7,7 @@ import classNames from 'classnames'
 import { getCookie, setCookie, priceFormat } from 'libs/util'
 import { fetchPosts } from "components/common/fetch"
 
-// import ProjectItem from "./ProjectItem.js"
-
-
+import ProjectItem from "./ProjectItem.js"
 import News from "./news";
 
 class Home extends Component {
@@ -21,7 +19,7 @@ class Home extends Component {
       .then(data => {
         props.getLevel()
         props.getUserInfo()
-        // props.getProjList()
+        props.getProjList()
       })
 
     this.state = {
@@ -63,7 +61,7 @@ class Home extends Component {
 
 
   render() {
-    // let projItems = this.props.projList.length>0 ? this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />) : ""
+    let projItems = this.props.projList.length>0 ? this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />) : ""
     return (
       <div styleName="home-container" style={this.props.style}>
         <div styleName="top-container">
@@ -95,7 +93,7 @@ class Home extends Component {
           </div>
         </div>
         <div styleName="list-container" className={classNames({"hide":this.props.projList.length==0})}>
-          {/* {projItems} */}
+          {projItems}
         </div>
         <div styleName="news-container">
           <div styleName="title">
