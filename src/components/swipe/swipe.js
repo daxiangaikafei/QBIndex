@@ -20,7 +20,6 @@ class Swipe extends Component {
         _this.AlloyTouch = false;
         require.ensure([], () => {
            _this.AlloyTouch = require("./alloyTouch.js");
-           _this.$ = require("./zepto.js");
         })
     }
     componentWillReceiveProps(nextProps){
@@ -44,7 +43,6 @@ class Swipe extends Component {
         }else{
             require.ensure([], () => {
                _this.AlloyTouch = require("./alloyTouch.js");
-               _this.$ = require("./zepto");
                _this.scrollInit();
             })
         }
@@ -58,13 +56,6 @@ class Swipe extends Component {
          let target = ReactDOM.findDOMNode(this.refs.swipe);
         let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
         let prevTarget = false;
-        let $ = this.$;
-
-        // if(findDis!==false){
-        //     let dis = $(findDis,$(dom)).eq(0).width();
-        //     min = -dis;
-        //     step = dis;
-        // }
 
         //console.log("dom",dom);
         this.alloyTouch = new this.AlloyTouch({

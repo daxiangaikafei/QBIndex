@@ -1,0 +1,10 @@
+.order-banner {
+  width: 100%;
+  height: 200px;
+}
+.order-banner-items {
+  overflow: hidden;
+}
+.order-banner-items .order-banner-item {
+  width: 100%;
+}
