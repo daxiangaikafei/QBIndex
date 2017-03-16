@@ -69,7 +69,7 @@ class NavBar extends React.Component {
           </div>
           <div className='qbii-navbar-title'>{this.state.title}</div>
           <div className='qbii-navbar-right'>
-            <span className='right-icon hide'></span>
+            <span className='right-icon' onClick={()=>QBFK.Business.go('/Help')}></span>
             <span className='right hide'></span>
           </div>
         </div>
