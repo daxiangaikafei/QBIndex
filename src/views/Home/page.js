@@ -10,6 +10,8 @@ import { fetchPosts } from "components/common/fetch"
 import ProjectItem from "./ProjectItem.js"
 import News from "./news";
 
+import isArray from "lodash/isArray";
+
 class Home extends Component {
   levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"":0}
 
@@ -83,11 +85,13 @@ class Home extends Component {
           </div>
         </div>
         <div styleName="asset-container">
-          <div onClick={()=>QBFK.Business.go('/OrderList')} styleName="item">
+          <div onClick={()=>{
+              isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/OrderList')
+            }} styleName="item">
             <span>投入资产(元)</span>
             <h3>{priceFormat(this.props.userInfo.assets/100)||0.00} </h3>
           </div>
-          <div onClick={()=>QBFK.Business.go('/ProfitList')} styleName="item">
+          <div onClick={()=>isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/ProfitList')} styleName="item">
             <span>累计收益(元)</span>
             <h3>{priceFormat(this.props.userInfo.profit/100)||0.00}</h3>
           </div>
