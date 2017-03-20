@@ -42,7 +42,7 @@ class Scroll extends React.Component {
         param[pageName] = page;
         param[pageSizeName] = pageSize;
         page += num;
-        return fetchPosts(url,param,"POST").then((data)=>{
+        return fetchPosts(url,param,"GET").then((data)=>{
                 console.log(data);
                 let result = analysis_data(data);
                 //debugger;

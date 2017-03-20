@@ -24,7 +24,7 @@ class ProfitList extends Component {
     renderItem(item,i){
         //debugger;
         return(<div key={i} className="profit-list-item" >
-            <p>{item.profitTime}</p>
+            <p>{item.profitTime.substr(0,7)}</p>
             <div className="profit-list-item-main">
                 <div className="profit-list-item-info">
                     <i>{item.projectName.substr(0,1)}</i>
