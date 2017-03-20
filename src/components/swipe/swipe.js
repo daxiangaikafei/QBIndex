@@ -1,6 +1,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import * as ReactDOM from 'react-dom';
+import {_} from "./help.js";
 
 class Swipe extends Component {
      constructor(props) {
@@ -35,6 +36,16 @@ class Swipe extends Component {
             //console.log("掉用这里？")
             this.scrollInit();
         }*/
+
+        let {stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove} = this.props;
+        if(min==="auto"&&this.alloyTouch&&vertical===true&&property==="translateY"){
+            // debugger;
+              let target = ReactDOM.findDOMNode(this.refs.swipe);
+            let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
+            let length = -(target.clientHeight-dom.clientHeight);
+            this.alloyTouch.min = length>0?0:length;
+         }
+
     }
     componentDidMount(){
         let _this = this;
@@ -54,10 +65,23 @@ class Swipe extends Component {
     scrollInit(){
         let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
          let target = ReactDOM.findDOMNode(this.refs.swipe);
-        let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
+        let {intervals,stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove} = this.props;
         let prevTarget = false;
+        //let $ = this.$;
+
+        // if(findDis!==false){
+        //     let dis = $(findDis,$(dom)).eq(0).width();
+        //     min = -dis;
+        //     step = dis;
+        // }
 
         //console.log("dom",dom);
+        if(min==="auto"){
+            min = -1000;
+            min = -((vertical===false?target.offsetWidth:target.offsetHeight)-(vertical===false?dom.offsetWidth:dom.offsetHeight));
+            console.log(min);
+            min = min>0?0:min;
+        }
         this.alloyTouch = new this.AlloyTouch({
             touch: dom,//反馈触摸的dom
             target:target,
@@ -72,16 +96,21 @@ class Swipe extends Component {
             spring: true, //不必需,是否有回弹效果。默认是true
             inertia: false, //不必需,是否有惯性。默认是true
             intelligentCorrection: true,
+            stopPro:stopPro,
             touchStart: function (value,target) {
-                
+                console.log("heheda ",value)
+            },
+            touchMove:_.throttle(function(){
+                touchMove(this,arguments);
+            },intervals),
 
-            }
         });
 
     }
     render() {
+        let {onClick} = this.props;
         return (
-            <div className={this.props.className} ref="touch"  style={this.props.style}>
+            <div className={this.props.className} ref="touch"  style={this.props.style} onClick={onClick}>
                 <div ref="swipe">
                     {this.props.children}
                 </div>
@@ -100,9 +129,16 @@ Swipe.defaultProps={
     findScroller:false,
     target:"",
     className:"",
-    findDis:false
+    findDis:false,
+    stopPro:true,
+    intervals:300,//间隔时间
+    touchMove:function(x){
+        //console.error("sssssss",this,x)
+    },
+    onClick:function(){
+
+    }
 
 }
 
 module.exports = Swipe;
-

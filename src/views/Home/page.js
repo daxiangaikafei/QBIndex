@@ -83,11 +83,11 @@ class Home extends Component {
           </div>
         </div>
         <div styleName="asset-container">
-          <div styleName="item">
+          <div onClick={()=>QBFK.Business.go('/OrderList')} styleName="item">
             <span>投入资产(元)</span>
             <h3>{priceFormat(this.props.userInfo.assets/100)||0.00} </h3>
           </div>
-          <div styleName="item">
+          <div onClick={()=>QBFK.Business.go('/ProfitList')} styleName="item">
             <span>累计收益(元)</span>
             <h3>{priceFormat(this.props.userInfo.profit/100)||0.00}</h3>
           </div>
