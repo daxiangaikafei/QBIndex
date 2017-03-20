@@ -16,11 +16,11 @@ function CoreLayout ({ children, location }) {
         <ReactCSSTransitionGroup component='div'
          transitionName={{
             enter: 'default-enter',
-            enterActive: location.action == 'PUSH'?'fadeInLeft':'fadeInRight',
+            enterActive: location.action == 'PUSH'?'fadeInRight':'fadeInLeft',
             leave: 'default-leave',
             leaveActive: location.action == 'PUSH'?'':''
           }}
-         style={{overflowY: 'scroll',height: '100%',position: 'absolute',width:'100%' }}
+         style={{overflowY: 'scroll',height: '100%',position: 'absolute',top: 0,width:'100%' }}
 
          transitionEnterTimeout={500}
          transitionLeaveTimeout={500}

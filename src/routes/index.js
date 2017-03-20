@@ -18,6 +18,7 @@ import NewsDetail from "views/NewsDetail/page";
 
 import OrderList from "views/OrderList/page";
 import ProfitList from "views/ProfitList/page";
+import Help from "views/Help/page";
 
 export default function (ref) {
   return (
@@ -36,8 +37,10 @@ export default function (ref) {
           <Route path='/InfoTpl/:projectId' component={InfoTpl} name="项目详情"/> 
 
         <Route path='/NewsDetail/:projectId' component={NewsDetail} name="最新资讯"/>
+
         <Route path='/OrderList' component={OrderList} name="订单列表"/>
         <Route path='/ProfitList' component={ProfitList} name="收益列表"/>
+        <Route path='/Help' component={Help} name="FAQ"/>
       </Route>
     </Router>
   )
