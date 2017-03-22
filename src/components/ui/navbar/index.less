@@ -1,106 +1,100 @@
-@navbar-blank-height:13px;
-@navbar-background:#000;
-@navbar-color:#fff;
-@navbar-font:18px;
-
+@navbar-blank-height: 13px;
+@navbar-background: #000;
+@navbar-color: #fff;
+@navbar-font: 18px;
 .navbar-flex {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  font-size: @navbar-font;
-  background: @navbar-background;
-  color: @navbar-color;
-  line-height: @navbar-font;
-}
-.navbar-flex-item {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -ms-flex-align: center;
-  height: 44px;
-  display: flex;
-}
-.qbii-navbar-container {
-  background: #000;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 99999;
-  width: 100%;
-}
-.qbii-navbar-top,.qbii-navbar-bottom {
-  background: @navbar-background;
-  color: @navbar-color;
-  height: @navbar-blank-height;
-}
-
-
-.qbii-navbar {
-
-  .navbar-flex;
-
-  .qbii-navbar-left {
-    
+    display: -webkit-box;
     display: -webkit-flex;
-    display: -ms-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    // -webkit-justify-content: center;
-    // justify-content: center;
+    font-size: @navbar-font;
+    background: @navbar-background;
+    color: @navbar-color;
+    line-height: @navbar-font;
+}
 
-    .navbar-flex-item;
-    font-size: 15px;
-    align-items: center;
+.navbar-flex-item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -ms-flex-align: center;
+    height: 44px;
+    display: flex;
+}
 
-    .left{
-      display: inline-block;
-      width: 15px;
-      height: 100%;
+.qbii-navbar-container {
+    background: #000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 99999;
+    width: 100%;
+}
+
+.qbii-navbar-top,
+.qbii-navbar-bottom {
+    background: @navbar-background;
+    color: @navbar-color;
+    height: @navbar-blank-height;
+}
+
+.qbii-navbar {
+    .navbar-flex;
+    .qbii-navbar-left {
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        // -webkit-justify-content: center;
+        // justify-content: center;
+        .navbar-flex-item;
+        font-size: 15px;
+        align-items: center;
+        .left {
+            display: inline-block;
+            width: 15px;
+            height: 100%;
+        }
+        .left-icon {
+            margin-right: 5px;
+            width: 10px;
+            height: 18px;
+            background: url('static/imgs/nav/array.png') no-repeat;
+            background-size: 10px auto;
+            display: inline-block;
+        }
     }
-    .left-icon{
-      margin-right: 5px;
-      width: 10px;
-      height: 18px;
-      background:  url('static/imgs/nav/array.png') no-repeat;
-      background-size: 10px auto;
-      display:inline-block;
+    .qbii-navbar-title {
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        white-space: nowrap;
     }
-  }
-
-  .qbii-navbar-title {
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    white-space: nowrap;
-  }
-
-  .qbii-navbar-right {
-
-    .navbar-flex-item;
-    font-size: 15px;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    align-items: center;
-
-    .right-icon{
-      width: 20px;
-      height: 18px;
-      background:  url('static/imgs/nav/point.png') no-repeat center;
-      background-size: 20px auto;
+    .qbii-navbar-right {
+        .navbar-flex-item;
+        font-size: 15px;
+        -webkit-box-pack: end;
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        align-items: center;
+        .right-icon {
+            width: 30px;
+            height: 30px;
+            background: url('static/imgs/nav/help.png') no-repeat center;
+            -webkit-background-size: 30px auto;
+            background-size: 30px auto;
+        }
+        .right {
+            display: inline-block;
+            width: 15px;
+            height: 100%;
+        }
     }
-    .right{
-      display: inline-block;
-      width: 15px;
-      height: 100%;
-    }
-  }
 }

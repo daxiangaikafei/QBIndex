@@ -180,6 +180,16 @@ webpackConfig.module.loaders.push(
         'postcss',
         'less'
     ]
+  },
+  {
+    test: /\.scss$/,
+    exclude: /node_modules/,
+    loaders: [
+        'style',
+        cssLoader,
+        'postcss',
+        'sass-loader'
+    ]
   }
 )
 

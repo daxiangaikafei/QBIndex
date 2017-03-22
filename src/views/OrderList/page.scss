@@ -1,0 +1,122 @@
+
+$bgc:#ebebeb;
+
+$step1:#007aff;
+$step2:#36d072;
+$step3:#f74f58;
+$step4:#a88872;
+
+$gold:$step4;
+
+
+
+.container-order-list{
+    background-color: $bgc;
+    min-height: 100%;
+}
+
+.step1{
+    p{
+        &:before{
+            background-color: $step1;
+        }
+    }
+    .exc{
+        color: $step1;
+    }
+}
+.step2{
+    p{
+        &:before{
+            background-color: $step2;
+        }
+    }
+    .exc{
+        color: $step2;
+    }
+}
+.step3{
+    p{
+        &:before{
+            background-color: $step3;
+        }
+    }
+    .exc{
+        color: $step3;
+    }
+}
+.step4{
+    p{
+        &:before{
+            background-color: $step4;
+        }
+        
+    }
+    .exc{
+        color: $step4;
+    }
+}
+
+.order-list-item{
+    width: 100%;
+    background-color: white;
+    font-weight: 300;
+    padding: 0 15px 0 30px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    box-sizing: border-box;
+    p{
+        font-size: 14px;
+        color:rgb(0,0,0);
+        padding:19px 0;
+        font-weight: 400;
+        position: relative;
+        &:before{
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            content:"";
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            margin-top: -6px;
+        }
+    }
+    div{
+        display: flex;
+        width: 82%;
+        justify-content: space-between;
+        
+
+    }
+    span{
+        color: $step4;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 9px 0;
+        
+    }
+    em{
+        font-size: 13px;
+        color:rgb(117,117,117);  
+
+    }
+    i{
+        width: 10px;
+        height: 15px;
+        display: block;
+        //border: 1px solid red;
+        
+        position: absolute;
+        top: 50%;
+        margin-top: -8px;
+        right: 15px;
+
+        background: url("static/imgs/arrow-right.png") no-repeat;
+        background-size: contain;
+    }
+}
