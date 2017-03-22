@@ -2,45 +2,81 @@
  * Created by xiaolin on 16/12/16.
  */
 require('babel-register')
-require('es6-promise').polyfill();
+require('es6-promise').polyfill()
 
 const config = require('../config')
 const debug = require('debug')('app:bin:compile')
 const fs = require('fs-extra')
-
 const paths = config.utils_paths
+const path  = require('path')
 
 debug('Create webpack compiler.')
 const compiler = require('webpack')(require('../config/_basic_webpack'))
+
+var removeFile = function(_cat){
+
+    return new Promise(function(resolve,reject){
+            fs.remove(_cat, function (err) {
+                if(err)reject(err)
+                else resolve()
+            })
+    })
+}
+
+
 
 compiler.run(function (err, stats) {
     const jsonStats = stats.toJson()
 
     debug('Webpack compile completed.')
-    //console.log(stats.toString(config.compiler_stats))
 
-    //if (err) {
-    //    debug('Webpack compiler encountered a fatal error.', err)
-    //    process.exit(1)
-    //} else if (jsonStats.errors.length > 0) {
-    //    debug('Webpack compiler encountered errors.')
-    //    console.log(jsonStats.errors)
-    //    process.exit(1)
-    //} else if (jsonStats.warnings.length > 0) {
-    //    debug('Webpack compiler encountered warnings.')
-    //
-    //    if (config.compiler_fail_on_warning) {
-    //        process.exit(1)
-    //    }
-    //} else {
-    //    debug('No errors or warnings encountered.')
-    //}
-    //
-    var cat = '/Users/sean/work/qbii/branches/20170110/qbii/qbii-api/src/main/webapp/public/'
-    fs.remove(cat, function(err) {
+    var cat = '/Users/sean/work/qbii/trunk/qbii-app/src/main/webapp'
+    var sourcePath = path.join(__dirname,'../dist')
+    var fileName = '/public'
+    var except = ['cdn']
 
-    })
+    
+     
 
-    //debug('Copy static assets to dist folder.')
-    //fs.copySync(paths.client('dist'), cat)
+
+    fs.stat(cat + fileName, function(err, stat) {
+        if(err == null) {
+            if(stat.isDirectory()) {
+                
+                debug('copy file begin......');
+
+                fs.readdir(cat + fileName,function(_path,_cat){
+                    _cat.forEach(function(item,index,_sources){
+                        item != 'cdn' && removeFile(cat + fileName + '/' + item).then(()=>{
+                            if(index == _sources.length - except.length){
+                                fs.copy(sourcePath,cat+fileName, function(err) {
+                                    if (err) return console.error(err)
+                                    debug("success!")
+                                });
+                            }
+                        })
+                    })
+                })
+
+            } else if(stat.isFile()) {
+                console.log('文件存在');
+            } else {
+                console.log('路径存在，但既不是文件，也不是文件夹');
+                //输出路径对象信息
+                console.log(stat);
+            }
+        } else if(err.code == 'ENOENT') {
+                    debug('copy file begin......')
+                    fs.mkdir(cat+fileName,function(err){
+                        fs.copy(sourcePath,cat+fileName, function(err) {
+                            if (err) return console.error(err)
+                            debug("success!")
+                        });
+                    })
+        } else {
+            console.log('错误：' + err);
+        }
+    });
+
+    
 })

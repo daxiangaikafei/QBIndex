@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "better-npm-run dev",
     "dev:nw": "npm run dev -- --nw",
-    "compile": "better-npm-run deploy"
+    "compile": "npm run clear && better-npm-run deploy",
+    "clear":"rm -rf ../dist"
   },
   "betterScripts": {
     "dev": {
