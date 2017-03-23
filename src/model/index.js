@@ -14,7 +14,8 @@ export default {
       "profit": 0
     },
     projList: [],
-    progressInfo: {}
+    progressInfo: {},
+    serverTime: ''
   },
   effects: {
     // *'fetch' (action, {put, call}) {
@@ -169,10 +170,13 @@ export default {
     },
     *getProjList (action, {put, call}) {
       yield put({type: 'projListReq', loading: true})
-
+      let serverTime
       let projList = yield call(() => {
         return fetchPosts("/api/project/list",{},"GET")
-          .then(data => data.data.projects)
+          .then(data => {
+            serverTime = data.serverTime
+            return data.data.projects
+          })
           .catch(err => ({
             "assetsId": 1,
             "id": 1,
@@ -209,7 +213,8 @@ export default {
       yield put({
         type: 'projListRes',
         loading: false,
-        projList
+        projList,
+        serverTime
       })
     },
     *getProgressInfo (action, {put, call}) {

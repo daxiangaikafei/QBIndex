@@ -234,9 +234,33 @@ main{
       }
       .banner {
         height: auto;
+        position: relative;
+        .corner {
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-width: 36px; 
+          border-style: solid;
+          border-top-color: transparent;
+          border-bottom-color: @increaseTxtColor;
+          border-right-color: transparent;
+          border-left-color: transparent;
+          top: -36px;
+          left: -36px;
+          transform: rotateZ(-45deg);
+          i {
+            position: absolute;
+            bottom: -34px;
+            left: -18px;
+            right: 0;
+            font-size: 10px;
+            color: #fff;
+            width: 40px;
+          }
+        }
       }
       .title {
-        font-size: 16px;
+        font-size: 14px;
         height: 70px;
         padding: 15px 20px;
         box-sizing: border-box;
@@ -250,6 +274,15 @@ main{
             vertical-align: middle;
             margin-left: 5px;
           }
+        }
+        .user-tag {
+          position: absolute;
+          width: 50px;
+          height: 20px;
+          background: url(static/imgs/home/tag.png) no-repeat;
+          background-size: contain;
+          right: 12px;
+          top: 15px;
         }
       }
       .icon-item {
