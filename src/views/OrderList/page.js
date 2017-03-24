@@ -28,7 +28,7 @@ class OrderList extends Component {
             <i></i>
             <div>
                 <span>{item.createTime.substr(0,10)}<em>下单时间</em></span>
-                <span>{item.amount+"万"}<em>认购起点</em></span>
+                <span>{item.amountDes+"万"}<em>认购起点</em></span>
                 <span className="exc">{item.statusDes}<em>当前状态</em></span>
             </div>
             
