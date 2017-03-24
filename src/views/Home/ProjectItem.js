@@ -28,7 +28,7 @@ class ProjectItem extends Component {
       <div styleName="item" onClick={()=>QBFK.Business.go('/InfoTpl/'+this.props.projInfo.pageId||"")}>
         <div styleName="banner">
           <span styleName="corner"><i>{this.projectStatus[this.checkProjStatus(this.props.projInfo)]}</i></span>
-          <img src={this.props.projInfo.pics[0]} alt="" onError={(e)=>{e.target.style.display='none'}} onLoad={(e)=>{e.target.style.display='block'}}/>
+          <img src={this.props.projInfo.picCover} alt="" onError={(e)=>{e.target.style.display='none'}} onLoad={(e)=>{e.target.style.display='block'}}/>
         </div>
         <div styleName="title">
           {this.props.projInfo.name}
