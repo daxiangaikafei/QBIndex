@@ -194,9 +194,9 @@ class OrderInfo extends Component {
                 <div className="party-temp">                    
                     {$lis}
                 </div>
-                <div className="step-end" >
+                {/*<div className="step-end" >
                     <button disabled={this.state.disabled}  className="step-btn-end" onClick={this.handThink} >我有意向</button>
-                </div>
+                </div>*/}
             </div>
         )
     }
