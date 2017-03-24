@@ -73,6 +73,8 @@ $gold:$step4;
         padding:19px 0;
         font-weight: 400;
         position: relative;
+        width: 100%;
+        flex-shrink:0;
         &:before{
             display: block;
             width: 8px;
