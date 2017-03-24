@@ -15,7 +15,7 @@ class Scroll extends React.Component {
         super(props);
         this.state = {
             items:[],
-            page:0,
+            page:1,
             isLoading:true,
             oneHeight:false,
             isEnd:false,
@@ -32,7 +32,7 @@ class Scroll extends React.Component {
     getData(num){
         let {pageSize,url,searchParam,analysis_data,pageName,pageSizeName} = this.props;
         let {page,items,isLoading,isEnd} = this.state;
-        if((page!==0&&isLoading===true)||(isEnd)){
+        if((page!==1&&isLoading===true)||(isEnd)){
             return;
         }
         this.setState({
@@ -42,7 +42,7 @@ class Scroll extends React.Component {
         param[pageName] = page;
         param[pageSizeName] = pageSize;
         page += num;
-        return fetchPosts(url,param,"GET").then((data)=>{
+        return fetchPosts(url,param,"POST").then((data)=>{
                 console.log(data);
                 let result = analysis_data(data);
                 //debugger;
