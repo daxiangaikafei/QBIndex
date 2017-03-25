@@ -10,8 +10,8 @@ export default {
     },
     userInfo: {
       "level": "",
-      "assets": 0,
-      "profit": 0
+      "assetsDes": 0,
+      "profitDes": 0
     },
     projList: [],
     progressInfo: {},
@@ -157,8 +157,8 @@ export default {
           .catch(err => ({
             "id": 111111,
       			"level": "暂无",
-      			"assets": 0,
-      			"profit": 0
+      			"assetsDes": 0,
+      			"profitDes": 0
           }))
       }, action.userInfo)
 
