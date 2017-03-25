@@ -104,7 +104,7 @@ class Scroll extends React.Component {
                 <Swipe {...props} onClick={totalProps.onClick}>
                     {$lis}
                     {isLoading===true&&(<div className="no-up">Loading</div>)}
-                    {page>1&&isEnd===true&&(<div className="no-up">已经没有更新了</div>)}
+                    {page>1&&isEnd===true&&(<div className="no-up">-- 已经到底了 --</div>)}
                 </Swipe>
         )
     }
