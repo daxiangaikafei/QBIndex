@@ -30,13 +30,12 @@ compiler.run(function (err, stats) {
 
     debug('Webpack compile completed.')
 
-    var cat = '/Users/sean/work/qbii/trunk/qbii-app/src/main/webapp'
+    var cat = '/Users/sean/work/qbii/branches/20170315zls/qbii-app/src/main/webapp'
     var sourcePath = path.join(__dirname,'../dist')
     var fileName = '/public'
     var except = ['cdn']
 
     
-     
 
 
     fs.stat(cat + fileName, function(err, stat) {
@@ -47,14 +46,24 @@ compiler.run(function (err, stats) {
 
                 fs.readdir(cat + fileName,function(_path,_cat){
                     _cat.forEach(function(item,index,_sources){
-                        item != 'cdn' && removeFile(cat + fileName + '/' + item).then(()=>{
-                            if(index == _sources.length - except.length){
-                                fs.copy(sourcePath,cat+fileName, function(err) {
-                                    if (err) return console.error(err)
-                                    debug("success!")
-                                });
-                            }
-                        })
+
+                        if(index == _sources.length - except.length && item == 'cdn'){
+                            fs.copy(sourcePath,cat+fileName, function(err) {
+                                if (err) return console.error(err)
+                                debug("success!")
+                            });
+                        }
+                        else{
+                            item != 'cdn' && removeFile(cat + fileName + '/' + item).then(()=>{
+                                if(index == _sources.length - except.length){
+                                    fs.copy(sourcePath,cat+fileName, function(err) {
+                                        if (err) return console.error(err)
+                                        debug("success!")
+                                    });
+                                }
+                            })
+                        }
+                        
                     })
                 })
 

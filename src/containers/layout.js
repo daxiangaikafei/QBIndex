@@ -8,7 +8,7 @@ var cx = require('classnames');
 function CoreLayout ({ children, location }) {
   var viewHeight = window.innerHeight - 44 ;
     var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)
-    //debugger;
+    location.action == 'PUSH' && (document.querySelector('.page-container-finally').scrollTop = 0 );
   return (
     <div>
         <NavBar {...arguments[0]}/>
@@ -21,7 +21,7 @@ function CoreLayout ({ children, location }) {
             leaveActive: location.action == 'PUSH'?'':''
           }}
          style={{overflowY: 'scroll',height: '100%',position: 'absolute',top: 0,width:'100%' }}
-
+         className = {"page-container-finally"}
          transitionEnterTimeout={500}
          transitionLeaveTimeout={500}
         >
