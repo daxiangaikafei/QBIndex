@@ -47,7 +47,7 @@ class ProfitList extends Component {
         return false;
     }
     nullRender() {
-        return <div>暂无收益</div>
+        return <div style={{textAlign:'center',paddingTop:'10px'}}>暂无收益</div>
     }
     render() {
         let {scrollOptions} = this.props;

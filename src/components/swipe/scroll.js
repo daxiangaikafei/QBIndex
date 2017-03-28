@@ -132,7 +132,7 @@ Scroll.defaultProps = {
     //固定的查询参数  
     searchParam:{},
     nullRender:function(){
-        return (<div>没有查询到数据</div>)
+        return (<div style={{textAlign:'center',paddingTop:'10px'}}>暂无订单</div>)
     }
     
 }
