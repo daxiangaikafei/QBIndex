@@ -25,7 +25,6 @@ class OrderList extends Component {
 
         return(<div key={i} className={"order-list-item "+step}>
             <p>{item.projectName}</p>
-            <i></i>
             <div>
                 <span>{item.createTime.substr(0,10)}<em>下单时间</em></span>
                 <span>{item.amountDes+"万"}<em>订单金额</em></span>
@@ -45,8 +44,7 @@ class OrderList extends Component {
         let {scrollOptions} = this.props;
         let props = Object.assign({},scrollOptions,{
                 analysis_data:this.analysis_data,
-                renderItem:this.renderItem,
-                className:'order-list'
+                renderItem:this.renderItem
         })
         return (
             <div className="container-order-list">
@@ -64,6 +62,7 @@ OrderList.defaultProps = {
     scrollOptions:{
         url:"/api/user/userOrderList.html",
         pageName:"pageNo",
+        totalProps:{className:'order-list'}
 
     }
 }
