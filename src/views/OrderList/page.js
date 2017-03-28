@@ -43,10 +43,10 @@ class OrderList extends Component {
     
     render() {
         let {scrollOptions} = this.props;
-        scrollOptions.className='order-list'
         let props = Object.assign({},scrollOptions,{
                 analysis_data:this.analysis_data,
-                renderItem:this.renderItem
+                renderItem:this.renderItem,
+                className:'order-list'
         })
         return (
             <div className="container-order-list">

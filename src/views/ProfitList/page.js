@@ -46,12 +46,15 @@ class ProfitList extends Component {
         }
         return false;
     }
-    
+    nullRender() {
+        return <div>暂无收益</div>
+    }
     render() {
         let {scrollOptions} = this.props;
         let props = Object.assign({},scrollOptions,{
                 analysis_data:this.analysis_data,
-                renderItem:this.renderItem
+                renderItem:this.renderItem,
+                nullRender:this.nullRender
         })
         return (
             <div className="container-profit-list">
