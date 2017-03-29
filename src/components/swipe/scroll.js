@@ -129,12 +129,12 @@ Scroll.defaultProps = {
     analysis_data:function(data){
         return data;//如果请求错误  请返回false  正确 请返回 数组数据
     },
-    //固定的查询参数  
+    //固定的查询参数
     searchParam:{},
     nullRender:function(){
         return (<div style={{textAlign:'center',paddingTop:'10px'}}>暂无订单</div>)
     }
-    
+
 }
 
 module.exports = Scroll;

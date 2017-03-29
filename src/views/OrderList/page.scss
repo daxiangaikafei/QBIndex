@@ -59,7 +59,7 @@ $gold:$step4;
         &:before{
             background-color: $step4;
         }
-        
+
     }
     .exc{
         color: $step4;
@@ -84,6 +84,7 @@ $gold:$step4;
         position: relative;
         width: 100%;
         flex-shrink:0;
+        position: relative;
         &:before{
             display: block;
             width: 8px;
@@ -95,12 +96,19 @@ $gold:$step4;
             top: 50%;
             margin-top: -6px;
         }
+        div.exc{
+          position: absolute;
+          top: 19px;
+          right: 0;
+          display: block;
+          width: auto;
+        }
     }
     div{
         display: flex;
         width: 100%;
         justify-content: space-between;
-        
+
 
     }
     span{
@@ -109,11 +117,11 @@ $gold:$step4;
         display: flex;
         flex-direction: column;
         padding: 0 0 9px 0;
-        
+
     }
     em{
         font-size: 13px;
-        color:rgb(117,117,117);  
+        color:rgb(117,117,117);
 
     }
     i{
@@ -121,7 +129,7 @@ $gold:$step4;
         height: 15px;
         display: block;
         //border: 1px solid red;
-        
+
         position: absolute;
         top: 50%;
         margin-top: -8px;

@@ -17,20 +17,20 @@ class OrderList extends Component {
         super(props);
     }
     componentWillMount(){
-       
+
     }
     renderItem(item,i){
         //debugger;
         var step = Status[item.statusDes]||"step1";
 
         return(<div key={i} className={"order-list-item "+step}>
-            <p>{item.projectName}</p>
+            <p>{item.projectName}<div className="exc">{item.statusDes}</div></p>
             <div>
                 <span>{item.createTime.substr(0,10)}<em>下单时间</em></span>
                 <span>{item.amountDes+"万"}<em>订单金额</em></span>
-                <span className="exc">{item.statusDes}<em>当前状态</em></span>
+                <span>{item.proportionDes}<em>投资额占比</em></span>
             </div>
-            
+
         </div>)
     }
     analysis_data(data){
@@ -39,7 +39,7 @@ class OrderList extends Component {
         }
         return false;
     }
-    
+
     render() {
         let {scrollOptions} = this.props;
         let props = Object.assign({},scrollOptions,{
@@ -48,11 +48,11 @@ class OrderList extends Component {
         })
         return (
             <div className="container-order-list">
-                    <Scroll {...props}/>  
+                    <Scroll {...props}/>
             </div>
         )
     }
-    
+
 }
 /*
 <Chart projectId={this.props.routeParams.projectId}/>

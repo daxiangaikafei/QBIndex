@@ -49,7 +49,7 @@ class OrderInfo extends Component {
                 organizationType:"",//组织形式  1-有限合伙制
                 structured:"",//结构化 . 1-是，2-否
                 exitWay:["",""],//退出形式
-                trusteeFee:["",""],//认购费 . 
+                trusteeFee:["",""],//认购费 .
                 managementFee:["",""],//管理费
                 trusteeFee:["",""],//托管费
                 profit:"",//收益分配
@@ -99,7 +99,7 @@ class OrderInfo extends Component {
         var self = this;
         let {projectId} = this.props.routeParams;
          fetchPosts("/api/page/"+projectId,{},"GET").then((data)=>{
-             
+
             self.setState({
                 data:data.data.page
             });
@@ -117,11 +117,11 @@ class OrderInfo extends Component {
                 newState[key] = data[key];
             }
             newState = Object.assign(newState,temp);
-            
+
         }
         return newState;
     }
-    
+
     handThink(){
         if(this.state.disabled===true){
             return false;
@@ -137,7 +137,7 @@ class OrderInfo extends Component {
         });
     }
     typeShow(type,items,i){
-        
+
         switch(type){
             case "banner":{
                 return (<Banner key={i} className="party-head" items={items} />);
@@ -165,16 +165,16 @@ class OrderInfo extends Component {
         let modules = data.modules||[];
         let i = 0,length = modules.length,$lis=[],self = this;
         while(i<length){
-           
+
             let modular  = modules[i];
              i+=1;
              console.info(modular);
-            
+
             if(!modular||!modular.items){
                 continue;
             }
             let {items,category,title} = modular;
-            
+
             if(title&&title.text){
                 //debugger
                 let hadIcon = "textView,listView".indexOf(category)>=0?true:false;
@@ -187,11 +187,11 @@ class OrderInfo extends Component {
             }else{
                 $lis.push(self.typeShow(category,items,i));
             }
-            
+
         }
         return (
             <div className="party-info">
-                <div className="party-temp">                    
+                <div className="party-temp">
                     {$lis}
                 </div>
                 {/*<div className="step-end" >
@@ -210,7 +210,7 @@ class OrderInfo extends Component {
         }
         return (
             <div className="area-p">
-                
+
                 {re}
             </div>
         );
@@ -232,11 +232,11 @@ export default OrderInfo;
                     <Area className="area-margin area-bottom" title="项目解析" hasIcon={false}>
                         <Vedio bgUrl={data.pics[2]} src={data.video}/>
                     </Area>
-                    
+
                     <Area className="area-margin" title={"特色亮点"} hasIcon={true} hasLine={true} isClose={true}>
                         <TextView content={"ddsskdskdkdksdiiiiiiiiiiiiiiiiiiiiiiiikks"} />
                     </Area>
-                        
+
                     <Area className="area-margin" title="募集说明" hasIcon={false}>
                         <div className="party-step">
                             <div className="step-row">
