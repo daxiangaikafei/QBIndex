@@ -47,11 +47,26 @@ class Area extends Component {
                         <i  className={hasIcon?"":"hide"}></i>
                     </VelocityComponent>
                 </div>
-                <VelocityTransitionGroup enter={enterAnimation} leave={leaveAnimation}>
-                { this.state.shrink===false?this.props.children:null}
-                </VelocityTransitionGroup>
+                {this.renderAn()}
             </div> 
         )
+    }
+    renderAn(){
+       // let {hasIcon} = this.props;
+        let {enterAnimation,leaveAnimation} = this.props;
+        let anProps = this.state.shrink===false?this.state.anBefore:this.state.anAfter;
+        let {title,className,hasIcon,hasLine} = this.props;
+       // debugger
+        if(hasIcon){
+            return (
+            <VelocityTransitionGroup enter={enterAnimation} leave={leaveAnimation}>
+                    { this.state.shrink===false?this.props.children:null}
+                </VelocityTransitionGroup>
+            )
+        }else{
+            return this.props.children;
+        }
+        
     }
 }
 Area.defaultProps = {
