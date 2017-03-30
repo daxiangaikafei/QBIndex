@@ -45,7 +45,7 @@ class ProjectItem extends Component {
     let serverTime = (new Date(this.props.serverTime)).getTime()
     let startTime = (new Date(proj.prostarttime)).getTime()
     let endTime = (new Date(proj.proendtime)).getTime()
-    return serverTime < startTime ? 0 : serverTime > startTime && serverTime < endTime ? 1 : serverTime > endTime ? 2 : 0
+    return serverTime < startTime ? 0 : serverTime > startTime && serverTime < endTime ? 1 : serverTime > endTime ? 2 : 1
   }
 }
 

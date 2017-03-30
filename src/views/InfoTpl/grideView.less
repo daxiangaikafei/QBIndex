@@ -1,36 +1,30 @@
 @bgColor :#ebebeb;
-@url:"static/imgs/party/";
-@mainFontColor:#b49885;
-@mainColor:#a88872;
-@border-color:rgb(209,210,211);
-
-.party-plan{
+@url: "static/imgs/party/";
+@mainFontColor: #b49885;
+@mainColor: #a88872;
+@border-color: rgb(209, 210, 211);
+@import '~libs/layout/layout-mixin.less';
+.party-plan {
     font-size: 0;
     min-height: 5rem;
     // *{
     //     border: 1px solid red;
     // }
     padding: 0 15px;
-    display: -webkit-flex!important;
-    display: flex!important;
-    li{
-        width: 23.3%;
-        display: inline-block;
-        margin-left: 15%;
-        &:first-child{
-            margin-left: 0;
-        }
+    .flex;
+    .flex-justify;
+    li {
         padding:12px 0;
         //border: 1px solid red;
     }
-    span{
+    span {
         font-size: 14px;
         line-height: 18px;
         text-align: left;
         display: block;
-        padding:4px 0;
-        color:#757575;
-        &:first-child{
+        padding: 4px 0;
+        color: #757575;
+        &:first-child {
             font-size: 16px;
             color: @mainFontColor;
         }
