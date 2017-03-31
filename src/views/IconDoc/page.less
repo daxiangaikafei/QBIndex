@@ -1,0 +1,46 @@
+@import '~libs/layout/layout-mixin.less';
+.home-container {
+    background-color: #fff;
+    .icons {
+        padding: 0;
+        list-style: none;
+        width: 100%;
+        margin: 20px auto;
+        .flex;
+        .flex-wrap;
+        li {
+            width: 15%;
+            background-color: #f9f9f9;
+            border: 1px solid #fff;
+            padding: 20px 0 10px;
+            text-align: center;
+            &:hover {
+                color: #fff !important;
+                background-color: #427cf3;
+                svg {
+                    fill: #fff !important;
+                }
+            }
+            svg {
+                margin-bottom: 10px;
+            }
+            .title {
+                display: block;
+                text-align: center;
+                word-wrap: break-word;
+                margin-top: 10px;
+            }
+        }
+    }
+    .loading {
+        animation: loading 1s linear infinite;
+    }
+    @keyframes loading {
+        0% {
+            transform: rotateZ(0deg)
+        }
+        100% {
+            transform: rotateZ(360deg)
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import ReactDom from "react-dom";
-
+import { Icon } from 'ui'
 import { VelocityComponent,VelocityTransitionGroup }  from "velocity-react";
 
 
@@ -44,7 +44,8 @@ class Area extends Component {
                 <div onClick={this.handClick} className={"area-info-title"+(hasLine?" bottom-line":"")}>
                     <span>{title}</span>
                     <VelocityComponent {...anProps}>
-                        <i  className={hasIcon?"":"hide"}></i>
+                        <Icon name="arrow-right" color="#787A88" size="18" className={hasIcon?"":"hide"}/>
+                        {/*<i  className={hasIcon?"":"hide"}></i>*/}
                     </VelocityComponent>
                 </div>
                 {this.renderAn()}
