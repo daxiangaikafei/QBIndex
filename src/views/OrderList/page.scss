@@ -77,13 +77,20 @@ $gold:$step4;
     flex-wrap: wrap;
     position: relative;
     box-sizing: border-box;
+    div.exc{
+      position: absolute;
+      top: 19px;
+      right: 5px;
+      display: block;
+      width: auto;
+    }
     p{
         font-size: 14px;
         color:rgb(0,0,0);
         padding:19px 0;
         font-weight: 400;
         position: relative;
-        width: 100%;
+        width: 85%;
         flex-shrink:0;
         position: relative;
         &:before{
@@ -97,13 +104,7 @@ $gold:$step4;
             top: 50%;
             margin-top: -6px;
         }
-        div.exc{
-          position: absolute;
-          top: 19px;
-          right: 0;
-          display: block;
-          width: auto;
-        }
+
     }
     div{
         display: flex;

@@ -24,7 +24,7 @@ class OrderList extends Component {
         var step = Status[item.statusDes]||"step1";
 
         return(<div key={i} className={"order-list-item "+step}>
-            <p>{item.projectName}<div className="exc">{item.statusDes}</div></p>
+            <p>{item.projectName}</p><div className="exc">{item.statusDes}</div>
             <div>
                 <span>{item.createTime.substr(0,10)}<em>下单时间</em></span>
                 <span>{item.amountDes+"万"}<em>订单金额</em></span>
