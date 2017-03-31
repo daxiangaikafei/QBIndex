@@ -7,6 +7,7 @@ import webpack from 'webpack'
 import historyApiFallback from 'koa-connect-history-api-fallback'
 import serve from 'koa-static'
 import webpackConfig from '../config/_basic_webpack'
+// import proxy from 'koa-proxy';
 
 const config = require('../config')
 const paths = config.utils_paths
@@ -18,6 +19,11 @@ const app    = new Koa()
 app.use(convert(historyApiFallback({
     verbose: false
 })))
+
+// app.use(proxy({
+//   host: 'http://127.0.0.1:80',
+//   match: /^\/api\//
+// }));
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------

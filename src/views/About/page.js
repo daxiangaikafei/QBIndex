@@ -39,7 +39,7 @@ class About extends Component {
         sensitivity:0.5
     }
     return (
-      <Swipe styleName="about-container"  {...swipeProps}  style={{position: 'relative',left: 0,width: '100%'}}>
+      <Swipe styleName="about-container"  {...swipeProps}  style={{position: 'absolute',left: 0,width: '100%'}}>
         <div style={slide} className="slide-item">
           <div styleName="about-title"></div>
           <div styleName="about-content">

@@ -53,19 +53,19 @@ require.ensure([],
         // ------------------------------------
         // Client Login
         // ------------------------------------
-        if(navigator.userAgent.match(/Android/i)) {
-            if (typeof QBaoJSBridge != 'undefined') {
-                QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin));
-            }
-        }
-        else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-            if (typeof ioswebview != 'undefined') {
-                ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin));
-            }
-        }
-        else {
-            html5ForLogin(html5ForStartApp);
-        }
+        // if(navigator.userAgent.match(/Android/i)) {
+        //     if (typeof QBaoJSBridge != 'undefined') {
+        //         QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
+        //     }
+        // }
+        // else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        //     if (typeof ioswebview != 'undefined') {
+        //         ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
+        //     }
+        // }
+        // else {
+        //     html5ForLogin(html5ForStartApp);
+        // }
 
         // ------------------------------------
         // Fast Click Adding For System

@@ -193,7 +193,7 @@ class Home extends Component {
 
 };
 
-/* 
+/*
 
    <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/4')}>
             <div styleName="img">

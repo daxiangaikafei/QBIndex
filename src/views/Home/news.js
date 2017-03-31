@@ -36,7 +36,7 @@ class News extends Component {
     toDetail(id){
         QBFK.Business.go('/NewsDetail/'+id)
     }
-    
+
     render() {
 
         let {lists} = this.state;
@@ -60,7 +60,7 @@ class News extends Component {
             );
             // statement
         }
-        
+
 
         return (
             <div className="">

@@ -20,7 +20,7 @@ function CoreLayout ({ children, location }) {
             leave: 'default-leave',
             leaveActive: location.action == 'PUSH'?'':''
           }}
-         style={{overflowY: 'scroll',height: '100%',position: 'absolute',top: 0,width:'100%' }}
+         style={{}}
          className = {"page-container-finally"}
          transitionEnterTimeout={500}
          transitionLeaveTimeout={500}
