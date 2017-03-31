@@ -54,7 +54,7 @@ webpackConfig.output = {
 webpackConfig.plugins = [
     new webpack.DefinePlugin(config.globals),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
+    // new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
         template: paths.client('index.html'),
         hash: false,

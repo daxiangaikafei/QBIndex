@@ -44,7 +44,7 @@ class Area extends Component {
                 <div onClick={this.handClick} className={"area-info-title"+(hasLine?" bottom-line":"")}>
                     <span>{title}</span>
                     <VelocityComponent {...anProps}>
-                        <Icon name="arrow-right" color="#787A88" size="18" className={hasIcon?"":"hide"}/>
+                        <Icon name="arrow-right" color="#787A88" size="16" className={hasIcon?"":"hide"} style={{float:'right'}}/>
                         {/*<i  className={hasIcon?"":"hide"}></i>*/}
                     </VelocityComponent>
                 </div>
