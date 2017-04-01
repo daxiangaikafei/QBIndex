@@ -44,17 +44,17 @@
             Business: {
                 clientGoBack:function(){},
                 go:function(){},
-                login:function(cb){
+                login:function(){
                     //android login
                     if(navigator.userAgent.match(/Android/i)) {
                         if (typeof QBaoJSBridge != 'undefined') {
-                            QBaoJSBridge.login("mqbii.qbao.com", String(cb));
+                            QBaoJSBridge.login("mqbii.qbao.com", String());
                         }
                     }
                     //ios login
                     else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
                         if (typeof ioswebview != 'undefined') {
-                            ioswebview.showLoginViewAnd("mqbii.qbao.com",'cb();');
+                            ioswebview.showLoginViewAnd("mqbii.qbao.com",String());
                         }
                     }
                 }

@@ -36,25 +36,13 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             return result;
         })
         .then((data) => {
-            //console.log('收到data', data);
-            //dispatch(fetchSuccess(key, data));
-            //debugger;
+
             if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {
-                QBFK.Business.login((function(){
-                    fetchSetTimeout().then(()=> {
-                        return fetchPosts(url, param, type, headers, repType, fetchNum + 1);
-                    })
-                })());
-                return data;
-                //dispatch(errorClear("common,login"));
+                QBFK.Business.login();
+                return fetchSetTimeout().then(()=>{
+                    return fetchPosts(url,param,type,headers,repType,fetchNum+1);
+                })
             }
-            // else {
-            //     //console.info("你的请求 内部出错了", data);
-            //     //dispatch(errorSave("common", data));
-            //     if (data && (data.code === "200" || data.code === 200 || data.resultCode == "200" || data.resultCode == 200)) {
-            //         //dispatch(errorSave("login", data));
-            //     }
-            // }
             return data;
         })
 
