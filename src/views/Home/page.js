@@ -63,9 +63,9 @@ class Home extends Component {
 
 
   render() {
-    if(this.props.projList.length>0) {
-      this.props.setHelpStatus()
-    }
+    // if(this.props.projList.length>0) {
+    //   this.props.setHelpStatus()
+    // }
     let projItems = this.props.projList.length>0 ? this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} serverTime={this.props.serverTime}/>) : ""
     return (
       <div styleName="home-container" style={this.props.style}>

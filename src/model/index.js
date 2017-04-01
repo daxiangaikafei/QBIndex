@@ -171,11 +171,12 @@ export default {
     },
     *getProjList (action, {put, call}) {
       yield put({type: 'projListReq', loading: true})
-      let serverTime
+      let serverTime, helpStatus
       let projList = yield call(() => {
         return fetchPosts("/api/project/list",{},"GET")
           .then(data => {
             serverTime = data.serverTime
+            helpStatus = data.data.projects.length>0
             return data.data.projects
           })
           .catch(err => ({
@@ -215,7 +216,8 @@ export default {
         type: 'projListRes',
         loading: false,
         projList,
-        serverTime
+        serverTime,
+        helpStatus
       })
     },
     *getProgressInfo (action, {put, call}) {
