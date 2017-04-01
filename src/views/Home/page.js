@@ -47,7 +47,7 @@ class Home extends Component {
 
 
   componentDidMount() {
-    if(this.props.projList.length==0) {
+    if(this.props.projList.length>0) {
       this.props.setHelpStatus()
     }
   }
