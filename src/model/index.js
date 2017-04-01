@@ -15,7 +15,8 @@ export default {
     },
     projList: [],
     progressInfo: {},
-    serverTime: ''
+    serverTime: '',
+    helpShow: false
   },
   effects: {
     // *'fetch' (action, {put, call}) {
@@ -235,10 +236,23 @@ export default {
         loading: false,
         progressInfo
       })
+    },
+    *setHelpStatus(action,{put}) {
+      yield put({type: 'helpShowReq'})
+      yield put({
+        type : 'helpShowRes',
+        helpShow:true
+      })
     }
 
   },
   reducers: {
+    helpShowReq (state, payload) {
+      return {...state, ...payload}
+    },
+    helpShowRes (state, payload) {
+      return {...state, ...payload}
+    },
     levelReq (state, payload) {
       return {...state, ...payload}
     },

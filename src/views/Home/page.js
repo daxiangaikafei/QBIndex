@@ -47,7 +47,9 @@ class Home extends Component {
 
 
   componentDidMount() {
-
+    if(this.props.projList.length==0) {
+      this.props.setHelpStatus()
+    }
   }
 
   componentDidUpdate() {
@@ -240,6 +242,9 @@ function mapDispatchToProps(dispatch) {
       },
       getProgressInfo(progressInfo){
           dispatch({type: 'home/getProgressInfo', progressInfo});
+      },
+      setHelpStatus(helpStatus){
+          dispatch({type: 'home/setHelpStatus', helpStatus});
       }
     }
 }
