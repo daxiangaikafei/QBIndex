@@ -69,7 +69,8 @@ class ProfitList extends Component {
 ProfitList.defaultProps = {
     scrollOptions:{
         url:"/api/user/userProfitList.html",
-          pageName:"pageNo",
+        pageName:"pageNo",
+        totalProps:{className:'profit-list'}
     }
 }
 

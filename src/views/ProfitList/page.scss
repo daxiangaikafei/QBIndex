@@ -7,6 +7,17 @@ $baseColor:#757575;
 .container-profit-list{
     min-height: 100%;
     background-color: rgb(235,235,235);
+    position: absolute;
+
+}
+.profit-list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    overflow: hidden;
 }
 .profit-list-item{
     background-color: rgb(235,235,235);
