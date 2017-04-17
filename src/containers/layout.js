@@ -6,13 +6,17 @@ import { NavBar } from 'ui'
 var cx = require('classnames');
 
 function CoreLayout ({ children, location }) {
-  var viewHeight = window.innerHeight - 44 ;
+    let isQBC = QBFK.Business.isQBClient()
+    let top = isQBC ? 44 : 0
+    var viewHeight = window.innerHeight - top ;
     var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)
     location.action == 'PUSH' && (document.querySelector('.page-container-finally').scrollTop = 0 );
   return (
     <div>
-        <NavBar {...arguments[0]}/>
-        <main style={{height:viewHeight,position: 'fixed',top: '44px',width: '100%',overflow: 'hidden'}}>
+        {
+        isQBC ? <NavBar {...arguments[0]}/> : ''
+        }
+        <main style={{height:viewHeight,position: 'fixed',top: top+'px',width: '100%',overflow: 'hidden'}}>
         <ReactCSSTransitionGroup component='div'
          transitionName={{
             enter: 'default-enter',
