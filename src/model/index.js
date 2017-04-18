@@ -41,12 +41,12 @@ export default {
 
     //   yield call(() => {
     //     return fetchPosts("/api/user/userId",{},"GET")
-    //       .then(data => data.data)
+    //       .then(data => data.result)
     //       .then(data => {
 
     //         let levelInfo =  call(() => {
     //           return fetchPosts("/api/user/level",{},"GET")
-    //             .then(data => data.data)
+    //             .then(data => data.result)
     //             .catch(err => ({
     //           		"userId" : 111111,
     //           		"level" : "暂无"
@@ -55,7 +55,7 @@ export default {
 
     //         let userInfo =  call(() => {
     //           return fetchPosts("/api/user/userInfo",{},"GET")
-    //             .then(data => data.data.user)
+    //             .then(data => data.result.user)
     //             .catch(err => ({
     //               "id": 111111,
     //         			"level": "暂无",
@@ -66,7 +66,7 @@ export default {
 
     //         let projList =  call(() => {
     //           return fetchPosts("/api/project/1",{},"GET")
-    //             .then(data => data.data.project)
+    //             .then(data => data.result.project)
     //             .catch(err => ({
     //               "assetsId": 1,
     //               "id": 1,
@@ -101,7 +101,7 @@ export default {
 
     //         let progressInfo =  call(() => {
     //           return fetchPosts("/api/project/1/progress",{},"GET")
-    //             .then(data => data.data)
+    //             .then(data => data.result)
     //             .catch(err => ({
     //               "amount": 0,
     //               "target": 0,
@@ -133,7 +133,7 @@ export default {
 
       let levelInfo = yield call(() => {
         return fetchPosts("/api/user/level",{},"GET")
-          .then(data => data.data)
+          .then(data => data.result)
           .catch(err => ({
             "userId" : 111111,
             "level" : "暂无"
@@ -154,7 +154,7 @@ export default {
 
       let userInfo = yield call(() => {
         return fetchPosts("/api/user/userInfo",{},"GET")
-          .then(data => data.data.user)
+          .then(data => data.result.user)
           .catch(err => ({
             "id": 111111,
       			"level": "暂无",
@@ -176,8 +176,8 @@ export default {
         return fetchPosts("/api/project/list",{},"GET")
           .then(data => {
             serverTime = data.serverTime
-            helpShow = data.data.projects.length>0
-            return data.data.projects
+            helpShow = data.result.projects.length>0
+            return data.result.projects
           })
           .catch(err => ({
             "assetsId": 1,
@@ -226,7 +226,7 @@ export default {
           progressInfo = {}
       progressInfo[id] = yield call(() => {
         return fetchPosts("/api/project/"+id+"/progress",{},"GET")
-          .then(data => data.data)
+          .then(data => data.result)
           .catch(err => ({
             "amount": 0,
             "target": 0,

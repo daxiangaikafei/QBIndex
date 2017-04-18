@@ -6,7 +6,7 @@ import { NavBar } from 'ui'
 var cx = require('classnames');
 
 function CoreLayout ({ children, location }) {
-    let isQBC = QBFK.Business.isQBClient()
+    let isQBC = true
     let top = isQBC ? 44 : 0
     var viewHeight = window.innerHeight - top ;
     var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)

@@ -22,15 +22,15 @@ class NewsDetail extends Component {
     //console.log(projectId)
     ///qbii-app/
     let time = Date.now();
-    fetchPosts("/api/news/getNewsDetail.html",{id:Number(projectId)},"GET").then((data)=>{
-        //console.log('返回结果为:',data.data.newsDetail);
+    fetchPosts("/api/news/getNewsDetail",{id:Number(projectId)},"GET").then((data)=>{
+        //console.log('返回结果为:',data.result.newsDetail);
         // //debugger;
         let lTime = Date.now();
         let timeout = (lTime-time<1000)?(1000-(lTime-time)):0;
         //setTimeout(function(){
-            if(data.returnCode==0){
+            if(data.code==0){
                 self.setState({
-                    detail:data.data.newsDetail
+                    detail:data.result.newsDetail
                 })
 
             }

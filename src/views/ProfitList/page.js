@@ -41,8 +41,8 @@ class ProfitList extends Component {
         </div>)
     }
     analysis_data(data){
-        if(data.returnCode===0){
-            return data.data.profitList;
+        if(data.code===0){
+            return data.result.profitList;
         }
         return false;
     }
@@ -68,7 +68,7 @@ class ProfitList extends Component {
 
 ProfitList.defaultProps = {
     scrollOptions:{
-        url:"/api/user/userProfitList.html",
+        url:"/api/user/userProfitList",
         pageName:"pageNo",
         totalProps:{className:'profit-list'}
     }
