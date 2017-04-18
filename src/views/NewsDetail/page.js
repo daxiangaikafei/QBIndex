@@ -24,7 +24,7 @@ class NewsDetail extends Component {
     let time = Date.now();
     fetchPosts("/api/news/getNewsDetail",{id:Number(projectId)},"GET").then((data)=>{
         //console.log('返回结果为:',data.result.newsDetail);
-        // //debugger;
+        //debugger;
         let lTime = Date.now();
         let timeout = (lTime-time<1000)?(1000-(lTime-time)):0;
         //setTimeout(function(){

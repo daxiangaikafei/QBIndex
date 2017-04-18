@@ -18,7 +18,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
         "Response-Content-Type":'application/json'
     });
    // debugger;
-    headers = assignIn({}, {token: "0579171e05cb5e3d221aeefd8b470106"});
+    headers = assignIn({}, headers, {token: "0579171e05cb5e3d221aeefd8b470106"});
     url = url.replace("/api","/api/qbii");
 
     return fetch(url, {
