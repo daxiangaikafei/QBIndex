@@ -37,7 +37,7 @@ compiler.run(function (err, stats) {
 
     
 
-
+return ;
     fs.stat(cat + fileName, function(err, stat) {
         if(err == null) {
             if(stat.isDirectory()) {
