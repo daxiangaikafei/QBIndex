@@ -134,8 +134,8 @@ class OrderConfirm extends Component {
         //debugger;
         fetchPosts("/api/project/"+projectId+"/apply",values,"POST").then((data)=>{
             //debugger;
-            if(data.returnCode===0){
-                data = data.data;
+            if(data.code===0){
+                data = data.result;
                 self.setState({
                     modelData:{
                         name:data.user.realName,

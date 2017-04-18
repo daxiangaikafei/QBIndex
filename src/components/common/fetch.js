@@ -18,6 +18,8 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
         "Response-Content-Type":'application/json'
     });
    // debugger;
+    headers = assignIn({}, headers, {token: "0579171e05cb5e3d221aeefd8b470106"});
+    url = url.replace("/api","/api/qbii");
 
     return fetch(url, {
             method: type.toLocaleUpperCase(),
@@ -37,7 +39,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
         })
         .then((data) => {
 
-            if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {
+            if (data && data.code === 200 && fetchNum<30) {
                 QBFK.Business.login();
                 return fetchSetTimeout().then(()=>{
                     return fetchPosts(url,param,type,headers,repType,fetchNum+1);

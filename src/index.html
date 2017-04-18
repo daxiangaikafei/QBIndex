@@ -57,6 +57,9 @@
                             ioswebview.showLoginViewAnd("mqbii.qbao.com",String());
                         }
                     }
+                },
+                isQBClient: function() {
+                    return !(/qbii-/ig.test(window.navigator.userAgent))
                 }
             }
         };
