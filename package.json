@@ -11,6 +11,7 @@
     "dev": "better-npm-run dev",
     "dev:nw": "npm run dev -- --nw",
     "compile": "npm run clear && better-npm-run deploy",
+    "product": "npm run clear && better-npm-run deploys",
     "clear":"rm -rf dist"
   },
   "betterScripts": {
@@ -24,6 +25,12 @@
       "command": "node -r dotenv/config bin/compile",
       "env": {
         "NODE_ENV": "production"
+      }
+    },
+    "deploys": {
+      "command": "node -r dotenv/config bin/compile",
+      "env": {
+        "NODE_ENV": "build"
       }
     }
   },

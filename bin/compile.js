@@ -30,7 +30,7 @@ compiler.run(function (err, stats) {
 
     debug('Webpack compile completed.')
 
-    var cat = '/Users/sean/work/qbii/branches/20170315zls/qbii-app/src/main/webapp'
+    var cat = '/Users/sean/work/qbii/trunk/qbii-app/src/main/webapp'
     var sourcePath = path.join(__dirname,'../dist')
     var fileName = '/public'
     var except = ['cdn']

@@ -18,6 +18,8 @@ try {
 }
 catch (e){}
 
+console.log('ovFileName',ovFileName)
+
 //replace the  the server link from config if exit
 if(hasFile) {
     override = require(`.` + ovFileName)(config)
