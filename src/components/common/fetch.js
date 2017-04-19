@@ -19,7 +19,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
     });
    // debugger;
     headers = assignIn({}, headers, {token: "0579171e05cb5e3d221aeefd8b470106"});
-    url = url.replace("/api","/api/qbii");
+    url = url.replace(/\/api(?!\/qbii)/ig,"/api/qbii");    
 
     return fetch(url, {
             method: type.toLocaleUpperCase(),
