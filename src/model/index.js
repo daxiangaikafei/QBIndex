@@ -154,7 +154,11 @@ export default {
 
       let userInfo = yield call(() => {
         return fetchPosts("/api/user/userInfo",{},"GET")
-          .then(data => data.result.user)
+          .then(data => data.result.user ? data.result.user : {
+            "level": "暂无",
+            "assetsDes": 0,
+            "profitDes": 0
+          })
           .catch(err => ({
             "id": 111111,
       			"level": "暂无",
