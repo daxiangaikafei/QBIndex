@@ -14,7 +14,7 @@ function CoreLayout ({ children, location }) {
   return (
     <div>
         {
-        isQBC ? <NavBar {...arguments[0]}/> : ''
+        isQBC && <NavBar {...arguments[0]}/>
         }
         <main style={{height:viewHeight,position: 'fixed',top: top+'px',width: '100%',overflow: 'hidden'}}>
         <ReactCSSTransitionGroup component='div'
