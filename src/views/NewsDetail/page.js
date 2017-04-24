@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 import {fetchPosts} from "components/common/fetch";
 // import { createCORSRequest } from 'libs/util'
-// 
+//
 
 let viHtml = '<div><p></p><p></p><p></p><p></p><p></p></div>';
 
@@ -35,9 +35,9 @@ class NewsDetail extends Component {
 
             }
         //},timeout)
-        
+
     })
-    
+
   }
 
   render() {
@@ -53,10 +53,10 @@ class NewsDetail extends Component {
     }else{
         newProps.dangerouslySetInnerHTML={__html:decodeURIComponent(info.content)};
         //console.log(info.content)
-        
+
     }
 
-    
+
 
     // let className = detail===false?" mask-loading mask-loading-vi":" ";
     // let info = detail===false?{}:detail;
@@ -74,7 +74,7 @@ class NewsDetail extends Component {
           </div>
           <div className="newsDetail-footer">
             <em>阅读</em>
-            <em>{info.watched}</em>  
+            <em>{info.watched}</em>
           </div>
       </div>
     )
@@ -95,7 +95,7 @@ class NewsDetail extends Component {
                 </div>
                 <div className="newsDetail-footer">
                     <em></em>
-                    <em></em>  
+                    <em></em>
                 </div>
           </div>
       )

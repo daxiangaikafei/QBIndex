@@ -23,7 +23,6 @@ class Home extends Component {
         props.getUserInfo()
         props.getProjList()
       })
-
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
       isGaugeRendered: false,
