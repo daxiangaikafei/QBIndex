@@ -9,10 +9,12 @@ import { tagStrFormat } from 'libs/util'
 
 class ProjectItem extends Component {
   projectStatus = [
-    '未开始',
     '进行中',
+    '已下架',
+    '未开始',
     '已结束'
   ]
+  //0-进行中,1-已下架,2-项目未开始,3-项目已结束
   constructor(props) {
     super(props)
 
@@ -27,7 +29,7 @@ class ProjectItem extends Component {
     return (
       <div styleName="item" onClick={()=>QBFK.Business.go('/InfoTpl/'+this.props.projInfo.pageId||"")}>
         <div styleName="banner">
-          <span styleName="corner"><i>{this.projectStatus[this.checkProjStatus(this.props.projInfo)]}</i></span>
+          <span styleName="corner"><i>{this.projectStatus[this.props.projInfo.runStatus]}</i></span>
           <img src={this.props.projInfo.picCover} alt="" onError={(e)=>{e.target.style.display='none'}} onLoad={(e)=>{e.target.style.display='block'}}/>
         </div>
         <div styleName="title">
