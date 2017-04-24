@@ -34,8 +34,8 @@ class OrderList extends Component {
         </div>)
     }
     analysis_data(data){
-        if(data.returnCode===0){
-            return data.data.orderList;
+        if(data.code===0){
+            return data.result.orderList;
         }
         return false;
     }
@@ -60,7 +60,7 @@ class OrderList extends Component {
 OrderList.defaultProps = {
     type:1,
     scrollOptions:{
-        url:"/api/user/userOrderList.html",
+        url:"/api/user/userOrderList",
         pageName:"pageNo",
         totalProps:{className:'order-list'}
 

@@ -62,6 +62,9 @@ class Home extends Component {
 
 
   render() {
+    // if(this.props.projList.length>0) {
+    //   this.props.setHelpStatus()
+    // }
     let projItems = this.props.projList.length>0 ? this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} serverTime={this.props.serverTime}/>) : ""
     return (
       <div styleName="home-container" style={this.props.style}>
@@ -239,6 +242,9 @@ function mapDispatchToProps(dispatch) {
       },
       getProgressInfo(progressInfo){
           dispatch({type: 'home/getProgressInfo', progressInfo});
+      },
+      setHelpStatus(helpStatus){
+          dispatch({type: 'home/setHelpStatus', helpStatus});
       }
     }
 }

@@ -10,6 +10,9 @@
 import React, { PropTypes } from 'react'
 import './index.less'
 import {Router} from 'dva/router';
+import {connect} from 'dva'
+import classNames from 'classnames'
+
 
 class NavBar extends React.Component {
   constructor (props, context) {
@@ -69,7 +72,7 @@ class NavBar extends React.Component {
           </div>
           <div className='qbii-navbar-title'>{this.state.title}</div>
           <div className='qbii-navbar-right'>
-            <span className='right-icon' onClick={()=>QBFK.Business.go('/Help')}></span>
+            <span className={classNames({'right-icon':1,'hide':!this.props.helpShow})} onClick={()=>QBFK.Business.go('/Help')}></span>
             <span className='right hide'></span>
           </div>
         </div>
@@ -77,7 +80,18 @@ class NavBar extends React.Component {
     )
   }
 }
+function mapStateToProps(state) {
+  return state.home;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+  }
+}
 NavBar.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
-export default NavBar
+// NavBar.defaultProps = {
+//   helpShow: false
+// }
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

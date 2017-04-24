@@ -4,6 +4,8 @@ import React, { Component, PropTypes } from 'react';
 
 import Scroll from "components/swipe/scroll"
 import "./page.scss";
+import {priceFormat} from 'libs/util'
+
 
 function toThousands(num) {
     var num = (num || 0).toString(), result = '';
@@ -29,20 +31,20 @@ class ProfitList extends Component {
                 <div className="profit-list-item-info">
                     <i>{item.projectName.substr(0,1)}</i>
                     <div>
-                        <span>{toThousands(item.totalAmount/100)+"元"}</span>
+                        <span>{priceFormat(item.totalAmount/100)+"元"}</span>
                         <em>{item.projectName}</em>
                     </div>
                     
                 </div>
                 <span className="item-icon-right"><i></i></span>               
-                <span className="item-tab">{toThousands(item.profitAmount/100)}<em>利润分红(元)</em></span>
-                <span className="item-tab">{toThousands(item.assetAmount/100)}<em>股本增值(元)</em></span>
+                <span className="item-tab">{priceFormat(item.profitAmount/100)}<em>利润分红(元)</em></span>
+                <span className="item-tab">{priceFormat(item.assetAmount/100)}<em>股本增值(元)</em></span>
             </div>
         </div>)
     }
     analysis_data(data){
-        if(data.returnCode===0){
-            return data.data.profitList;
+        if(data.code===0){
+            return data.result.profitList;
         }
         return false;
     }
@@ -68,8 +70,9 @@ class ProfitList extends Component {
 
 ProfitList.defaultProps = {
     scrollOptions:{
-        url:"/api/user/userProfitList.html",
-          pageName:"pageNo",
+        url:"/api/user/userProfitList",
+        pageName:"pageNo",
+        totalProps:{className:'profit-list'}
     }
 }
 

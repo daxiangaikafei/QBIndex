@@ -28,7 +28,9 @@ class About extends Component {
       // height: '25%',
       position: 'relative'
     }
-    let itemHeight = window.innerHeight-44
+    let isQBC = QBFK.Business.isQBClient()
+    let top = isQBC ? 44 : 0
+    let itemHeight = window.innerHeight-top
     let swipeProps = {
         min: -itemHeight*3,
         max: 0,

@@ -53,6 +53,8 @@ export function delCookie(name, mode="cookie") {
 
 export function priceFormat(price, n) {
   n = n >= 0 && n <= 20 ? n : 2;
+  let isMinus = price < 0
+  price = isMinus ? 0 - price : price
   price = parseFloat((price + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
   var l = price.split(".")[0].split("").reverse(), r = price.split(".")[1];
   var t = "";
@@ -60,9 +62,9 @@ export function priceFormat(price, n) {
     t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
   }
   if(n==0){
-    return t.split("").reverse().join("");
+    return (isMinus?'-':'') + t.split("").reverse().join("");
   } else {
-    return t.split("").reverse().join("") + "." + r;
+    return (isMinus?'-':'') + t.split("").reverse().join("") + "." + r;
   }
 }
 

@@ -124,11 +124,11 @@ class Chart extends Component {
         self.setState({dataFirst:false});
         fetchPosts("/api/project/"+projectId+"/profitability",{},"GET").then((data)=>{
             try{
-                self.creatHDate(data.data.value,data.data.zuorizhangfu);
+                self.creatHDate(data.result.value,data.result.zuorizhangfu);
             }catch(errorMsg){
 
             }
-            self.creatFDate(data.data);
+            self.creatFDate(data.result);
             // self.setState({
             //     dataFirst:data
             // });
@@ -141,7 +141,7 @@ class Chart extends Component {
         fetchPosts("/api/project/"+projectId+"/evaluate",{},"GET").then((data)=>{
             
             try{
-                self.creatHDate(data.data.value,data.data.zuorizhangfu);
+                self.creatHDate(data.result.value,data.result.zuorizhangfu);
             }catch(errorMsg){
 
             }

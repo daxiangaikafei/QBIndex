@@ -101,7 +101,7 @@ class OrderInfo extends Component {
          fetchPosts("/api/page/"+projectId,{},"GET").then((data)=>{
 
             self.setState({
-                data:data.data.page
+                data:data.result.page
             });
         });
 
