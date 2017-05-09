@@ -82,6 +82,7 @@ if (__DEV__) {
     )
     webpackConfig.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
+            comments: false,
             compress: {
                 unused: true,
                 dead_code: true,
