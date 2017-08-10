@@ -24,8 +24,8 @@ class News extends Component {
         let self = this;
         ///qbii-app/
         fetchPosts("/api/news/getNewsList",{},"POST").then((data)=>{
-            console.log('返回结果为:',data);
-            //debugger;
+            // console.log('返回结果为:',data);
+            // debugger;
             if(data.code==0){
                 self.setState({
                     lists:data.result.newsList
@@ -41,12 +41,12 @@ class News extends Component {
 
         let {lists} = this.state;
         let length = lists.length;
-
         let items = [],i=0;
         //onClick={()=>QBFK.Business.go('/NewsDetail/'+{item.id})}
         while (i<length) {
             let item  =  lists[i];
             i += 1;
+            console.log(item)
             items.push(
                 <div styleName="item" key={i} onClick={this.toDetail.bind(this,item.id)}>
                     <div styleName="img">

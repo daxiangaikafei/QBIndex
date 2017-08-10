@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, IndexRoute, Router } from 'dva/router'
 import CoreLayout from '../containers/layout'
 import Home from 'views/Home/page'
+import RollIn from 'views/RollIn/page'
 // import HomeDo from 'views/HomeDo/page'
 import About from 'views/About/page'
 
@@ -27,6 +28,7 @@ export default function (ref) {
       <Route path='/' component={CoreLayout} name="QBII">
         <IndexRoute component={Home} name="QBII设置页面"/>
         <Route path='/Home' component={Home} name="QBII设置"/>
+        <Route path='/RollIn' component={RollIn} name="转入资产"/>
         {/* <Route path='/HomeDo' component={HomeDo} name="QBII测试Title"/> */}
         {/* <Route path='/AnDemo' component={AnDemo} name="QBII动画效果"/> */}
         {/* <Route path='/swipe' component={DemoSwipe} name="QBII动画效果"/> */}

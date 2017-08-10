@@ -26,6 +26,8 @@ class Home extends Component {
     this.state = {
       isShowCover: !getCookie("isShowCover","storage"),
       isGaugeRendered: false,
+      canPay: false,
+      isAgreementShow: false,
     }
   }
 
@@ -59,7 +61,17 @@ class Home extends Component {
     }
   }
 
-
+  handleRollIn = () => {
+    this.setState({
+      isAgreementShow: true
+    })
+  }
+  
+  handleDisagree = () => {
+    this.setState({
+      isAgreementShow: false
+    })
+  }
 
   render() {
     // if(this.props.projList.length>0) {
@@ -88,12 +100,12 @@ class Home extends Component {
         </div>
         <div styleName="asset-container">
           <div onClick={()=>{
-              isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/OrderList')
+              false&&isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/OrderList')
             }} styleName="item">
             <span>投入资产(万)</span>
             <h3>{priceFormat(this.props.userInfo.assetsDes)||0.00} </h3>
           </div>
-          <div onClick={()=>isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/ProfitList')} styleName="item">
+          <div onClick={()=>false&&isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/ProfitList')} styleName="item">
             <span>累计收益(元)</span>
             <h3>{priceFormat(this.props.userInfo.profitDes)||0.00}</h3>
           </div>
@@ -122,6 +134,23 @@ class Home extends Component {
           <h1>{this.props.levelInfo.level}</h1>
           <span styleName="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
         </div>
+        {this.props.userInfo.isQbii ? <div styleName="btn-roll-in" onClick={this.handleRollIn} >转入资产</div>:''}
+        {this.state.isAgreementShow ? 
+          <div styleName="agreement-container">
+            <div styleName="pop">
+              <h5>公 告</h5>
+              <div styleName="content">
+                <p style={{textIndent:'2rem'}}>本人系自愿同意将本人在成都钱坤智能系统有限公司投入的保证金及利息作为股权转让价款，全部购买成都钱坤智能系统有限公司持有的武汉创赢臻慧科技有限公司股权。本人于8月12日自主通过钱宝网系统将本人在成都钱坤智能系统有限公司投入的保证金及利息折抵为股权转让价款，向成都钱坤智能系统有限公司支付，股权转让完成后，本人将成为武汉创赢臻慧科技有限公司的股东。</p>
+                <p>武汉创赢臻慧科技有限公司、成都钱坤智能系统有限公司已向本人全面、详细地解释了股权转让协议的各项条款和条件，并向本人披露了本次股权转让涉及的各项细节及法律风险。本人已充分理解股权转让协议的所有条款和条件，且已知悉作为武汉创赢臻慧科技有限公司股东的全部权利与义务，并愿意为此承担一切法律后果。</p>
+                <p style={{textAlign:'right'}}>日期：2017年8月12日</p>
+              </div>
+              <div styleName="btn-group">
+                <div styleName="btn-disagree" onClick={this.handleDisagree} >不同意</div>
+                <div styleName="btn-agree" onClick={()=>QBFK.Business.go('/RollIn')}>我同意</div>
+              </div>
+            </div>
+          </div>
+        :''}
       </div>
     )
   }

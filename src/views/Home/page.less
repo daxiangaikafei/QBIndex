@@ -1,3 +1,4 @@
+@import '~libs/layout/layout-mixin.less';
 @txtColor: #ae8e72;
 @assetTitleColor: #757575;
 @bdColor: #c0c0c0;
@@ -43,58 +44,6 @@ body {
     }
 }
 
-
-/***** Mixin *****/
-
-.flex {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-}
-
-.flex-justify {
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-
-.flex-vertical {
-    -webkit-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-}
-
-.flex-item-auto {
-    -webkit-box-flex: auto;
-    -webkit-flex: auto;
-    -ms-flex: auto;
-    flex: auto;
-}
-
-.flex-item-none {
-    -webkit-box-flex: none;
-    -webkit-flex: none;
-    -ms-flex: none;
-    flex: none;
-}
-
-.flex-align-center {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-.flex-center {
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
 main {
     /** 首页头部 **/
     .home-container {
@@ -127,8 +76,7 @@ main {
                 height: 280px;
                 position: absolute;
                 top: -35px;
-                z-index: 0;
-                // -webkit-animation: bg-ani 10s linear infinite;
+                z-index: 0; // -webkit-animation: bg-ani 10s linear infinite;
                 // animation: bg-ani 10s linear infinite;
             }
             .content {
@@ -425,8 +373,7 @@ main {
                 .more {
                     font-size: 14px;
                     color: @listTxtColor;
-                    height: 50px;
-                    // line-height: 50px;
+                    height: 50px; // line-height: 50px;
                     display: -webkit-flex;
                     display: -ms-flex;
                     display: flex;
@@ -514,8 +461,7 @@ main {
                     p {
                         white-space: nowrap;
                         text-overflow: ellipsis;
-                        overflow: hidden;
-                        // word-wrap: break-word;
+                        overflow: hidden; // word-wrap: break-word;
                         // word-break: normal;
                     }
                     small {
@@ -602,6 +548,74 @@ main {
                 width: 150px;
                 height: 40px;
                 line-height: 40px;
+            }
+        }
+    }
+}
+
+
+/***** roll in *****/
+
+.btn-roll-in {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    background: @listTxtColor;
+    line-height: 40px;
+}
+
+.agreement-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .6);
+    padding: 0 8%;
+    z-index: 5;
+    .flex;
+    .flex-center;
+    .flex-align-center;
+    .pop {
+        background: #fff;
+        border-radius: 10px;
+        height: 70%;
+        padding: 20px;
+        .flex;
+        .flex-vertical;
+        .flex-around;
+        h5 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 200;
+        }
+        .content {
+            overflow-y: auto;
+            .flex-item-1;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .btn-group {
+            margin-top: 20px;
+            .flex;
+            .flex-justify;
+            &>div {
+                width: 45%;
+                line-height: 30px;
+                text-align: center;
+                border: 1px solid @txtColor;
+                border-radius: 16px;
+            }
+            .btn-disagree {
+                color: @txtColor;
+            }
+            .btn-agree {
+                color: #fff;
+                background: @txtColor;
             }
         }
     }

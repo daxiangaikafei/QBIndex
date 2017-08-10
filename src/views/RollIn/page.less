@@ -1,0 +1,132 @@
+    @import '~libs/layout/layout-mixin.less';
+@txtColor: #ae8e72;
+@assetTitleColor: #757575;
+@bdColor: #c0c0c0;
+@bodyBGColor: #E1E1E1;
+@coverTxtColor: #ffca43;
+@listTxtColor: #aa8a72;
+@increaseTxtColor: #ff504d;
+@listBdColor: #e5e5e5;
+@subTxtColor: #acacac;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "STHeitiSC-Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif, "Mircosoft YaHei";
+    background: @bodyBGColor;
+    height: 100%;
+    font-weight: 200;
+}
+
+main {
+    /** 首页头部 **/
+    .roll-in-container {
+        background: #F1F1F6;
+        height: 100%;
+        .top {
+            padding: 20px;
+            h4 {
+                color: #90909B;
+                font-weight: 200;
+            }
+            h1 {
+                color: @txtColor;
+                margin: 10px 0;
+            }
+            p {
+            color: #FC5B1F;
+            }
+        }
+        .form {
+            background: #fff;
+            .field {
+                height: 40px;
+                padding: 0 10px;
+                border-bottom: 1px solid #F1F1F6;
+                .flex;
+                .flex-align-center;
+                .label {
+                    font-size: 14px;
+                    width: 80px;
+                    text-align: left;
+                    .flex-item-none;
+                    .flex;
+                    .flex-end;
+                }
+                input {
+                    font-size: 13px;
+                    width: 120px;
+                    .flex-item-auto;
+                    &::-webkit-input-placeholder {
+                        color: #AAAABA;
+                        font-weight: 200;
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                .get-code {
+                    color: #1D75E5;
+                    font-size: 12px;
+                    text-align: right;
+                    .flex-item-auto;                    
+                    &.disable {
+                        color: #C5C6D2;
+                    }
+                }
+            }
+        }
+        .btn-commit {
+            background: @txtColor;
+            color: #fff;
+            margin: 50px auto 0;
+            width: 200px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 20px;
+        }
+    }
+}
+
+.pop-container {
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    text-align: center;
+    opacity: 0;
+    transition: visibility 0s, opacity ease .5s;
+    .pop {
+        display: inline-block;
+        background: rgba(0, 0, 0, .8);
+        color: #fff;
+        font-size: 12px;
+        padding: 0 20px;
+        line-height: 40px;
+        border-radius: ~'20px / 50%';
+    }
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+.fadeOut {
+    animation: fadeOut ease 1s;
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
