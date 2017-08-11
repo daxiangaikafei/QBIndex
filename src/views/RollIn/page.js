@@ -92,8 +92,16 @@ class RollIn extends Component {
     })
     
   }
+
+  onAmountChange(e){
+    let reg = /^([0-9]\d*|0)?(\.)?(\d{1,2})?$/, value = e.target.value;
+    if(value === "" || reg.test(value)){
+      this.setState({amount: value})
+    }
+  }
+
   render() {
-    let { form } = this.state
+    let { form, amount } = this.state
     return (
       <div styleName="roll-in-container">
         <div styleName="top">
@@ -103,8 +111,8 @@ class RollIn extends Component {
         </div>
         <div styleName="form">
           <div styleName="field">
-            <span styleName="label">输入金额：</span>
-            <input type="text" placeholder="请输入您要转入的金额" valueLink={this.linkState('amount')}/>
+            <span styleName="label">输入金额（元）：</span>
+            <input type="text" placeholder="请输入您要转入的金额" value={amount} onChange={(e)=>this.onAmountChange(e)}/>
           </div>
           <div styleName="field">
             <span styleName="label" >交易密码：</span>
