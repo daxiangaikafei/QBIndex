@@ -49,6 +49,7 @@ class RollIn extends Component {
   handleCommit = () => {
     let {amount,pwd,code} = this.state
     let msg = !amount ? '请输入您要转入的金额' : 
+      amount <= 0 ? '请输入正确的金额' :
       !pwd ? '请输入交易密码' : 
       !code ? '请输入验证码' : 
       this.setState({canCommit:true}, ()=>{
@@ -117,7 +118,7 @@ class RollIn extends Component {
         <div styleName="form">
           <div styleName="field">
             <span styleName="label">输入金额：</span>
-            <input type="number" placeholder="请输入您要转入的金额" value={amount} onChange={(e)=>this.onAmountChange(e)} min="0"/>
+            <input type="number" placeholder="请输入您要转入的金额" value={amount} onChange={(e)=>this.onAmountChange(e)} min="0.01"/>
             <div styleName="unit">（元）</div>
           </div>
           <div styleName="field">
