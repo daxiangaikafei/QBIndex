@@ -16,7 +16,8 @@ export default {
     projList: [],
     progressInfo: {},
     serverTime: '',
-    helpShow: false
+    helpShow: false,
+    isAgreementShow: false
   },
   effects: {
     // *'fetch' (action, {put, call}) {
@@ -248,6 +249,13 @@ export default {
       yield put({
         type : 'helpShowRes',
         helpShow:true
+      })
+    },
+    *setAgreement(action,{put}) {
+      yield put({type: 'helpShowReq'})
+      yield put({
+        type : 'helpShowRes',
+        isAgreementShow:action.isShow
       })
     }
 

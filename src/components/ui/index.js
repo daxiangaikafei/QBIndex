@@ -10,3 +10,4 @@
 export { default as NavBar } from './navbar'
 export { default as Dialog } from './dialog'
 export { default as Icon } from './icon'
+export { default as RollIn } from './rollIn'

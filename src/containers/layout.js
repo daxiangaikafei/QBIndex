@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import '../static/style/main.mobile.less'
 import '../static/style/animate.less'
-import { NavBar } from 'ui'
+import { NavBar, RollIn } from 'ui'
 var cx = require('classnames');
 
 function CoreLayout ({ children, location }) {
@@ -36,6 +36,7 @@ function CoreLayout ({ children, location }) {
         }
         </ReactCSSTransitionGroup>
         </main>
+       <RollIn {...arguments[0]}/>
   </div>
   )
 }

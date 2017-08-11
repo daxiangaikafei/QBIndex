@@ -60,19 +60,7 @@ class Home extends Component {
       });
     }
   }
-
-  handleRollIn = () => {
-    this.setState({
-      isAgreementShow: true
-    })
-  }
   
-  handleDisagree = () => {
-    this.setState({
-      isAgreementShow: false
-    })
-  }
-
   render() {
     // if(this.props.projList.length>0) {
     //   this.props.setHelpStatus()
@@ -134,8 +122,7 @@ class Home extends Component {
           <h1>{this.props.levelInfo.level}</h1>
           <span styleName="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
         </div>
-        {this.props.userInfo.isQbii ? <div styleName="btn-roll-in" onClick={this.handleRollIn} >转入资产</div>:''}
-        {this.state.isAgreementShow ? 
+        {this.props.isAgreementShow ? 
           <div styleName="agreement-container">
             <div styleName="pop">
               <h5>公 告</h5>
@@ -145,8 +132,8 @@ class Home extends Component {
                 <p style={{textAlign:'right'}}>日期：2017年8月12日</p>
               </div>
               <div styleName="btn-group">
-                <div styleName="btn-disagree" onClick={this.handleDisagree} >不同意</div>
-                <div styleName="btn-agree" onClick={()=>QBFK.Business.go('/RollIn')}>我同意</div>
+                <div styleName="btn-disagree" onClick={()=>{this.props.setAgreement(false)}} >不同意</div>
+                <div styleName="btn-agree" onClick={()=>{this.props.setAgreement(false);QBFK.Business.go('/RollIn')}}>我同意</div>
               </div>
             </div>
           </div>
@@ -274,6 +261,9 @@ function mapDispatchToProps(dispatch) {
       },
       setHelpStatus(helpStatus){
           dispatch({type: 'home/setHelpStatus', helpStatus});
+      },
+      setAgreement(isShow){
+          dispatch({type: 'home/setAgreement', isShow});
       }
     }
 }
