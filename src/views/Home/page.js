@@ -103,11 +103,11 @@ class Home extends Component {
               false&&isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/OrderList')
             }} styleName="item">
             <span>投入资产(万)</span>
-            <h3>{priceFormat(this.props.userInfo.assetsDes)||0.00} </h3>
+            <h3>{priceFormat(_floor(this.props.userInfo.assetsDes))||0.00} </h3>
           </div>
           <div onClick={()=>false&&isArray(this.props.projList)&&this.props.projList.length!==0&&QBFK.Business.go('/ProfitList')} styleName="item">
             <span>累计收益(元)</span>
-            <h3>{priceFormat(this.props.userInfo.profitDes)||0.00}</h3>
+            <h3>{priceFormat(_floor(this.props.userInfo.profitDes))||0.00}</h3>
           </div>
         </div>
         <div styleName="list-container" className={classNames({"hide":this.props.projList.length==0})}>
@@ -277,6 +277,11 @@ function mapDispatchToProps(dispatch) {
       }
     }
 }
+
+function _floor(num) {
+  return Math.floor(num * 100) / 100
+}
+
 Home.PropTypes = {
     enterAnimation: {
         duration: 2000,

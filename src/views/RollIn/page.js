@@ -103,6 +103,7 @@ class RollIn extends Component {
       this.setState({amount: value})
     }
   }
+            // <input type="text" placeholder="请输入您要转入的金额" value={amount} onChange={(e)=>this.onAmountChange(e)}/>
 
   render() {
     let { form, amount } = this.state
@@ -115,8 +116,9 @@ class RollIn extends Component {
         </div>
         <div styleName="form">
           <div styleName="field">
-            <span styleName="label">输入金额（元）：</span>
-            <input type="text" placeholder="请输入您要转入的金额" value={amount} onChange={(e)=>this.onAmountChange(e)}/>
+            <span styleName="label">输入金额：</span>
+            <input type="number" placeholder="请输入您要转入的金额" value={amount} onChange={(e)=>this.onAmountChange(e)} min="0"/>
+            <div styleName="unit">（元）</div>
           </div>
           <div styleName="field">
             <span styleName="label" >交易密码：</span>
