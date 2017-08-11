@@ -61,7 +61,7 @@ class RollIn extends Component {
           },'GET').then(data=>{
             if(data.code==0) {
               setTimeout(()=>{
-                QBFK.Business.go('/Home')
+                QBFK.Business.go('/')
               }, 1000);
             }
             this.setState({loading:false})

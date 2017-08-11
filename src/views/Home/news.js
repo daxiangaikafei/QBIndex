@@ -46,7 +46,7 @@ class News extends Component {
         while (i<length) {
             let item  =  lists[i];
             i += 1;
-            console.log(item)
+            // console.log(item)
             items.push(
                 <div styleName="item" key={i} onClick={this.toDetail.bind(this,item.id)}>
                     <div styleName="img">
