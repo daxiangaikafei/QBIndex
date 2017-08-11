@@ -32,7 +32,7 @@ compiler.run(function (err, stats) {
 
     var cat = '/Users/sean/work/qbii/trunk/qbii-app/src/main/webapp'
     var sourcePath = path.join(__dirname,'../dist')
-    var fileName = '/public'
+    var fileName = ''
     var except = ['cdn']
 
     
