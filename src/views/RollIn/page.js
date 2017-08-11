@@ -8,6 +8,7 @@ import { Link } from 'react-router'
 import classNames from 'classnames'
 import { fetchPosts } from "components/common/fetch"
 import { priceFormat } from 'libs/util'
+import {Icon} from 'ui'
 
 class RollIn extends Component {
   constructor(props) {
@@ -22,7 +23,8 @@ class RollIn extends Component {
       blance: 0,
       amount: '',
       pwd: '',
-      code: ''
+      code: '',
+      loading: false
     }
     this.getBlance()
   }
@@ -51,6 +53,7 @@ class RollIn extends Component {
       !code ? '请输入验证码' : 
       this.setState({canCommit:true}, ()=>{
         if (this.state.canCommit) {
+          this.setState({loading:true})
           fetchPosts('/api/specialUser/changeQbii',{
             traderPwd: pwd,
             verifyCode: code,
@@ -59,14 +62,16 @@ class RollIn extends Component {
             if(data.code==0) {
               setTimeout(()=>{
                 QBFK.Business.go('/Home')
-              }, 2000);
+              }, 1000);
             }
+            this.setState({loading:false})
             this._pop(data.message)
           })
         } 
       })
     !this.state.canCommit && this._pop(msg)
   }
+
   handleGetCode = () => {
     if (!this.state.canGetCode) {return}
     fetchPosts('/api/specialUser/sendSmsCode', {}, 'GET').then(data => {
@@ -90,8 +95,8 @@ class RollIn extends Component {
       }
       this._pop(data.message)
     })
-    
   }
+
   render() {
     let { form } = this.state
     return (
@@ -104,11 +109,11 @@ class RollIn extends Component {
         <div styleName="form">
           <div styleName="field">
             <span styleName="label">输入金额：</span>
-            <input type="text" placeholder="请输入您要转入的金额" valueLink={this.linkState('amount')}/>
+            <input type="number" placeholder="请输入您要转入的金额" valueLink={this.linkState('amount')}/>
           </div>
           <div styleName="field">
             <span styleName="label" >交易密码：</span>
-            <input type="text" placeholder="请输入交易密码" valueLink={this.linkState('pwd')}/>
+            <input type="password" placeholder="请输入交易密码" valueLink={this.linkState('pwd')}/>
           </div>
           <div styleName="field">
             <span styleName="label">手机验证：</span>
@@ -122,7 +127,13 @@ class RollIn extends Component {
             {this.state.msg}
           </div>
         </div>
-        
+        {
+          this.state.loading ? (<div className="loading-bg">
+            <div className="loading-item">
+              <Icon name="spinner" color="#fff" size="32" styleName="loading" />
+            </div>
+          </div>) : ''
+        }
       </div>
     )
   }
