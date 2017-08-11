@@ -36,7 +36,7 @@ function CoreLayout ({ children, location }) {
         }
         </ReactCSSTransitionGroup>
         </main>
-       <RollIn {...arguments[0]}/>
+       {location.pathname=='/'?<RollIn {...arguments[0]}/>:''}
   </div>
   )
 }
