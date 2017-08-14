@@ -269,7 +269,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 function _floor(num) {
-  return Math.floor(num * 100) / 100
+  if(/\./.test(num+'')) {
+    let arr = (num+'').split('.')
+    arr[1] = arr[1].slice(0,2)
+    return arr.join('.')
+  } 
+  return num
 }
 
 Home.PropTypes = {
