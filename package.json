@@ -1,6 +1,6 @@
 {
     "name": "qbao_goods",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Get started with React, Redux, and React-Router!",
     "main": "index.js",
     "engines": {
