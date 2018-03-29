@@ -6,6 +6,7 @@
 // Android 4.4 Version Below
 // ------------------------------------
 require('es6-promise').polyfill();
+var a = 1;
 
 // ------------------------------------
 // Resource Import
