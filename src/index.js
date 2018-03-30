@@ -6,11 +6,7 @@
 // Android 4.4 Version Below
 // ------------------------------------
 require('es6-promise').polyfill();
-<<<<<<< HEAD
-var a = 111;
-=======
 var a = 33333;
->>>>>>> 3e9f136b607cadddb0101102872d62fda5015fc7
 
 // ------------------------------------
 // Resource Import
