@@ -50,7 +50,7 @@ require.ensure([],
         // Debug Here
         // ------------------------------------
         html5ForLogin(html5ForStartApp);
-        var b = 333;
+        var b = 3333 ;
 
         // ------------------------------------
         // Client Login
