@@ -6,7 +6,7 @@
 // Android 4.4 Version Below
 // ------------------------------------
 require('es6-promise').polyfill();
-var a = 123456;
+var a = 1234567;
 
 // ------------------------------------
 // Resource Import
@@ -50,7 +50,7 @@ require.ensure([],
         // Debug Here
         // ------------------------------------
         html5ForLogin(html5ForStartApp);
-        var b = 123456;
+        var b = 1234567;
 
         // ------------------------------------
         // Client Login
